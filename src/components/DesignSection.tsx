@@ -124,11 +124,29 @@ const DesignSection: React.FC<DesignSectionProps> = ({
   }`;
   const contentClass = "";
 
+  const shouldRemoveRightBorder =
+    title === "Spatial Layers" ||
+    title === "Rule of Thirds" ||
+    title === "Interwoven Space" ||
+    title === "Dimensional Hierarchy" ||
+    title === "Subjective Emphasis" ||
+    title === "Bezold Effect" ||
+    title === "Ambiguous Scale" ||
+    title === "Artful Reduction" ||
+    title === "Basic Color Theory";
+
   return (
     <div
-      className={`relative group hover:shadow-lg transition-shadow duration-300 min-h-[400px] border-b sm:border-b-0 sm:border-r last:border-r-0 border-gray-100 ${background}`}
+      className={`relative group hover:shadow-lg transition-shadow duration-300 min-h-[400px] border border-gray-200 ${background} overflow-hidden ${
+        shouldRemoveRightBorder ? "border-r-0" : ""
+      }`}
     >
-      <div className="h-full flex flex-col">
+      <div
+        className={`absolute inset-0 border border-gray-200 pointer-events-none ${
+          shouldRemoveRightBorder ? "border-r-0" : ""
+        }`}
+      />
+      <div className="h-full flex flex-col relative z-10">
         <h2 className={titleClass}>{title}</h2>
         <div className={`flex-1 flex flex-col ${contentClass}`}>
           <div className="flex-1 flex items-center justify-center py-2">

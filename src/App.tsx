@@ -15,7 +15,7 @@ function App() {
         </div>
       </header> */}
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 divide-y md:divide-y-0 md:divide-x border-x border-y border-gray-200/50">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 divide-y md:divide-y-0 md:divide-x border-gray-200/50">
         <DesignSection
           title="Spatial Layers"
           description="Spatial Layers create visual hierarchy through the careful arrangement of overlapping elements. This technique uses depth, shadow, and transparency to establish clear relationships between components while maintaining visual harmony."
@@ -868,6 +868,181 @@ function App() {
           fontFamily="roboto-slab"
           descriptionClassName="font-roboto-slab"
           background="bg-gradient-to-br from-slate-50/50 to-indigo-50/50"
+        />
+        <DesignSection
+          title="Overlapping Relationships"
+          description="Overlapping Relationships demonstrate how elements can create visual connections and depth through strategic layering. By carefully controlling transparency, shadows, and positioning, we can create a sense of depth and establish visual relationships between elements."
+          designPrinciple="Depth & Connection – Using overlapping elements to create visual hierarchy and relationships."
+          visualComponent={
+            <div className="flex items-center justify-center w-full h-full">
+              <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-rose-50 to-pink-50 p-4 relative group">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  {/* Base layer - subtle grid */}
+                  <div className="absolute w-48 h-48 opacity-20">
+                    {[...Array(8)].map((_, i) => (
+                      <div
+                        key={`grid-${i}`}
+                        className="absolute w-48 h-px bg-rose-400 transform transition-all duration-500"
+                        style={{
+                          top: `${i * 12}px`,
+                          transform: `rotate(${i * 22.5}deg)`,
+                        }}
+                      />
+                    ))}
+                  </div>
+
+                  {/* Overlapping circles */}
+                  <div className="absolute w-48 h-48">
+                    {[...Array(5)].map((_, i) => (
+                      <div
+                        key={`circle-${i}`}
+                        className="absolute w-24 h-24 bg-rose-400/40 rounded-full transform transition-all duration-500 group-hover:bg-rose-500/50"
+                        style={{
+                          left: `${i * 12}px`,
+                          top: `${i * 8}px`,
+                          zIndex: i,
+                        }}
+                      >
+                        {/* Inner glow effect */}
+                        <div className="absolute inset-0 rounded-full bg-gradient-to-br from-rose-300/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Floating elements */}
+                  {[...Array(4)].map((_, i) => (
+                    <div
+                      key={`float-${i}`}
+                      className="absolute w-8 h-8 bg-rose-600/60 rounded-lg transform transition-all duration-500 group-hover:scale-110 group-hover:bg-rose-700/70"
+                      style={{
+                        left: `${20 + i * 30}px`,
+                        top: `${40 + (i % 2) * 40}px`,
+                        zIndex: 10 + i,
+                      }}
+                    >
+                      {/* Shadow effect */}
+                      <div className="absolute inset-0 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    </div>
+                  ))}
+
+                  {/* Accent lines */}
+                  <div className="absolute w-48 h-48 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    {[...Array(4)].map((_, i) => (
+                      <div
+                        key={`line-${i}`}
+                        className="absolute w-32 h-px bg-rose-600/30 transform transition-all duration-500"
+                        style={{
+                          left: "50%",
+                          top: "50%",
+                          transform: `translate(-50%, -50%) rotate(${
+                            i * 45
+                          }deg)`,
+                        }}
+                      />
+                    ))}
+                  </div>
+                </div>
+                {/* Overlay text */}
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-20">
+                  <div className="text-xs text-rose-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm">
+                    Overlapping creates visual connections
+                  </div>
+                </div>
+              </div>
+            </div>
+          }
+          fontFamily="dm-sans"
+          descriptionClassName="font-dm-sans"
+          background="bg-gradient-to-br from-rose-50/50 to-pink-50/50"
+        />
+        <DesignSection
+          title="Designing Networks"
+          description="Designing Networks explores how to create visual representations of connected systems and relationships. By using nodes, connections, and strategic layout, we can create clear and intuitive visualizations of complex networks and their interactions."
+          designPrinciple="Connection & Flow – Using visual elements to represent relationships and interactions in a network."
+          visualComponent={
+            <div className="flex items-center justify-center w-full h-full">
+              <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-cyan-50 to-blue-50 p-4 relative group">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  {/* Base network nodes */}
+                  <div className="absolute w-48 h-48">
+                    {[...Array(8)].map((_, i) => (
+                      <div
+                        key={`node-${i}`}
+                        className="absolute w-6 h-6 bg-cyan-500 rounded-full transform transition-all duration-500 group-hover:scale-110 group-hover:bg-cyan-600"
+                        style={{
+                          left: `${
+                            Math.cos((i * Math.PI * 2) / 8) * 40 + 48
+                          }px`,
+                          top: `${Math.sin((i * Math.PI * 2) / 8) * 40 + 48}px`,
+                          transform: `translate(-50%, -50%)`,
+                          zIndex: 10,
+                        }}
+                      >
+                        {/* Inner glow */}
+                        <div className="absolute inset-0 rounded-full bg-gradient-to-br from-cyan-400/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Network connections */}
+                  <div className="absolute w-48 h-48">
+                    {[...Array(8)].map((_, i) => (
+                      <div
+                        key={`connection-${i}`}
+                        className="absolute w-48 h-px bg-cyan-400/30 transform transition-all duration-500 group-hover:bg-cyan-500/40"
+                        style={{
+                          left: "50%",
+                          top: "50%",
+                          transform: `translate(-50%, -50%) rotate(${
+                            i * 45
+                          }deg)`,
+                          zIndex: 5,
+                        }}
+                      >
+                        {/* Connection animation */}
+                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-cyan-400/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 animate-pulse" />
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Central hub */}
+                  <div className="absolute w-12 h-12 bg-cyan-600 rounded-full transform transition-all duration-500 group-hover:scale-110 group-hover:bg-cyan-700">
+                    <div className="absolute inset-0 rounded-full bg-gradient-to-br from-cyan-500 to-cyan-700" />
+                    {/* Inner glow */}
+                    <div className="absolute inset-0 rounded-full bg-gradient-to-br from-cyan-400/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    {/* Pulse effect */}
+                    <div className="absolute inset-0 rounded-full border-2 border-cyan-400/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 animate-ping" />
+                  </div>
+
+                  {/* Floating data points */}
+                  {[...Array(4)].map((_, i) => (
+                    <div
+                      key={`data-${i}`}
+                      className="absolute w-3 h-3 bg-blue-500 rounded-full transform transition-all duration-500 group-hover:scale-150 group-hover:bg-blue-600"
+                      style={{
+                        left: `${Math.cos((i * Math.PI * 2) / 4) * 60 + 48}px`,
+                        top: `${Math.sin((i * Math.PI * 2) / 4) * 60 + 48}px`,
+                        transform: `translate(-50%, -50%)`,
+                        zIndex: 15,
+                      }}
+                    >
+                      {/* Data point glow */}
+                      <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-400/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    </div>
+                  ))}
+                </div>
+                {/* Overlay text */}
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-20">
+                  <div className="text-xs text-cyan-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm">
+                    Nodes and connections create networks
+                  </div>
+                </div>
+              </div>
+            </div>
+          }
+          fontFamily="share-tech"
+          descriptionClassName="font-share-tech"
+          background="bg-gradient-to-br from-cyan-50/50 to-blue-50/50"
         />
       </div>
     </div>
