@@ -70,8 +70,8 @@ function App() {
                   <div className="absolute -right-2 top-1/2 -translate-y-1/2 w-20 h-20 bg-gradient-to-br from-sky-200 to-blue-100 rounded-full opacity-20 blur-xl group-hover:opacity-40 transition-opacity duration-500" />
                   <div className="absolute -left-4 bottom-0 w-16 h-16 bg-gradient-to-tr from-sky-100 to-white rounded-lg opacity-30 blur-lg group-hover:opacity-50 transition-opacity duration-500" />
                 </div>
-                {/* Overlay text - moved outside the relative container and given higher z-index */}
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-50">
+                {/* Overlay text */}
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
                   <div className="text-xs text-sky-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm">
                     Layers create depth and hierarchy
                   </div>
@@ -153,7 +153,7 @@ function App() {
                   </div>
                 ))}
                 {/* Overlay text */}
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-50">
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
                   <div className="text-xs text-indigo-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm">
                     Pulsing bars create visual rhythm
                   </div>
@@ -414,7 +414,7 @@ function App() {
                   ))}
                 </div>
                 {/* Overlay text */}
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-50">
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
                   <div className="text-xs text-rose-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm">
                     Layered elements create depth and connection
                   </div>
@@ -422,9 +422,134 @@ function App() {
               </div>
             </div>
           }
-          fontFamily="georgia"
-          descriptionClassName="font-georgia"
+          fontFamily="eb-garamond"
+          descriptionClassName="font-eb-garamond"
           background="bg-gradient-to-br from-rose-50/50 to-pink-50/50"
+        />
+        <DesignSection
+          title="Artful Reduction"
+          description="Artful Reduction demonstrates how removing elements can strengthen a design. By carefully eliminating unnecessary components, the remaining elements gain more impact and clarity, creating a more focused and powerful visual statement."
+          designPrinciple="Minimalism – Using the fewest elements necessary to create maximum impact."
+          visualComponent={
+            <div className="flex items-center justify-center w-full h-full">
+              <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-stone-50 to-slate-50 p-4 relative group">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  {/* Initial complex pattern */}
+                  <div className="absolute w-48 h-48 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    {[...Array(36)].map((_, i) => (
+                      <div
+                        key={`initial-${i}`}
+                        className="absolute w-4 h-4 bg-stone-400/40 rounded transform transition-all duration-500"
+                        style={{
+                          left: `${(i % 6) * 16}px`,
+                          top: `${Math.floor(i / 6) * 16}px`,
+                        }}
+                      />
+                    ))}
+                  </div>
+
+                  {/* Reduced pattern - appears on hover */}
+                  <div className="absolute w-48 h-48 opacity-100 group-hover:opacity-0 transition-opacity duration-500">
+                    {[...Array(9)].map((_, i) => (
+                      <div
+                        key={`reduced-${i}`}
+                        className="absolute w-8 h-8 bg-stone-600/80 rounded transform transition-all duration-500 group-hover:scale-110"
+                        style={{
+                          left: `${(i % 3) * 32}px`,
+                          top: `${Math.floor(i / 3) * 32}px`,
+                        }}
+                      />
+                    ))}
+                  </div>
+
+                  {/* Focal point - emphasized element */}
+                  <div className="absolute w-12 h-12 bg-stone-800 rounded transform transition-all duration-500 group-hover:scale-125 group-hover:bg-stone-900">
+                    <div className="absolute inset-1 bg-gradient-to-br from-stone-700 to-stone-900 rounded" />
+                  </div>
+                </div>
+                {/* Overlay text */}
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
+                  <div className="text-xs text-stone-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm">
+                    Less elements create more impact
+                  </div>
+                </div>
+              </div>
+            </div>
+          }
+          fontFamily="helvetica"
+          descriptionClassName="font-helvetica"
+          background="bg-gradient-to-br from-stone-50/50 to-slate-50/50"
+        />
+        <DesignSection
+          title="Drawing With Code"
+          description="Drawing With Code demonstrates how programming can be used to create artistic patterns and designs. By using algorithms, mathematical functions, and creative coding techniques, we can generate complex and beautiful visual compositions."
+          designPrinciple="Algorithmic Art – Using code to create visual patterns and designs."
+          visualComponent={
+            <div className="flex items-center justify-center w-full h-full">
+              <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-violet-50 to-indigo-50 p-4 relative group">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  {/* Sine wave pattern */}
+                  <div className="absolute w-48 h-48">
+                    {[...Array(24)].map((_, i) => (
+                      <div
+                        key={`wave-${i}`}
+                        className="absolute w-2 h-2 bg-violet-400 rounded-full transform transition-all duration-500"
+                        style={{
+                          left: `${i * 8}px`,
+                          top: `${Math.sin(i * 0.5) * 20 + 48}px`,
+                          opacity: 0.8,
+                        }}
+                      />
+                    ))}
+                  </div>
+
+                  {/* Circular pattern with mathematical function */}
+                  <div className="absolute w-48 h-48">
+                    {[...Array(16)].map((_, i) => (
+                      <div
+                        key={`circle-${i}`}
+                        className="absolute w-3 h-3 bg-indigo-400 rounded-full transform transition-all duration-500"
+                        style={{
+                          left: `${Math.cos((i * Math.PI) / 8) * 40 + 48}px`,
+                          top: `${Math.sin((i * Math.PI) / 8) * 40 + 48}px`,
+                          opacity: 0.6,
+                        }}
+                      />
+                    ))}
+                  </div>
+
+                  {/* Algorithmic lines */}
+                  <div className="absolute w-48 h-48">
+                    {[...Array(8)].map((_, i) => (
+                      <div
+                        key={`line-${i}`}
+                        className="absolute w-48 h-px bg-gradient-to-r from-violet-400/0 via-violet-400/50 to-violet-400/0 transform transition-all duration-500"
+                        style={{
+                          top: `${i * 12}px`,
+                          transform: `rotate(${i * 22.5}deg)`,
+                          opacity: 0.4,
+                        }}
+                      />
+                    ))}
+                  </div>
+
+                  {/* Interactive element */}
+                  <div className="absolute w-8 h-8 bg-violet-600 rounded-full transform transition-all duration-500 group-hover:scale-125 group-hover:bg-indigo-600">
+                    <div className="absolute inset-1 bg-gradient-to-br from-violet-500 to-indigo-500 rounded-full" />
+                  </div>
+                </div>
+                {/* Overlay text */}
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
+                  <div className="text-xs text-violet-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm">
+                    Code creates mathematical beauty
+                  </div>
+                </div>
+              </div>
+            </div>
+          }
+          fontFamily="source-code-pro"
+          descriptionClassName="font-source-code-pro"
+          background="bg-gradient-to-br from-violet-50/50 to-indigo-50/50"
         />
       </div>
     </div>
