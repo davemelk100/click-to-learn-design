@@ -131,7 +131,7 @@ function App() {
                 </div>
                 {/* Overlay text */}
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
-                  <div className="text-xs text-amber-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-dm-sans">
+                  <div className="text-xs sm:text-sm text-amber-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-dm-sans">
                     Depth creates visual importance
                   </div>
                 </div>
@@ -231,7 +231,7 @@ function App() {
                 </div>
                 {/* Overlay text */}
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-20">
-                  <div className="text-xs text-rose-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-josefin-sans">
+                  <div className="text-xs sm:text-sm text-rose-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-josefin-sans">
                     Overlapping creates visual connections
                   </div>
                 </div>
@@ -279,7 +279,7 @@ function App() {
                 </div>
                 {/* Hover overlay text */}
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="text-xs text-emerald-600 font-medium bg-white/80 px-2 py-1 rounded font-habibi">
+                  <div className="text-xs sm:text-sm text-emerald-600 font-medium bg-white/80 px-2 py-1 rounded font-habibi">
                     Key elements at intersections
                   </div>
                 </div>
@@ -345,7 +345,7 @@ function App() {
                 </div>
                 {/* Overlay text */}
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-20">
-                  <div className="text-xs text-sky-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-helvetica">
+                  <div className="text-xs sm:text-sm text-sky-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-helvetica">
                     Layers create depth and hierarchy
                   </div>
                 </div>
@@ -386,7 +386,7 @@ function App() {
               </div>
               {/* Overlay text */}
               <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                <div className="text-xs text-white font-medium bg-black/60 px-3 py-2 rounded-lg backdrop-blur-sm font-avenir">
+                <div className="text-xs sm:text-sm text-white font-medium bg-black/60 px-3 py-2 rounded-lg backdrop-blur-sm font-avenir">
                   Same red squares appear different due to their backgrounds
                 </div>
               </div>
@@ -440,7 +440,7 @@ function App() {
 
                 {/* Overlay text */}
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
-                  <div className="text-xs text-indigo-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-roboto">
+                  <div className="text-xs sm:text-sm text-indigo-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-roboto">
                     Circular patterns create visual rhythm
                   </div>
                 </div>
@@ -525,7 +525,7 @@ function App() {
                 </div>
                 {/* Overlay text */}
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                  <div className="text-xs text-zinc-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-anek-gurmukhi">
+                  <div className="text-xs sm:text-sm text-zinc-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-anek-gurmukhi">
                     Size relationships create visual puzzles
                   </div>
                 </div>
@@ -573,7 +573,7 @@ function App() {
                 </div>
                 {/* Overlay text */}
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                  <div className="text-xs text-amber-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-dm-sans">
+                  <div className="text-xs sm:text-sm text-amber-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-dm-sans">
                     Close elements are perceived as related
                   </div>
                 </div>
@@ -632,7 +632,7 @@ function App() {
                 </div>
                 {/* Overlay text */}
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
-                  <div className="text-xs text-rose-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-eb-garamond">
+                  <div className="text-xs sm:text-sm text-rose-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-eb-garamond">
                     Simple shapes create depth
                   </div>
                 </div>
@@ -692,7 +692,7 @@ function App() {
                 </div>
                 {/* Overlay text */}
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
-                  <div className="text-xs text-stone-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-helvetica">
+                  <div className="text-xs sm:text-sm text-stone-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-helvetica">
                     Less elements create more impact
                   </div>
                 </div>
@@ -795,7 +795,7 @@ function App() {
                 </div>
                 {/* Overlay text */}
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
-                  <div className="text-xs text-violet-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-source-code-pro">
+                  <div className="text-xs sm:text-sm text-violet-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-source-code-pro">
                     Code creates mathematical beauty
                   </div>
                 </div>
@@ -877,7 +877,7 @@ function App() {
                 </div>
                 {/* Overlay text */}
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-20">
-                  <div className="text-xs text-sky-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-helvetica">
+                  <div className="text-xs sm:text-sm text-sky-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-helvetica">
                     Colors create visual harmony
                   </div>
                 </div>
@@ -977,7 +977,7 @@ function App() {
                 </div>
                 {/* Overlay text */}
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-20">
-                  <div className="text-xs text-stone-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-oswald">
+                  <div className="text-xs sm:text-sm text-stone-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-oswald">
                     Parallel lines remain parallel
                   </div>
                 </div>
@@ -1052,7 +1052,7 @@ function App() {
                 </div>
                 {/* Overlay text */}
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
-                  <div className="text-xs text-slate-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-roboto-slab">
+                  <div className="text-xs sm:text-sm text-slate-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-roboto-slab">
                     Design elements create visual emphasis
                   </div>
                 </div>
@@ -1098,7 +1098,7 @@ function App() {
                 </div>
                 {/* Overlay text */}
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                  <div className="text-xs text-amber-700 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-habibi">
+                  <div className="text-xs sm:text-sm text-amber-700 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-habibi">
                     Nature's perfect proportion
                   </div>
                 </div>
@@ -1172,7 +1172,7 @@ function App() {
                 </div>
                 {/* Overlay text */}
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
-                  <div className="text-xs text-blue-700 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-helvetica">
+                  <div className="text-xs sm:text-sm text-blue-700 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-helvetica">
                     Design for everyone
                   </div>
                 </div>
@@ -1246,7 +1246,7 @@ function App() {
                 </div>
                 {/* Overlay text */}
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
-                  <div className="text-xs text-stone-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-overlock-sc">
+                  <div className="text-xs sm:text-sm text-stone-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-overlock-sc">
                     Simple and functional beats decorative
                   </div>
                 </div>
@@ -1308,7 +1308,7 @@ function App() {
                 </div>
                 {/* Overlay text */}
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
-                  <div className="text-xs text-rose-600 font-medium bg-white/80 px-2 py-1 rounded">
+                  <div className="text-xs sm:text-sm text-rose-600 font-medium bg-white/80 px-2 py-1 rounded">
                     Lines create network connections
                   </div>
                 </div>
