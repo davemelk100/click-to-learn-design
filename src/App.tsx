@@ -143,6 +143,106 @@ function App() {
           background="bg-gradient-to-br from-amber-50/50 to-orange-50/50"
         />
         <DesignSection
+          title="Overlapping Relationships"
+          description="Overlapping Relationships demonstrate how elements can create visual connections and depth through strategic layering. By carefully controlling transparency, shadows, and positioning, we can create a sense of depth and establish visual relationships between elements."
+          designPrinciple="Depth & Connection – Using overlapping elements to create visual hierarchy and relationships."
+          exampleLink="https://www.behance.net/gallery/101333357/Overlapping-Relationships"
+          visualComponent={
+            <div className="flex items-center justify-center w-full h-full">
+              <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-rose-50 to-pink-50 p-4 relative group">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  {/* Base layer - subtle grid */}
+                  <div className="absolute w-48 h-48 opacity-20">
+                    {[...Array(8)].map((_, i) => (
+                      <div
+                        key={`grid-${i}`}
+                        className="absolute w-24 h-px bg-stone-400 transform transition-all duration-500"
+                        style={{
+                          top: `${i * 6}px`,
+                          transform: `rotate(30deg)`,
+                        }}
+                      />
+                    ))}
+                    {[...Array(8)].map((_, i) => (
+                      <div
+                        key={`grid-${i + 8}`}
+                        className="absolute w-24 h-px bg-stone-400 transform transition-all duration-500"
+                        style={{
+                          top: `${i * 6}px`,
+                          transform: `rotate(-30deg)`,
+                        }}
+                      />
+                    ))}
+                  </div>
+
+                  {/* 3D cube */}
+                  <div className="absolute w-16 h-16 transform transition-all duration-500 group-hover:rotate-12 group-hover:scale-110">
+                    {/* Front face */}
+                    <div className="absolute inset-0 bg-stone-600/80 transform transition-all duration-500 group-hover:bg-stone-700" />
+
+                    {/* Top face */}
+                    <div
+                      className="absolute inset-0 bg-stone-500/60 transform transition-all duration-500 group-hover:bg-stone-600"
+                      style={{
+                        transform: "skewX(-30deg) translateY(-50%)",
+                        transformOrigin: "bottom left",
+                      }}
+                    />
+
+                    {/* Right face */}
+                    <div
+                      className="absolute inset-0 bg-stone-700/60 transform transition-all duration-500 group-hover:bg-stone-800"
+                      style={{
+                        transform: "skewY(30deg) translateX(50%)",
+                        transformOrigin: "top left",
+                      }}
+                    />
+
+                    {/* Edge highlights */}
+                    <div className="absolute inset-0 border-2 border-stone-800/20" />
+                    <div
+                      className="absolute inset-0 border-2 border-stone-800/20"
+                      style={{
+                        transform: "skewX(-30deg) translateY(-50%)",
+                        transformOrigin: "bottom left",
+                      }}
+                    />
+                    <div
+                      className="absolute inset-0 border-2 border-stone-800/20"
+                      style={{
+                        transform: "skewY(30deg) translateX(50%)",
+                        transformOrigin: "top left",
+                      }}
+                    />
+                  </div>
+
+                  {/* Dimension lines */}
+                  <div className="absolute w-48 h-48 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    {/* Horizontal */}
+                    <div className="absolute w-32 h-px bg-stone-600 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
+                    <div className="absolute w-2 h-2 border-2 border-stone-600 rounded-full top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2" />
+                    <div className="absolute w-2 h-2 border-2 border-stone-600 rounded-full top-1/2 right-1/4 translate-x-1/2 -translate-y-1/2" />
+
+                    {/* Vertical */}
+                    <div className="absolute w-px h-32 bg-stone-600 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
+                    <div className="absolute w-2 h-2 border-2 border-stone-600 rounded-full top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2" />
+                    <div className="absolute w-2 h-2 border-2 border-stone-600 rounded-full bottom-1/4 left-1/2 -translate-x-1/2 translate-y-1/2" />
+                  </div>
+                </div>
+                {/* Overlay text */}
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-20">
+                  <div className="text-xs text-rose-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-josefin-sans">
+                    Overlapping creates visual connections
+                  </div>
+                </div>
+              </div>
+            </div>
+          }
+          fontFamily="josefin-sans"
+          descriptionClassName="font-josefin-sans"
+          background="bg-gradient-to-br from-rose-50/50 to-pink-50/50"
+        />
+        <DesignSection
           title="Rule of Thirds"
           description="The Rule of Thirds divides a composition into nine equal parts using two horizontal and two vertical lines. Key elements placed along these lines or at their intersections create more engaging and balanced designs."
           designPrinciple="Balance – Distributing elements evenly to create a feeling of stability (can be symmetrical or asymmetrical)."
@@ -918,106 +1018,6 @@ function App() {
           background="bg-gradient-to-br from-slate-50/50 to-indigo-50/50"
         />
         <DesignSection
-          title="Overlapping Relationships"
-          description="Overlapping Relationships demonstrate how elements can create visual connections and depth through strategic layering. By carefully controlling transparency, shadows, and positioning, we can create a sense of depth and establish visual relationships between elements."
-          designPrinciple="Depth & Connection – Using overlapping elements to create visual hierarchy and relationships."
-          exampleLink="https://www.behance.net/gallery/101333357/Overlapping-Relationships"
-          visualComponent={
-            <div className="flex items-center justify-center w-full h-full">
-              <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-rose-50 to-pink-50 p-4 relative group">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  {/* Base layer - subtle grid */}
-                  <div className="absolute w-48 h-48 opacity-20">
-                    {[...Array(8)].map((_, i) => (
-                      <div
-                        key={`grid-${i}`}
-                        className="absolute w-24 h-px bg-stone-400 transform transition-all duration-500"
-                        style={{
-                          top: `${i * 6}px`,
-                          transform: `rotate(30deg)`,
-                        }}
-                      />
-                    ))}
-                    {[...Array(8)].map((_, i) => (
-                      <div
-                        key={`grid-${i + 8}`}
-                        className="absolute w-24 h-px bg-stone-400 transform transition-all duration-500"
-                        style={{
-                          top: `${i * 6}px`,
-                          transform: `rotate(-30deg)`,
-                        }}
-                      />
-                    ))}
-                  </div>
-
-                  {/* 3D cube */}
-                  <div className="absolute w-16 h-16 transform transition-all duration-500 group-hover:rotate-12 group-hover:scale-110">
-                    {/* Front face */}
-                    <div className="absolute inset-0 bg-stone-600/80 transform transition-all duration-500 group-hover:bg-stone-700" />
-
-                    {/* Top face */}
-                    <div
-                      className="absolute inset-0 bg-stone-500/60 transform transition-all duration-500 group-hover:bg-stone-600"
-                      style={{
-                        transform: "skewX(-30deg) translateY(-50%)",
-                        transformOrigin: "bottom left",
-                      }}
-                    />
-
-                    {/* Right face */}
-                    <div
-                      className="absolute inset-0 bg-stone-700/60 transform transition-all duration-500 group-hover:bg-stone-800"
-                      style={{
-                        transform: "skewY(30deg) translateX(50%)",
-                        transformOrigin: "top left",
-                      }}
-                    />
-
-                    {/* Edge highlights */}
-                    <div className="absolute inset-0 border-2 border-stone-800/20" />
-                    <div
-                      className="absolute inset-0 border-2 border-stone-800/20"
-                      style={{
-                        transform: "skewX(-30deg) translateY(-50%)",
-                        transformOrigin: "bottom left",
-                      }}
-                    />
-                    <div
-                      className="absolute inset-0 border-2 border-stone-800/20"
-                      style={{
-                        transform: "skewY(30deg) translateX(50%)",
-                        transformOrigin: "top left",
-                      }}
-                    />
-                  </div>
-
-                  {/* Dimension lines */}
-                  <div className="absolute w-48 h-48 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    {/* Horizontal */}
-                    <div className="absolute w-32 h-px bg-stone-600 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
-                    <div className="absolute w-2 h-2 border-2 border-stone-600 rounded-full top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2" />
-                    <div className="absolute w-2 h-2 border-2 border-stone-600 rounded-full top-1/2 right-1/4 translate-x-1/2 -translate-y-1/2" />
-
-                    {/* Vertical */}
-                    <div className="absolute w-px h-32 bg-stone-600 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
-                    <div className="absolute w-2 h-2 border-2 border-stone-600 rounded-full top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2" />
-                    <div className="absolute w-2 h-2 border-2 border-stone-600 rounded-full bottom-1/4 left-1/2 -translate-x-1/2 translate-y-1/2" />
-                  </div>
-                </div>
-                {/* Overlay text */}
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-20">
-                  <div className="text-xs text-rose-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-josefin-sans">
-                    Overlapping creates visual connections
-                  </div>
-                </div>
-              </div>
-            </div>
-          }
-          fontFamily="josefin-sans"
-          descriptionClassName="font-josefin-sans"
-          background="bg-gradient-to-br from-rose-50/50 to-pink-50/50"
-        />
-        <DesignSection
           title="Golden Ratio"
           description="The Golden Ratio, approximately 1:1.618, is a mathematical proportion found in nature that creates aesthetically pleasing compositions. When used in design, it helps create balanced and harmonious layouts that feel naturally beautiful."
           designPrinciple="Proportion – Using mathematical relationships to create visually pleasing compositions."
@@ -1150,39 +1150,60 @@ function App() {
             <div className="flex items-center justify-center w-full h-full">
               <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-stone-50 to-slate-50 p-4 relative group">
                 <div className="absolute inset-0 flex items-center justify-center">
-                  {/* Main interface elements */}
-                  <div className="relative w-48 h-48 rounded-lg border-2 border-stone-300/50 group-hover:border-stone-400/70 transition-all duration-300">
-                    {/* Header */}
-                    <div className="absolute top-2 left-2 right-2 h-6 bg-stone-200/50 rounded group-hover:bg-stone-200/70 transition-all duration-300" />
+                  {/* Initial state - decorative but complex */}
+                  <div className="absolute w-48 h-48 opacity-100 group-hover:opacity-0 transition-all duration-500">
+                    {/* Ornamental background */}
+                    <div className="absolute inset-0 grid grid-cols-4 grid-rows-4 gap-1">
+                      {[...Array(16)].map((_, i) => (
+                        <div
+                          key={`decor-${i}`}
+                          className="bg-stone-200/30 rounded transform transition-all duration-500"
+                          style={{
+                            transform: `rotate(${i * 22.5}deg)`,
+                          }}
+                        />
+                      ))}
+                    </div>
+                    {/* Decorative elements */}
+                    {[...Array(8)].map((_, i) => (
+                      <div
+                        key={`ornament-${i}`}
+                        className="absolute w-4 h-4 border-2 border-stone-300/40 rounded-full transform transition-all duration-500"
+                        style={{
+                          left: `${25 + Math.cos((i * Math.PI * 2) / 8) * 20}%`,
+                          top: `${25 + Math.sin((i * Math.PI * 2) / 8) * 20}%`,
+                          transform: `translate(-50%, -50%) rotate(${
+                            i * 45
+                          }deg)`,
+                        }}
+                      />
+                    ))}
+                  </div>
 
-                    {/* Content area */}
-                    <div className="absolute top-10 left-2 right-2 bottom-2 flex flex-col gap-2">
-                      {/* Functional elements */}
-                      <div className="flex gap-2">
-                        <div className="w-8 h-8 bg-stone-300/50 rounded group-hover:bg-stone-300/70 transition-all duration-300" />
-                        <div className="flex-1 h-8 bg-stone-200/50 rounded group-hover:bg-stone-200/70 transition-all duration-300" />
+                  {/* Final state - simple and functional */}
+                  <div className="absolute w-48 h-48 opacity-0 group-hover:opacity-100 transition-all duration-500">
+                    {/* Functional interface elements */}
+                    <div className="absolute inset-0 flex flex-col gap-2 p-4">
+                      {/* Header */}
+                      <div className="h-6 bg-stone-200/50 rounded" />
+                      {/* Content area */}
+                      <div className="flex-1 flex flex-col gap-2">
+                        <div className="h-4 bg-stone-200/30 rounded" />
+                        <div className="h-4 bg-stone-200/30 rounded" />
+                        <div className="h-4 bg-stone-200/30 rounded" />
                       </div>
-
-                      {/* Clear hierarchy */}
-                      <div className="flex-1 bg-stone-100/50 rounded group-hover:bg-stone-100/70 transition-all duration-300">
-                        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
-                          <div className="w-24 h-2 bg-stone-300/50 rounded mb-2 group-hover:bg-stone-300/70 transition-all duration-300" />
-                          <div className="w-32 h-2 bg-stone-200/50 rounded group-hover:bg-stone-200/70 transition-all duration-300" />
-                        </div>
-                      </div>
-
                       {/* Action buttons */}
                       <div className="flex gap-2">
-                        <div className="flex-1 h-6 bg-stone-300/50 rounded group-hover:bg-stone-300/70 transition-all duration-300" />
-                        <div className="flex-1 h-6 bg-stone-300/50 rounded group-hover:bg-stone-300/70 transition-all duration-300" />
+                        <div className="h-6 flex-1 bg-stone-200/50 rounded" />
+                        <div className="h-6 flex-1 bg-stone-200/50 rounded" />
                       </div>
                     </div>
                   </div>
                 </div>
                 {/* Overlay text */}
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
-                  <div className="text-xs text-stone-600 font-medium bg-white/80 px-2 py-1 rounded">
-                    Functionality drives design
+                  <div className="text-xs text-stone-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-overlock-sc">
+                    Simple and functional beats decorative
                   </div>
                 </div>
               </div>
