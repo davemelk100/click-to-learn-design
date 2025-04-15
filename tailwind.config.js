@@ -16,6 +16,7 @@ export default {
         habibi: ["Habibi", "serif"],
         "anek-gurmukhi": ["Anek Gurmukhi", "sans-serif"],
         oswald: ["Oswald", "sans-serif"],
+        "roboto-slab": ["Roboto Slab", "serif"],
       },
     },
   },

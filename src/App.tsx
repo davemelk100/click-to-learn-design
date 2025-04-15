@@ -796,6 +796,79 @@ function App() {
           descriptionClassName="font-oswald"
           background="bg-gradient-to-br from-stone-50/50 to-slate-50/50"
         />
+        <DesignSection
+          title="Subjective Emphasis"
+          description="Subjective Emphasis demonstrates how visual elements can be highlighted through various design techniques. By using contrast, scale, color, and positioning, designers can guide the viewer's attention to specific elements, creating a visual hierarchy that communicates importance and meaning."
+          designPrinciple="Visual Hierarchy – Using design elements to create emphasis and guide attention."
+          visualComponent={
+            <div className="flex items-center justify-center w-full h-full">
+              <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-slate-50 to-indigo-50 p-4 relative group">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  {/* Background elements */}
+                  <div className="absolute w-48 h-48 opacity-20">
+                    {[...Array(16)].map((_, i) => (
+                      <div
+                        key={`bg-${i}`}
+                        className="absolute w-4 h-4 bg-slate-400/30 rounded transform transition-all duration-500"
+                        style={{
+                          left: `${(i % 4) * 16}px`,
+                          top: `${Math.floor(i / 4) * 16}px`,
+                        }}
+                      />
+                    ))}
+                  </div>
+
+                  {/* Main emphasized element */}
+                  <div className="absolute w-16 h-16 bg-slate-600 rounded-lg shadow-lg transform transition-all duration-500 group-hover:scale-125 group-hover:bg-indigo-600 group-hover:shadow-xl">
+                    <div className="absolute inset-1 bg-gradient-to-br from-slate-500 to-slate-700 rounded-lg" />
+                    {/* Inner glow effect */}
+                    <div className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-br from-slate-400/20 to-transparent" />
+                  </div>
+
+                  {/* Supporting elements */}
+                  {[...Array(6)].map((_, i) => (
+                    <div
+                      key={`support-${i}`}
+                      className="absolute w-8 h-8 bg-slate-400/60 rounded transform transition-all duration-500 group-hover:opacity-30"
+                      style={{
+                        left: `${Math.cos((i * Math.PI * 2) / 6) * 40 + 48}px`,
+                        top: `${Math.sin((i * Math.PI * 2) / 6) * 40 + 48}px`,
+                        transform: `rotate(${i * 30}deg)`,
+                      }}
+                    />
+                  ))}
+
+                  {/* Accent elements */}
+                  <div className="absolute w-48 h-48 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    {/* Radial lines */}
+                    {[...Array(8)].map((_, i) => (
+                      <div
+                        key={`line-${i}`}
+                        className="absolute w-24 h-px bg-slate-600/20 transform transition-all duration-500"
+                        style={{
+                          left: "50%",
+                          top: "50%",
+                          transform: `rotate(${
+                            i * 45
+                          }deg) translate(-50%, -50%)`,
+                        }}
+                      />
+                    ))}
+                  </div>
+                </div>
+                {/* Overlay text */}
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
+                  <div className="text-xs text-slate-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-roboto-slab">
+                    Design elements create visual emphasis
+                  </div>
+                </div>
+              </div>
+            </div>
+          }
+          fontFamily="roboto-slab"
+          descriptionClassName="font-roboto-slab"
+          background="bg-gradient-to-br from-slate-50/50 to-indigo-50/50"
+        />
       </div>
     </div>
   );

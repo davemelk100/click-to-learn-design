@@ -7,6 +7,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Habibi&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Anek+Gurmukhi:wght@100..800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -73,6 +74,10 @@
 
 .font-oswald {
   font-family: 'Oswald', sans-serif !important;
+}
+
+.font-roboto-slab {
+  font-family: 'Roboto Slab', serif !important;
 }
 
 .clip-triangle {

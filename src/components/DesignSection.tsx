@@ -17,7 +17,8 @@ interface DesignSectionProps {
     | "rubik-scribble"
     | "habibi"
     | "anek-gurmukhi"
-    | "oswald";
+    | "oswald"
+    | "roboto-slab";
   descriptionClassName?: string;
   background?: string;
   designPrinciple?: string;
@@ -73,6 +74,8 @@ const DesignSection: React.FC<DesignSectionProps> = ({
         return "font-anek-gurmukhi";
       case "oswald":
         return "font-oswald";
+      case "roboto-slab":
+        return "font-roboto-slab";
       default:
         return "font-sans";
     }
