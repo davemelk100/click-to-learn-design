@@ -5,27 +5,16 @@ import DesignSection from "./components/DesignSection";
 function App() {
   return (
     <div className="min-h-screen w-full">
-      <header className="py-4 bg-gray-100 text-gray-900">
-        <div className="flex items-center gap-4">
-          <div className="w-8 h-8 relative ml-4">
-            {[...Array(8)].map((_, i) => (
-              <div
-                key={`line-${i}`}
-                className="absolute w-8 h-px border-t border-dashed border-gray-600/80 transform origin-center"
-                style={{
-                  top: "50%",
-                  transform: `rotate(${i * 45}deg)`,
-                }}
-              />
-            ))}
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-1.5 h-1.5 bg-gray-700 rounded-full" />
-            </div>
+      <header className="py-4 bg-gray-900 text-gray-400">
+        <div className="flex items-center px-4">
+          <div className="flex-1 text-center">
+            <h2 className="text-lg font-medium inline-block">
+              Design Principles Explorer
+            </h2>
           </div>
-          <span className="text-lg uppercase text-gray-900">Design Panes</span>
-          <span className="text-sm text-gray-600 ml-5">
-            Click or tap a card to ask AI about the topic.
-          </span>
+          <div className="flex-1 text-center">
+            <span className="text-sm inline-block">Interactive Learning</span>
+          </div>
         </div>
       </header>
 
@@ -67,7 +56,7 @@ function App() {
                 </div>
                 {/* Hover overlay text */}
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="text-xs text-emerald-600 font-medium bg-white/80 px-2 py-1 rounded">
+                  <div className="text-xs text-emerald-600 font-medium bg-white/80 px-2 py-1 rounded font-habibi">
                     Key elements at intersections
                   </div>
                 </div>
@@ -135,7 +124,7 @@ function App() {
                 </div>
                 {/* Overlay text */}
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-20">
-                  <div className="text-xs text-sky-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm">
+                  <div className="text-xs text-sky-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-helvetica">
                     Layers create depth and hierarchy
                   </div>
                 </div>
@@ -175,7 +164,7 @@ function App() {
               </div>
               {/* Overlay text */}
               <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                <div className="text-xs text-white font-medium bg-black/60 px-3 py-2 rounded-lg backdrop-blur-sm">
+                <div className="text-xs text-white font-medium bg-black/60 px-3 py-2 rounded-lg backdrop-blur-sm font-avenir">
                   Same red squares appear different due to their backgrounds
                 </div>
               </div>
@@ -219,7 +208,7 @@ function App() {
                 ))}
                 {/* Overlay text */}
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
-                  <div className="text-xs text-indigo-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm">
+                  <div className="text-xs text-indigo-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-roboto">
                     Pulsing bars create visual rhythm
                   </div>
                 </div>
@@ -307,7 +296,7 @@ function App() {
                 </div>
                 {/* Overlay text */}
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                  <div className="text-xs text-zinc-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm">
+                  <div className="text-xs text-zinc-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-anek-gurmukhi">
                     Size relationships create visual puzzles
                   </div>
                 </div>
@@ -355,7 +344,7 @@ function App() {
                 </div>
                 {/* Overlay text */}
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                  <div className="text-xs text-amber-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm">
+                  <div className="text-xs text-amber-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-dm-sans">
                     Close elements are perceived as related
                   </div>
                 </div>
@@ -414,7 +403,7 @@ function App() {
                 </div>
                 {/* Overlay text */}
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
-                  <div className="text-xs text-rose-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm">
+                  <div className="text-xs text-rose-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-eb-garamond">
                     Simple shapes create depth
                   </div>
                 </div>
@@ -469,7 +458,7 @@ function App() {
                 </div>
                 {/* Overlay text */}
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
-                  <div className="text-xs text-stone-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm">
+                  <div className="text-xs text-stone-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-helvetica">
                     Less elements create more impact
                   </div>
                 </div>
@@ -541,7 +530,7 @@ function App() {
                 </div>
                 {/* Overlay text */}
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
-                  <div className="text-xs text-violet-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm">
+                  <div className="text-xs text-violet-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-source-code-pro">
                     Code creates mathematical beauty
                   </div>
                 </div>
@@ -624,7 +613,7 @@ function App() {
                 </div>
                 {/* Overlay text */}
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
-                  <div className="text-xs text-amber-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm">
+                  <div className="text-xs text-amber-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-dm-sans">
                     Depth creates visual importance
                   </div>
                 </div>
@@ -678,7 +667,7 @@ function App() {
                   </div>
 
                   {/* Color harmony examples */}
-                  <div className="absolute bottom-4 left-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="absolute inset-0 flex items-center justify-center gap-2 mt-24 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <div className="w-4 h-4 bg-red-500 rounded" />
                     <div className="w-4 h-4 bg-orange-500 rounded" />
                     <div className="w-4 h-4 bg-yellow-500 rounded" />
@@ -689,7 +678,7 @@ function App() {
                 </div>
                 {/* Overlay text */}
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-20">
-                  <div className="text-xs text-sky-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm">
+                  <div className="text-xs text-sky-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-helvetica">
                     Colors create visual harmony
                   </div>
                 </div>
@@ -789,7 +778,7 @@ function App() {
                 </div>
                 {/* Overlay text */}
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-20">
-                  <div className="text-xs text-stone-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm">
+                  <div className="text-xs text-stone-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-oswald">
                     Parallel lines remain parallel
                   </div>
                 </div>
@@ -888,181 +877,91 @@ function App() {
                     {[...Array(8)].map((_, i) => (
                       <div
                         key={`grid-${i}`}
-                        className="absolute w-48 h-px bg-rose-400 transform transition-all duration-500"
+                        className="absolute w-24 h-px bg-stone-400 transform transition-all duration-500"
                         style={{
-                          top: `${i * 12}px`,
-                          transform: `rotate(${i * 22.5}deg)`,
+                          top: `${i * 6}px`,
+                          transform: `rotate(30deg)`,
+                        }}
+                      />
+                    ))}
+                    {[...Array(8)].map((_, i) => (
+                      <div
+                        key={`grid-${i + 8}`}
+                        className="absolute w-24 h-px bg-stone-400 transform transition-all duration-500"
+                        style={{
+                          top: `${i * 6}px`,
+                          transform: `rotate(-30deg)`,
                         }}
                       />
                     ))}
                   </div>
 
-                  {/* Overlapping circles */}
-                  <div className="absolute w-48 h-48">
-                    {[...Array(5)].map((_, i) => (
-                      <div
-                        key={`circle-${i}`}
-                        className="absolute w-24 h-24 bg-rose-400/40 rounded-full transform transition-all duration-500 group-hover:bg-rose-500/50"
-                        style={{
-                          left: `${i * 12}px`,
-                          top: `${i * 8}px`,
-                          zIndex: i,
-                        }}
-                      >
-                        {/* Inner glow effect */}
-                        <div className="absolute inset-0 rounded-full bg-gradient-to-br from-rose-300/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                      </div>
-                    ))}
-                  </div>
+                  {/* 3D cube */}
+                  <div className="absolute w-16 h-16 transform transition-all duration-500 group-hover:rotate-12 group-hover:scale-110">
+                    {/* Front face */}
+                    <div className="absolute inset-0 bg-stone-600/80 transform transition-all duration-500 group-hover:bg-stone-700" />
 
-                  {/* Floating elements */}
-                  {[...Array(4)].map((_, i) => (
+                    {/* Top face */}
                     <div
-                      key={`float-${i}`}
-                      className="absolute w-8 h-8 bg-rose-600/60 rounded-lg transform transition-all duration-500 group-hover:scale-110 group-hover:bg-rose-700/70"
+                      className="absolute inset-0 bg-stone-500/60 transform transition-all duration-500 group-hover:bg-stone-600"
                       style={{
-                        left: `${20 + i * 30}px`,
-                        top: `${40 + (i % 2) * 40}px`,
-                        zIndex: 10 + i,
+                        transform: "skewX(-30deg) translateY(-50%)",
+                        transformOrigin: "bottom left",
                       }}
-                    >
-                      {/* Shadow effect */}
-                      <div className="absolute inset-0 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    </div>
-                  ))}
+                    />
 
-                  {/* Accent lines */}
+                    {/* Right face */}
+                    <div
+                      className="absolute inset-0 bg-stone-700/60 transform transition-all duration-500 group-hover:bg-stone-800"
+                      style={{
+                        transform: "skewY(30deg) translateX(50%)",
+                        transformOrigin: "top left",
+                      }}
+                    />
+
+                    {/* Edge highlights */}
+                    <div className="absolute inset-0 border-2 border-stone-800/20" />
+                    <div
+                      className="absolute inset-0 border-2 border-stone-800/20"
+                      style={{
+                        transform: "skewX(-30deg) translateY(-50%)",
+                        transformOrigin: "bottom left",
+                      }}
+                    />
+                    <div
+                      className="absolute inset-0 border-2 border-stone-800/20"
+                      style={{
+                        transform: "skewY(30deg) translateX(50%)",
+                        transformOrigin: "top left",
+                      }}
+                    />
+                  </div>
+
+                  {/* Dimension lines */}
                   <div className="absolute w-48 h-48 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    {[...Array(4)].map((_, i) => (
-                      <div
-                        key={`line-${i}`}
-                        className="absolute w-32 h-px bg-rose-600/30 transform transition-all duration-500"
-                        style={{
-                          left: "50%",
-                          top: "50%",
-                          transform: `translate(-50%, -50%) rotate(${
-                            i * 45
-                          }deg)`,
-                        }}
-                      />
-                    ))}
+                    {/* Horizontal */}
+                    <div className="absolute w-32 h-px bg-stone-600 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
+                    <div className="absolute w-2 h-2 border-2 border-stone-600 rounded-full top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2" />
+                    <div className="absolute w-2 h-2 border-2 border-stone-600 rounded-full top-1/2 right-1/4 translate-x-1/2 -translate-y-1/2" />
+
+                    {/* Vertical */}
+                    <div className="absolute w-px h-32 bg-stone-600 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
+                    <div className="absolute w-2 h-2 border-2 border-stone-600 rounded-full top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2" />
+                    <div className="absolute w-2 h-2 border-2 border-stone-600 rounded-full bottom-1/4 left-1/2 -translate-x-1/2 translate-y-1/2" />
                   </div>
                 </div>
                 {/* Overlay text */}
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-20">
-                  <div className="text-xs text-rose-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm">
+                  <div className="text-xs text-rose-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-josefin-sans">
                     Overlapping creates visual connections
                   </div>
                 </div>
               </div>
             </div>
           }
-          fontFamily="dm-sans"
-          descriptionClassName="font-dm-sans"
+          fontFamily="josefin-sans"
+          descriptionClassName="font-josefin-sans"
           background="bg-gradient-to-br from-rose-50/50 to-pink-50/50"
-        />
-        <DesignSection
-          title="Designing Networks"
-          description="Designing Networks explores how to create visual representations of connected systems and relationships. By using nodes, connections, and strategic layout, we can create clear and intuitive visualizations of complex networks and their interactions."
-          designPrinciple="Connection & Flow – Using visual elements to represent relationships and interactions in a network."
-          exampleLink="https://www.behance.net/gallery/101333357/Network-Visualization"
-          visualComponent={
-            <div className="flex items-center justify-center w-full h-full">
-              <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-cyan-50 to-blue-50 p-4 relative group">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  {/* Dense network of short lines */}
-                  <div className="absolute w-48 h-48">
-                    {[...Array(24)].map((_, i) => (
-                      <div
-                        key={`short-line-${i}`}
-                        className="absolute w-36 h-px border-t-2 border-dashed border-gray-600/80 transform transition-all duration-500 group-hover:border-gray-800 group-hover:animate-pulse"
-                        style={{
-                          left: "50%",
-                          top: "50%",
-                          transform: `translate(-50%, -50%) rotate(${
-                            i * 15
-                          }deg) translate(12px)`,
-                          animationDelay: `${i * 0.1}s`,
-                        }}
-                      >
-                        {/* Connection animation */}
-                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-gray-600/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* Secondary layer of lines */}
-                  <div className="absolute w-48 h-48">
-                    {[...Array(16)].map((_, i) => (
-                      <div
-                        key={`medium-line-${i}`}
-                        className="absolute w-40 h-px border-t-2 border-dashed border-gray-700/60 transform transition-all duration-500 group-hover:border-gray-900/80 group-hover:animate-ping"
-                        style={{
-                          left: "50%",
-                          top: "50%",
-                          transform: `translate(-50%, -50%) rotate(${
-                            i * 22.5
-                          }deg) translate(8px)`,
-                          animationDelay: `${i * 0.15}s`,
-                        }}
-                      />
-                    ))}
-                  </div>
-
-                  {/* Intersection points */}
-                  {[...Array(8)].map((_, i) => (
-                    <div
-                      key={`point-${i}`}
-                      className="absolute w-2 h-2 bg-gray-800 rounded-full transform transition-all duration-500 group-hover:scale-150 group-hover:animate-bounce"
-                      style={{
-                        left: "50%",
-                        top: "50%",
-                        transform: `translate(-50%, -50%) rotate(${
-                          i * 45
-                        }deg) translate(24px)`,
-                        animationDelay: `${i * 0.2}s`,
-                      }}
-                    />
-                  ))}
-
-                  {/* Central point */}
-                  <div className="absolute w-3 h-3 bg-gray-900 rounded-full transform transition-all duration-500 group-hover:scale-150 group-hover:animate-ping">
-                    <div className="absolute inset-0 rounded-full border-2 border-gray-700/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  </div>
-
-                  {/* Additional connections on hover */}
-                  <div className="absolute w-48 h-48 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    {[...Array(12)].map((_, i) => (
-                      <div
-                        key={`hover-line-${i}`}
-                        className="absolute w-32 h-px border-t-2 border-dashed border-gray-500/40 transform transition-all duration-500 group-hover:animate-spin"
-                        style={{
-                          left: "50%",
-                          top: "50%",
-                          transform: `translate(-50%, -50%) rotate(${
-                            i * 30
-                          }deg) translate(16px)`,
-                          animationDuration: `${3 + i}s`,
-                        }}
-                      >
-                        {/* Connection animation */}
-                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-gray-500/30 to-transparent" />
-                      </div>
-                    ))}
-                  </div>
-                </div>
-                {/* Overlay text */}
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-20">
-                  <div className="text-xs text-gray-700 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm">
-                    Lines create network connections
-                  </div>
-                </div>
-              </div>
-            </div>
-          }
-          fontFamily="share-tech"
-          descriptionClassName="font-share-tech"
-          background="bg-gradient-to-br from-cyan-50/50 to-blue-50/50"
         />
         <DesignSection
           title="Golden Ratio"
@@ -1101,7 +1000,7 @@ function App() {
                 </div>
                 {/* Overlay text */}
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                  <div className="text-xs text-amber-700 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm">
+                  <div className="text-xs text-amber-700 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-habibi">
                     Nature's perfect proportion
                   </div>
                 </div>
@@ -1112,35 +1011,132 @@ function App() {
           descriptionClassName="font-habibi"
           background="bg-gradient-to-br from-amber-50/50 to-yellow-50/50"
         />
-      </div>
+        <DesignSection
+          title="Accessibility"
+          description="Accessibility in design ensures that digital experiences are usable by everyone, regardless of their abilities. This includes considerations for color contrast, keyboard navigation, screen reader compatibility, and clear visual hierarchy."
+          designPrinciple="Inclusive Design – Creating experiences that work for all users regardless of their abilities or circumstances."
+          exampleLink="https://www.w3.org/WAI/fundamentals/accessibility-principles/"
+          visualComponent={
+            <div className="flex items-center justify-center w-full h-full">
+              <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-blue-50 to-purple-50 p-4 relative group">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  {/* Main container with focus ring */}
+                  <div className="relative w-48 h-48 rounded-lg border-2 border-blue-400/50 group-hover:ring-4 group-hover:ring-purple-300/50 transition-all duration-300">
+                    {/* Color contrast example */}
+                    <div className="absolute top-4 left-4 flex gap-2">
+                      <div className="w-8 h-8 bg-blue-700 rounded flex items-center justify-center text-white text-xs font-bold">
+                        AAA
+                      </div>
+                      <div className="w-8 h-8 bg-blue-200 rounded flex items-center justify-center text-blue-900 text-xs font-bold">
+                        AA
+                      </div>
+                    </div>
 
-      <footer className="py-4 bg-gray-100 text-gray-900">
-        <div className="flex items-center gap-6">
-          <div className="w-8 h-8 relative ml-4">
-            {[...Array(8)].map((_, i) => (
-              <div
-                key={`line-${i}`}
-                className="absolute w-8 h-px border-t border-dashed border-gray-600/80 transform origin-center"
-                style={{
-                  top: "50%",
-                  transform: `rotate(${i * 45}deg)`,
-                }}
-              />
-            ))}
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-1.5 h-1.5 bg-gray-700 rounded-full" />
+                    {/* Keyboard focus indicators */}
+                    <div className="absolute top-4 right-4 w-8 h-8 border-2 border-purple-400 rounded group-hover:ring-2 group-hover:ring-purple-300 transition-all duration-300 flex items-center justify-center">
+                      <span className="text-purple-600 text-sm">⌨️</span>
+                    </div>
+
+                    {/* Screen reader wave animation */}
+                    <div className="absolute bottom-4 left-4 w-32 h-12">
+                      {[...Array(3)].map((_, i) => (
+                        <div
+                          key={i}
+                          className="absolute bottom-0 left-0 w-full h-1 bg-blue-400/30 rounded group-hover:animate-pulse"
+                          style={{
+                            transform: `translateY(-${i * 8}px)`,
+                            opacity: 1 - i * 0.2,
+                          }}
+                        />
+                      ))}
+                      <div className="absolute bottom-0 left-0 text-sm text-blue-600">
+                        🔊
+                      </div>
+                    </div>
+
+                    {/* ARIA label example */}
+                    <div className="absolute bottom-4 right-4 flex items-center gap-2">
+                      <div className="text-xs text-purple-600 font-medium">
+                        aria-label
+                      </div>
+                      <div className="w-6 h-6 rounded-full border-2 border-purple-400/50 flex items-center justify-center">
+                        <span className="text-xs">🏷️</span>
+                      </div>
+                    </div>
+
+                    {/* Central focus point */}
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="w-16 h-16 rounded-full bg-gradient-to-br from-blue-100 to-purple-100 group-hover:scale-110 transition-transform duration-300 flex items-center justify-center">
+                        <span className="text-2xl">👥</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {/* Overlay text */}
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
+                  <div className="text-xs text-blue-700 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-helvetica">
+                    Design for everyone
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
-          <a
-            href="https://davemelk.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-sm text-gray-900 hover:text-gray-600 transition-colors uppercase"
-          >
-            design: Dave Melkonian
-          </a>
-        </div>
-      </footer>
+          }
+          fontFamily="roboto-flex"
+          descriptionClassName="font-roboto-flex"
+          background="bg-gradient-to-br from-blue-50/50 to-purple-50/50"
+        />
+        <DesignSection
+          title="Function Over Form"
+          description="Function Over Form emphasizes that usability and practical functionality should take precedence over purely aesthetic considerations. This principle guides designers to create interfaces that are intuitive, efficient, and accessible, even if it means sacrificing some decorative elements."
+          designPrinciple="Usability First – Prioritizing practical functionality and user experience over decorative elements."
+          exampleLink="https://www.nngroup.com/articles/function-over-form/"
+          visualComponent={
+            <div className="flex items-center justify-center w-full h-full">
+              <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-stone-50 to-slate-50 p-4 relative group">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  {/* Main interface elements */}
+                  <div className="relative w-48 h-48 rounded-lg border-2 border-stone-300/50 group-hover:border-stone-400/70 transition-all duration-300">
+                    {/* Header */}
+                    <div className="absolute top-2 left-2 right-2 h-6 bg-stone-200/50 rounded group-hover:bg-stone-200/70 transition-all duration-300" />
+
+                    {/* Content area */}
+                    <div className="absolute top-10 left-2 right-2 bottom-2 flex flex-col gap-2">
+                      {/* Functional elements */}
+                      <div className="flex gap-2">
+                        <div className="w-8 h-8 bg-stone-300/50 rounded group-hover:bg-stone-300/70 transition-all duration-300" />
+                        <div className="flex-1 h-8 bg-stone-200/50 rounded group-hover:bg-stone-200/70 transition-all duration-300" />
+                      </div>
+
+                      {/* Clear hierarchy */}
+                      <div className="flex-1 bg-stone-100/50 rounded group-hover:bg-stone-100/70 transition-all duration-300">
+                        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
+                          <div className="w-24 h-2 bg-stone-300/50 rounded mb-2 group-hover:bg-stone-300/70 transition-all duration-300" />
+                          <div className="w-32 h-2 bg-stone-200/50 rounded group-hover:bg-stone-200/70 transition-all duration-300" />
+                        </div>
+                      </div>
+
+                      {/* Action buttons */}
+                      <div className="flex gap-2">
+                        <div className="flex-1 h-6 bg-stone-300/50 rounded group-hover:bg-stone-300/70 transition-all duration-300" />
+                        <div className="flex-1 h-6 bg-stone-300/50 rounded group-hover:bg-stone-300/70 transition-all duration-300" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {/* Overlay text */}
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
+                  <div className="text-xs text-stone-600 font-medium bg-white/80 px-2 py-1 rounded">
+                    Functionality drives design
+                  </div>
+                </div>
+              </div>
+            </div>
+          }
+          fontFamily="overlock-sc"
+          descriptionClassName="font-overlock-sc"
+          background="bg-gradient-to-br from-stone-50/50 to-slate-50/50"
+        />
+      </div>
     </div>
   );
 }

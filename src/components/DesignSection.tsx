@@ -18,7 +18,10 @@ interface DesignSectionProps {
     | "source-code-pro"
     | "oswald"
     | "roboto-slab"
-    | "share-tech";
+    | "share-tech"
+    | "josefin-sans"
+    | "roboto-flex"
+    | "overlock-sc";
   descriptionClassName?: string;
   background?: string;
 }
@@ -76,8 +79,14 @@ const DesignSection: React.FC<DesignSectionProps> = ({
         return "font-oswald";
       case "roboto-slab":
         return "font-roboto-slab";
+      case "josefin-sans":
+        return "font-josefin-sans";
+      case "roboto-flex":
+        return "font-roboto-flex";
+      case "overlock-sc":
+        return "font-overlock-sc";
       default:
-        return "font-sans";
+        return "font-helvetica";
     }
   };
 
@@ -146,13 +155,16 @@ const DesignSection: React.FC<DesignSectionProps> = ({
       />
       <div className="h-full flex flex-col relative z-10">
         <div className="flex justify-between items-center pt-3 pl-3 mb-2">
-          <h2 className={`${titleClass} leading-none`}>{title}</h2>
+          <div>
+            <h2 className={`${titleClass} leading-none`}>{title}</h2>
+            <p className="text-[10px] text-gray-400 mt-1">Font: {fontFamily}</p>
+          </div>
           {exampleLink && (
             <a
               href={exampleLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-xs text-gray-400 hover:text-gray-300 transition-colors pr-3"
+              className="text-xs text-gray-400 hover:text-gray-300 transition-colors absolute top-4 right-4"
             >
               View Example
             </a>
