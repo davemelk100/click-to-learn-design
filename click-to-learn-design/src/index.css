@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Niconne&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Scribble&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Habibi&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anek+Gurmukhi:wght@100..800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-gray-50;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Roboto', sans-serif;
+  }
+}
+
+@font-face {
+  font-family: 'Avenir';
+  src: url('https://fonts.cdnfonts.com/css/avenir') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+.font-helvetica {
+  font-family: Helvetica, "Helvetica Neue", Arial, sans-serif !important;
+}
+
+.font-dm-sans {
+  font-family: 'DM Sans', sans-serif !important;
+}
+
+.font-eb-garamond {
+  font-family: 'EB Garamond', serif !important;
+}
+
+.font-source-code-pro {
+  font-family: 'Source Code Pro', monospace !important;
+}
+
+.font-share-tech {
+  font-family: 'Share Tech', sans-serif !important;
+}
+
+.font-niconne {
+  font-family: 'Niconne', cursive !important;
+}
+
+.font-rubik-scribble {
+  font-family: 'Rubik Scribble', system-ui !important;
+}
+
+.font-habibi {
+  font-family: 'Habibi', serif !important;
+}
+
+.font-anek-gurmukhi {
+  font-family: 'Anek Gurmukhi', sans-serif !important;
+}
+
+.clip-triangle {
+  clip-path: polygon(50% 0, 100% 100%, 0 100%);
+}
+
+.golden-spiral {
+  fill: none;
+  stroke-dasharray: 400;
+  stroke-dashoffset: 400;
+  animation: draw 2s ease forwards;
+}
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes erupt {
+  0% {
+    transform: scaleX(0) translateX(0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: scaleX(1) translateX(20px);
+    opacity: 0;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) scale(1);
+  }
+  50% {
+    transform: translate(
+      calc(var(--tw-translate-x) + 10px),
+      calc(var(--tw-translate-y) - 10px)
+    ) scale(1.2);
+  }
+}
+
+@keyframes ping {
+  75%, 100% {
+    transform: scale(1.2);
+    opacity: 0;
+  }
+}
+
+@keyframes eruption {
+  0% {
+    transform: scale(0.8) translateY(20px);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1) translateY(-10px);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
