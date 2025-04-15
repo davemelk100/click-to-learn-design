@@ -55,6 +55,14 @@ function App() {
               Click or tap a card to ask AI about the topic.
             </span>
           </div>
+          <a
+            href="https://davemelk.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="ml-auto mr-4 px-2 py-1 bg-white text-black text-sm font-medium hover:bg-white/90 transition-colors duration-300"
+          >
+            DM
+          </a>
         </div>
       </header>
 
@@ -1361,6 +1369,14 @@ function App() {
               davemelk.com
             </a>
           </div>
+          <a
+            href="https://davemelk.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="ml-auto mr-4 px-2 py-1 bg-white text-black text-sm font-medium hover:bg-white/90 transition-colors duration-300"
+          >
+            DM
+          </a>
         </div>
       </footer>
     </div>
