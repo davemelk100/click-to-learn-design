@@ -71,7 +71,7 @@ function App() {
                   <div className="absolute -left-4 bottom-0 w-16 h-16 bg-gradient-to-tr from-sky-100 to-white rounded-lg opacity-30 blur-lg group-hover:opacity-50 transition-opacity duration-500" />
                 </div>
                 {/* Overlay text */}
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-20">
                   <div className="text-xs text-sky-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm">
                     Layers create depth and hierarchy
                   </div>
@@ -550,6 +550,251 @@ function App() {
           fontFamily="source-code-pro"
           descriptionClassName="font-source-code-pro"
           background="bg-gradient-to-br from-violet-50/50 to-indigo-50/50"
+        />
+        <DesignSection
+          title="Dimensional Hierarchy"
+          description="Dimensional Hierarchy creates visual importance through varying levels of depth and dimensionality. By using shadows, perspective, and strategic layering, elements can appear to float at different levels, creating a clear visual hierarchy."
+          designPrinciple="Depth – Using three-dimensional space to establish visual importance and relationships."
+          visualComponent={
+            <div className="flex items-center justify-center w-full h-full">
+              <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-amber-50 to-orange-50 p-4 relative group">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  {/* Background layer - subtle grid */}
+                  <div className="absolute w-48 h-48 opacity-20">
+                    {[...Array(16)].map((_, i) => (
+                      <div
+                        key={`grid-${i}`}
+                        className="absolute w-48 h-px bg-amber-400 transform transition-all duration-500"
+                        style={{
+                          top: `${i * 8}px`,
+                          transform: `rotate(${i * 11.25}deg)`,
+                        }}
+                      />
+                    ))}
+                  </div>
+
+                  {/* Middle layer - floating elements */}
+                  <div className="absolute w-48 h-48">
+                    {[...Array(6)].map((_, i) => (
+                      <div
+                        key={`float-${i}`}
+                        className="absolute w-6 h-6 bg-amber-500/60 rounded-lg shadow-lg transform transition-all duration-500 group-hover:translate-y-[-4px] group-hover:shadow-xl"
+                        style={{
+                          left: `${
+                            Math.cos((i * Math.PI * 2) / 6) * 30 + 48
+                          }px`,
+                          top: `${Math.sin((i * Math.PI * 2) / 6) * 30 + 48}px`,
+                          transform: `rotate(${i * 30}deg) translateZ(${
+                            i * 4
+                          }px)`,
+                          zIndex: i,
+                        }}
+                      >
+                        <div className="absolute inset-0.5 bg-gradient-to-br from-amber-400 to-amber-600 rounded-lg" />
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Foreground layer - prominent element */}
+                  <div className="absolute w-12 h-12 bg-amber-700 rounded-lg shadow-2xl transform transition-all duration-500 group-hover:translate-y-[-8px] group-hover:shadow-3xl">
+                    <div className="absolute inset-0.5 bg-gradient-to-br from-amber-600 to-amber-800 rounded-lg" />
+                    {/* Inner shadow */}
+                    <div className="absolute inset-0 rounded-lg shadow-inner" />
+                  </div>
+
+                  {/* Accent elements - depth indicators */}
+                  <div className="absolute w-48 h-48">
+                    {[...Array(4)].map((_, i) => (
+                      <div
+                        key={`depth-${i}`}
+                        className="absolute w-2 h-2 bg-amber-800/40 rounded-full transform transition-all duration-500"
+                        style={{
+                          left: `${
+                            Math.cos((i * Math.PI * 2) / 4) * 40 + 48
+                          }px`,
+                          top: `${Math.sin((i * Math.PI * 2) / 4) * 40 + 48}px`,
+                          transform: `translateZ(${i * -8}px)`,
+                          opacity: 0.3 + i * 0.1,
+                        }}
+                      />
+                    ))}
+                  </div>
+                </div>
+                {/* Overlay text */}
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
+                  <div className="text-xs text-amber-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm">
+                    Depth creates visual importance
+                  </div>
+                </div>
+              </div>
+            </div>
+          }
+          fontFamily="dm-sans"
+          descriptionClassName="font-dm-sans"
+          background="bg-gradient-to-br from-amber-50/50 to-orange-50/50"
+        />
+        <DesignSection
+          title="Basic Color Theory"
+          description="Basic Color Theory explores the fundamental relationships between colors. By understanding primary colors, color harmony, and the color wheel, we can create visually appealing and meaningful color combinations."
+          designPrinciple="Color Relationships – Understanding how colors interact and complement each other."
+          visualComponent={
+            <div className="flex items-center justify-center w-full h-full">
+              <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-sky-50 to-blue-50 p-4 relative group">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  {/* Color wheel base */}
+                  <div className="absolute w-36 h-36 rounded-full border-2 border-sky-200/50 translate-y-4">
+                    {/* Primary and secondary colors */}
+                    {[
+                      { color: "red-500", angle: 0 },
+                      { color: "orange-500", angle: 60 },
+                      { color: "yellow-500", angle: 120 },
+                      { color: "green-500", angle: 180 },
+                      { color: "blue-500", angle: 240 },
+                      { color: "purple-500", angle: 300 },
+                    ].map(({ color, angle }, i) => (
+                      <div
+                        key={i}
+                        className={`absolute w-${i < 3 ? "8" : "6"} h-${
+                          i < 3 ? "8" : "6"
+                        } bg-${color} rounded-full transform transition-all duration-500 group-hover:scale-110`}
+                        style={{
+                          left: "50%",
+                          top: "50%",
+                          transform: `translate(-50%, -50%) rotate(${angle}deg) translate(72px) rotate(-${angle}deg)`,
+                        }}
+                      />
+                    ))}
+
+                    {/* Color relationships */}
+                    <div className="absolute w-36 h-36 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      {/* Complementary lines */}
+                      <div className="absolute w-36 h-px bg-sky-200/30 transform rotate-30" />
+                      <div className="absolute w-36 h-px bg-sky-200/30 transform -rotate-30" />
+                      <div className="absolute w-36 h-px bg-sky-200/30 transform rotate-90" />
+                    </div>
+                  </div>
+
+                  {/* Color harmony examples */}
+                  <div className="absolute bottom-4 left-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="w-4 h-4 bg-red-500 rounded" />
+                    <div className="w-4 h-4 bg-orange-500 rounded" />
+                    <div className="w-4 h-4 bg-yellow-500 rounded" />
+                    <div className="w-4 h-4 bg-green-500 rounded" />
+                    <div className="w-4 h-4 bg-blue-500 rounded" />
+                    <div className="w-4 h-4 bg-purple-500 rounded" />
+                  </div>
+                </div>
+                {/* Overlay text */}
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-20">
+                  <div className="text-xs text-sky-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm">
+                    Colors create visual harmony
+                  </div>
+                </div>
+              </div>
+            </div>
+          }
+          fontFamily="helvetica"
+          descriptionClassName="font-helvetica"
+          background="bg-gradient-to-br from-sky-50/50 to-blue-50/50"
+        />
+        <DesignSection
+          title="Axonometric Projection"
+          description="Axonometric Projection is a method of representing 3D objects in 2D space using parallel projection. Unlike perspective projection, it maintains consistent scale and angles, making it ideal for technical drawings and architectural visualization."
+          designPrinciple="Parallel Projection – Representing 3D space in 2D while maintaining consistent measurements."
+          visualComponent={
+            <div className="flex items-center justify-center w-full h-full">
+              <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-stone-50 to-slate-50 p-4 relative group">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  {/* Base grid */}
+                  <div className="absolute w-24 h-24 opacity-20">
+                    {[...Array(8)].map((_, i) => (
+                      <div
+                        key={`grid-${i}`}
+                        className="absolute w-24 h-px bg-stone-400 transform transition-all duration-500"
+                        style={{
+                          top: `${i * 6}px`,
+                          transform: `rotate(30deg)`,
+                        }}
+                      />
+                    ))}
+                    {[...Array(8)].map((_, i) => (
+                      <div
+                        key={`grid-${i + 8}`}
+                        className="absolute w-24 h-px bg-stone-400 transform transition-all duration-500"
+                        style={{
+                          top: `${i * 6}px`,
+                          transform: `rotate(-30deg)`,
+                        }}
+                      />
+                    ))}
+                  </div>
+
+                  {/* 3D cube */}
+                  <div className="absolute w-16 h-16 transform transition-all duration-500 group-hover:rotate-12 group-hover:scale-110">
+                    {/* Front face */}
+                    <div className="absolute inset-0 bg-stone-600/80 transform transition-all duration-500 group-hover:bg-stone-700" />
+
+                    {/* Top face */}
+                    <div
+                      className="absolute inset-0 bg-stone-500/60 transform transition-all duration-500 group-hover:bg-stone-600"
+                      style={{
+                        transform: "skewX(-30deg) translateY(-50%)",
+                        transformOrigin: "bottom left",
+                      }}
+                    />
+
+                    {/* Right face */}
+                    <div
+                      className="absolute inset-0 bg-stone-700/60 transform transition-all duration-500 group-hover:bg-stone-800"
+                      style={{
+                        transform: "skewY(30deg) translateX(50%)",
+                        transformOrigin: "top left",
+                      }}
+                    />
+
+                    {/* Edge highlights */}
+                    <div className="absolute inset-0 border-2 border-stone-800/20" />
+                    <div
+                      className="absolute inset-0 border-2 border-stone-800/20"
+                      style={{
+                        transform: "skewX(-30deg) translateY(-50%)",
+                        transformOrigin: "bottom left",
+                      }}
+                    />
+                    <div
+                      className="absolute inset-0 border-2 border-stone-800/20"
+                      style={{
+                        transform: "skewY(30deg) translateX(50%)",
+                        transformOrigin: "top left",
+                      }}
+                    />
+                  </div>
+
+                  {/* Dimension lines */}
+                  <div className="absolute w-48 h-48 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    {/* Horizontal */}
+                    <div className="absolute w-32 h-px bg-stone-600 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
+                    <div className="absolute w-2 h-2 border-2 border-stone-600 rounded-full top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2" />
+                    <div className="absolute w-2 h-2 border-2 border-stone-600 rounded-full top-1/2 right-1/4 translate-x-1/2 -translate-y-1/2" />
+
+                    {/* Vertical */}
+                    <div className="absolute w-px h-32 bg-stone-600 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
+                    <div className="absolute w-2 h-2 border-2 border-stone-600 rounded-full top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2" />
+                    <div className="absolute w-2 h-2 border-2 border-stone-600 rounded-full bottom-1/4 left-1/2 -translate-x-1/2 translate-y-1/2" />
+                  </div>
+                </div>
+                {/* Overlay text */}
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-20">
+                  <div className="text-xs text-stone-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm">
+                    Parallel lines remain parallel
+                  </div>
+                </div>
+              </div>
+            </div>
+          }
+          fontFamily="roboto"
+          descriptionClassName="font-roboto"
+          background="bg-gradient-to-br from-stone-50/50 to-slate-50/50"
         />
       </div>
     </div>
