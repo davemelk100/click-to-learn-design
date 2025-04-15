@@ -124,7 +124,7 @@ const DesignSection: React.FC<DesignSectionProps> = ({
   };
 
   const fontClass = getFontClass(fontFamily);
-  const titleClass = `text-2xl font-bold tracking-tight ${fontClass} ${titleClassName}`;
+  const titleClass = `text-2xl font-bold tracking-tight text-gray-900 ${fontClass} ${titleClassName}`;
   const contentClass = "";
 
   const shouldRemoveRightBorder =
@@ -153,14 +153,16 @@ const DesignSection: React.FC<DesignSectionProps> = ({
         <div className="flex justify-between items-center pt-3 pl-3 mb-2">
           <div>
             <h2 className={`${titleClass} leading-none`}>{title}</h2>
-            <p className="text-[10px] text-gray-400 mt-1">Font: {fontFamily}</p>
+            <p className="text-xs text-gray-600 mt-1">
+              Font: {fontFamily.charAt(0).toUpperCase() + fontFamily.slice(1)}
+            </p>
           </div>
           {exampleLink && (
             <a
               href={exampleLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-xs text-gray-400 hover:text-gray-300 transition-colors absolute top-4 right-4"
+              className="text-xs text-gray-600 hover:text-gray-500 transition-colors absolute top-4 right-4 uppercase"
             >
               Resource
             </a>
