@@ -2,16 +2,58 @@ import React from "react";
 import { MessageSquare, Palette } from "lucide-react";
 import DesignSection from "./components/DesignSection";
 
+interface DesignSectionProps {
+  title: string;
+  description: string;
+  designPrinciple: string;
+  exampleLink: string;
+  visualComponent: React.ReactNode;
+  fontFamily?: string;
+  descriptionClassName?: string;
+  titleClassName?: string;
+  background?: string;
+}
+
 function App() {
   return (
     <div className="min-h-screen w-full">
-      <header className="py-4 bg-gray-900 text-gray-400">
-        <div className="container mx-auto px-4">
-          <div className="flex items-center">
-            <div className="flex items-center gap-2">
-              <Palette className="w-5 h-5" />
-              <span className="text-sm font-medium">DESIGN PANES</span>
+      <header className="py-4 bg-gray-100 text-gray-400">
+        <div className="flex items-center pl-4">
+          <div className="flex items-center gap-2">
+            <div className="w-8 h-8 relative group">
+              <div className="absolute w-8 h-8">
+                {[...Array(8)].map((_, i) => (
+                  <div
+                    key={i}
+                    className="absolute w-6 h-px border-t border-dashed border-gray-600/80 transform transition-all duration-500 group-hover:border-gray-800 group-hover:animate-pulse"
+                    style={{
+                      left: "50%",
+                      top: "50%",
+                      transform: `translate(-50%, -50%) rotate(${
+                        i * 45
+                      }deg) translate(3px)`,
+                      animationDelay: `${i * 0.1}s`,
+                    }}
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-gray-600/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  </div>
+                ))}
+              </div>
+              <div
+                className="absolute w-2 h-2 bg-gray-800 rounded-full transform transition-all duration-500 group-hover:scale-150 group-hover:animate-bounce"
+                style={{
+                  left: "50%",
+                  top: "50%",
+                  transform: "translate(-50%, -50%)",
+                }}
+              />
             </div>
+            <span className="text-lg font-medium text-gray-800">
+              DESIGN PANES
+            </span>
+            <span className="text-sm text-gray-600 ml-4">
+              Click or tap a card to ask AI about the topic.
+            </span>
           </div>
         </div>
       </header>
@@ -69,7 +111,7 @@ function App() {
           title="Spatial Layers"
           description="Spatial Layers create visual hierarchy through the careful arrangement of overlapping elements. This technique uses depth, shadow, and transparency to establish clear relationships between components while maintaining visual harmony."
           designPrinciple="Contrast – Using differences in color, size, or shape to create visual interest and hierarchy."
-          exampleLink="https://dribbble.com/tags/spatial_layers"
+          exampleLink="https://www.canva.com/learn/visual-hierarchy/"
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
               <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-sky-50 to-blue-50 p-4 flex items-center justify-center group">
@@ -137,7 +179,7 @@ function App() {
           title="Bezold Effect"
           description="The Bezold Effect occurs when the appearance of a color is altered by the colors adjacent to it. This optical illusion demonstrates how our perception of color can be dramatically influenced by its surrounding colors."
           designPrinciple="Contrast – Using differences in color, size, or shape to create visual interest and hierarchy."
-          exampleLink="https://www.interaction-design.org/literature/topics/bezold-effect"
+          exampleLink="https://www.interaction-design.org/literature/topics/color-theory"
           visualComponent={
             <div className="flex items-center justify-center w-full h-full gap-6 flex-wrap">
               <div className="w-[180px] h-[180px] grid grid-cols-8 gap-0.5 bg-orange-100 p-2 group transition-all duration-500 hover:bg-orange-200">
@@ -176,7 +218,7 @@ function App() {
           title="Observed Rhythm"
           description="Observed Rhythm creates visual flow through repeating elements. This dynamic pattern uses varying sizes and spacing to guide the viewer's eye naturally through the design."
           designPrinciple="Repetition – Reusing visual elements to create consistency."
-          exampleLink="https://www.toptal.com/designers/visual/rhythm-design-principle"
+          exampleLink="https://www.interaction-design.org/literature/topics/rhythm"
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
               <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-r from-purple-100 to-indigo-50 p-4 flex items-end gap-3 group">
@@ -220,7 +262,7 @@ function App() {
           title="Ambiguous Scale"
           description="Ambiguous Scale challenges perception by presenting elements whose size relationships are intentionally unclear. This creates an engaging visual puzzle that draws viewers in to resolve the spatial ambiguity."
           designPrinciple="Contrast – Using differences in color, size, or shape to create visual interest and hierarchy."
-          exampleLink="https://www.smashingmagazine.com/2014/03/design-principles-compositional-balance-symmetry-asymmetry/"
+          exampleLink="https://www.canva.com/learn/design-elements-principles/#scale"
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
               <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-zinc-50 to-neutral-50 p-4 relative overflow-hidden group">
@@ -309,7 +351,7 @@ function App() {
           title="Law of Proximity"
           description="The Law of Proximity states that objects that are close to one another are perceived as being related or grouped together. This principle helps create visual organization and relationships between elements in a design."
           designPrinciple="Proximity – Grouping related items together to show their connection."
-          exampleLink="https://www.interaction-design.org/literature/topics/gestalt-principles"
+          exampleLink="https://www.toptal.com/designers/visual/gestalt-principles-of-design"
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
               <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-amber-50 to-orange-50 p-4 relative group">
@@ -543,7 +585,7 @@ function App() {
           title="Dimensional Hierarchy"
           description="Dimensional Hierarchy creates visual importance through varying levels of depth and dimensionality. By using shadows, perspective, and strategic layering, elements can appear to float at different levels, creating a clear visual hierarchy."
           designPrinciple="Depth – Using three-dimensional space to establish visual importance and relationships."
-          exampleLink="https://www.behance.net/gallery/101333357/Dimensional-Hierarchy"
+          exampleLink="https://www.toptal.com/designers/visual/principles-of-design"
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
               <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-amber-50 to-orange-50 p-4 relative group">
@@ -626,7 +668,7 @@ function App() {
           title="Basic Color Theory"
           description="Basic Color Theory explores the fundamental relationships between colors. By understanding primary colors, color harmony, and the color wheel, we can create visually appealing and meaningful color combinations."
           designPrinciple="Color Relationships – Understanding how colors interact and complement each other."
-          exampleLink="https://www.colormatters.com/color-and-design/basic-color-theory"
+          exampleLink="https://www.canva.com/learn/color-theory/"
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
               <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-sky-50 to-blue-50 p-4 relative group">
@@ -691,7 +733,7 @@ function App() {
           title="Axonometric Projection"
           description="Axonometric Projection is a method of representing 3D objects in 2D space using parallel projection. Unlike perspective projection, it maintains consistent scale and angles, making it ideal for technical drawings and architectural visualization."
           designPrinciple="Parallel Projection – Representing 3D space in 2D while maintaining consistent measurements."
-          exampleLink="https://www.archdaily.com/897465/axonometric-vs-isometric-projection"
+          exampleLink="https://en.wikipedia.org/wiki/Axonometric_projection"
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
               <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-stone-50 to-slate-50 p-4 relative group">
@@ -791,7 +833,7 @@ function App() {
           title="Subjective Emphasis"
           description="Subjective Emphasis demonstrates how visual elements can be highlighted through various design techniques. By using contrast, scale, color, and positioning, designers can guide the viewer's attention to specific elements, creating a visual hierarchy that communicates importance and meaning."
           designPrinciple="Visual Hierarchy – Using design elements to create emphasis and guide attention."
-          exampleLink="https://www.toptal.com/designers/visual/principles-of-design-hierarchy"
+          exampleLink="https://www.canva.com/learn/visual-hierarchy/"
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
               <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-slate-50 to-indigo-50 p-4 relative group">
@@ -1137,7 +1179,7 @@ function App() {
           title="Designing Networks"
           description="Designing Networks explores how to create visual representations of connected systems and relationships. By using nodes, connections, and strategic layout, we can create clear and intuitive visualizations of complex networks and their interactions."
           designPrinciple="Connection & Flow – Using visual elements to represent relationships and interactions in a network."
-          exampleLink="https://www.interaction-design.org/literature/topics/network-visualization"
+          exampleLink="https://www.lucidchart.com/pages/network-diagram"
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
               <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-cyan-50 to-blue-50 p-4 relative group">
@@ -1164,32 +1206,25 @@ function App() {
                       <div className="absolute inset-1 bg-gradient-to-br from-blue-500 to-blue-700 rounded-full" />
                     </div>
 
-                    {/* Connection lines */}
-                    <div className="absolute inset-0">
-                      {[...Array(6)].map((_, i) => (
+                    {/* Spinning animation */}
+                    <div className="absolute w-48 h-48 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      {[...Array(12)].map((_, i) => (
                         <div
                           key={`line-${i}`}
-                          className="absolute left-1/2 top-1/2 w-[60px] h-px bg-cyan-400/50 origin-left transform transition-all duration-500 group-hover:bg-cyan-500/70"
+                          className="absolute w-32 h-px border-t-2 border-dashed border-gray-500/40 transform transition-all duration-500 group-hover:animate-spin"
                           style={{
-                            transform: `translate(-1px, -1px) rotate(${
-                              (i * 360) / 6
-                            }deg)`,
+                            left: "50%",
+                            top: "50%",
+                            transform: `translate(-50%, -50%) rotate(${
+                              i * 30
+                            }deg) translate(16px)`,
+                            animationDuration: `${3 + i}s`,
                           }}
-                        />
+                        >
+                          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-gray-500/30 to-transparent"></div>
+                        </div>
                       ))}
                     </div>
-
-                    {/* Animated particles */}
-                    {[...Array(6)].map((_, i) => (
-                      <div
-                        key={`particle-${i}`}
-                        className="absolute left-1/2 top-1/2 w-2 h-2 bg-cyan-400 rounded-full transform -translate-x-1/2 -translate-y-1/2"
-                        style={{
-                          animation: `moveAlongLine${i} 3s infinite`,
-                          animationDelay: `${i * 0.5}s`,
-                        }}
-                      />
-                    ))}
                   </div>
                 </div>
                 {/* Overlay text */}
@@ -1201,11 +1236,54 @@ function App() {
               </div>
             </div>
           }
-          fontFamily="helvetica"
-          descriptionClassName="font-helvetica"
+          fontFamily="share-tech"
+          descriptionClassName="font-share-tech"
+          titleClassName="font-share-tech"
           background="bg-gradient-to-br from-cyan-50/50 to-blue-50/50"
         />
       </div>
+      <footer className="py-4 bg-gray-100 text-gray-400">
+        <div className="flex items-center pl-4">
+          <div className="flex items-center gap-2">
+            <div className="w-8 h-8 relative group">
+              <div className="absolute w-8 h-8">
+                {[...Array(8)].map((_, i) => (
+                  <div
+                    key={i}
+                    className="absolute w-6 h-px border-t border-dashed border-gray-600/80 transform transition-all duration-500 group-hover:border-gray-800 group-hover:animate-pulse"
+                    style={{
+                      left: "50%",
+                      top: "50%",
+                      transform: `translate(-50%, -50%) rotate(${
+                        i * 45
+                      }deg) translate(3px)`,
+                      animationDelay: `${i * 0.1}s`,
+                    }}
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-gray-600/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  </div>
+                ))}
+              </div>
+              <div
+                className="absolute w-2 h-2 bg-gray-800 rounded-full transform transition-all duration-500 group-hover:scale-150 group-hover:animate-bounce"
+                style={{
+                  left: "50%",
+                  top: "50%",
+                  transform: "translate(-50%, -50%)",
+                }}
+              />
+            </div>
+            <a
+              href="https://davemelk.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-lg font-medium text-gray-800 hover:text-gray-600 transition-colors duration-300"
+            >
+              davemelk.com
+            </a>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }

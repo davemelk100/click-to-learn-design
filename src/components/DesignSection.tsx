@@ -23,6 +23,7 @@ interface DesignSectionProps {
     | "roboto-flex"
     | "overlock-sc";
   descriptionClassName?: string;
+  titleClassName?: string;
   background?: string;
 }
 
@@ -34,6 +35,7 @@ const DesignSection: React.FC<DesignSectionProps> = ({
   visualComponent,
   fontFamily = "roboto",
   descriptionClassName = "",
+  titleClassName = "",
   background = "bg-white",
 }) => {
   const [isAiOpen, setIsAiOpen] = useState(false);
@@ -122,7 +124,7 @@ const DesignSection: React.FC<DesignSectionProps> = ({
   };
 
   const fontClass = getFontClass(fontFamily);
-  const titleClass = `text-2xl font-bold tracking-tight ${fontClass}`;
+  const titleClass = `text-2xl font-bold tracking-tight ${fontClass} ${titleClassName}`;
   const contentClass = "";
 
   const shouldRemoveRightBorder =
@@ -160,7 +162,7 @@ const DesignSection: React.FC<DesignSectionProps> = ({
               rel="noopener noreferrer"
               className="text-xs text-gray-400 hover:text-gray-300 transition-colors absolute top-4 right-4"
             >
-              View Example
+              Resource
             </a>
           )}
         </div>
