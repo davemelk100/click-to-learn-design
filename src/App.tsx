@@ -963,78 +963,91 @@ function App() {
             <div className="flex items-center justify-center w-full h-full">
               <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-cyan-50 to-blue-50 p-4 relative group">
                 <div className="absolute inset-0 flex items-center justify-center">
-                  {/* Base network nodes */}
+                  {/* Dense network of short lines */}
                   <div className="absolute w-48 h-48">
-                    {[...Array(8)].map((_, i) => (
+                    {[...Array(24)].map((_, i) => (
                       <div
-                        key={`node-${i}`}
-                        className="absolute w-6 h-6 bg-cyan-500 rounded-full transform transition-all duration-500 group-hover:scale-110 group-hover:bg-cyan-600"
-                        style={{
-                          left: `${
-                            Math.cos((i * Math.PI * 2) / 8) * 40 + 48
-                          }px`,
-                          top: `${Math.sin((i * Math.PI * 2) / 8) * 40 + 48}px`,
-                          transform: `translate(-50%, -50%)`,
-                          zIndex: 10,
-                        }}
-                      >
-                        {/* Inner glow */}
-                        <div className="absolute inset-0 rounded-full bg-gradient-to-br from-cyan-400/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* Network connections */}
-                  <div className="absolute w-48 h-48">
-                    {[...Array(8)].map((_, i) => (
-                      <div
-                        key={`connection-${i}`}
-                        className="absolute w-48 h-px bg-cyan-400/30 transform transition-all duration-500 group-hover:bg-cyan-500/40"
+                        key={`short-line-${i}`}
+                        className="absolute w-36 h-px border-t-2 border-dashed border-gray-600/80 transform transition-all duration-500 group-hover:border-gray-800 group-hover:animate-pulse"
                         style={{
                           left: "50%",
                           top: "50%",
                           transform: `translate(-50%, -50%) rotate(${
-                            i * 45
-                          }deg)`,
-                          zIndex: 5,
+                            i * 15
+                          }deg) translate(12px)`,
+                          animationDelay: `${i * 0.1}s`,
                         }}
                       >
                         {/* Connection animation */}
-                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-cyan-400/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 animate-pulse" />
+                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-gray-600/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                       </div>
                     ))}
                   </div>
 
-                  {/* Central hub */}
-                  <div className="absolute w-12 h-12 bg-cyan-600 rounded-full transform transition-all duration-500 group-hover:scale-110 group-hover:bg-cyan-700">
-                    <div className="absolute inset-0 rounded-full bg-gradient-to-br from-cyan-500 to-cyan-700" />
-                    {/* Inner glow */}
-                    <div className="absolute inset-0 rounded-full bg-gradient-to-br from-cyan-400/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    {/* Pulse effect */}
-                    <div className="absolute inset-0 rounded-full border-2 border-cyan-400/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 animate-ping" />
+                  {/* Secondary layer of lines */}
+                  <div className="absolute w-48 h-48">
+                    {[...Array(16)].map((_, i) => (
+                      <div
+                        key={`medium-line-${i}`}
+                        className="absolute w-40 h-px border-t-2 border-dashed border-gray-700/60 transform transition-all duration-500 group-hover:border-gray-900/80 group-hover:animate-ping"
+                        style={{
+                          left: "50%",
+                          top: "50%",
+                          transform: `translate(-50%, -50%) rotate(${
+                            i * 22.5
+                          }deg) translate(8px)`,
+                          animationDelay: `${i * 0.15}s`,
+                        }}
+                      />
+                    ))}
                   </div>
 
-                  {/* Floating data points */}
-                  {[...Array(4)].map((_, i) => (
+                  {/* Intersection points */}
+                  {[...Array(8)].map((_, i) => (
                     <div
-                      key={`data-${i}`}
-                      className="absolute w-3 h-3 bg-blue-500 rounded-full transform transition-all duration-500 group-hover:scale-150 group-hover:bg-blue-600"
+                      key={`point-${i}`}
+                      className="absolute w-2 h-2 bg-gray-800 rounded-full transform transition-all duration-500 group-hover:scale-150 group-hover:animate-bounce"
                       style={{
-                        left: `${Math.cos((i * Math.PI * 2) / 4) * 60 + 48}px`,
-                        top: `${Math.sin((i * Math.PI * 2) / 4) * 60 + 48}px`,
-                        transform: `translate(-50%, -50%)`,
-                        zIndex: 15,
+                        left: "50%",
+                        top: "50%",
+                        transform: `translate(-50%, -50%) rotate(${
+                          i * 45
+                        }deg) translate(24px)`,
+                        animationDelay: `${i * 0.2}s`,
                       }}
-                    >
-                      {/* Data point glow */}
-                      <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-400/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    </div>
+                    />
                   ))}
+
+                  {/* Central point */}
+                  <div className="absolute w-3 h-3 bg-gray-900 rounded-full transform transition-all duration-500 group-hover:scale-150 group-hover:animate-ping">
+                    <div className="absolute inset-0 rounded-full border-2 border-gray-700/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  </div>
+
+                  {/* Additional connections on hover */}
+                  <div className="absolute w-48 h-48 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    {[...Array(12)].map((_, i) => (
+                      <div
+                        key={`hover-line-${i}`}
+                        className="absolute w-32 h-px border-t-2 border-dashed border-gray-500/40 transform transition-all duration-500 group-hover:animate-spin"
+                        style={{
+                          left: "50%",
+                          top: "50%",
+                          transform: `translate(-50%, -50%) rotate(${
+                            i * 30
+                          }deg) translate(16px)`,
+                          animationDuration: `${3 + i}s`,
+                        }}
+                      >
+                        {/* Connection animation */}
+                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-gray-500/30 to-transparent" />
+                      </div>
+                    ))}
+                  </div>
                 </div>
                 {/* Overlay text */}
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-20">
-                  <div className="text-xs text-cyan-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm">
-                    Nodes and connections create networks
+                  <div className="text-xs text-gray-700 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm">
+                    Lines create network connections
                   </div>
                 </div>
               </div>
