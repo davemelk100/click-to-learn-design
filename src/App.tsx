@@ -792,8 +792,8 @@ function App() {
               </div>
             </div>
           }
-          fontFamily="roboto"
-          descriptionClassName="font-roboto"
+          fontFamily="oswald"
+          descriptionClassName="font-oswald"
           background="bg-gradient-to-br from-stone-50/50 to-slate-50/50"
         />
       </div>
