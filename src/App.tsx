@@ -6,14 +6,12 @@ function App() {
   return (
     <div className="min-h-screen w-full">
       <header className="py-4 bg-gray-900 text-gray-400">
-        <div className="flex items-center px-4">
-          <div className="flex-1 text-center">
-            <h2 className="text-lg font-medium inline-block">
-              Design Principles Explorer
-            </h2>
-          </div>
-          <div className="flex-1 text-center">
-            <span className="text-sm inline-block">Interactive Learning</span>
+        <div className="container mx-auto px-4">
+          <div className="flex items-center">
+            <div className="flex items-center gap-2">
+              <Palette className="w-5 h-5" />
+              <span className="text-sm font-medium">DESIGN PANES</span>
+            </div>
           </div>
         </div>
       </header>
@@ -1087,9 +1085,11 @@ function App() {
         />
         <DesignSection
           title="Function Over Form"
-          description="Function Over Form emphasizes that usability and practical functionality should take precedence over purely aesthetic considerations. This principle guides designers to create interfaces that are intuitive, efficient, and accessible, even if it means sacrificing some decorative elements."
-          designPrinciple="Usability First – Prioritizing practical functionality and user experience over decorative elements."
-          exampleLink="https://www.nngroup.com/articles/function-over-form/"
+          description="Prioritize usability and practical functionality over aesthetic considerations. While visual appeal is important, it should never compromise the core functionality of the design."
+          designPrinciple="Usability First"
+          exampleLink="https://www.nngroup.com/articles/aesthetic-usability-effect/"
+          fontFamily="overlock-sc"
+          descriptionClassName="font-overlock-sc"
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
               <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-stone-50 to-slate-50 p-4 relative group">
@@ -1132,9 +1132,78 @@ function App() {
               </div>
             </div>
           }
-          fontFamily="overlock-sc"
-          descriptionClassName="font-overlock-sc"
-          background="bg-gradient-to-br from-stone-50/50 to-slate-50/50"
+        />
+        <DesignSection
+          title="Designing Networks"
+          description="Designing Networks explores how to create visual representations of connected systems and relationships. By using nodes, connections, and strategic layout, we can create clear and intuitive visualizations of complex networks and their interactions."
+          designPrinciple="Connection & Flow – Using visual elements to represent relationships and interactions in a network."
+          exampleLink="https://www.interaction-design.org/literature/topics/network-visualization"
+          visualComponent={
+            <div className="flex items-center justify-center w-full h-full">
+              <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-cyan-50 to-blue-50 p-4 relative group">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  {/* Network nodes */}
+                  <div className="relative w-48 h-48">
+                    {[...Array(6)].map((_, i) => (
+                      <div
+                        key={`node-${i}`}
+                        className="absolute w-8 h-8 bg-cyan-500/80 rounded-full transform transition-all duration-500 group-hover:scale-110 group-hover:bg-cyan-600"
+                        style={{
+                          left: `${
+                            Math.cos((i * Math.PI * 2) / 6) * 60 + 84
+                          }px`,
+                          top: `${Math.sin((i * Math.PI * 2) / 6) * 60 + 84}px`,
+                        }}
+                      >
+                        <div className="absolute inset-1 bg-gradient-to-br from-cyan-400 to-cyan-600 rounded-full" />
+                      </div>
+                    ))}
+
+                    {/* Central node */}
+                    <div className="absolute left-1/2 top-1/2 w-12 h-12 bg-blue-600 rounded-full transform -translate-x-1/2 -translate-y-1/2 transition-all duration-500 group-hover:scale-125 group-hover:bg-blue-700">
+                      <div className="absolute inset-1 bg-gradient-to-br from-blue-500 to-blue-700 rounded-full" />
+                    </div>
+
+                    {/* Connection lines */}
+                    <div className="absolute inset-0">
+                      {[...Array(6)].map((_, i) => (
+                        <div
+                          key={`line-${i}`}
+                          className="absolute left-1/2 top-1/2 w-[60px] h-px bg-cyan-400/50 origin-left transform transition-all duration-500 group-hover:bg-cyan-500/70"
+                          style={{
+                            transform: `translate(-1px, -1px) rotate(${
+                              (i * 360) / 6
+                            }deg)`,
+                          }}
+                        />
+                      ))}
+                    </div>
+
+                    {/* Animated particles */}
+                    {[...Array(6)].map((_, i) => (
+                      <div
+                        key={`particle-${i}`}
+                        className="absolute left-1/2 top-1/2 w-2 h-2 bg-cyan-400 rounded-full transform -translate-x-1/2 -translate-y-1/2"
+                        style={{
+                          animation: `moveAlongLine${i} 3s infinite`,
+                          animationDelay: `${i * 0.5}s`,
+                        }}
+                      />
+                    ))}
+                  </div>
+                </div>
+                {/* Overlay text */}
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
+                  <div className="text-xs text-cyan-600 font-medium bg-white/80 px-2 py-1 rounded">
+                    Lines create network connections
+                  </div>
+                </div>
+              </div>
+            </div>
+          }
+          fontFamily="helvetica"
+          descriptionClassName="font-helvetica"
+          background="bg-gradient-to-br from-cyan-50/50 to-blue-50/50"
         />
       </div>
     </div>

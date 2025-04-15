@@ -53,38 +53,32 @@ const DesignSection: React.FC<DesignSectionProps> = ({
     return () => window.removeEventListener("keydown", handleEscape);
   }, [isAiOpen]);
 
-  const getFontClass = (font: string) => {
-    switch (font) {
-      case "avenir":
-        return "font-avenir";
+  const getFontClass = (fontFamily: DesignSectionProps["fontFamily"]) => {
+    switch (fontFamily) {
       case "helvetica":
         return "font-helvetica";
+      case "avenir":
+        return "font-avenir";
+      case "roboto":
+        return "font-roboto";
       case "dm-sans":
         return "font-dm-sans";
       case "eb-garamond":
         return "font-eb-garamond";
-      case "source-code-pro":
-        return "font-source-code-pro";
-      case "share-tech":
-        return "font-share-tech";
-      case "niconne":
-        return "font-niconne";
-      case "rubik-scribble":
-        return "font-rubik-scribble";
-      case "habibi":
-        return "font-habibi";
       case "anek-gurmukhi":
         return "font-anek-gurmukhi";
-      case "oswald":
-        return "font-oswald";
+      case "source-code-pro":
+        return "font-source-code-pro";
       case "roboto-slab":
         return "font-roboto-slab";
       case "josefin-sans":
         return "font-josefin-sans";
-      case "roboto-flex":
-        return "font-roboto-flex";
+      case "habibi":
+        return "font-habibi";
       case "overlock-sc":
         return "font-overlock-sc";
+      case "oswald":
+        return "font-oswald tracking-[1px]";
       default:
         return "font-helvetica";
     }
