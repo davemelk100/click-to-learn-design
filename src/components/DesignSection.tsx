@@ -124,7 +124,7 @@ const DesignSection: React.FC<DesignSectionProps> = ({
   };
 
   const fontClass = getFontClass(fontFamily);
-  const titleClass = `text-2xl font-bold tracking-tight text-gray-900 ${fontClass} ${titleClassName}`;
+  const titleClass = `text-2xl font-medium tracking-tight text-gray-900 ${fontClass} ${titleClassName}`;
   const contentClass = "";
 
   const shouldRemoveRightBorder =

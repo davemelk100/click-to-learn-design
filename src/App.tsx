@@ -60,6 +60,89 @@ function App() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 divide-y md:divide-y-0 md:divide-x border-gray-200/50">
         <DesignSection
+          title="Dimensional Hierarchy"
+          description="Dimensional Hierarchy creates visual importance through varying levels of depth and dimensionality. By using shadows, perspective, and strategic layering, elements can appear to float at different levels, creating a clear visual hierarchy."
+          designPrinciple="Depth – Using three-dimensional space to establish visual importance and relationships."
+          exampleLink="https://www.toptal.com/designers/visual/principles-of-design"
+          visualComponent={
+            <div className="flex items-center justify-center w-full h-full">
+              <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-amber-50 to-orange-50 p-4 relative group">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  {/* Background layer - subtle grid */}
+                  <div className="absolute w-48 h-48 opacity-20">
+                    {[...Array(16)].map((_, i) => (
+                      <div
+                        key={`grid-${i}`}
+                        className="absolute w-48 h-px bg-amber-400 transform transition-all duration-500"
+                        style={{
+                          top: `${i * 8}px`,
+                          transform: `rotate(${i * 11.25}deg)`,
+                        }}
+                      />
+                    ))}
+                  </div>
+
+                  {/* Middle layer - floating elements */}
+                  <div className="absolute w-48 h-48">
+                    {[...Array(6)].map((_, i) => (
+                      <div
+                        key={`float-${i}`}
+                        className="absolute w-6 h-6 bg-amber-500/60 rounded-lg shadow-lg transform transition-all duration-500 group-hover:translate-y-[-4px] group-hover:shadow-xl"
+                        style={{
+                          left: `${
+                            Math.cos((i * Math.PI * 2) / 6) * 30 + 48
+                          }px`,
+                          top: `${Math.sin((i * Math.PI * 2) / 6) * 30 + 48}px`,
+                          transform: `rotate(${i * 30}deg) translateZ(${
+                            i * 4
+                          }px)`,
+                          zIndex: i,
+                        }}
+                      >
+                        <div className="absolute inset-0.5 bg-gradient-to-br from-amber-400 to-amber-600 rounded-lg" />
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Foreground layer - prominent element */}
+                  <div className="absolute w-12 h-12 bg-amber-700 rounded-lg shadow-2xl transform transition-all duration-500 group-hover:translate-y-[-8px] group-hover:shadow-3xl">
+                    <div className="absolute inset-0.5 bg-gradient-to-br from-amber-600 to-amber-800 rounded-lg" />
+                    {/* Inner shadow */}
+                    <div className="absolute inset-0 rounded-lg shadow-inner" />
+                  </div>
+
+                  {/* Accent elements - depth indicators */}
+                  <div className="absolute w-48 h-48">
+                    {[...Array(4)].map((_, i) => (
+                      <div
+                        key={`depth-${i}`}
+                        className="absolute w-2 h-2 bg-amber-800/40 rounded-full transform transition-all duration-500"
+                        style={{
+                          left: `${
+                            Math.cos((i * Math.PI * 2) / 4) * 40 + 48
+                          }px`,
+                          top: `${Math.sin((i * Math.PI * 2) / 4) * 40 + 48}px`,
+                          transform: `translateZ(${i * -8}px)`,
+                          opacity: 0.3 + i * 0.1,
+                        }}
+                      />
+                    ))}
+                  </div>
+                </div>
+                {/* Overlay text */}
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
+                  <div className="text-xs text-amber-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-dm-sans">
+                    Depth creates visual importance
+                  </div>
+                </div>
+              </div>
+            </div>
+          }
+          fontFamily="dm-sans"
+          descriptionClassName="font-dm-sans"
+          background="bg-gradient-to-br from-amber-50/50 to-orange-50/50"
+        />
+        <DesignSection
           title="Rule of Thirds"
           description="The Rule of Thirds divides a composition into nine equal parts using two horizontal and two vertical lines. Key elements placed along these lines or at their intersections create more engaging and balanced designs."
           designPrinciple="Balance – Distributing elements evenly to create a feeling of stability (can be symmetrical or asymmetrical)."
@@ -595,89 +678,6 @@ function App() {
           background="bg-gradient-to-br from-violet-50/50 to-indigo-50/50"
         />
         <DesignSection
-          title="Dimensional Hierarchy"
-          description="Dimensional Hierarchy creates visual importance through varying levels of depth and dimensionality. By using shadows, perspective, and strategic layering, elements can appear to float at different levels, creating a clear visual hierarchy."
-          designPrinciple="Depth – Using three-dimensional space to establish visual importance and relationships."
-          exampleLink="https://www.toptal.com/designers/visual/principles-of-design"
-          visualComponent={
-            <div className="flex items-center justify-center w-full h-full">
-              <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-amber-50 to-orange-50 p-4 relative group">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  {/* Background layer - subtle grid */}
-                  <div className="absolute w-48 h-48 opacity-20">
-                    {[...Array(16)].map((_, i) => (
-                      <div
-                        key={`grid-${i}`}
-                        className="absolute w-48 h-px bg-amber-400 transform transition-all duration-500"
-                        style={{
-                          top: `${i * 8}px`,
-                          transform: `rotate(${i * 11.25}deg)`,
-                        }}
-                      />
-                    ))}
-                  </div>
-
-                  {/* Middle layer - floating elements */}
-                  <div className="absolute w-48 h-48">
-                    {[...Array(6)].map((_, i) => (
-                      <div
-                        key={`float-${i}`}
-                        className="absolute w-6 h-6 bg-amber-500/60 rounded-lg shadow-lg transform transition-all duration-500 group-hover:translate-y-[-4px] group-hover:shadow-xl"
-                        style={{
-                          left: `${
-                            Math.cos((i * Math.PI * 2) / 6) * 30 + 48
-                          }px`,
-                          top: `${Math.sin((i * Math.PI * 2) / 6) * 30 + 48}px`,
-                          transform: `rotate(${i * 30}deg) translateZ(${
-                            i * 4
-                          }px)`,
-                          zIndex: i,
-                        }}
-                      >
-                        <div className="absolute inset-0.5 bg-gradient-to-br from-amber-400 to-amber-600 rounded-lg" />
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* Foreground layer - prominent element */}
-                  <div className="absolute w-12 h-12 bg-amber-700 rounded-lg shadow-2xl transform transition-all duration-500 group-hover:translate-y-[-8px] group-hover:shadow-3xl">
-                    <div className="absolute inset-0.5 bg-gradient-to-br from-amber-600 to-amber-800 rounded-lg" />
-                    {/* Inner shadow */}
-                    <div className="absolute inset-0 rounded-lg shadow-inner" />
-                  </div>
-
-                  {/* Accent elements - depth indicators */}
-                  <div className="absolute w-48 h-48">
-                    {[...Array(4)].map((_, i) => (
-                      <div
-                        key={`depth-${i}`}
-                        className="absolute w-2 h-2 bg-amber-800/40 rounded-full transform transition-all duration-500"
-                        style={{
-                          left: `${
-                            Math.cos((i * Math.PI * 2) / 4) * 40 + 48
-                          }px`,
-                          top: `${Math.sin((i * Math.PI * 2) / 4) * 40 + 48}px`,
-                          transform: `translateZ(${i * -8}px)`,
-                          opacity: 0.3 + i * 0.1,
-                        }}
-                      />
-                    ))}
-                  </div>
-                </div>
-                {/* Overlay text */}
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
-                  <div className="text-xs text-amber-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-dm-sans">
-                    Depth creates visual importance
-                  </div>
-                </div>
-              </div>
-            </div>
-          }
-          fontFamily="dm-sans"
-          descriptionClassName="font-dm-sans"
-          background="bg-gradient-to-br from-amber-50/50 to-orange-50/50"
-        />
-        <DesignSection
           title="Basic Color Theory"
           description="Basic Color Theory explores the fundamental relationships between colors. By understanding primary colors, color harmony, and the color wheel, we can create visually appealing and meaningful color combinations."
           designPrinciple="Color Relationships – Understanding how colors interact and complement each other."
@@ -840,6 +840,7 @@ function App() {
           }
           fontFamily="oswald"
           descriptionClassName="font-oswald"
+          titleClassName="tracking-[2px]"
           background="bg-gradient-to-br from-stone-50/50 to-slate-50/50"
         />
         <DesignSection
