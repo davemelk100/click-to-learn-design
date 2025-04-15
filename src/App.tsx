@@ -1,16 +1,29 @@
 import React from "react";
-import { MessageSquare } from "lucide-react";
+import { MessageSquare, Palette } from "lucide-react";
 import DesignSection from "./components/DesignSection";
 
 function App() {
   return (
     <div className="min-h-screen w-full">
-      <header className="py-4 bg-gray-900 text-gray-400">
-        <div className="flex items-center gap-5">
-          <span className="text-lg pl-4 uppercase text-white">
-            Design Panes
-          </span>
-          <span className="text-sm text-gray-400">
+      <header className="py-4 bg-gray-100 text-gray-900">
+        <div className="flex items-center gap-4">
+          <div className="w-8 h-8 relative ml-4">
+            {[...Array(8)].map((_, i) => (
+              <div
+                key={`line-${i}`}
+                className="absolute w-8 h-px border-t border-dashed border-gray-600/80 transform origin-center"
+                style={{
+                  top: "50%",
+                  transform: `rotate(${i * 45}deg)`,
+                }}
+              />
+            ))}
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="w-1.5 h-1.5 bg-gray-700 rounded-full" />
+            </div>
+          </div>
+          <span className="text-lg uppercase text-gray-900">Design Panes</span>
+          <span className="text-sm text-gray-600 ml-5">
             Click or tap a card to ask AI about the topic.
           </span>
         </div>
@@ -1053,16 +1066,32 @@ function App() {
         />
       </div>
 
-      <footer className="py-4 bg-gray-900 text-gray-400">
-        <span className="text-sm pl-4">design: Dave Melkonian</span>
-        <a
-          href="https://davemelk.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-sm hover:text-gray-300 transition-colors absolute right-4"
-        >
-          davemelk.com
-        </a>
+      <footer className="py-4 bg-gray-100 text-gray-900">
+        <div className="flex items-center gap-6">
+          <div className="w-8 h-8 relative ml-4">
+            {[...Array(8)].map((_, i) => (
+              <div
+                key={`line-${i}`}
+                className="absolute w-8 h-px border-t border-dashed border-gray-600/80 transform origin-center"
+                style={{
+                  top: "50%",
+                  transform: `rotate(${i * 45}deg)`,
+                }}
+              />
+            ))}
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="w-1.5 h-1.5 bg-gray-700 rounded-full" />
+            </div>
+          </div>
+          <a
+            href="https://davemelk.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm text-gray-900 hover:text-gray-600 transition-colors uppercase"
+          >
+            design: Dave Melkonian
+          </a>
+        </div>
       </footer>
     </div>
   );
