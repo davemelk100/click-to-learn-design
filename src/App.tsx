@@ -5,21 +5,23 @@ import DesignSection from "./components/DesignSection";
 function App() {
   return (
     <div className="min-h-screen w-full">
-      {/* <header className="w-full bg-gradient-to-r from-gray-900 to-gray-800 text-white py-8 px-6">
-        <div className="max-w-7xl">
-          <h1 className="text-3xl font-bold mb-2">Design Principles Explorer</h1>
-          <div className="flex items-center gap-2 text-sm text-gray-300">
-            <MessageSquare className="w-4 h-4" />
-            <span>Click the chat icon in each card to learn more about the design principles</span>
-          </div>
+      <header className="py-4 bg-gray-900 text-gray-400">
+        <div className="flex items-center gap-5">
+          <span className="text-lg pl-4 uppercase text-white">
+            Design Panes
+          </span>
+          <span className="text-sm text-gray-400">
+            Click or tap a card to ask AI about the topic.
+          </span>
         </div>
-      </header> */}
+      </header>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 divide-y md:divide-y-0 md:divide-x border-gray-200/50">
         <DesignSection
           title="Spatial Layers"
           description="Spatial Layers create visual hierarchy through the careful arrangement of overlapping elements. This technique uses depth, shadow, and transparency to establish clear relationships between components while maintaining visual harmony."
           designPrinciple="Contrast – Using differences in color, size, or shape to create visual interest and hierarchy."
+          exampleLink="https://dribbble.com/tags/spatial_layers"
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
               <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-sky-50 to-blue-50 p-4 flex items-center justify-center group">
@@ -87,6 +89,7 @@ function App() {
           title="Bezold Effect"
           description="The Bezold Effect occurs when the appearance of a color is altered by the colors adjacent to it. This optical illusion demonstrates how our perception of color can be dramatically influenced by its surrounding colors."
           designPrinciple="Contrast – Using differences in color, size, or shape to create visual interest and hierarchy."
+          exampleLink="https://www.interaction-design.org/literature/topics/bezold-effect"
           visualComponent={
             <div className="flex items-center justify-center w-full h-full gap-6 flex-wrap">
               <div className="w-[180px] h-[180px] grid grid-cols-8 gap-0.5 bg-orange-100 p-2 group transition-all duration-500 hover:bg-orange-200">
@@ -125,6 +128,7 @@ function App() {
           title="Observed Rhythm"
           description="Observed Rhythm creates visual flow through repeating elements. This dynamic pattern uses varying sizes and spacing to guide the viewer's eye naturally through the design."
           designPrinciple="Repetition – Reusing visual elements to create consistency."
+          exampleLink="https://www.toptal.com/designers/visual/rhythm-design-principle"
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
               <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-r from-purple-100 to-indigo-50 p-4 flex items-end gap-3 group">
@@ -168,6 +172,7 @@ function App() {
           title="Rule of Thirds"
           description="The Rule of Thirds divides a composition into nine equal parts using two horizontal and two vertical lines. Key elements placed along these lines or at their intersections create more engaging and balanced designs."
           designPrinciple="Balance – Distributing elements evenly to create a feeling of stability (can be symmetrical or asymmetrical)."
+          exampleLink="https://www.photographymad.com/pages/view/rule-of-thirds"
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
               <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-emerald-50 to-teal-50 p-4 relative group">
@@ -215,6 +220,7 @@ function App() {
           title="Ambiguous Scale"
           description="Ambiguous Scale challenges perception by presenting elements whose size relationships are intentionally unclear. This creates an engaging visual puzzle that draws viewers in to resolve the spatial ambiguity."
           designPrinciple="Contrast – Using differences in color, size, or shape to create visual interest and hierarchy."
+          exampleLink="https://www.smashingmagazine.com/2014/03/design-principles-compositional-balance-symmetry-asymmetry/"
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
               <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-zinc-50 to-neutral-50 p-4 relative overflow-hidden group">
@@ -303,6 +309,7 @@ function App() {
           title="Law of Proximity"
           description="The Law of Proximity states that objects that are close to one another are perceived as being related or grouped together. This principle helps create visual organization and relationships between elements in a design."
           designPrinciple="Proximity – Grouping related items together to show their connection."
+          exampleLink="https://www.interaction-design.org/literature/topics/gestalt-principles"
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
               <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-amber-50 to-orange-50 p-4 relative group">
@@ -350,73 +357,52 @@ function App() {
           title="Interwoven Space"
           description="Interwoven Space creates complex visual relationships by carefully layering and connecting elements. This technique uses overlapping forms, transparency, and strategic placement to create a sense of depth and interconnectedness."
           designPrinciple="Depth – Creating the illusion of three-dimensional space through layering and perspective."
+          exampleLink="https://www.behance.net/gallery/101333357/Interwoven-Space"
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
               <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-rose-50 to-pink-50 p-4 relative group">
                 <div className="absolute inset-0 flex items-center justify-center">
-                  {/* Base layer - circular pattern */}
-                  <div className="absolute w-48 h-48">
-                    {[...Array(8)].map((_, i) => (
-                      <div
-                        key={`circle-${i}`}
-                        className="absolute w-24 h-24 border-2 border-rose-300 rounded-full transform transition-all duration-700"
-                        style={{
-                          left: `${
-                            Math.cos((i * Math.PI * 2) / 8) * 40 + 48
-                          }px`,
-                          top: `${Math.sin((i * Math.PI * 2) / 8) * 40 + 48}px`,
-                          transform: `rotate(${i * 45}deg)`,
-                          opacity: 0.6,
-                        }}
-                      />
-                    ))}
-                  </div>
-
-                  {/* Middle layer - interwoven lines */}
-                  <div className="absolute w-48 h-48">
+                  {/* Base grid */}
+                  <div className="absolute w-36 h-36 opacity-20">
                     {[...Array(4)].map((_, i) => (
                       <div
-                        key={`line-${i}`}
-                        className="absolute w-48 h-48 border-t-2 border-rose-400 transform transition-all duration-700"
+                        key={`grid-${i}`}
+                        className="absolute w-36 h-px bg-rose-400 transform transition-all duration-500"
                         style={{
+                          top: `${i * 12}px`,
                           transform: `rotate(${i * 45}deg)`,
-                          opacity: 0.7,
                         }}
                       />
                     ))}
                   </div>
 
-                  {/* Foreground elements - floating shapes */}
-                  {[...Array(6)].map((_, i) => (
-                    <div
-                      key={`shape-${i}`}
-                      className="absolute w-8 h-8 bg-rose-500/80 rounded-lg transform transition-all duration-500 hover:scale-125 hover:bg-rose-400"
-                      style={{
-                        left: `${Math.cos((i * Math.PI * 2) / 6) * 40 + 48}px`,
-                        top: `${Math.sin((i * Math.PI * 2) / 6) * 40 + 48}px`,
-                        transform: `rotate(${i * 30}deg)`,
-                        zIndex: 10,
-                      }}
-                    />
-                  ))}
+                  {/* Simple overlapping squares */}
+                  <div className="absolute w-24 h-24 transform rotate-12 transition-all duration-500 group-hover:rotate-0">
+                    <div className="absolute inset-0 border-2 border-rose-400/60 rounded-lg" />
+                    <div className="absolute inset-2 border-2 border-rose-500/40 rounded-lg" />
+                    <div className="absolute inset-4 border-2 border-rose-600/20 rounded-lg" />
+                  </div>
 
-                  {/* Accent elements - small dots */}
-                  {[...Array(12)].map((_, i) => (
-                    <div
-                      key={`dot-${i}`}
-                      className="absolute w-2 h-2 bg-rose-600 rounded-full transform transition-all duration-500"
-                      style={{
-                        left: `${Math.cos((i * Math.PI * 2) / 12) * 60 + 48}px`,
-                        top: `${Math.sin((i * Math.PI * 2) / 12) * 60 + 48}px`,
-                        opacity: 0.8,
-                      }}
-                    />
-                  ))}
+                  {/* Vertical line */}
+                  <div className="absolute w-px h-24 bg-rose-400/40 transform transition-all duration-500 group-hover:h-32 group-hover:bg-rose-500/60" />
+
+                  {/* Horizontal line */}
+                  <div className="absolute w-24 h-px bg-rose-400/40 transform transition-all duration-500 group-hover:w-32 group-hover:bg-rose-500/60" />
+
+                  {/* Floating elements */}
+                  <div
+                    className="absolute w-4 h-4 bg-rose-500/60 rounded-full transform transition-all duration-500 group-hover:scale-150 group-hover:bg-rose-600/80"
+                    style={{ top: "20%", left: "20%" }}
+                  />
+                  <div
+                    className="absolute w-4 h-4 bg-rose-500/60 rounded-full transform transition-all duration-500 group-hover:scale-150 group-hover:bg-rose-600/80"
+                    style={{ bottom: "20%", right: "20%" }}
+                  />
                 </div>
                 {/* Overlay text */}
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
                   <div className="text-xs text-rose-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm">
-                    Layered elements create depth and connection
+                    Simple shapes create depth
                   </div>
                 </div>
               </div>
@@ -430,6 +416,7 @@ function App() {
           title="Artful Reduction"
           description="Artful Reduction demonstrates how removing elements can strengthen a design. By carefully eliminating unnecessary components, the remaining elements gain more impact and clarity, creating a more focused and powerful visual statement."
           designPrinciple="Minimalism – Using the fewest elements necessary to create maximum impact."
+          exampleLink="https://www.nngroup.com/articles/characteristics-minimalism/"
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
               <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-stone-50 to-slate-50 p-4 relative group">
@@ -484,6 +471,7 @@ function App() {
           title="Drawing With Code"
           description="Drawing With Code demonstrates how programming can be used to create artistic patterns and designs. By using algorithms, mathematical functions, and creative coding techniques, we can generate complex and beautiful visual compositions."
           designPrinciple="Algorithmic Art – Using code to create visual patterns and designs."
+          exampleLink="https://www.openprocessing.org/browse/"
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
               <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-violet-50 to-indigo-50 p-4 relative group">
@@ -555,6 +543,7 @@ function App() {
           title="Dimensional Hierarchy"
           description="Dimensional Hierarchy creates visual importance through varying levels of depth and dimensionality. By using shadows, perspective, and strategic layering, elements can appear to float at different levels, creating a clear visual hierarchy."
           designPrinciple="Depth – Using three-dimensional space to establish visual importance and relationships."
+          exampleLink="https://www.behance.net/gallery/101333357/Dimensional-Hierarchy"
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
               <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-amber-50 to-orange-50 p-4 relative group">
@@ -637,6 +626,7 @@ function App() {
           title="Basic Color Theory"
           description="Basic Color Theory explores the fundamental relationships between colors. By understanding primary colors, color harmony, and the color wheel, we can create visually appealing and meaningful color combinations."
           designPrinciple="Color Relationships – Understanding how colors interact and complement each other."
+          exampleLink="https://www.colormatters.com/color-and-design/basic-color-theory"
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
               <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-sky-50 to-blue-50 p-4 relative group">
@@ -701,6 +691,7 @@ function App() {
           title="Axonometric Projection"
           description="Axonometric Projection is a method of representing 3D objects in 2D space using parallel projection. Unlike perspective projection, it maintains consistent scale and angles, making it ideal for technical drawings and architectural visualization."
           designPrinciple="Parallel Projection – Representing 3D space in 2D while maintaining consistent measurements."
+          exampleLink="https://www.archdaily.com/897465/axonometric-vs-isometric-projection"
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
               <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-stone-50 to-slate-50 p-4 relative group">
@@ -800,6 +791,7 @@ function App() {
           title="Subjective Emphasis"
           description="Subjective Emphasis demonstrates how visual elements can be highlighted through various design techniques. By using contrast, scale, color, and positioning, designers can guide the viewer's attention to specific elements, creating a visual hierarchy that communicates importance and meaning."
           designPrinciple="Visual Hierarchy – Using design elements to create emphasis and guide attention."
+          exampleLink="https://www.toptal.com/designers/visual/principles-of-design-hierarchy"
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
               <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-slate-50 to-indigo-50 p-4 relative group">
@@ -873,6 +865,7 @@ function App() {
           title="Overlapping Relationships"
           description="Overlapping Relationships demonstrate how elements can create visual connections and depth through strategic layering. By carefully controlling transparency, shadows, and positioning, we can create a sense of depth and establish visual relationships between elements."
           designPrinciple="Depth & Connection – Using overlapping elements to create visual hierarchy and relationships."
+          exampleLink="https://www.behance.net/gallery/101333357/Overlapping-Relationships"
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
               <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-rose-50 to-pink-50 p-4 relative group">
@@ -959,6 +952,7 @@ function App() {
           title="Designing Networks"
           description="Designing Networks explores how to create visual representations of connected systems and relationships. By using nodes, connections, and strategic layout, we can create clear and intuitive visualizations of complex networks and their interactions."
           designPrinciple="Connection & Flow – Using visual elements to represent relationships and interactions in a network."
+          exampleLink="https://www.behance.net/gallery/101333357/Network-Visualization"
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
               <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-cyan-50 to-blue-50 p-4 relative group">
@@ -1058,6 +1052,18 @@ function App() {
           background="bg-gradient-to-br from-cyan-50/50 to-blue-50/50"
         />
       </div>
+
+      <footer className="py-4 bg-gray-900 text-gray-400">
+        <span className="text-sm pl-4">design: Dave Melkonian</span>
+        <a
+          href="https://davemelk.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-sm hover:text-gray-300 transition-colors absolute right-4"
+        >
+          davemelk.com
+        </a>
+      </footer>
     </div>
   );
 }

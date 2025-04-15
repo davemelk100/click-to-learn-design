@@ -4,34 +4,34 @@ import { MessageSquare, X } from "lucide-react";
 interface DesignSectionProps {
   title: string;
   description: string;
+  designPrinciple: string;
+  exampleLink?: string;
   visualComponent: React.ReactNode;
-  fontFamily?:
+  fontFamily:
+    | "helvetica"
     | "avenir"
     | "roboto"
-    | "helvetica"
+    | "habibi"
+    | "anek-gurmukhi"
     | "dm-sans"
     | "eb-garamond"
     | "source-code-pro"
-    | "share-tech"
-    | "niconne"
-    | "rubik-scribble"
-    | "habibi"
-    | "anek-gurmukhi"
     | "oswald"
-    | "roboto-slab";
+    | "roboto-slab"
+    | "share-tech";
   descriptionClassName?: string;
   background?: string;
-  designPrinciple?: string;
 }
 
 const DesignSection: React.FC<DesignSectionProps> = ({
   title,
   description,
+  designPrinciple,
+  exampleLink,
   visualComponent,
   fontFamily = "roboto",
   descriptionClassName = "",
   background = "bg-white",
-  designPrinciple = "",
 }) => {
   const [isAiOpen, setIsAiOpen] = useState(false);
   const [query, setQuery] = useState("");
@@ -153,11 +153,25 @@ const DesignSection: React.FC<DesignSectionProps> = ({
             {visualComponent}
           </div>
           <div className="px-6 pb-4">
-            <p
-              className={`text-gray-600 text-sm leading-relaxed ${descriptionClassName}`}
-            >
-              {description}
-            </p>
+            <div className="flex flex-col gap-2">
+              <p
+                className={`text-sm text-gray-600 ${
+                  descriptionClassName || ""
+                }`}
+              >
+                {description}
+              </p>
+              {exampleLink && (
+                <a
+                  href={exampleLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs text-gray-500 hover:text-gray-700 transition-colors"
+                >
+                  View example →
+                </a>
+              )}
+            </div>
             {designPrinciple && (
               <div className="mt-2 pt-2 border-t border-gray-100">
                 <p className="text-xs text-gray-500">
