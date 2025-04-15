@@ -172,7 +172,7 @@ const DesignSection: React.FC<DesignSectionProps> = ({
                 {description}
               </p>
               {designPrinciple && (
-                <div className="mt-2 pt-2 border-t border-gray-100">
+                <div className="mt-2">
                   <p className="text-xs text-gray-500">
                     <span className="font-medium">Design Principle:</span>{" "}
                     {designPrinciple}
