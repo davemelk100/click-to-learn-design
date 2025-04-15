@@ -31,6 +31,54 @@ function App() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 divide-y md:divide-y-0 md:divide-x border-gray-200/50">
         <DesignSection
+          title="Rule of Thirds"
+          description="The Rule of Thirds divides a composition into nine equal parts using two horizontal and two vertical lines. Key elements placed along these lines or at their intersections create more engaging and balanced designs."
+          designPrinciple="Balance – Distributing elements evenly to create a feeling of stability (can be symmetrical or asymmetrical)."
+          exampleLink="https://www.photographymad.com/pages/view/rule-of-thirds"
+          visualComponent={
+            <div className="flex items-center justify-center w-full h-full">
+              <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-emerald-50 to-teal-50 p-4 relative group">
+                <div className="absolute inset-0 grid grid-cols-3 grid-rows-3">
+                  {/* Vertical lines */}
+                  <div className="absolute left-1/3 top-0 bottom-0 w-px bg-emerald-600/30 group-hover:bg-emerald-600/60 transition-colors duration-300" />
+                  <div className="absolute right-1/3 top-0 bottom-0 w-px bg-emerald-600/30 group-hover:bg-emerald-600/60 transition-colors duration-300" />
+                  {/* Horizontal lines */}
+                  <div className="absolute top-1/3 left-0 right-0 h-px bg-emerald-600/30 group-hover:bg-emerald-600/60 transition-colors duration-300" />
+                  <div className="absolute bottom-1/3 left-0 right-0 h-px bg-emerald-600/30 group-hover:bg-emerald-600/60 transition-colors duration-300" />
+                  {/* Intersection points */}
+                  {[...Array(4)].map((_, i) => (
+                    <div
+                      key={i}
+                      className="absolute w-3 h-3 bg-emerald-600 rounded-full group-hover:scale-150 group-hover:bg-emerald-500 transition-all duration-300"
+                      style={{
+                        left: `${i % 2 === 0 ? "33.33%" : "66.66%"}`,
+                        top: `${i < 2 ? "33.33%" : "66.66%"}`,
+                        transform: "translate(-50%, -50%)",
+                      }}
+                    />
+                  ))}
+                  {/* Example composition elements */}
+                  <div className="absolute right-1/3 top-1/3 transform translate-x-4 -translate-y-4 group-hover:translate-x-6 group-hover:-translate-y-6 transition-transform duration-300">
+                    <div className="w-24 h-24 bg-emerald-600/20 rounded-lg transform -rotate-12 group-hover:rotate-0 group-hover:bg-emerald-600/30 transition-all duration-300" />
+                  </div>
+                  <div className="absolute left-1/3 bottom-1/3 transform -translate-x-8 translate-y-8 group-hover:-translate-x-10 group-hover:translate-y-10 transition-transform duration-300">
+                    <div className="w-16 h-16 bg-teal-600/20 rounded-full group-hover:bg-teal-600/30 transition-all duration-300" />
+                  </div>
+                </div>
+                {/* Hover overlay text */}
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="text-xs text-emerald-600 font-medium bg-white/80 px-2 py-1 rounded">
+                    Key elements at intersections
+                  </div>
+                </div>
+              </div>
+            </div>
+          }
+          fontFamily="habibi"
+          descriptionClassName="font-habibi"
+          background="bg-gradient-to-br from-emerald-50/50 to-teal-50/50"
+        />
+        <DesignSection
           title="Spatial Layers"
           description="Spatial Layers create visual hierarchy through the careful arrangement of overlapping elements. This technique uses depth, shadow, and transparency to establish clear relationships between components while maintaining visual harmony."
           designPrinciple="Contrast – Using differences in color, size, or shape to create visual interest and hierarchy."
@@ -180,54 +228,6 @@ function App() {
           }
           fontFamily="roboto"
           background="bg-[radial-gradient(circle_at_top_right,theme(colors.indigo.50/30),theme(colors.purple.50/30))]"
-        />
-        <DesignSection
-          title="Rule of Thirds"
-          description="The Rule of Thirds divides a composition into nine equal parts using two horizontal and two vertical lines. Key elements placed along these lines or at their intersections create more engaging and balanced designs."
-          designPrinciple="Balance – Distributing elements evenly to create a feeling of stability (can be symmetrical or asymmetrical)."
-          exampleLink="https://www.photographymad.com/pages/view/rule-of-thirds"
-          visualComponent={
-            <div className="flex items-center justify-center w-full h-full">
-              <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-emerald-50 to-teal-50 p-4 relative group">
-                <div className="absolute inset-0 grid grid-cols-3 grid-rows-3">
-                  {/* Vertical lines */}
-                  <div className="absolute left-1/3 top-0 bottom-0 w-px bg-emerald-600/30 group-hover:bg-emerald-600/60 transition-colors duration-300" />
-                  <div className="absolute right-1/3 top-0 bottom-0 w-px bg-emerald-600/30 group-hover:bg-emerald-600/60 transition-colors duration-300" />
-                  {/* Horizontal lines */}
-                  <div className="absolute top-1/3 left-0 right-0 h-px bg-emerald-600/30 group-hover:bg-emerald-600/60 transition-colors duration-300" />
-                  <div className="absolute bottom-1/3 left-0 right-0 h-px bg-emerald-600/30 group-hover:bg-emerald-600/60 transition-colors duration-300" />
-                  {/* Intersection points */}
-                  {[...Array(4)].map((_, i) => (
-                    <div
-                      key={i}
-                      className="absolute w-3 h-3 bg-emerald-600 rounded-full group-hover:scale-150 group-hover:bg-emerald-500 transition-all duration-300"
-                      style={{
-                        left: `${i % 2 === 0 ? "33.33%" : "66.66%"}`,
-                        top: `${i < 2 ? "33.33%" : "66.66%"}`,
-                        transform: "translate(-50%, -50%)",
-                      }}
-                    />
-                  ))}
-                  {/* Example composition elements */}
-                  <div className="absolute right-1/3 top-1/3 transform translate-x-4 -translate-y-4 group-hover:translate-x-6 group-hover:-translate-y-6 transition-transform duration-300">
-                    <div className="w-24 h-24 bg-emerald-600/20 rounded-lg transform -rotate-12 group-hover:rotate-0 group-hover:bg-emerald-600/30 transition-all duration-300" />
-                  </div>
-                  <div className="absolute left-1/3 bottom-1/3 transform -translate-x-8 translate-y-8 group-hover:-translate-x-10 group-hover:translate-y-10 transition-transform duration-300">
-                    <div className="w-16 h-16 bg-teal-600/20 rounded-full group-hover:bg-teal-600/30 transition-all duration-300" />
-                  </div>
-                </div>
-                {/* Hover overlay text */}
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="text-xs text-emerald-600 font-medium bg-white/80 px-2 py-1 rounded">
-                    Key elements at intersections
-                  </div>
-                </div>
-              </div>
-            </div>
-          }
-          fontFamily="habibi"
-          descriptionClassName="font-habibi"
-          background="bg-gradient-to-br from-emerald-50/50 to-teal-50/50"
         />
         <DesignSection
           title="Ambiguous Scale"
@@ -1063,6 +1063,54 @@ function App() {
           fontFamily="share-tech"
           descriptionClassName="font-share-tech"
           background="bg-gradient-to-br from-cyan-50/50 to-blue-50/50"
+        />
+        <DesignSection
+          title="Golden Ratio"
+          description="The Golden Ratio, approximately 1:1.618, is a mathematical proportion found in nature that creates aesthetically pleasing compositions. When used in design, it helps create balanced and harmonious layouts that feel naturally beautiful."
+          designPrinciple="Proportion – Using mathematical relationships to create visually pleasing compositions."
+          exampleLink="https://www.canva.com/learn/what-is-the-golden-ratio/"
+          visualComponent={
+            <div className="flex items-center justify-center w-full h-full">
+              <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-amber-50 to-yellow-50 p-4 relative group">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  {/* Golden Rectangle and Spiral */}
+                  <div className="relative w-40 h-24 border-2 border-amber-600/40 group-hover:border-amber-600/60 transition-all duration-300">
+                    {/* Nested Golden Rectangles */}
+                    <div className="absolute right-0 top-0 w-[61.8%] h-full border-l-2 border-amber-600/40 group-hover:border-amber-600/60 transition-all duration-300">
+                      <div className="absolute bottom-0 right-0 h-[61.8%] w-full border-t-2 border-amber-600/40 group-hover:border-amber-600/60 transition-all duration-300">
+                        <div className="absolute top-0 left-0 w-[61.8%] h-full border-r-2 border-amber-600/40 group-hover:border-amber-600/60 transition-all duration-300">
+                          <div className="absolute top-0 left-0 h-[61.8%] w-full border-b-2 border-amber-600/40 group-hover:border-amber-600/60 transition-all duration-300" />
+                        </div>
+                      </div>
+                    </div>
+                    {/* Spiral curve */}
+                    <div className="absolute right-0 top-0 w-[61.8%] h-full">
+                      <div className="absolute inset-0 border-t-2 border-l-2 rounded-tl-full border-amber-600/60 group-hover:border-amber-600 transition-all duration-300" />
+                    </div>
+                  </div>
+                  {/* Ratio numbers */}
+                  <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <span className="text-xs font-medium text-amber-700">
+                      1
+                    </span>
+                    <span className="text-xs text-amber-600">:</span>
+                    <span className="text-xs font-medium text-amber-700">
+                      1.618
+                    </span>
+                  </div>
+                </div>
+                {/* Overlay text */}
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                  <div className="text-xs text-amber-700 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm">
+                    Nature's perfect proportion
+                  </div>
+                </div>
+              </div>
+            </div>
+          }
+          fontFamily="habibi"
+          descriptionClassName="font-habibi"
+          background="bg-gradient-to-br from-amber-50/50 to-yellow-50/50"
         />
       </div>
 

@@ -119,9 +119,7 @@ const DesignSection: React.FC<DesignSectionProps> = ({
   };
 
   const fontClass = getFontClass(fontFamily);
-  const titleClass = `text-2xl font-bold px-6 pt-4 mb-2 ${fontClass} ${
-    title === "Spatial Layers" ? "tracking-[.25em]" : "tracking-tight"
-  }`;
+  const titleClass = `text-2xl font-bold tracking-tight ${fontClass}`;
   const contentClass = "";
 
   const shouldRemoveRightBorder =
@@ -147,7 +145,19 @@ const DesignSection: React.FC<DesignSectionProps> = ({
         }`}
       />
       <div className="h-full flex flex-col relative z-10">
-        <h2 className={titleClass}>{title}</h2>
+        <div className="flex justify-between items-center pt-3 pl-3 mb-2">
+          <h2 className={`${titleClass} leading-none`}>{title}</h2>
+          {exampleLink && (
+            <a
+              href={exampleLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs text-gray-400 hover:text-gray-300 transition-colors pr-3"
+            >
+              View Example
+            </a>
+          )}
+        </div>
         <div className={`flex-1 flex flex-col ${contentClass}`}>
           <div className="flex-1 flex items-center justify-center py-2">
             {visualComponent}
@@ -161,25 +171,15 @@ const DesignSection: React.FC<DesignSectionProps> = ({
               >
                 {description}
               </p>
-              {exampleLink && (
-                <a
-                  href={exampleLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-xs text-gray-500 hover:text-gray-700 transition-colors"
-                >
-                  View example →
-                </a>
+              {designPrinciple && (
+                <div className="mt-2 pt-2 border-t border-gray-100">
+                  <p className="text-xs text-gray-500">
+                    <span className="font-medium">Design Principle:</span>{" "}
+                    {designPrinciple}
+                  </p>
+                </div>
               )}
             </div>
-            {designPrinciple && (
-              <div className="mt-2 pt-2 border-t border-gray-100">
-                <p className="text-xs text-gray-500">
-                  <span className="font-medium">Design Principle:</span>{" "}
-                  {designPrinciple}
-                </p>
-              </div>
-            )}
           </div>
         </div>
         <button
