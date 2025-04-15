@@ -22,7 +22,7 @@ function App() {
           designPrinciple="Contrast – Using differences in color, size, or shape to create visual interest and hierarchy."
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
-              <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-sky-50 to-blue-50 p-4 flex items-center justify-center">
+              <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-sky-50 to-blue-50 p-4 flex items-center justify-center group">
                 <div className="relative w-[280px] h-[120px] group">
                   {/* Background layer */}
                   <div className="absolute inset-0 bg-sky-100 rounded-lg transform group-hover:rotate-6 transition-transform duration-500" />
@@ -70,6 +70,12 @@ function App() {
                   <div className="absolute -right-2 top-1/2 -translate-y-1/2 w-20 h-20 bg-gradient-to-br from-sky-200 to-blue-100 rounded-full opacity-20 blur-xl group-hover:opacity-40 transition-opacity duration-500" />
                   <div className="absolute -left-4 bottom-0 w-16 h-16 bg-gradient-to-tr from-sky-100 to-white rounded-lg opacity-30 blur-lg group-hover:opacity-50 transition-opacity duration-500" />
                 </div>
+                {/* Overlay text - moved outside the relative container and given higher z-index */}
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-50">
+                  <div className="text-xs text-sky-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm">
+                    Layers create depth and hierarchy
+                  </div>
+                </div>
               </div>
             </div>
           }
@@ -83,25 +89,31 @@ function App() {
           designPrinciple="Contrast – Using differences in color, size, or shape to create visual interest and hierarchy."
           visualComponent={
             <div className="flex items-center justify-center w-full h-full gap-6 flex-wrap">
-              <div className="w-[180px] h-[180px] grid grid-cols-8 gap-0.5 bg-orange-100 p-2">
+              <div className="w-[180px] h-[180px] grid grid-cols-8 gap-0.5 bg-orange-100 p-2 group transition-all duration-500 hover:bg-orange-200">
                 {[...Array(64)].map((_, i) => (
                   <div
                     key={i}
                     className={`${
                       i % 2 === 0 ? "bg-red-600" : "bg-orange-50"
-                    } aspect-square`}
+                    } aspect-square transition-all duration-500 group-hover:bg-red-500`}
                   />
                 ))}
               </div>
-              <div className="w-[180px] h-[180px] grid grid-cols-8 gap-0.5 bg-slate-700 p-2">
+              <div className="w-[180px] h-[180px] grid grid-cols-8 gap-0.5 bg-slate-700 p-2 group transition-all duration-500 hover:bg-slate-800">
                 {[...Array(64)].map((_, i) => (
                   <div
                     key={i}
                     className={`${
                       i % 2 === 0 ? "bg-red-600" : "bg-slate-900"
-                    } aspect-square`}
+                    } aspect-square transition-all duration-500 group-hover:bg-red-700`}
                   />
                 ))}
+              </div>
+              {/* Overlay text */}
+              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                <div className="text-xs text-white font-medium bg-black/60 px-3 py-2 rounded-lg backdrop-blur-sm">
+                  Same red squares appear different due to their backgrounds
+                </div>
               </div>
             </div>
           }
@@ -115,17 +127,37 @@ function App() {
           designPrinciple="Repetition – Reusing visual elements to create consistency."
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
-              <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-r from-purple-100 to-indigo-50 p-4 flex items-end gap-3">
+              <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-r from-purple-100 to-indigo-50 p-4 flex items-end gap-3 group">
                 {[...Array(12)].map((_, i) => (
                   <div
                     key={i}
-                    className={`w-6 bg-indigo-600 transition-all duration-500 hover:bg-indigo-500`}
+                    className={`w-6 bg-indigo-600 transition-all duration-500 hover:bg-indigo-500 relative overflow-hidden animate-pulse`}
                     style={{
                       height: `${Math.sin((i * Math.PI) / 6) * 80 + 100}px`,
                       opacity: 0.7 + (i % 3) * 0.1,
+                      animationDuration: `${2 + (i % 3) * 0.5}s`,
+                      animationDelay: `${i * 0.1}s`,
                     }}
-                  />
+                  >
+                    {/* Inner glow effect */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-indigo-400/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+                    {/* Wave effect */}
+                    <div
+                      className="absolute inset-0 bg-gradient-to-t from-white/20 to-transparent animate-wave"
+                      style={{
+                        animationDuration: `${3 + (i % 2)}s`,
+                        animationDelay: `${i * 0.2}s`,
+                      }}
+                    />
+                  </div>
                 ))}
+                {/* Overlay text */}
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-50">
+                  <div className="text-xs text-indigo-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm">
+                    Pulsing bars create visual rhythm
+                  </div>
+                </div>
               </div>
             </div>
           }
@@ -138,19 +170,19 @@ function App() {
           designPrinciple="Balance – Distributing elements evenly to create a feeling of stability (can be symmetrical or asymmetrical)."
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
-              <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-emerald-50 to-teal-50 p-4 relative">
+              <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-emerald-50 to-teal-50 p-4 relative group">
                 <div className="absolute inset-0 grid grid-cols-3 grid-rows-3">
                   {/* Vertical lines */}
-                  <div className="absolute left-1/3 top-0 bottom-0 w-px bg-emerald-600/30" />
-                  <div className="absolute right-1/3 top-0 bottom-0 w-px bg-emerald-600/30" />
+                  <div className="absolute left-1/3 top-0 bottom-0 w-px bg-emerald-600/30 group-hover:bg-emerald-600/60 transition-colors duration-300" />
+                  <div className="absolute right-1/3 top-0 bottom-0 w-px bg-emerald-600/30 group-hover:bg-emerald-600/60 transition-colors duration-300" />
                   {/* Horizontal lines */}
-                  <div className="absolute top-1/3 left-0 right-0 h-px bg-emerald-600/30" />
-                  <div className="absolute bottom-1/3 left-0 right-0 h-px bg-emerald-600/30" />
+                  <div className="absolute top-1/3 left-0 right-0 h-px bg-emerald-600/30 group-hover:bg-emerald-600/60 transition-colors duration-300" />
+                  <div className="absolute bottom-1/3 left-0 right-0 h-px bg-emerald-600/30 group-hover:bg-emerald-600/60 transition-colors duration-300" />
                   {/* Intersection points */}
                   {[...Array(4)].map((_, i) => (
                     <div
                       key={i}
-                      className="absolute w-3 h-3 bg-emerald-600 rounded-full"
+                      className="absolute w-3 h-3 bg-emerald-600 rounded-full group-hover:scale-150 group-hover:bg-emerald-500 transition-all duration-300"
                       style={{
                         left: `${i % 2 === 0 ? "33.33%" : "66.66%"}`,
                         top: `${i < 2 ? "33.33%" : "66.66%"}`,
@@ -159,11 +191,17 @@ function App() {
                     />
                   ))}
                   {/* Example composition elements */}
-                  <div className="absolute right-1/3 top-1/3 transform translate-x-4 -translate-y-4">
-                    <div className="w-24 h-24 bg-emerald-600/20 rounded-lg transform -rotate-12" />
+                  <div className="absolute right-1/3 top-1/3 transform translate-x-4 -translate-y-4 group-hover:translate-x-6 group-hover:-translate-y-6 transition-transform duration-300">
+                    <div className="w-24 h-24 bg-emerald-600/20 rounded-lg transform -rotate-12 group-hover:rotate-0 group-hover:bg-emerald-600/30 transition-all duration-300" />
                   </div>
-                  <div className="absolute left-1/3 bottom-1/3 transform -translate-x-8 translate-y-8">
-                    <div className="w-16 h-16 bg-teal-600/20 rounded-full" />
+                  <div className="absolute left-1/3 bottom-1/3 transform -translate-x-8 translate-y-8 group-hover:-translate-x-10 group-hover:translate-y-10 transition-transform duration-300">
+                    <div className="w-16 h-16 bg-teal-600/20 rounded-full group-hover:bg-teal-600/30 transition-all duration-300" />
+                  </div>
+                </div>
+                {/* Hover overlay text */}
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="text-xs text-emerald-600 font-medium bg-white/80 px-2 py-1 rounded">
+                    Key elements at intersections
                   </div>
                 </div>
               </div>
@@ -179,7 +217,7 @@ function App() {
           designPrinciple="Contrast – Using differences in color, size, or shape to create visual interest and hierarchy."
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
-              <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-zinc-50 to-neutral-50 p-4 relative overflow-hidden">
+              <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-zinc-50 to-neutral-50 p-4 relative overflow-hidden group">
                 <div className="absolute inset-0 flex items-center justify-center">
                   {/* Main geometric shapes with ambiguous depth */}
                   <div className="relative w-48 h-48 group">
@@ -248,6 +286,12 @@ function App() {
                     </div>
                   </div>
                 </div>
+                {/* Overlay text */}
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                  <div className="text-xs text-zinc-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm">
+                    Size relationships create visual puzzles
+                  </div>
+                </div>
               </div>
             </div>
           }
@@ -261,7 +305,7 @@ function App() {
           designPrinciple="Proximity – Grouping related items together to show their connection."
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
-              <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-amber-50 to-orange-50 p-4 relative">
+              <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-amber-50 to-orange-50 p-4 relative group">
                 <div className="absolute inset-0 flex flex-col items-center justify-center gap-8">
                   {/* Group 1 - Close proximity */}
                   <div className="flex gap-2">
@@ -289,12 +333,98 @@ function App() {
                   <div className="absolute bottom-4 left-4 w-8 h-8 bg-amber-600/30 rounded-full" />
                   <div className="absolute bottom-4 right-4 w-8 h-8 bg-orange-600/30 rounded-full" />
                 </div>
+                {/* Overlay text */}
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                  <div className="text-xs text-amber-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm">
+                    Close elements are perceived as related
+                  </div>
+                </div>
               </div>
             </div>
           }
           fontFamily="dm-sans"
           descriptionClassName="font-dm-sans"
           background="bg-gradient-to-br from-amber-50/50 to-orange-50/50"
+        />
+        <DesignSection
+          title="Interwoven Space"
+          description="Interwoven Space creates complex visual relationships by carefully layering and connecting elements. This technique uses overlapping forms, transparency, and strategic placement to create a sense of depth and interconnectedness."
+          designPrinciple="Depth – Creating the illusion of three-dimensional space through layering and perspective."
+          visualComponent={
+            <div className="flex items-center justify-center w-full h-full">
+              <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-rose-50 to-pink-50 p-4 relative group">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  {/* Base layer - circular pattern */}
+                  <div className="absolute w-48 h-48">
+                    {[...Array(8)].map((_, i) => (
+                      <div
+                        key={`circle-${i}`}
+                        className="absolute w-24 h-24 border-2 border-rose-300 rounded-full transform transition-all duration-700"
+                        style={{
+                          left: `${
+                            Math.cos((i * Math.PI * 2) / 8) * 40 + 48
+                          }px`,
+                          top: `${Math.sin((i * Math.PI * 2) / 8) * 40 + 48}px`,
+                          transform: `rotate(${i * 45}deg)`,
+                          opacity: 0.6,
+                        }}
+                      />
+                    ))}
+                  </div>
+
+                  {/* Middle layer - interwoven lines */}
+                  <div className="absolute w-48 h-48">
+                    {[...Array(4)].map((_, i) => (
+                      <div
+                        key={`line-${i}`}
+                        className="absolute w-48 h-48 border-t-2 border-rose-400 transform transition-all duration-700"
+                        style={{
+                          transform: `rotate(${i * 45}deg)`,
+                          opacity: 0.7,
+                        }}
+                      />
+                    ))}
+                  </div>
+
+                  {/* Foreground elements - floating shapes */}
+                  {[...Array(6)].map((_, i) => (
+                    <div
+                      key={`shape-${i}`}
+                      className="absolute w-8 h-8 bg-rose-500/80 rounded-lg transform transition-all duration-500 hover:scale-125 hover:bg-rose-400"
+                      style={{
+                        left: `${Math.cos((i * Math.PI * 2) / 6) * 40 + 48}px`,
+                        top: `${Math.sin((i * Math.PI * 2) / 6) * 40 + 48}px`,
+                        transform: `rotate(${i * 30}deg)`,
+                        zIndex: 10,
+                      }}
+                    />
+                  ))}
+
+                  {/* Accent elements - small dots */}
+                  {[...Array(12)].map((_, i) => (
+                    <div
+                      key={`dot-${i}`}
+                      className="absolute w-2 h-2 bg-rose-600 rounded-full transform transition-all duration-500"
+                      style={{
+                        left: `${Math.cos((i * Math.PI * 2) / 12) * 60 + 48}px`,
+                        top: `${Math.sin((i * Math.PI * 2) / 12) * 60 + 48}px`,
+                        opacity: 0.8,
+                      }}
+                    />
+                  ))}
+                </div>
+                {/* Overlay text */}
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-50">
+                  <div className="text-xs text-rose-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm">
+                    Layered elements create depth and connection
+                  </div>
+                </div>
+              </div>
+            </div>
+          }
+          fontFamily="georgia"
+          descriptionClassName="font-georgia"
+          background="bg-gradient-to-br from-rose-50/50 to-pink-50/50"
         />
       </div>
     </div>
