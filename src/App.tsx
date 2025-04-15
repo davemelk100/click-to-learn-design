@@ -51,7 +51,7 @@ function App() {
             <span className="text-lg font-medium text-gray-800">
               DESIGN PANES
             </span>
-            <span className="text-sm text-gray-600 ml-4">
+            <span className="hidden md:block text-sm text-gray-600 ml-4">
               Click or tap a card to ask AI about the topic.
             </span>
           </div>
@@ -222,35 +222,45 @@ function App() {
           exampleLink="https://www.interaction-design.org/literature/topics/rhythm"
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
-              <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-r from-purple-100 to-indigo-50 p-4 flex items-end gap-3 group">
+              <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-r from-purple-100 to-indigo-50 p-4 relative group">
+                {/* Central circle */}
+                <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 rounded-full bg-indigo-600/80 group-hover:scale-110 transition-transform duration-500">
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-br from-indigo-400 to-indigo-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                </div>
+
+                {/* Concentric circles */}
+                {[...Array(4)].map((_, i) => (
+                  <div
+                    key={`circle-${i}`}
+                    className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 border-2 border-indigo-400/30 rounded-full transition-all duration-500 group-hover:scale-125 group-hover:border-indigo-400/60"
+                    style={{
+                      width: `${80 + i * 40}px`,
+                      height: `${80 + i * 40}px`,
+                      animationDelay: `${i * 0.2}s`,
+                    }}
+                  />
+                ))}
+
+                {/* Floating dots */}
                 {[...Array(12)].map((_, i) => (
                   <div
-                    key={i}
-                    className={`w-6 bg-indigo-600 transition-all duration-500 hover:bg-indigo-500 relative overflow-hidden animate-pulse`}
+                    key={`dot-${i}`}
+                    className="absolute w-3 h-3 bg-indigo-500 rounded-full transition-all duration-500 group-hover:scale-150 group-hover:bg-indigo-400"
                     style={{
-                      height: `${Math.sin((i * Math.PI) / 6) * 80 + 100}px`,
-                      opacity: 0.7 + (i % 3) * 0.1,
-                      animationDuration: `${2 + (i % 3) * 0.5}s`,
+                      left: `${50 + Math.cos((i * Math.PI * 2) / 12) * 40}%`,
+                      top: `${50 + Math.sin((i * Math.PI * 2) / 12) * 40}%`,
+                      transform: `translate(-50%, -50%)`,
                       animationDelay: `${i * 0.1}s`,
                     }}
                   >
-                    {/* Inner glow effect */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-indigo-400/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-                    {/* Wave effect */}
-                    <div
-                      className="absolute inset-0 bg-gradient-to-t from-white/20 to-transparent animate-wave"
-                      style={{
-                        animationDuration: `${3 + (i % 2)}s`,
-                        animationDelay: `${i * 0.2}s`,
-                      }}
-                    />
+                    <div className="absolute inset-0 rounded-full bg-gradient-to-br from-indigo-300 to-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   </div>
                 ))}
+
                 {/* Overlay text */}
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
                   <div className="text-xs text-indigo-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-roboto">
-                    Pulsing bars create visual rhythm
+                    Circular patterns create visual rhythm
                   </div>
                 </div>
               </div>
@@ -274,7 +284,7 @@ function App() {
                     {[...Array(3)].map((_, i) => (
                       <div
                         key={i}
-                        className="absolute left-1/2 top-1/2 border-2 border-zinc-300 rounded-lg transition-all duration-700"
+                        className="absolute left-1/2 top-1/2 border-2 border-zinc-300 rounded-lg transition-all duration-700 group-hover:scale-110 group-hover:rotate-45"
                         style={{
                           width: `${120 + i * 40}px`,
                           height: `${120 + i * 40}px`,
@@ -293,7 +303,7 @@ function App() {
                     {[...Array(5)].map((_, i) => (
                       <div
                         key={`cube-${i}`}
-                        className="absolute transform-gpu transition-all duration-1000 cursor-pointer hover:scale-150"
+                        className="absolute transform-gpu transition-all duration-1000 cursor-pointer group-hover:scale-150 group-hover:translate-z-20"
                         style={{
                           left: `${
                             Math.cos((i * Math.PI * 2) / 5) * 80 + 96
@@ -303,11 +313,8 @@ function App() {
                         }}
                       >
                         <div
-                          className="w-8 h-8 relative transform-gpu transition-transform duration-1000 hover:rotate-45"
+                          className="w-8 h-8 relative transform-gpu transition-transform duration-1000 group-hover:rotate-45 group-hover:skew-x-12 group-hover:skew-y-12"
                           style={{
-                            animation: `float ${
-                              3 + i
-                            }s ease-in-out infinite alternate`,
                             transform: `rotateX(45deg) rotateZ(${
                               45 + i * 30
                             }deg)`,
@@ -320,12 +327,12 @@ function App() {
                       </div>
                     ))}
 
-                    {/* Intersecting lines */}
-                    <div className="absolute inset-4 opacity-20">
+                    {/* Perspective lines */}
+                    <div className="absolute inset-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       {[...Array(8)].map((_, i) => (
                         <div
                           key={`line-${i}`}
-                          className="absolute left-0 right-0 h-px bg-zinc-400"
+                          className="absolute left-0 right-0 h-px bg-zinc-400 transform transition-transform duration-500 group-hover:scale-150 group-hover:rotate-45"
                           style={{
                             top: `${(i + 1) * 12.5}%`,
                             transform: `rotate(${i * 22.5}deg)`,
@@ -362,7 +369,7 @@ function App() {
                     {[...Array(4)].map((_, i) => (
                       <div
                         key={`group1-${i}`}
-                        className="w-8 h-8 bg-amber-600 rounded-full transition-all duration-300 hover:scale-110"
+                        className="w-8 h-8 bg-amber-600 rounded-full transition-all duration-300 group-hover:scale-110"
                       />
                     ))}
                   </div>
@@ -372,16 +379,16 @@ function App() {
                     {[...Array(4)].map((_, i) => (
                       <div
                         key={`group2-${i}`}
-                        className="w-8 h-8 bg-orange-600 rounded-full transition-all duration-300 hover:scale-110"
+                        className="w-8 h-8 bg-orange-600 rounded-full transition-all duration-300 group-hover:scale-110"
                       />
                     ))}
                   </div>
 
                   {/* Isolated elements */}
-                  <div className="absolute top-4 left-4 w-8 h-8 bg-amber-600/30 rounded-full" />
-                  <div className="absolute top-4 right-4 w-8 h-8 bg-orange-600/30 rounded-full" />
-                  <div className="absolute bottom-4 left-4 w-8 h-8 bg-amber-600/30 rounded-full" />
-                  <div className="absolute bottom-4 right-4 w-8 h-8 bg-orange-600/30 rounded-full" />
+                  <div className="absolute top-4 left-4 w-8 h-8 bg-amber-600/30 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute top-4 right-4 w-8 h-8 bg-orange-600/30 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute bottom-4 left-4 w-8 h-8 bg-amber-600/30 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute bottom-4 right-4 w-8 h-8 bg-orange-600/30 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
                 {/* Overlay text */}
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
@@ -464,37 +471,42 @@ function App() {
             <div className="flex items-center justify-center w-full h-full">
               <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-stone-50 to-slate-50 p-4 relative group">
                 <div className="absolute inset-0 flex items-center justify-center">
-                  {/* Initial complex pattern */}
-                  <div className="absolute w-48 h-48 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                    {[...Array(36)].map((_, i) => (
+                  {/* Initial state - complex overlapping shapes */}
+                  <div className="absolute w-48 h-48 opacity-100 group-hover:opacity-0 transition-all duration-500">
+                    {/* Background grid */}
+                    <div className="absolute inset-0 grid grid-cols-4 grid-rows-4 gap-2">
+                      {[...Array(16)].map((_, i) => (
+                        <div
+                          key={`grid-${i}`}
+                          className="bg-stone-300/30 rounded transform transition-all duration-500"
+                        />
+                      ))}
+                    </div>
+
+                    {/* Overlapping circles */}
+                    {[...Array(8)].map((_, i) => (
                       <div
-                        key={`initial-${i}`}
-                        className="absolute w-4 h-4 bg-stone-400/40 rounded transform transition-all duration-500"
+                        key={`circle-${i}`}
+                        className="absolute w-24 h-24 border-2 border-stone-400/40 rounded-full transform transition-all duration-500"
                         style={{
-                          left: `${(i % 6) * 16}px`,
-                          top: `${Math.floor(i / 6) * 16}px`,
+                          left: `${25 + Math.cos((i * Math.PI * 2) / 8) * 20}%`,
+                          top: `${25 + Math.sin((i * Math.PI * 2) / 8) * 20}%`,
+                          transform: `translate(-50%, -50%) rotate(${
+                            i * 45
+                          }deg)`,
                         }}
                       />
                     ))}
                   </div>
 
-                  {/* Reduced pattern - appears on hover */}
-                  <div className="absolute w-48 h-48 opacity-100 group-hover:opacity-0 transition-opacity duration-500">
-                    {[...Array(9)].map((_, i) => (
-                      <div
-                        key={`reduced-${i}`}
-                        className="absolute w-8 h-8 bg-stone-600/80 rounded transform transition-all duration-500 group-hover:scale-110"
-                        style={{
-                          left: `${(i % 3) * 32}px`,
-                          top: `${Math.floor(i / 3) * 32}px`,
-                        }}
-                      />
-                    ))}
-                  </div>
-
-                  {/* Focal point - emphasized element */}
-                  <div className="absolute w-12 h-12 bg-stone-800 rounded transform transition-all duration-500 group-hover:scale-125 group-hover:bg-stone-900">
-                    <div className="absolute inset-1 bg-gradient-to-br from-stone-700 to-stone-900 rounded" />
+                  {/* Final state - single focused element */}
+                  <div className="absolute w-48 h-48 opacity-0 group-hover:opacity-100 transition-all duration-500">
+                    {/* Central focus element */}
+                    <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-stone-800 rounded-lg transform transition-all duration-500 group-hover:scale-110 group-hover:rotate-6">
+                      <div className="absolute inset-1 bg-gradient-to-br from-stone-700 to-stone-900 rounded-lg" />
+                      {/* Subtle shadow */}
+                      <div className="absolute inset-0 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    </div>
                   </div>
                 </div>
                 {/* Overlay text */}
@@ -1014,7 +1026,7 @@ function App() {
               <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-amber-50 to-yellow-50 p-4 relative group">
                 <div className="absolute inset-0 flex items-center justify-center">
                   {/* Golden Rectangle and Spiral */}
-                  <div className="relative w-40 h-24 border-2 border-amber-600/40 group-hover:border-amber-600/60 transition-all duration-300">
+                  <div className="relative w-40 h-24 border-2 border-amber-600/40 group-hover:border-amber-600/60 transition-all duration-300 group-hover:shadow-[0_0_20px_rgba(245,158,11,0.5)]">
                     {/* Nested Golden Rectangles */}
                     <div className="absolute right-0 top-0 w-[61.8%] h-full border-l-2 border-amber-600/40 group-hover:border-amber-600/60 transition-all duration-300">
                       <div className="absolute bottom-0 right-0 h-[61.8%] w-full border-t-2 border-amber-600/40 group-hover:border-amber-600/60 transition-all duration-300">
