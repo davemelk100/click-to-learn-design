@@ -1497,15 +1497,6 @@ function App() {
                       </div>
                     </div>
 
-                    {/* Arrow tooltip */}
-                    <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-emerald-400/20 group-hover:bg-emerald-400/40 transition-colors duration-300 cursor-pointer flex items-center justify-center">
-                      <div className="w-6 h-6 text-emerald-600">🔍</div>
-                      <div className="absolute -top-8 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all duration-300 bg-white/90 text-emerald-800 text-xs px-2 py-1 rounded-lg shadow-lg">
-                        <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-white/90 transform rotate-45" />
-                        Search tooltip
-                      </div>
-                    </div>
-
                     {/* Rich tooltip */}
                     <div className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-emerald-400/20 group-hover:bg-emerald-400/40 transition-colors duration-300 cursor-pointer flex items-center justify-center">
                       <div className="w-6 h-6 text-emerald-600">⚙️</div>
