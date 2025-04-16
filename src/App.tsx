@@ -1774,18 +1774,14 @@ function App() {
                       transform: `translate(-50%, -50%) rotate(${i * 45}deg)`,
                       animationDelay: `${i * 0.1}s`,
                     }}
-                  >
-                    <div className="absolute inset-1 bg-gradient-to-br from-gray-300 to-gray-500 rounded-lg" />
-                  </div>
+                  />
                 ))}
               </div>
 
               {/* Central whole */}
               <div className="absolute w-32 h-32 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
-                <div className="absolute inset-0 bg-gray-600 rounded-lg shadow-lg transform transition-all duration-700 group-hover:scale-110">
-                  <div className="absolute inset-1 bg-gradient-to-br from-gray-500 to-gray-700 rounded-lg" />
-                  {/* Inner glow effect */}
-                  <div className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-gray-400/20 to-transparent" />
+                <div className="absolute inset-0 bg-gray-600 rounded-lg transform transition-all duration-700 group-hover:scale-110">
+                  <div className="absolute inset-0 bg-gray-600 rounded-lg" />
                 </div>
                 {/* Reveal animation */}
                 <div className="absolute inset-0 bg-gray-600 rounded-lg animate-[reveal_1.5s_ease-in-out_forwards]" />
@@ -1810,10 +1806,10 @@ function App() {
           }
         />
         <DesignSection
-          title="Choice Overload"
-          description="Choice Overload occurs when too many options lead to decision paralysis and decreased satisfaction. While having choices is generally good, an excessive number of options can overwhelm users and make decision-making more difficult."
-          designPrinciple="Decision Simplicity – Reducing cognitive load by limiting choices to a manageable number."
-          exampleLink="https://www.ted.com/talks/barry_schwartz_the_paradox_of_choice"
+          title="Hick's Law"
+          description="Hick's Law states that the time it takes to make a decision increases with the number and complexity of choices. This principle helps designers create interfaces that minimize cognitive load and improve decision-making efficiency."
+          designPrinciple="Decision Time – The relationship between the number of choices and the time it takes to make a decision."
+          exampleLink="https://www.nngroup.com/articles/hicks-law/"
           fontFamily="dm-sans"
           descriptionClassName="font-dm-sans"
           titleClassName="font-dm-sans"
@@ -1821,55 +1817,53 @@ function App() {
             <div className="flex items-center justify-center w-full h-full">
               <style>
                 {`
-                  @keyframes pulse {
-                    0%, 100% { transform: scale(1); opacity: 0.5; }
-                    50% { transform: scale(1.1); opacity: 1; }
+                  @keyframes highlight {
+                    0% { transform: scale(1); opacity: 0.3; }
+                    50% { transform: scale(1.1); opacity: 0.6; }
+                    100% { transform: scale(1); opacity: 0.3; }
                   }
-                  @keyframes shake {
-                    0%, 100% { transform: translateX(0); }
-                    25% { transform: translateX(-5px); }
-                    75% { transform: translateX(5px); }
+                  @keyframes pulseDecision {
+                    0% { transform: scale(1); }
+                    50% { transform: scale(1.2); }
+                    100% { transform: scale(1); }
                   }
                 `}
               </style>
-              <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-emerald-50 to-teal-50 p-4 relative group">
+              <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-amber-50 to-orange-50 p-4 relative group">
                 <div className="absolute inset-0 flex items-center justify-center">
                   {/* Main container */}
                   <div className="relative w-64 h-40">
                     {/* Initial state - many options */}
-                    <div className="absolute inset-0 opacity-100 group-hover:opacity-0 transition-opacity duration-500">
-                      {/* Grid of options */}
+                    <div className="absolute inset-0 opacity-100 group-hover:opacity-0 transition-all duration-700 ease-in-out">
                       <div className="grid grid-cols-4 gap-2">
                         {[...Array(16)].map((_, i) => (
                           <div
                             key={`option-${i}`}
-                            className="w-6 h-6 bg-emerald-400/30 rounded-lg group-hover:animate-[pulse_2s_ease-in-out_infinite]"
-                            style={{ animationDelay: `${i * 0.1}s` }}
+                            className="w-6 h-6 bg-amber-400/30 rounded-lg group-hover:animate-[highlight_1s_ease-in-out_infinite]"
+                            style={{
+                              animationDelay: `${i * 0.1}s`,
+                              transition: "all 0.5s ease-in-out",
+                            }}
                           />
                         ))}
                       </div>
                     </div>
 
-                    {/* Hover state - simplified choices */}
-                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                      {/* Simplified options */}
-                      <div className="flex flex-col gap-4 items-center">
-                        {[...Array(3)].map((_, i) => (
-                          <div
-                            key={`simplified-${i}`}
-                            className="w-12 h-12 bg-emerald-500 rounded-lg group-hover:animate-[shake_0.5s_ease-in-out]"
-                            style={{ animationDelay: `${i * 0.2}s` }}
-                          >
-                            <div className="absolute inset-1 bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-lg" />
-                          </div>
-                        ))}
+                    {/* Hover state - focused decision */}
+                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-700 ease-in-out">
+                      {/* Decision point */}
+                      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-amber-500 rounded-full animate-[pulseDecision_2s_ease-in-out_infinite]">
+                        <div className="absolute inset-0 bg-amber-500 rounded-full" />
                       </div>
+
+                      {/* Decision time indicator */}
+                      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 border-2 border-amber-400/30 rounded-full group-hover:animate-[spin_4s_linear_infinite]" />
                     </div>
 
                     {/* Overlay text */}
-                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
-                      <div className="text-xs sm:text-sm text-emerald-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-dm-sans">
-                        Fewer choices = Better decisions
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-700 ease-in-out pointer-events-none z-10">
+                      <div className="text-xs sm:text-sm text-amber-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-dm-sans">
+                        More choices = Longer decisions
                       </div>
                     </div>
                   </div>
@@ -1877,7 +1871,7 @@ function App() {
               </div>
             </div>
           }
-          background="bg-gradient-to-br from-emerald-50/50 to-teal-50/50"
+          background="bg-gradient-to-br from-amber-50/50 to-orange-50/50"
         />
       </div>
       <footer className="py-2 bg-black">
