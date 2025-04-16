@@ -1809,7 +1809,7 @@ function App() {
           title="Hick's Law"
           description="Hick's Law states that the time it takes to make a decision increases with the number and complexity of choices. This principle helps designers create interfaces that minimize cognitive load and improve decision-making efficiency."
           designPrinciple="Decision Time – The relationship between the number of choices and the time it takes to make a decision."
-          exampleLink="https://www.nngroup.com/articles/hicks-law/"
+          exampleLink="https://www.ted.com/talks/barry_schwartz_the_paradox_of_choice"
           fontFamily="dm-sans"
           descriptionClassName="font-dm-sans"
           titleClassName="font-dm-sans"
