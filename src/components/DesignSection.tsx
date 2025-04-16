@@ -25,7 +25,8 @@ interface DesignSectionProps {
     | "timmana"
     | "suwannaphum"
     | "poppins"
-    | "encode-sans-sc";
+    | "encode-sans-sc"
+    | "lexend";
   descriptionClassName?: string;
   titleClassName?: string;
   background?: string;
@@ -63,6 +64,8 @@ const DesignSection: React.FC<DesignSectionProps> = ({
     fontFamily: DesignSectionProps["fontFamily"]
   ): string => {
     switch (fontFamily) {
+      case "dm-sans":
+        return "font-dm-sans";
       case "helvetica":
         return "font-helvetica";
       case "avenir":
@@ -73,8 +76,6 @@ const DesignSection: React.FC<DesignSectionProps> = ({
         return "font-habibi";
       case "anek-gurmukhi":
         return "font-anek-gurmukhi";
-      case "dm-sans":
-        return "font-dm-sans";
       case "eb-garamond":
         return "font-eb-garamond";
       case "source-code-pro":
@@ -91,16 +92,16 @@ const DesignSection: React.FC<DesignSectionProps> = ({
         return "font-roboto-flex";
       case "overlock-sc":
         return "font-overlock-sc";
-      case "timmana":
-        return "font-timmana";
       case "suwannaphum":
         return "font-suwannaphum";
       case "poppins":
         return "font-poppins";
       case "encode-sans-sc":
         return "font-encode-sans-sc";
+      case "lexend":
+        return "font-lexend";
       default:
-        return "";
+        return "font-dm-sans";
     }
   };
 

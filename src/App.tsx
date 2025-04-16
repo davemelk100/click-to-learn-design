@@ -1408,39 +1408,54 @@ function App() {
           titleClassName="font-poppins"
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
+              <style>
+                {`
+                  @keyframes scrollText {
+                    0% { transform: translateY(0); }
+                    100% { transform: translateY(-100%); }
+                  }
+                `}
+              </style>
               <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-slate-50 to-gray-50 p-4 relative group">
-                <div className="absolute inset-0 flex flex-col items-center justify-center gap-2">
-                  {/* Heading 1 */}
-                  <div className="text-2xl font-bold text-slate-800 font-poppins group-hover:animate-float">
-                    Heading 1
-                  </div>
-                  {/* Heading 2 */}
-                  <div
-                    className="text-xl font-semibold text-slate-700 font-poppins group-hover:animate-float"
-                    style={{ animationDelay: "0.1s" }}
-                  >
-                    Heading 2
-                  </div>
-                  {/* Heading 3 */}
-                  <div
-                    className="text-lg font-medium text-slate-600 font-poppins group-hover:animate-float"
-                    style={{ animationDelay: "0.2s" }}
-                  >
-                    Heading 3
-                  </div>
-                  {/* Body text */}
-                  <div
-                    className="text-base font-normal text-slate-500 font-poppins group-hover:animate-float"
-                    style={{ animationDelay: "0.3s" }}
-                  >
-                    Body text with regular weight
-                  </div>
-                  {/* Caption */}
-                  <div
-                    className="text-sm font-light text-slate-400 font-poppins group-hover:animate-float"
-                    style={{ animationDelay: "0.4s" }}
-                  >
-                    Caption text
+                <div className="absolute inset-0 flex items-center justify-center overflow-hidden">
+                  {/* Scrolling text container */}
+                  <div className="relative w-full h-[120px] overflow-hidden">
+                    {/* First set of text */}
+                    <div className="absolute left-0 right-0 flex flex-col items-center gap-2 group-hover:animate-[scrollText_4s_linear_infinite]">
+                      <div className="text-2xl font-bold text-slate-800 font-poppins">
+                        Heading 1
+                      </div>
+                      <div className="text-xl font-semibold text-slate-700 font-poppins">
+                        Heading 2
+                      </div>
+                      <div className="text-lg font-medium text-slate-600 font-poppins">
+                        Heading 3
+                      </div>
+                      <div className="text-base font-normal text-slate-500 font-poppins">
+                        Body text with regular weight
+                      </div>
+                      <div className="text-sm font-light text-slate-400 font-poppins">
+                        Caption text
+                      </div>
+                    </div>
+                    {/* Duplicate set for seamless looping */}
+                    <div className="absolute left-0 right-0 flex flex-col items-center gap-2 group-hover:animate-[scrollText_4s_linear_infinite]">
+                      <div className="text-2xl font-bold text-slate-800 font-poppins">
+                        Heading 1
+                      </div>
+                      <div className="text-xl font-semibold text-slate-700 font-poppins">
+                        Heading 2
+                      </div>
+                      <div className="text-lg font-medium text-slate-600 font-poppins">
+                        Heading 3
+                      </div>
+                      <div className="text-base font-normal text-slate-500 font-poppins">
+                        Body text with regular weight
+                      </div>
+                      <div className="text-sm font-light text-slate-400 font-poppins">
+                        Caption text
+                      </div>
+                    </div>
                   </div>
                 </div>
                 {/* Overlay text */}
@@ -1500,6 +1515,115 @@ function App() {
             </div>
           }
           background="bg-gradient-to-br from-emerald-50/50 to-teal-50/50"
+        />
+        <DesignSection
+          title="Laws of Perceptual Organization"
+          description="The Gestalt principles explain how humans naturally organize visual elements into groups and unified wholes. These laws help designers create more intuitive and meaningful visual compositions."
+          designPrinciple="Visual Organization – Understanding how the human brain naturally groups and organizes visual elements."
+          exampleLink="https://www.interaction-design.org/literature/topics/gestalt-principles"
+          fontFamily="lexend"
+          descriptionClassName="font-lexend"
+          titleClassName="font-lexend"
+          visualComponent={
+            <div className="flex items-center justify-center w-full h-full">
+              <style>
+                {`
+                  @keyframes slowPulse {
+                    0%, 100% { transform: scale(1); }
+                    50% { transform: scale(1.1); }
+                  }
+                  @keyframes slowBounce {
+                    0%, 100% { transform: translateY(0); }
+                    50% { transform: translateY(-10px); }
+                  }
+                  @keyframes slowSpin {
+                    from { transform: rotate(0deg); }
+                    to { transform: rotate(360deg); }
+                  }
+                  @keyframes slowPing {
+                    0% { transform: scale(1); opacity: 1; }
+                    50% { transform: scale(1.5); opacity: 0.5; }
+                    100% { transform: scale(1); opacity: 1; }
+                  }
+                `}
+              </style>
+              <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-indigo-50 to-purple-50 p-4 relative group">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  {/* Main container */}
+                  <div className="relative w-56 h-32">
+                    {/* Proximity - Two groups of circles */}
+                    <div className="absolute left-6 top-1/2 -translate-y-1/2 flex gap-6">
+                      <div className="flex flex-col gap-2">
+                        {[...Array(3)].map((_, i) => (
+                          <div
+                            key={`prox-${i}`}
+                            className="w-4 h-4 bg-indigo-600 rounded-full group-hover:animate-[slowPulse_3s_ease-in-out_infinite]"
+                          />
+                        ))}
+                      </div>
+                      <div className="flex flex-col gap-2">
+                        {[...Array(3)].map((_, i) => (
+                          <div
+                            key={`prox2-${i}`}
+                            className="w-4 h-4 bg-purple-600 rounded-full group-hover:animate-[slowPulse_3s_ease-in-out_infinite]"
+                          />
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Similarity - Alternating shapes */}
+                    <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex gap-3">
+                      {[...Array(6)].map((_, i) => (
+                        <div
+                          key={`sim-${i}`}
+                          className={`w-4 h-4 ${
+                            i % 2 === 0
+                              ? "bg-indigo-600 rounded-full"
+                              : "bg-purple-600 rounded-sm"
+                          } group-hover:animate-[slowBounce_2s_ease-in-out_infinite]`}
+                          style={{ animationDelay: `${i * 0.2}s` }}
+                        />
+                      ))}
+                    </div>
+
+                    {/* Closure - Incomplete shapes */}
+                    <div className="absolute right-6 top-1/2 -translate-y-1/2">
+                      <div className="relative w-16 h-16 group-hover:animate-[slowSpin_8s_linear_infinite]">
+                        {/* Incomplete square */}
+                        <div className="absolute inset-0 border-2 border-indigo-600 rounded-lg border-r-transparent border-b-transparent transform rotate-45" />
+                        {/* Missing corner */}
+                        <div className="absolute top-0 right-0 w-3 h-3 bg-indigo-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      </div>
+                    </div>
+
+                    {/* Continuity - Curved lines */}
+                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="absolute left-1/4 top-1/2 -translate-y-1/2 w-20 h-px bg-gradient-to-r from-indigo-600 to-purple-600 transform rotate-12 group-hover:animate-[slowPulse_4s_ease-in-out_infinite]" />
+                      <div className="absolute right-1/4 top-1/2 -translate-y-1/2 w-20 h-px bg-gradient-to-r from-purple-600 to-indigo-600 transform -rotate-12 group-hover:animate-[slowPulse_4s_ease-in-out_infinite]" />
+                    </div>
+
+                    {/* Figure/Ground - Overlapping elements */}
+                    <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="relative w-12 h-12">
+                        <div className="absolute inset-0 bg-indigo-600 rounded-full transform group-hover:animate-[slowPing_3s_ease-in-out_infinite]" />
+                        <div
+                          className="absolute inset-0 bg-purple-600 rounded-full transform -translate-x-1 -translate-y-1 group-hover:animate-[slowPing_3s_ease-in-out_infinite]"
+                          style={{ animationDelay: "1.5s" }}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {/* Overlay text */}
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
+                  <div className="text-xs sm:text-sm text-indigo-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-lexend">
+                    Gestalt Principles in Action
+                  </div>
+                </div>
+              </div>
+            </div>
+          }
+          background="bg-gradient-to-br from-indigo-50/50 to-purple-50/50"
         />
       </div>
       <footer className="py-2 bg-black">
