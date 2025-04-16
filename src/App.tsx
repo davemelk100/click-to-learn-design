@@ -408,7 +408,7 @@ function App() {
           title="Observed Rhythm"
           description="Observed Rhythm creates visual flow through repeating elements. This dynamic pattern uses varying sizes and spacing to guide the viewer's eye naturally through the design."
           designPrinciple="Repetition – Reusing visual elements to create consistency."
-          exampleLink="https://www.interaction-design.org/literature/topics/rhythm"
+          exampleLink="https://www.nngroup.com/articles/rhythm/"
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
               <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-r from-purple-100 to-indigo-50 p-4 relative group">
@@ -548,7 +548,10 @@ function App() {
           title="Law of Proximity"
           description="The Law of Proximity states that objects that are close to one another are perceived as being related or grouped together. This principle helps create visual organization and relationships between elements in a design."
           designPrinciple="Proximity – Grouping related items together to show their connection."
-          exampleLink="https://www.toptal.com/designers/visual/gestalt-principles-of-design"
+          exampleLink="https://lawsofux.com/law-of-proximity/"
+          fontFamily="dm-sans"
+          descriptionClassName="font-dm-sans"
+          background="bg-gradient-to-br from-amber-50/50 to-orange-50/50"
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
               <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-amber-50 to-orange-50 p-4 relative group">
@@ -588,9 +591,6 @@ function App() {
               </div>
             </div>
           }
-          fontFamily="dm-sans"
-          descriptionClassName="font-dm-sans"
-          background="bg-gradient-to-br from-amber-50/50 to-orange-50/50"
         />
         <DesignSection
           title="Interwoven Space"
@@ -1021,10 +1021,10 @@ function App() {
                   </div>
 
                   {/* Main emphasized element */}
-                  <div className="absolute w-16 h-16 bg-slate-600 rounded-lg shadow-lg transform transition-all duration-500 group-hover:scale-125 group-hover:bg-indigo-600 group-hover:shadow-xl">
+                  <div className="absolute w-16 h-16 bg-slate-600 rounded-lg shadow-lg transform transition-all duration-700 group-hover:scale-125 group-hover:bg-indigo-600 group-hover:shadow-xl">
                     <div className="absolute inset-1 bg-gradient-to-br from-slate-500 to-slate-700 rounded-lg" />
                     {/* Inner glow effect */}
-                    <div className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-br from-slate-400/20 to-transparent" />
+                    <div className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-slate-400/20 to-transparent" />
                   </div>
 
                   {/* Supporting elements */}
@@ -1203,7 +1203,7 @@ function App() {
           title="Function Over Form"
           description="Prioritize usability and practical functionality over aesthetic considerations. While visual appeal is important, it should never compromise the core functionality of the design."
           designPrinciple="Usability First"
-          exampleLink="https://www.nngroup.com/articles/aesthetic-usability-effect/"
+          exampleLink="https://hyperweb.ca/which-is-more-important-in-web-design-form-or-function/"
           fontFamily="overlock-sc"
           descriptionClassName="font-overlock-sc"
           visualComponent={
@@ -1519,7 +1519,7 @@ function App() {
           title="Laws of Perceptual Organization"
           description="The Gestalt principles explain how humans naturally organize visual elements into groups and unified wholes. These laws help designers create more intuitive and meaningful visual compositions."
           designPrinciple="Visual Organization – Understanding how the human brain naturally groups and organizes visual elements."
-          exampleLink="https://www.interaction-design.org/literature/topics/gestalt-principles"
+          exampleLink="https://study.com/academy/lesson/perceptual-organization-definition-examples.html"
           fontFamily="lexend"
           descriptionClassName="font-lexend"
           titleClassName="font-lexend"
@@ -1625,7 +1625,7 @@ function App() {
           background="bg-gradient-to-br from-indigo-50/50 to-purple-50/50"
         />
         <DesignSection
-          title="Law of Continuity"
+          title="Continuity"
           description="The Law of Continuity states that the human eye naturally follows continuous lines and patterns. Elements arranged in a continuous line or curve are perceived as more related than elements not on the line or curve."
           designPrinciple="Visual Flow – Using continuous lines and patterns to guide the viewer's eye through a design."
           exampleLink="https://www.chrbutler.com/gestalt-principles-of-design-continuit"
@@ -1670,7 +1670,7 @@ function App() {
                       {[...Array(3)].map((_, i) => (
                         <div
                           key={`curve-${i}`}
-                          className="absolute w-3 h-3 bg-amber-600 rounded-full group-hover:animate-[flowCurve_4s_ease-in-out_infinite]"
+                          className="absolute w-3 h-3 bg-amber-600 rounded-full group-hover:animate-[flowCurve_6s_ease-in-out_infinite]"
                           style={{
                             top: `${30 + i * 20}%`,
                             animationDelay: `${i * 0.5}s`,
@@ -1712,6 +1712,164 @@ function App() {
             </div>
           }
           background="bg-gradient-to-br from-amber-50/50 to-orange-50/50"
+        />
+        <DesignSection
+          title="Emergence"
+          description="Emergence describes how we perceive complex patterns as a whole before recognizing their individual parts. The whole is perceived before the individual elements that make it up, creating a unified and meaningful perception."
+          designPrinciple="Holistic Perception – Understanding how the mind perceives complete patterns before analyzing their components."
+          exampleLink="https://medium.com/@uxdesigncc/emergence-in-design-why-the-whole-is-greater-than-the-sum-of-its-parts-5a1b0c0c0c0c"
+          fontFamily="domine"
+          descriptionClassName="text-slate-600"
+          titleClassName="text-slate-800"
+          visualComponent={
+            <div className="relative w-48 h-48 group">
+              <style>
+                {`
+                  @keyframes assemble {
+                    0% { transform: scale(0.5) rotate(0deg); opacity: 0; }
+                    50% { transform: scale(1.2) rotate(180deg); opacity: 1; }
+                    100% { transform: scale(1) rotate(360deg); opacity: 1; }
+                  }
+                  @keyframes pulseGlow {
+                    0%, 100% { opacity: 0.3; }
+                    50% { opacity: 0.8; }
+                  }
+                  @keyframes reveal {
+                    0% { clip-path: circle(0% at 50% 50%); }
+                    100% { clip-path: circle(100% at 50% 50%); }
+                  }
+                `}
+              </style>
+              {/* Background elements */}
+              <div className="absolute w-48 h-48 opacity-20">
+                {[...Array(16)].map((_, i) => (
+                  <div
+                    key={`bg-${i}`}
+                    className="absolute w-4 h-4 bg-gray-400/30 rounded transform transition-all duration-700"
+                    style={{
+                      left: `${(i % 4) * 16}px`,
+                      top: `${Math.floor(i / 4) * 16}px`,
+                    }}
+                  />
+                ))}
+              </div>
+
+              {/* Scattered parts */}
+              <div className="absolute inset-0">
+                {[...Array(8)].map((_, i) => (
+                  <div
+                    key={`part-${i}`}
+                    className="absolute w-8 h-8 bg-gray-400/60 rounded-lg transform transition-all duration-700 group-hover:animate-[assemble_1.5s_ease-in-out_forwards]"
+                    style={{
+                      left: `${Math.cos((i * Math.PI * 2) / 8) * 40 + 48}px`,
+                      top: `${Math.sin((i * Math.PI * 2) / 8) * 40 + 48}px`,
+                      transform: `translate(-50%, -50%) rotate(${i * 45}deg)`,
+                      animationDelay: `${i * 0.1}s`,
+                    }}
+                  >
+                    <div className="absolute inset-1 bg-gradient-to-br from-gray-300 to-gray-500 rounded-lg" />
+                  </div>
+                ))}
+              </div>
+
+              {/* Central whole */}
+              <div className="absolute w-32 h-32 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+                <div className="absolute inset-0 bg-gray-600 rounded-lg shadow-lg transform transition-all duration-700 group-hover:scale-110">
+                  <div className="absolute inset-1 bg-gradient-to-br from-gray-500 to-gray-700 rounded-lg" />
+                  {/* Inner glow effect */}
+                  <div className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-gray-400/20 to-transparent" />
+                </div>
+                {/* Reveal animation */}
+                <div className="absolute inset-0 bg-gray-600 rounded-lg animate-[reveal_1.5s_ease-in-out_forwards]" />
+              </div>
+
+              {/* Connection lines */}
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                {[...Array(8)].map((_, i) => (
+                  <div
+                    key={`line-${i}`}
+                    className="absolute w-24 h-px bg-gray-600/20 transform transition-all duration-700"
+                    style={{
+                      left: "50%",
+                      top: "50%",
+                      transform: `rotate(${i * 45}deg) translate(-50%, -50%)`,
+                      animationDelay: `${i * 0.15}s`,
+                    }}
+                  />
+                ))}
+              </div>
+            </div>
+          }
+        />
+        <DesignSection
+          title="Choice Overload"
+          description="Choice Overload occurs when too many options lead to decision paralysis and decreased satisfaction. While having choices is generally good, an excessive number of options can overwhelm users and make decision-making more difficult."
+          designPrinciple="Decision Simplicity – Reducing cognitive load by limiting choices to a manageable number."
+          exampleLink="https://www.ted.com/talks/barry_schwartz_the_paradox_of_choice"
+          fontFamily="dm-sans"
+          descriptionClassName="font-dm-sans"
+          titleClassName="font-dm-sans"
+          visualComponent={
+            <div className="flex items-center justify-center w-full h-full">
+              <style>
+                {`
+                  @keyframes pulse {
+                    0%, 100% { transform: scale(1); opacity: 0.5; }
+                    50% { transform: scale(1.1); opacity: 1; }
+                  }
+                  @keyframes shake {
+                    0%, 100% { transform: translateX(0); }
+                    25% { transform: translateX(-5px); }
+                    75% { transform: translateX(5px); }
+                  }
+                `}
+              </style>
+              <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-emerald-50 to-teal-50 p-4 relative group">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  {/* Main container */}
+                  <div className="relative w-64 h-40">
+                    {/* Initial state - many options */}
+                    <div className="absolute inset-0 opacity-100 group-hover:opacity-0 transition-opacity duration-500">
+                      {/* Grid of options */}
+                      <div className="grid grid-cols-4 gap-2">
+                        {[...Array(16)].map((_, i) => (
+                          <div
+                            key={`option-${i}`}
+                            className="w-6 h-6 bg-emerald-400/30 rounded-lg group-hover:animate-[pulse_2s_ease-in-out_infinite]"
+                            style={{ animationDelay: `${i * 0.1}s` }}
+                          />
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Hover state - simplified choices */}
+                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                      {/* Simplified options */}
+                      <div className="flex flex-col gap-4 items-center">
+                        {[...Array(3)].map((_, i) => (
+                          <div
+                            key={`simplified-${i}`}
+                            className="w-12 h-12 bg-emerald-500 rounded-lg group-hover:animate-[shake_0.5s_ease-in-out]"
+                            style={{ animationDelay: `${i * 0.2}s` }}
+                          >
+                            <div className="absolute inset-1 bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-lg" />
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Overlay text */}
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
+                      <div className="text-xs sm:text-sm text-emerald-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-dm-sans">
+                        Fewer choices = Better decisions
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          }
+          background="bg-gradient-to-br from-emerald-50/50 to-teal-50/50"
         />
       </div>
       <footer className="py-2 bg-black">

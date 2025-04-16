@@ -27,7 +27,8 @@ interface DesignSectionProps {
     | "poppins"
     | "encode-sans-sc"
     | "lexend"
-    | "dm-serif-display";
+    | "dm-serif-display"
+    | "domine";
   descriptionClassName?: string;
   titleClassName?: string;
   background?: string;
@@ -103,6 +104,8 @@ const DesignSection: React.FC<DesignSectionProps> = ({
         return "font-lexend";
       case "dm-serif-display":
         return "font-dm-serif-display";
+      case "domine":
+        return "font-domine";
       default:
         return "font-dm-sans";
     }
