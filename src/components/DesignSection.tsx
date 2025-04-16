@@ -21,7 +21,9 @@ interface DesignSectionProps {
     | "share-tech"
     | "josefin-sans"
     | "roboto-flex"
-    | "overlock-sc";
+    | "overlock-sc"
+    | "timmana"
+    | "suwannaphum";
   descriptionClassName?: string;
   titleClassName?: string;
   background?: string;
@@ -81,6 +83,10 @@ const DesignSection: React.FC<DesignSectionProps> = ({
         return "font-overlock-sc";
       case "oswald":
         return "font-oswald tracking-[2px]";
+      case "timmana":
+        return "font-timmana";
+      case "suwannaphum":
+        return "font-suwannaphum";
       default:
         return "font-helvetica";
     }

@@ -1330,9 +1330,12 @@ function App() {
         />
         <DesignSection
           title="Spatial Reasoning"
-          description="Spatial reasoning is the ability to understand and manipulate objects in three-dimensional space. It involves visualizing objects from different angles, understanding spatial relationships, and mentally rotating objects."
-          designPrinciple="Spatial Awareness – Understanding and manipulating objects in 3D space."
+          description="Understanding and manipulating objects in 3D space, visualizing transformations, and comprehending spatial relationships."
+          designPrinciple="Spatial Awareness"
           exampleLink="https://www.123test.com/spatial-reasoning-test/"
+          fontFamily="suwannaphum"
+          descriptionClassName="font-suwannaphum"
+          titleClassName="font-suwannaphum"
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
               <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-indigo-50 to-purple-50 p-4 relative group">
@@ -1386,15 +1389,13 @@ function App() {
                 </div>
                 {/* Overlay text */}
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
-                  <div className="text-xs sm:text-sm text-indigo-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-roboto">
+                  <div className="text-xs sm:text-sm text-indigo-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-suwannaphum">
                     Unfolded pattern
                   </div>
                 </div>
               </div>
             </div>
           }
-          fontFamily="roboto"
-          descriptionClassName="font-roboto"
           background="bg-gradient-to-br from-indigo-50/50 to-purple-50/50"
         />
       </div>
