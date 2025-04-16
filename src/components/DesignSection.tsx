@@ -23,7 +23,9 @@ interface DesignSectionProps {
     | "roboto-flex"
     | "overlock-sc"
     | "timmana"
-    | "suwannaphum";
+    | "suwannaphum"
+    | "poppins"
+    | "encode-sans-sc";
   descriptionClassName?: string;
   titleClassName?: string;
   background?: string;
@@ -57,7 +59,9 @@ const DesignSection: React.FC<DesignSectionProps> = ({
     return () => window.removeEventListener("keydown", handleEscape);
   }, [isAiOpen]);
 
-  const getFontClass = (fontFamily: DesignSectionProps["fontFamily"]) => {
+  const getFontClass = (
+    fontFamily: DesignSectionProps["fontFamily"]
+  ): string => {
     switch (fontFamily) {
       case "helvetica":
         return "font-helvetica";
@@ -65,30 +69,38 @@ const DesignSection: React.FC<DesignSectionProps> = ({
         return "font-avenir";
       case "roboto":
         return "font-roboto";
+      case "habibi":
+        return "font-habibi";
+      case "anek-gurmukhi":
+        return "font-anek-gurmukhi";
       case "dm-sans":
         return "font-dm-sans";
       case "eb-garamond":
         return "font-eb-garamond";
-      case "anek-gurmukhi":
-        return "font-anek-gurmukhi";
       case "source-code-pro":
         return "font-source-code-pro";
+      case "oswald":
+        return "font-oswald";
       case "roboto-slab":
         return "font-roboto-slab";
+      case "share-tech":
+        return "font-share-tech";
       case "josefin-sans":
         return "font-josefin-sans";
-      case "habibi":
-        return "font-habibi";
+      case "roboto-flex":
+        return "font-roboto-flex";
       case "overlock-sc":
         return "font-overlock-sc";
-      case "oswald":
-        return "font-oswald tracking-[2px]";
       case "timmana":
         return "font-timmana";
       case "suwannaphum":
         return "font-suwannaphum";
+      case "poppins":
+        return "font-poppins";
+      case "encode-sans-sc":
+        return "font-encode-sans-sc";
       default:
-        return "font-helvetica";
+        return "";
     }
   };
 

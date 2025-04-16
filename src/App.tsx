@@ -1398,6 +1398,109 @@ function App() {
           }
           background="bg-gradient-to-br from-indigo-50/50 to-purple-50/50"
         />
+        <DesignSection
+          title="Typography Hierarchy"
+          description="Creating clear visual hierarchy through type size, weight, and spacing to guide readers through content."
+          designPrinciple="Visual Hierarchy"
+          exampleLink="https://www.nngroup.com/articles/typography-terms-ux/"
+          fontFamily="poppins"
+          descriptionClassName="font-poppins"
+          titleClassName="font-poppins"
+          visualComponent={
+            <div className="flex items-center justify-center w-full h-full">
+              <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-slate-50 to-gray-50 p-4 relative group">
+                <div className="absolute inset-0 flex flex-col items-center justify-center gap-2">
+                  {/* Heading 1 */}
+                  <div className="text-2xl font-bold text-slate-800 font-poppins group-hover:animate-float">
+                    Heading 1
+                  </div>
+                  {/* Heading 2 */}
+                  <div
+                    className="text-xl font-semibold text-slate-700 font-poppins group-hover:animate-float"
+                    style={{ animationDelay: "0.1s" }}
+                  >
+                    Heading 2
+                  </div>
+                  {/* Heading 3 */}
+                  <div
+                    className="text-lg font-medium text-slate-600 font-poppins group-hover:animate-float"
+                    style={{ animationDelay: "0.2s" }}
+                  >
+                    Heading 3
+                  </div>
+                  {/* Body text */}
+                  <div
+                    className="text-base font-normal text-slate-500 font-poppins group-hover:animate-float"
+                    style={{ animationDelay: "0.3s" }}
+                  >
+                    Body text with regular weight
+                  </div>
+                  {/* Caption */}
+                  <div
+                    className="text-sm font-light text-slate-400 font-poppins group-hover:animate-float"
+                    style={{ animationDelay: "0.4s" }}
+                  >
+                    Caption text
+                  </div>
+                </div>
+                {/* Overlay text */}
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
+                  <div className="text-xs sm:text-sm text-slate-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-poppins">
+                    Visual hierarchy through type
+                  </div>
+                </div>
+              </div>
+            </div>
+          }
+          background="bg-gradient-to-br from-slate-50/50 to-gray-50/50"
+        />
+        <DesignSection
+          title="Microinteractions"
+          description="Microinteractions are small, purposeful animations that provide feedback, guide users, and make interfaces feel more responsive and engaging. They enhance usability by making digital interactions feel more natural and satisfying."
+          designPrinciple="Feedback & Engagement – Using subtle animations to create responsive and intuitive interfaces."
+          exampleLink="https://www.nngroup.com/articles/microinteractions/"
+          fontFamily="encode-sans-sc"
+          visualComponent={
+            <div className="flex items-center justify-center w-full h-full">
+              <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-emerald-50 to-teal-50 p-4 relative group">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  {/* Interactive elements container */}
+                  <div className="relative w-48 h-24">
+                    {/* Simple tooltip */}
+                    <div className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-emerald-400/20 group-hover:bg-emerald-400/40 transition-colors duration-300 cursor-pointer flex items-center justify-center">
+                      <div className="w-6 h-6 text-emerald-600">ℹ️</div>
+                      <div className="absolute -top-8 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all duration-300 bg-white/90 text-emerald-800 text-xs px-2 py-1 rounded-lg shadow-lg">
+                        Information tooltip
+                      </div>
+                    </div>
+
+                    {/* Arrow tooltip */}
+                    <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-emerald-400/20 group-hover:bg-emerald-400/40 transition-colors duration-300 cursor-pointer flex items-center justify-center">
+                      <div className="w-6 h-6 text-emerald-600">🔍</div>
+                      <div className="absolute -top-8 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all duration-300 bg-white/90 text-emerald-800 text-xs px-2 py-1 rounded-lg shadow-lg">
+                        <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-white/90 transform rotate-45" />
+                        Search tooltip
+                      </div>
+                    </div>
+
+                    {/* Rich tooltip */}
+                    <div className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-emerald-400/20 group-hover:bg-emerald-400/40 transition-colors duration-300 cursor-pointer flex items-center justify-center">
+                      <div className="w-6 h-6 text-emerald-600">⚙️</div>
+                      <div className="absolute -top-20 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all duration-300 bg-white/90 text-emerald-800 text-xs p-2 rounded-lg shadow-lg w-32">
+                        <div className="font-bold mb-1">Settings</div>
+                        <div className="text-emerald-600/80">
+                          Customize your preferences
+                        </div>
+                        <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-white/90 transform rotate-45" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          }
+          background="bg-gradient-to-br from-emerald-50/50 to-teal-50/50"
+        />
       </div>
       <footer className="py-2 bg-black">
         <div className="flex items-center pl-4">
