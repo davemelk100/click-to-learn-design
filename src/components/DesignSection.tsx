@@ -26,7 +26,8 @@ interface DesignSectionProps {
     | "suwannaphum"
     | "poppins"
     | "encode-sans-sc"
-    | "lexend";
+    | "lexend"
+    | "dm-serif-display";
   descriptionClassName?: string;
   titleClassName?: string;
   background?: string;
@@ -100,6 +101,8 @@ const DesignSection: React.FC<DesignSectionProps> = ({
         return "font-encode-sans-sc";
       case "lexend":
         return "font-lexend";
+      case "dm-serif-display":
+        return "font-dm-serif-display";
       default:
         return "font-dm-sans";
     }

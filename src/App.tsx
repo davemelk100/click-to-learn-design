@@ -1624,6 +1624,95 @@ function App() {
           }
           background="bg-gradient-to-br from-indigo-50/50 to-purple-50/50"
         />
+        <DesignSection
+          title="Law of Continuity"
+          description="The Law of Continuity states that the human eye naturally follows continuous lines and patterns. Elements arranged in a continuous line or curve are perceived as more related than elements not on the line or curve."
+          designPrinciple="Visual Flow – Using continuous lines and patterns to guide the viewer's eye through a design."
+          exampleLink="https://www.chrbutler.com/gestalt-principles-of-design-continuit"
+          fontFamily="dm-serif-display"
+          descriptionClassName="font-dm-serif-display"
+          titleClassName="font-dm-serif-display"
+          visualComponent={
+            <div className="flex items-center justify-center w-full h-full">
+              <style>
+                {`
+                  @keyframes flowCurve {
+                    0% { transform: translateX(-100%) translateY(0); }
+                    50% { transform: translateX(0) translateY(-20px); }
+                    100% { transform: translateX(100%) translateY(0); }
+                  }
+                  @keyframes glow {
+                    0%, 100% { opacity: 0.3; }
+                    50% { opacity: 0.8; }
+                  }
+                `}
+              </style>
+              <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-amber-50 to-orange-50 p-4 relative group">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  {/* Main container */}
+                  <div className="relative w-56 h-32">
+                    {/* Curved background lines */}
+                    <div className="absolute inset-0">
+                      {/* Primary curve */}
+                      <div className="absolute w-full h-32">
+                        <div className="absolute w-full h-px bg-amber-600/20 transform -rotate-6 origin-center group-hover:bg-amber-600/40 transition-colors duration-300" />
+                        <div className="absolute w-full h-px bg-amber-600/20 transform rotate-6 origin-center group-hover:bg-amber-600/40 transition-colors duration-300" />
+                      </div>
+                      {/* Secondary curves */}
+                      <div className="absolute w-full h-32 top-8">
+                        <div className="absolute w-full h-px bg-amber-600/10 transform -rotate-12 origin-center group-hover:bg-amber-600/20 transition-colors duration-300" />
+                        <div className="absolute w-full h-px bg-amber-600/10 transform rotate-12 origin-center group-hover:bg-amber-600/20 transition-colors duration-300" />
+                      </div>
+                    </div>
+
+                    {/* Flowing elements along curves */}
+                    <div className="absolute inset-0 overflow-hidden">
+                      {[...Array(3)].map((_, i) => (
+                        <div
+                          key={`curve-${i}`}
+                          className="absolute w-3 h-3 bg-amber-600 rounded-full group-hover:animate-[flowCurve_4s_ease-in-out_infinite]"
+                          style={{
+                            top: `${30 + i * 20}%`,
+                            animationDelay: `${i * 0.5}s`,
+                          }}
+                        />
+                      ))}
+                    </div>
+
+                    {/* Connection points */}
+                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      {[...Array(5)].map((_, i) => (
+                        <div
+                          key={`point-${i}`}
+                          className="absolute w-2 h-2 bg-amber-600 rounded-full group-hover:animate-[glow_2s_ease-in-out_infinite]"
+                          style={{
+                            left: `${20 + i * 20}%`,
+                            top: "50%",
+                            transform: "translate(-50%, -50%)",
+                            animationDelay: `${i * 0.2}s`,
+                          }}
+                        />
+                      ))}
+                    </div>
+
+                    {/* Flow direction indicators */}
+                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="absolute left-1/4 top-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 border-t-2 border-r-2 border-amber-600 transform rotate-45" />
+                      <div className="absolute right-1/4 top-1/2 translate-x-1/2 -translate-y-1/2 w-3 h-3 border-t-2 border-r-2 border-amber-600 transform rotate-225" />
+                    </div>
+                  </div>
+                </div>
+                {/* Overlay text */}
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
+                  <div className="text-xs sm:text-sm text-amber-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-dm-serif-display">
+                    Curves create natural flow
+                  </div>
+                </div>
+              </div>
+            </div>
+          }
+          background="bg-gradient-to-br from-amber-50/50 to-orange-50/50"
+        />
       </div>
       <footer className="py-2 bg-black">
         <div className="flex items-center pl-4">
