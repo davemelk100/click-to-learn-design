@@ -48,11 +48,8 @@ function App() {
                 }}
               />
             </div>
-            <span className="text-xl font-medium text-white ml-[10px]">
+            <span className="text-2xl font-medium text-white ml-[10px]">
               DESIGN PANES
-            </span>
-            <span className="hidden md:block text-sm text-white/80 ml-4">
-              Click or tap a card to ask AI about the topic.
             </span>
           </div>
           <a
@@ -1546,25 +1543,25 @@ function App() {
                   }
                 `}
               </style>
-              <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-indigo-50 to-purple-50 p-4 relative group">
+              <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-rose-50 to-pink-50 p-4 relative group">
                 <div className="absolute inset-0 flex items-center justify-center">
                   {/* Main container */}
-                  <div className="relative w-56 h-32">
+                  <div className="relative w-72 h-40">
                     {/* Proximity - Two groups of circles */}
-                    <div className="absolute left-6 top-1/2 -translate-y-1/2 flex gap-6">
-                      <div className="flex flex-col gap-2">
+                    <div className="absolute left-8 top-1/2 -translate-y-1/2 flex gap-8">
+                      <div className="flex flex-col gap-3">
                         {[...Array(3)].map((_, i) => (
                           <div
                             key={`prox-${i}`}
-                            className="w-4 h-4 bg-indigo-600 rounded-full group-hover:animate-[slowPulse_3s_ease-in-out_infinite]"
+                            className="w-6 h-6 bg-rose-600 rounded-full group-hover:animate-[slowPulse_3s_ease-in-out_infinite]"
                           />
                         ))}
                       </div>
-                      <div className="flex flex-col gap-2">
+                      <div className="flex flex-col gap-3">
                         {[...Array(3)].map((_, i) => (
                           <div
                             key={`prox2-${i}`}
-                            className="w-4 h-4 bg-purple-600 rounded-full group-hover:animate-[slowPulse_3s_ease-in-out_infinite]"
+                            className="w-6 h-6 bg-pink-600 rounded-full group-hover:animate-[slowPulse_3s_ease-in-out_infinite]"
                           />
                         ))}
                       </div>
@@ -1577,8 +1574,8 @@ function App() {
                           key={`sim-${i}`}
                           className={`w-4 h-4 ${
                             i % 2 === 0
-                              ? "bg-indigo-600 rounded-full"
-                              : "bg-purple-600 rounded-sm"
+                              ? "bg-rose-600 rounded-full"
+                              : "bg-pink-600 rounded-sm"
                           } group-hover:animate-[slowBounce_2s_ease-in-out_infinite]`}
                           style={{ animationDelay: `${i * 0.2}s` }}
                         />
@@ -1589,24 +1586,24 @@ function App() {
                     <div className="absolute right-6 top-1/2 -translate-y-1/2">
                       <div className="relative w-16 h-16 group-hover:animate-[slowSpin_8s_linear_infinite]">
                         {/* Incomplete square */}
-                        <div className="absolute inset-0 border-2 border-indigo-600 rounded-lg border-r-transparent border-b-transparent transform rotate-45" />
+                        <div className="absolute inset-0 border-2 border-rose-600 rounded-lg border-r-transparent border-b-transparent transform rotate-45" />
                         {/* Missing corner */}
-                        <div className="absolute top-0 right-0 w-3 h-3 bg-indigo-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                        <div className="absolute top-0 right-0 w-3 h-3 bg-rose-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                       </div>
                     </div>
 
                     {/* Continuity - Curved lines */}
                     <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <div className="absolute left-1/4 top-1/2 -translate-y-1/2 w-20 h-px bg-gradient-to-r from-indigo-600 to-purple-600 transform rotate-12 group-hover:animate-[slowPulse_4s_ease-in-out_infinite]" />
-                      <div className="absolute right-1/4 top-1/2 -translate-y-1/2 w-20 h-px bg-gradient-to-r from-purple-600 to-indigo-600 transform -rotate-12 group-hover:animate-[slowPulse_4s_ease-in-out_infinite]" />
+                      <div className="absolute left-1/4 top-1/2 -translate-y-1/2 w-20 h-px bg-gradient-to-r from-rose-600 to-pink-600 transform rotate-12 group-hover:animate-[slowPulse_4s_ease-in-out_infinite]" />
+                      <div className="absolute right-1/4 top-1/2 -translate-y-1/2 w-20 h-px bg-gradient-to-r from-pink-600 to-rose-600 transform -rotate-12 group-hover:animate-[slowPulse_4s_ease-in-out_infinite]" />
                     </div>
 
                     {/* Figure/Ground - Overlapping elements */}
                     <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       <div className="relative w-12 h-12">
-                        <div className="absolute inset-0 bg-indigo-600 rounded-full transform group-hover:animate-[slowPing_3s_ease-in-out_infinite]" />
+                        <div className="absolute inset-0 bg-rose-600 rounded-full transform group-hover:animate-[slowPing_3s_ease-in-out_infinite]" />
                         <div
-                          className="absolute inset-0 bg-purple-600 rounded-full transform -translate-x-1 -translate-y-1 group-hover:animate-[slowPing_3s_ease-in-out_infinite]"
+                          className="absolute inset-0 bg-pink-600 rounded-full transform -translate-x-1 -translate-y-1 group-hover:animate-[slowPing_3s_ease-in-out_infinite]"
                           style={{ animationDelay: "1.5s" }}
                         />
                       </div>
@@ -1615,14 +1612,14 @@ function App() {
                 </div>
                 {/* Overlay text */}
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
-                  <div className="text-xs sm:text-sm text-indigo-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-lexend">
+                  <div className="text-xs sm:text-sm text-rose-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-lexend">
                     Gestalt Principles in Action
                   </div>
                 </div>
               </div>
             </div>
           }
-          background="bg-gradient-to-br from-indigo-50/50 to-purple-50/50"
+          background="bg-gradient-to-br from-rose-50/50 to-pink-50/50"
         />
         <DesignSection
           title="Continuity"
@@ -1801,6 +1798,13 @@ function App() {
                     }}
                   />
                 ))}
+              </div>
+
+              {/* Hover caption */}
+              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
+                <div className="text-xs sm:text-sm text-gray-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-domine whitespace-nowrap">
+                  Parts assemble into a meaningful whole
+                </div>
               </div>
             </div>
           }
