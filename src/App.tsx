@@ -1328,6 +1328,75 @@ function App() {
           titleClassName="font-share-tech"
           background="bg-gradient-to-br from-rose-50/50 to-pink-50/50"
         />
+        <DesignSection
+          title="Spatial Reasoning"
+          description="Spatial reasoning is the ability to understand and manipulate objects in three-dimensional space. It involves visualizing objects from different angles, understanding spatial relationships, and mentally rotating objects."
+          designPrinciple="Spatial Awareness – Understanding and manipulating objects in 3D space."
+          exampleLink="https://www.123test.com/spatial-reasoning-test/"
+          visualComponent={
+            <div className="flex items-center justify-center w-full h-full">
+              <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-indigo-50 to-purple-50 p-4 relative group">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  {/* Origami shape */}
+                  <div className="relative w-32 h-32 transform transition-all duration-1000">
+                    {/* Base square - folded state */}
+                    <div className="absolute inset-0 bg-indigo-400/80 transform transition-all duration-1000 group-hover:opacity-0">
+                      {/* Folded flaps */}
+                      <div className="absolute top-0 left-0 w-1/2 h-1/2 bg-indigo-300/60 transform -rotate-45 origin-bottom-right" />
+                      <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-indigo-500/60 transform rotate-45 origin-bottom-left" />
+                      <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-indigo-300/60 transform rotate-45 origin-top-right" />
+                      <div className="absolute bottom-0 right-0 w-1/2 h-1/2 bg-indigo-500/60 transform -rotate-45 origin-top-left" />
+
+                      {/* Center fold */}
+                      <div className="absolute inset-0 border-2 border-indigo-600/20" />
+                    </div>
+
+                    {/* Unfolded state */}
+                    <div className="absolute inset-0 opacity-0 transform transition-all duration-1000 group-hover:opacity-100">
+                      {/* Main square */}
+                      <div className="absolute inset-0 bg-indigo-400/80" />
+
+                      {/* Fold lines */}
+                      <div className="absolute inset-0">
+                        {/* Vertical center */}
+                        <div className="absolute left-1/2 top-0 bottom-0 w-px bg-indigo-600/20 transform -translate-x-1/2" />
+                        {/* Horizontal center */}
+                        <div className="absolute top-1/2 left-0 right-0 h-px bg-indigo-600/20 transform -translate-y-1/2" />
+                        {/* Diagonals */}
+                        <div className="absolute inset-0">
+                          <div className="absolute inset-0 border border-indigo-600/20 transform rotate-45" />
+                          <div className="absolute inset-0 border border-indigo-600/20 transform -rotate-45" />
+                        </div>
+                      </div>
+
+                      {/* Corner indicators */}
+                      {[...Array(4)].map((_, i) => (
+                        <div
+                          key={i}
+                          className="absolute w-2 h-2 bg-indigo-400/40 rounded-full"
+                          style={{
+                            left: `${i % 2 === 0 ? "25%" : "75%"}`,
+                            top: `${i < 2 ? "25%" : "75%"}`,
+                            transform: "translate(-50%, -50%)",
+                          }}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                </div>
+                {/* Overlay text */}
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
+                  <div className="text-xs sm:text-sm text-indigo-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-roboto">
+                    Unfolded pattern
+                  </div>
+                </div>
+              </div>
+            </div>
+          }
+          fontFamily="roboto"
+          descriptionClassName="font-roboto"
+          background="bg-gradient-to-br from-indigo-50/50 to-purple-50/50"
+        />
       </div>
       <footer className="py-2 bg-black">
         <div className="flex items-center pl-4">
