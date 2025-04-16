@@ -1,5 +1,14 @@
 import React from "react";
-import { MessageSquare, Palette, Info, Settings } from "lucide-react";
+import {
+  MessageSquare,
+  Palette,
+  Info,
+  Settings,
+  Eye,
+  RefreshCw,
+  Brain,
+  Hand,
+} from "lucide-react";
 import DesignSection from "./components/DesignSection";
 
 interface DesignSectionProps {
@@ -1546,7 +1555,7 @@ function App() {
               <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-rose-50 to-pink-50 p-4 relative group">
                 <div className="absolute inset-0 flex items-center justify-center">
                   {/* Main container */}
-                  <div className="relative w-72 h-40">
+                  <div className="relative w-72 h-48">
                     {/* Proximity - Two groups of circles */}
                     <div className="absolute left-8 top-1/2 -translate-y-1/2 flex gap-8">
                       <div className="flex flex-col gap-3">
@@ -1876,6 +1885,93 @@ function App() {
             </div>
           }
           background="bg-gradient-to-br from-amber-50/50 to-orange-50/50"
+        />
+        <DesignSection
+          title="VIMM Model"
+          description="The VIMM model breaks down user interaction into four key components: Visual (what users see), Interactive (how users engage), Mental (cognitive processing), and Motor (physical actions). This framework helps designers create more intuitive and efficient user experiences."
+          designPrinciple="Interaction Framework – Understanding the four key components of user interaction."
+          exampleLink="https://www.interaction-design.org/literature/topics/vimm-model"
+          fontFamily="dm-sans"
+          descriptionClassName="font-dm-sans"
+          titleClassName="font-dm-sans"
+          visualComponent={
+            <div className="flex items-center justify-center w-full h-full">
+              <style>
+                {`
+                  @keyframes vimmPulse {
+                    0%, 100% { transform: scale(1); opacity: 0.7; }
+                    50% { transform: scale(1.1); opacity: 1; }
+                  }
+                  @keyframes vimmRotate {
+                    from { transform: rotate(0deg); }
+                    to { transform: rotate(360deg); }
+                  }
+                `}
+              </style>
+              <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-violet-50 to-purple-50 p-4 relative group">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  {/* Main container */}
+                  <div className="relative w-72 h-48">
+                    {/* Central circle */}
+                    <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 bg-violet-400/20 rounded-full group-hover:animate-[vimmRotate_4s_linear_infinite]" />
+
+                    {/* VIMM components */}
+                    <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+                      {/* Visual */}
+                      <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-16 h-16 bg-violet-500/30 rounded-lg group-hover:animate-[vimmPulse_2s_ease-in-out_infinite]">
+                        <div className="absolute inset-0 flex items-center justify-center text-violet-600">
+                          <Eye className="w-8 h-8" />
+                        </div>
+                      </div>
+
+                      {/* Interactive */}
+                      <div
+                        className="absolute top-1/2 -right-20 -translate-y-1/2 w-16 h-16 bg-violet-500/30 rounded-lg group-hover:animate-[vimmPulse_2s_ease-in-out_infinite]"
+                        style={{ animationDelay: "0.5s" }}
+                      >
+                        <div className="absolute inset-0 flex items-center justify-center text-violet-600">
+                          <RefreshCw className="w-8 h-8" />
+                        </div>
+                      </div>
+
+                      {/* Mental */}
+                      <div
+                        className="absolute -bottom-20 left-1/2 -translate-x-1/2 w-16 h-16 bg-violet-500/30 rounded-lg group-hover:animate-[vimmPulse_2s_ease-in-out_infinite]"
+                        style={{ animationDelay: "1s" }}
+                      >
+                        <div className="absolute inset-0 flex items-center justify-center text-violet-600">
+                          <Brain className="w-8 h-8" />
+                        </div>
+                      </div>
+
+                      {/* Motor */}
+                      <div
+                        className="absolute top-1/2 -left-20 -translate-y-1/2 w-16 h-16 bg-violet-500/30 rounded-lg group-hover:animate-[vimmPulse_2s_ease-in-out_infinite]"
+                        style={{ animationDelay: "1.5s" }}
+                      >
+                        <div className="absolute inset-0 flex items-center justify-center text-violet-600">
+                          <Hand className="w-8 h-8" />
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Connection lines */}
+                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 border-2 border-violet-400/20 rounded-full" />
+                      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-56 h-56 border-2 border-violet-400/10 rounded-full" />
+                    </div>
+                  </div>
+                </div>
+                {/* Overlay text */}
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
+                  <div className="text-xs sm:text-sm text-violet-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-dm-sans whitespace-nowrap">
+                    Visual Interactive Mental Motor
+                  </div>
+                </div>
+              </div>
+            </div>
+          }
+          background="bg-gradient-to-br from-violet-50/50 to-purple-50/50"
         />
       </div>
       <footer className="py-2 bg-black">
