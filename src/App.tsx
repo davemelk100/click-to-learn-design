@@ -1078,10 +1078,18 @@ function App() {
           exampleLink="https://www.canva.com/learn/what-is-the-golden-ratio/"
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
+              <style>
+                {`
+                  @keyframes pulseGlow {
+                    0%, 100% { box-shadow: 0 0 0 0 rgba(245,158,11,0.4); }
+                    50% { box-shadow: 0 0 20px 10px rgba(245,158,11,0.4); }
+                  }
+                `}
+              </style>
               <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-amber-50 to-yellow-50 p-4 relative group">
                 <div className="absolute inset-0 flex items-center justify-center">
                   {/* Golden Rectangle and Spiral */}
-                  <div className="relative w-40 h-24 border-2 border-amber-600/40 group-hover:border-amber-600/60 transition-all duration-300 group-hover:shadow-[0_0_20px_rgba(245,158,11,0.5)]">
+                  <div className="relative w-40 h-24 border-2 border-amber-600/40 group-hover:border-amber-600/60 transition-all duration-300 group-hover:animate-[pulseGlow_2s_ease-in-out_infinite]">
                     {/* Nested Golden Rectangles */}
                     <div className="absolute right-0 top-0 w-[61.8%] h-full border-l-2 border-amber-600/40 group-hover:border-amber-600/60 transition-all duration-300">
                       <div className="absolute bottom-0 right-0 h-[61.8%] w-full border-t-2 border-amber-600/40 group-hover:border-amber-600/60 transition-all duration-300">
