@@ -1,5 +1,5 @@
 import React from "react";
-import { MessageSquare, Palette } from "lucide-react";
+import { MessageSquare, Palette, Info, Settings } from "lucide-react";
 import DesignSection from "./components/DesignSection";
 
 interface DesignSectionProps {
@@ -1491,7 +1491,7 @@ function App() {
                   <div className="relative w-48 h-24">
                     {/* Simple tooltip */}
                     <div className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-emerald-400/20 group-hover:bg-emerald-400/40 transition-colors duration-300 cursor-pointer flex items-center justify-center">
-                      <div className="w-6 h-6 text-emerald-600">ℹ️</div>
+                      <Info className="w-6 h-6 text-emerald-600" />
                       <div className="absolute -top-8 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all duration-300 bg-white/90 text-emerald-800 text-xs px-2 py-1 rounded-lg shadow-lg">
                         Information tooltip
                       </div>
@@ -1499,7 +1499,7 @@ function App() {
 
                     {/* Rich tooltip */}
                     <div className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-emerald-400/20 group-hover:bg-emerald-400/40 transition-colors duration-300 cursor-pointer flex items-center justify-center">
-                      <div className="w-6 h-6 text-emerald-600">⚙️</div>
+                      <Settings className="w-6 h-6 text-emerald-600" />
                       <div className="absolute -top-20 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all duration-300 bg-white/90 text-emerald-800 text-xs p-2 rounded-lg shadow-lg w-32">
                         <div className="font-bold mb-1">Settings</div>
                         <div className="text-emerald-600/80">
