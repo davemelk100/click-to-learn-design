@@ -985,7 +985,7 @@ function App() {
                 </div>
                 {/* Overlay text */}
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-20">
-                  <div className="text-xs sm:text-sm text-stone-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-oswald">
+                  <div className="text-xs sm:text-sm text-stone-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-oswald tracking-wider">
                     Parallel lines remain parallel
                   </div>
                 </div>

@@ -80,7 +80,7 @@ const DesignSection: React.FC<DesignSectionProps> = ({
       case "overlock-sc":
         return "font-overlock-sc";
       case "oswald":
-        return "font-oswald tracking-[1px]";
+        return "font-oswald tracking-[2px]";
       default:
         return "font-helvetica";
     }

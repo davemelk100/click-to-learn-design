@@ -73,7 +73,8 @@
 }
 
 .font-oswald {
-  font-family: 'Oswald', sans-serif !important;
+  font-family: Oswald, sans-serif;
+  letter-spacing: 0.2em;
 }
 
 .font-roboto-slab {
