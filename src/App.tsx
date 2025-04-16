@@ -460,9 +460,9 @@ function App() {
         />
         <DesignSection
           title="Ambiguous Scale"
-          description="Ambiguous Scale challenges perception by presenting elements whose size relationships are intentionally unclear. This creates an engaging visual puzzle that draws viewers in to resolve the spatial ambiguity."
-          designPrinciple="Contrast – Using differences in color, size, or shape to create visual interest and hierarchy."
-          exampleLink="https://www.canva.com/learn/design-elements-principles/#scale"
+          description="Ambiguous Scale challenges perception by presenting elements whose size relationships are intentionally unclear. This creates an engaging visual puzzle that draws viewers in to resolve the spatial ambiguity, demonstrating how scale can be used to create visual hierarchy and guide attention."
+          designPrinciple="Scale & Perception – Using relative size to create visual hierarchy and relationships between elements."
+          exampleLink="https://www.microsoft.com/en-us/microsoft-365-life-hacks/presentations/scale-in-graphic-design"
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
               <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-zinc-50 to-neutral-50 p-4 relative overflow-hidden group">
@@ -1208,7 +1208,7 @@ function App() {
           descriptionClassName="font-overlock-sc"
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
-              <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-stone-50 to-slate-50 p-4 relative group">
+              <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-stone-400 to-slate-500 p-4 relative group">
                 <div className="absolute inset-0 flex items-center justify-center">
                   {/* Initial state - decorative but complex */}
                   <div className="absolute w-48 h-48 opacity-100 group-hover:opacity-0 transition-all duration-500">
@@ -1217,7 +1217,7 @@ function App() {
                       {[...Array(16)].map((_, i) => (
                         <div
                           key={`decor-${i}`}
-                          className="bg-stone-200/30 rounded transform transition-all duration-500"
+                          className="bg-stone-600/30 rounded transform transition-all duration-500"
                           style={{
                             transform: `rotate(${i * 22.5}deg)`,
                           }}
@@ -1228,7 +1228,7 @@ function App() {
                     {[...Array(8)].map((_, i) => (
                       <div
                         key={`ornament-${i}`}
-                        className="absolute w-4 h-4 border-2 border-stone-300/40 rounded-full transform transition-all duration-500"
+                        className="absolute w-4 h-4 border-2 border-stone-500/40 rounded-full transform transition-all duration-500"
                         style={{
                           left: `${25 + Math.cos((i * Math.PI * 2) / 8) * 20}%`,
                           top: `${25 + Math.sin((i * Math.PI * 2) / 8) * 20}%`,
@@ -1245,24 +1245,24 @@ function App() {
                     {/* Functional interface elements */}
                     <div className="absolute inset-0 flex flex-col gap-2 p-4">
                       {/* Header */}
-                      <div className="h-6 bg-stone-200/50 rounded" />
+                      <div className="h-6 bg-stone-600/50 rounded" />
                       {/* Content area */}
                       <div className="flex-1 flex flex-col gap-2">
-                        <div className="h-4 bg-stone-200/30 rounded" />
-                        <div className="h-4 bg-stone-200/30 rounded" />
-                        <div className="h-4 bg-stone-200/30 rounded" />
+                        <div className="h-4 bg-stone-600/30 rounded" />
+                        <div className="h-4 bg-stone-600/30 rounded" />
+                        <div className="h-4 bg-stone-600/30 rounded" />
                       </div>
                       {/* Action buttons */}
                       <div className="flex gap-2">
-                        <div className="h-6 flex-1 bg-stone-200/50 rounded" />
-                        <div className="h-6 flex-1 bg-stone-200/50 rounded" />
+                        <div className="h-6 flex-1 bg-stone-600/50 rounded" />
+                        <div className="h-6 flex-1 bg-stone-600/50 rounded" />
                       </div>
                     </div>
                   </div>
                 </div>
                 {/* Overlay text */}
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
-                  <div className="text-xs sm:text-sm text-stone-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-overlock-sc">
+                  <div className="text-xs sm:text-sm text-stone-300 font-medium bg-stone-800/80 px-3 py-2 rounded-lg backdrop-blur-sm font-overlock-sc">
                     Simple and functional beats decorative
                   </div>
                 </div>
@@ -1628,7 +1628,7 @@ function App() {
           title="Continuity"
           description="The Law of Continuity states that the human eye naturally follows continuous lines and patterns. Elements arranged in a continuous line or curve are perceived as more related than elements not on the line or curve."
           designPrinciple="Visual Flow – Using continuous lines and patterns to guide the viewer's eye through a design."
-          exampleLink="https://www.chrbutler.com/gestalt-principles-of-design-continuit"
+          exampleLink="https://www.merriam-webster.com/dictionary/law%20of%20continuity"
           fontFamily="dm-serif-display"
           descriptionClassName="font-dm-serif-display"
           titleClassName="font-dm-serif-display"
@@ -1636,9 +1636,11 @@ function App() {
             <div className="flex items-center justify-center w-full h-full">
               <style>
                 {`
-                  @keyframes flowCurve {
+                  @keyframes flowWave {
                     0% { transform: translateX(-100%) translateY(0); }
-                    50% { transform: translateX(0) translateY(-20px); }
+                    25% { transform: translateX(-50%) translateY(-20px); }
+                    50% { transform: translateX(0) translateY(0); }
+                    75% { transform: translateX(50%) translateY(20px); }
                     100% { transform: translateX(100%) translateY(0); }
                   }
                   @keyframes glow {
@@ -1647,35 +1649,39 @@ function App() {
                   }
                 `}
               </style>
-              <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-amber-50 to-orange-50 p-4 relative group">
+              <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-sky-50 to-blue-50 p-4 relative group">
                 <div className="absolute inset-0 flex items-center justify-center">
                   {/* Main container */}
-                  <div className="relative w-56 h-32">
+                  <div className="relative w-full h-32">
                     {/* Curved background lines */}
                     <div className="absolute inset-0">
                       {/* Primary curve */}
                       <div className="absolute w-full h-32">
-                        <div className="absolute w-full h-px bg-amber-600/20 transform -rotate-6 origin-center group-hover:bg-amber-600/40 transition-colors duration-300" />
-                        <div className="absolute w-full h-px bg-amber-600/20 transform rotate-6 origin-center group-hover:bg-amber-600/40 transition-colors duration-300" />
+                        <div className="absolute w-full h-px bg-sky-600/20 transform -rotate-6 origin-center group-hover:bg-sky-600/40 transition-colors duration-300" />
+                        <div className="absolute w-full h-px bg-sky-600/20 transform rotate-6 origin-center group-hover:bg-sky-600/40 transition-colors duration-300" />
                       </div>
                       {/* Secondary curves */}
                       <div className="absolute w-full h-32 top-8">
-                        <div className="absolute w-full h-px bg-amber-600/10 transform -rotate-12 origin-center group-hover:bg-amber-600/20 transition-colors duration-300" />
-                        <div className="absolute w-full h-px bg-amber-600/10 transform rotate-12 origin-center group-hover:bg-amber-600/20 transition-colors duration-300" />
+                        <div className="absolute w-full h-px bg-sky-600/10 transform -rotate-12 origin-center group-hover:bg-sky-600/20 transition-colors duration-300" />
+                        <div className="absolute w-full h-px bg-sky-600/10 transform rotate-12 origin-center group-hover:bg-sky-600/20 transition-colors duration-300" />
                       </div>
                     </div>
 
-                    {/* Flowing elements along curves */}
+                    {/* Single file flowing elements */}
                     <div className="absolute inset-0 overflow-hidden">
-                      {[...Array(3)].map((_, i) => (
+                      {[...Array(5)].map((_, i) => (
                         <div
-                          key={`curve-${i}`}
-                          className="absolute w-3 h-3 bg-amber-600 rounded-full group-hover:animate-[flowCurve_6s_ease-in-out_infinite]"
+                          key={`ball-${i}`}
+                          className="absolute w-4 h-4 bg-sky-600 rounded-full group-hover:animate-[flowWave_3s_linear_infinite]"
                           style={{
-                            top: `${30 + i * 20}%`,
-                            animationDelay: `${i * 0.5}s`,
+                            top: "50%",
+                            left: "0%",
+                            transform: "translate(-50%, -50%)",
+                            animationDelay: `${i * 0.6}s`,
                           }}
-                        />
+                        >
+                          <div className="absolute inset-0 rounded-full bg-gradient-to-br from-sky-400 to-sky-600" />
+                        </div>
                       ))}
                     </div>
 
@@ -1684,34 +1690,36 @@ function App() {
                       {[...Array(5)].map((_, i) => (
                         <div
                           key={`point-${i}`}
-                          className="absolute w-2 h-2 bg-amber-600 rounded-full group-hover:animate-[glow_2s_ease-in-out_infinite]"
+                          className="absolute w-3 h-3 bg-sky-600 rounded-full group-hover:animate-[glow_1.5s_ease-in-out_infinite]"
                           style={{
                             left: `${20 + i * 20}%`,
                             top: "50%",
                             transform: "translate(-50%, -50%)",
                             animationDelay: `${i * 0.2}s`,
                           }}
-                        />
+                        >
+                          <div className="absolute inset-0 rounded-full bg-gradient-to-br from-sky-400 to-sky-600" />
+                        </div>
                       ))}
                     </div>
 
                     {/* Flow direction indicators */}
                     <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <div className="absolute left-1/4 top-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 border-t-2 border-r-2 border-amber-600 transform rotate-45" />
-                      <div className="absolute right-1/4 top-1/2 translate-x-1/2 -translate-y-1/2 w-3 h-3 border-t-2 border-r-2 border-amber-600 transform rotate-225" />
+                      <div className="absolute left-1/4 top-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 border-t-2 border-r-2 border-sky-600 transform rotate-45 group-hover:animate-[bounce_1s_ease-in-out_infinite]" />
+                      <div className="absolute right-1/4 top-1/2 translate-x-1/2 -translate-y-1/2 w-4 h-4 border-t-2 border-r-2 border-sky-600 transform rotate-225 group-hover:animate-[bounce_1s_ease-in-out_infinite]" />
                     </div>
                   </div>
                 </div>
                 {/* Overlay text */}
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
-                  <div className="text-xs sm:text-sm text-amber-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-dm-serif-display">
+                  <div className="text-xs sm:text-sm text-sky-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-dm-serif-display">
                     Curves create natural flow
                   </div>
                 </div>
               </div>
             </div>
           }
-          background="bg-gradient-to-br from-amber-50/50 to-orange-50/50"
+          background="bg-gradient-to-br from-sky-50/50 to-blue-50/50"
         />
         <DesignSection
           title="Emergence"
@@ -1719,7 +1727,7 @@ function App() {
           designPrinciple="Holistic Perception – Understanding how the mind perceives complete patterns before analyzing their components."
           exampleLink="https://medium.com/@uxdesigncc/emergence-in-design-why-the-whole-is-greater-than-the-sum-of-its-parts-5a1b0c0c0c0c"
           fontFamily="domine"
-          descriptionClassName="text-slate-600"
+          descriptionClassName="font-['Domine'] text-slate-800"
           titleClassName="text-slate-800"
           visualComponent={
             <div className="relative w-48 h-48 group">
