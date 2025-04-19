@@ -1986,12 +1986,17 @@ function App() {
               <style>
                 {`
                   @keyframes slideIn {
-                    from { transform: translateX(-100%); opacity: 0; }
-                    to { transform: translateX(0); opacity: 1; }
+                    from { transform: translateX(-100%) scale(0.8); opacity: 0; }
+                    to { transform: translateX(0) scale(1); opacity: 1; }
                   }
                   @keyframes fadeIn {
-                    from { opacity: 0; }
-                    to { opacity: 1; }
+                    from { transform: scale(0.5); opacity: 0; }
+                    to { transform: scale(1); opacity: 1; }
+                  }
+                  @keyframes pulse {
+                    0% { transform: scale(1); }
+                    50% { transform: scale(1.05); }
+                    100% { transform: scale(1); }
                   }
                 `}
               </style>
@@ -2002,48 +2007,48 @@ function App() {
                     {/* Initial state - simple interface */}
                     <div className="absolute inset-0 flex flex-col gap-2 p-4">
                       {/* Header */}
-                      <div className="h-6 bg-emerald-400/30 rounded" />
+                      <div className="h-6 bg-emerald-400/30 rounded group-hover:animate-[pulse_1s_ease-in-out_infinite]" />
                       {/* Main content */}
                       <div className="flex-1 flex flex-col gap-2">
                         <div className="h-4 bg-emerald-400/20 rounded" />
                         <div className="h-4 bg-emerald-400/20 rounded" />
                       </div>
                       {/* Action button */}
-                      <div className="h-8 bg-emerald-500/30 rounded group-hover:bg-emerald-500/40 transition-colors duration-300" />
+                      <div className="h-8 bg-emerald-500/30 rounded group-hover:bg-emerald-500/40 transition-colors duration-300 group-hover:animate-[pulse_1s_ease-in-out_infinite]" />
                     </div>
 
                     {/* Expanded state - revealed on hover */}
                     <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       <div className="flex flex-col gap-2 p-4">
                         {/* Header remains */}
-                        <div className="h-6 bg-emerald-400/30 rounded" />
+                        <div className="h-6 bg-emerald-400/30 rounded animate-[pulse_1s_ease-in-out_infinite]" />
                         {/* Expanded content */}
                         <div className="flex-1 flex flex-col gap-2">
                           <div
-                            className="h-4 bg-emerald-400/20 rounded animate-[slideIn_0.5s_ease-out_forwards]"
+                            className="h-4 bg-emerald-400/20 rounded animate-[slideIn_0.3s_ease-out_forwards]"
                             style={{ animationDelay: "0.1s" }}
                           />
                           <div
-                            className="h-4 bg-emerald-400/20 rounded animate-[slideIn_0.5s_ease-out_forwards]"
+                            className="h-4 bg-emerald-400/20 rounded animate-[slideIn_0.3s_ease-out_forwards]"
                             style={{ animationDelay: "0.2s" }}
                           />
                           <div
-                            className="h-4 bg-emerald-400/20 rounded animate-[slideIn_0.5s_ease-out_forwards]"
+                            className="h-4 bg-emerald-400/20 rounded animate-[slideIn_0.3s_ease-out_forwards]"
                             style={{ animationDelay: "0.3s" }}
                           />
                           <div
-                            className="h-4 bg-emerald-400/20 rounded animate-[slideIn_0.5s_ease-out_forwards]"
+                            className="h-4 bg-emerald-400/20 rounded animate-[slideIn_0.3s_ease-out_forwards]"
                             style={{ animationDelay: "0.4s" }}
                           />
                         </div>
                         {/* Additional controls */}
                         <div className="flex gap-2">
                           <div
-                            className="h-8 flex-1 bg-emerald-500/30 rounded animate-[fadeIn_0.5s_ease-out_forwards]"
+                            className="h-8 flex-1 bg-emerald-500/30 rounded animate-[fadeIn_0.3s_ease-out_forwards]"
                             style={{ animationDelay: "0.5s" }}
                           />
                           <div
-                            className="h-8 flex-1 bg-emerald-500/30 rounded animate-[fadeIn_0.5s_ease-out_forwards]"
+                            className="h-8 flex-1 bg-emerald-500/30 rounded animate-[fadeIn_0.3s_ease-out_forwards]"
                             style={{ animationDelay: "0.6s" }}
                           />
                         </div>
@@ -2051,7 +2056,7 @@ function App() {
                     </div>
 
                     {/* Focus indicator */}
-                    <div className="absolute inset-0 border-2 border-emerald-400/0 group-hover:border-emerald-400/20 rounded transition-colors duration-300" />
+                    <div className="absolute inset-0 border-2 border-emerald-400/0 group-hover:border-emerald-400/20 rounded transition-colors duration-300 group-hover:animate-[pulse_1s_ease-in-out_infinite]" />
                   </div>
                 </div>
                 {/* Overlay text */}
