@@ -1973,6 +1973,98 @@ function App() {
           }
           background="bg-gradient-to-br from-violet-50/50 to-purple-50/50"
         />
+        <DesignSection
+          title="Progressive Disclosure"
+          description="Progressive Disclosure is a design pattern that reveals information gradually, showing only what's necessary at each step. This approach reduces cognitive load, prevents overwhelming users, and helps maintain focus on the current task."
+          designPrinciple="Information Hierarchy – Revealing information progressively to maintain focus and reduce cognitive load."
+          exampleLink="https://www.nngroup.com/articles/progressive-disclosure/"
+          fontFamily="dm-sans"
+          descriptionClassName="font-dm-sans"
+          titleClassName="font-dm-sans"
+          visualComponent={
+            <div className="flex items-center justify-center w-full h-full">
+              <style>
+                {`
+                  @keyframes slideIn {
+                    from { transform: translateX(-100%); opacity: 0; }
+                    to { transform: translateX(0); opacity: 1; }
+                  }
+                  @keyframes fadeIn {
+                    from { opacity: 0; }
+                    to { opacity: 1; }
+                  }
+                `}
+              </style>
+              <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-emerald-50 to-teal-50 p-4 relative group">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  {/* Main container */}
+                  <div className="relative w-72 h-40">
+                    {/* Initial state - simple interface */}
+                    <div className="absolute inset-0 flex flex-col gap-2 p-4">
+                      {/* Header */}
+                      <div className="h-6 bg-emerald-400/30 rounded" />
+                      {/* Main content */}
+                      <div className="flex-1 flex flex-col gap-2">
+                        <div className="h-4 bg-emerald-400/20 rounded" />
+                        <div className="h-4 bg-emerald-400/20 rounded" />
+                      </div>
+                      {/* Action button */}
+                      <div className="h-8 bg-emerald-500/30 rounded group-hover:bg-emerald-500/40 transition-colors duration-300" />
+                    </div>
+
+                    {/* Expanded state - revealed on hover */}
+                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="flex flex-col gap-2 p-4">
+                        {/* Header remains */}
+                        <div className="h-6 bg-emerald-400/30 rounded" />
+                        {/* Expanded content */}
+                        <div className="flex-1 flex flex-col gap-2">
+                          <div
+                            className="h-4 bg-emerald-400/20 rounded animate-[slideIn_0.5s_ease-out_forwards]"
+                            style={{ animationDelay: "0.1s" }}
+                          />
+                          <div
+                            className="h-4 bg-emerald-400/20 rounded animate-[slideIn_0.5s_ease-out_forwards]"
+                            style={{ animationDelay: "0.2s" }}
+                          />
+                          <div
+                            className="h-4 bg-emerald-400/20 rounded animate-[slideIn_0.5s_ease-out_forwards]"
+                            style={{ animationDelay: "0.3s" }}
+                          />
+                          <div
+                            className="h-4 bg-emerald-400/20 rounded animate-[slideIn_0.5s_ease-out_forwards]"
+                            style={{ animationDelay: "0.4s" }}
+                          />
+                        </div>
+                        {/* Additional controls */}
+                        <div className="flex gap-2">
+                          <div
+                            className="h-8 flex-1 bg-emerald-500/30 rounded animate-[fadeIn_0.5s_ease-out_forwards]"
+                            style={{ animationDelay: "0.5s" }}
+                          />
+                          <div
+                            className="h-8 flex-1 bg-emerald-500/30 rounded animate-[fadeIn_0.5s_ease-out_forwards]"
+                            style={{ animationDelay: "0.6s" }}
+                          />
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Focus indicator */}
+                    <div className="absolute inset-0 border-2 border-emerald-400/0 group-hover:border-emerald-400/20 rounded transition-colors duration-300" />
+                  </div>
+                </div>
+                {/* Overlay text */}
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
+                  <div className="text-xs sm:text-sm text-emerald-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-dm-sans whitespace-nowrap">
+                    Reveal information progressively
+                  </div>
+                </div>
+              </div>
+            </div>
+          }
+          background="bg-gradient-to-br from-emerald-50/50 to-teal-50/50"
+        />
       </div>
       <footer className="py-2 bg-black">
         <div className="flex items-center pl-4">
