@@ -2074,10 +2074,10 @@ function App() {
           title="Skip Block"
           description="Skip Block is a design pattern that allows users to bypass large sections of content they don't need to see. This pattern is particularly useful for long pages with multiple sections, helping users quickly navigate to relevant content while maintaining context."
           designPrinciple="Content Navigation – Enabling efficient navigation through large content blocks while preserving context."
-          exampleLink="https://www.w3.org/WAI/tutorials/menus/flyout/#provide-skip-links"
-          fontFamily="dm-sans"
-          descriptionClassName="font-dm-sans"
-          titleClassName="font-dm-sans"
+          exampleLink="https://universaldesign.ie/communications-digital/web-and-mobile-accessibility/web-accessibility-techniques/developers-introduction-and-index/design-accessible-navigation/allow-users-to-skip-blocks-of-information-easily"
+          fontFamily="encode-sans-sc"
+          descriptionClassName="font-encode-sans-sc"
+          titleClassName="font-encode-sans-sc"
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
               <style>
@@ -2117,7 +2117,7 @@ function App() {
                       <div className="absolute top-8 left-0 right-0 h-24 bg-sky-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 animate-[slideDown_0.3s_ease-out_forwards] animate-[highlight_2s_ease-in-out_infinite]" />
 
                       {/* Skip button */}
-                      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[60px] opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                         <div className="flex items-center gap-2 bg-white px-3 py-1.5 rounded-full shadow-md">
                           <div className="w-3 h-3 bg-sky-500 rounded-full" />
                           <div className="text-xs font-medium text-sky-600 whitespace-nowrap">
