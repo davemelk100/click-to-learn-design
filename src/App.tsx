@@ -17,7 +17,23 @@ interface DesignSectionProps {
   designPrinciple: string;
   exampleLink: string;
   visualComponent: React.ReactNode;
-  fontFamily?: string;
+  fontFamily?:
+    | "dm-sans"
+    | "helvetica"
+    | "avenir"
+    | "roboto"
+    | "habibi"
+    | "anek-gurmukhi"
+    | "eb-garamond"
+    | "source-code-pro"
+    | "oswald"
+    | "roboto-slab"
+    | "share-tech"
+    | "josefin-sans"
+    | "roboto-flex"
+    | "permanent-marker"
+    | "urbanist"
+    | "domine";
   descriptionClassName?: string;
   titleClassName?: string;
   background?: string;
@@ -2141,6 +2157,72 @@ function App() {
             </div>
           }
           background="bg-gradient-to-br from-sky-50/50 to-blue-50/50"
+        />
+        <DesignSection
+          title="Massimo Vignelli"
+          description="An Italian designer who profoundly influenced American design through his modernist approach to corporate identity and public signage. His work for the New York City Subway and American Airlines established new standards for clarity and functionality in public design."
+          designPrinciple="Modernist Clarity through grid systems and typography"
+          exampleLink="https://www.designculture.it/interview/massimo-vignelli.html"
+          visualComponent={
+            <div className="w-full h-full flex items-center justify-center">
+              <div className="w-[300px] h-[200px] bg-white overflow-hidden group relative">
+                <img
+                  src="https://images.ctfassets.net/nonm77rtn1g8/2BB7j2rwSUCmIqoqeIKeMY/e233f6f7f7726637742644a4f24794f8/large_fcd6634acb8a0a1ffe43b36e6f416ff6.jpg?w=1000&q=70"
+                  alt="Massimo Vignelli's work"
+                  className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </div>
+            </div>
+          }
+          fontFamily="urbanist"
+          descriptionClassName="text-gray-700"
+          titleClassName="text-2xl font-bold text-gray-900"
+          background="bg-gradient-to-br from-slate-50/50 to-gray-50/50"
+        />
+        <DesignSection
+          title="Jakob Nielsen"
+          description="A Danish web usability consultant and co-founder of the Nielsen Norman Group. Nielsen's research and principles have shaped modern web design, emphasizing user-centered design and accessibility."
+          designPrinciple="Usability Heuristics - Ten general principles for interaction design that ensure intuitive and efficient user experiences"
+          exampleLink="https://www.nngroup.com/people/jakob-nielsen/"
+          visualComponent={
+            <div className="w-full h-full flex items-center justify-center">
+              <div className="w-[300px] h-[200px] bg-white overflow-hidden group relative">
+                <img
+                  src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*bD4vGn_s9B9vFClbG-UqpQ.jpeg"
+                  alt="Jakob Nielsen's work"
+                  className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </div>
+            </div>
+          }
+          fontFamily="helvetica"
+          descriptionClassName="text-gray-700"
+          titleClassName="text-2xl font-bold text-gray-900"
+          background="bg-gradient-to-br from-blue-50/50 to-indigo-50/50"
+        />
+        <DesignSection
+          title="Saul Bass"
+          description="A pioneer of modern graphic design, Saul Bass revolutionized corporate identity design with his minimalist approach. His work in film title sequences and corporate logos established a new visual language that continues to influence design today."
+          designPrinciple="Geometric Minimalism - Using simple shapes to create memorable, timeless brand identities"
+          exampleLink="http://logos.fandom.com/wiki/Saul_Bass"
+          visualComponent={
+            <div className="w-full h-full flex items-center justify-center">
+              <div className="w-[300px] h-[200px] bg-white overflow-hidden group relative">
+                <img
+                  src="https://blog.weditt.com/wp-content/uploads/2024/08/Saul-Bass-The-Master-of-Motion-Graphics.jpg"
+                  alt="Saul Bass's work"
+                  className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </div>
+            </div>
+          }
+          fontFamily="dm-sans"
+          descriptionClassName="text-gray-700"
+          titleClassName="text-2xl font-bold text-gray-900"
+          background="bg-gradient-to-br from-red-50/50 to-red-100/50"
         />
       </div>
       <footer className="py-2 bg-black">
