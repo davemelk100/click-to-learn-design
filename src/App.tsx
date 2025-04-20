@@ -47,7 +47,8 @@ interface DesignSectionProps {
     | "sriracha"
     | "doto"
     | "bowlby-one-sc"
-    | "protest-revolution";
+    | "protest-revolution"
+    | "outfit";
   descriptionClassName?: string;
   titleClassName?: string;
   background?: string;
@@ -2439,6 +2440,28 @@ function App() {
           descriptionClassName="text-gray-700 font-bowlby-one-sc"
           titleClassName="text-2xl font-bold text-gray-900 font-bowlby-one-sc tracking-tight"
           background="bg-gradient-to-br from-indigo-50/50 to-violet-50/50"
+        />
+        <DesignSection
+          title="Damien Hirst"
+          description="A leading figure in the Young British Artists movement, Hirst is known for his controversial and thought-provoking works that explore themes of life, death, and beauty. His iconic spot paintings and formaldehyde-preserved animals have redefined contemporary art and challenged traditional notions of artistic value."
+          designPrinciple="Conceptual Impact - Using bold visual statements to explore fundamental questions about existence and mortality"
+          exampleLink="https://www.damienhirst.com"
+          visualComponent={
+            <div className="w-full h-full flex items-center justify-center p-4">
+              <div className="w-[500px] h-[300px] bg-white overflow-hidden group relative">
+                <img
+                  src="https://d16kd6gzalkogb.cloudfront.net/magazine_images/Damien-Hirst-in-front-of-his-The-Physical-Impossibility-of-Death-in-the-Mind-of-Someone-Living-1991-artwork-photo-via-GQ.jpg"
+                  alt="Damien Hirst with his shark artwork"
+                  className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </div>
+            </div>
+          }
+          fontFamily="outfit"
+          descriptionClassName="text-gray-700 font-outfit"
+          titleClassName="text-2xl font-bold text-gray-900 font-outfit tracking-tight"
+          background="bg-gradient-to-br from-white/50 to-gray-50/50"
         />
       </div>
       <footer className="py-2 bg-black">
