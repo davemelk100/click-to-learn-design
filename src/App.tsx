@@ -2019,18 +2019,93 @@ function App() {
           descriptionClassName="font-dm-sans"
           titleClassName="font-dm-sans"
           visualComponent={
-            <div className="w-full h-full flex items-center justify-center p-4">
-              <div className="w-[500px] h-[300px] bg-white overflow-hidden group relative">
-                <img
-                  src="https://images.ctfassets.net/nonm77rtn1g8/2BB7j2rwSUCmIqoqeIKeMY/e233f6f7f7726637742644a4f24794f8/large_fcd6634acb8a0a1ffe43b36e6f416ff6.jpg?w=1000&q=70"
-                  alt="Progressive Disclosure example"
-                  className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <div className="flex items-center justify-center w-full h-full">
+              <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-emerald-50 to-teal-50 p-4 relative group">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  {/* Initial state - minimal information */}
+                  <div className="relative w-32 h-32">
+                    <div className="absolute inset-0 bg-emerald-400/20 rounded-lg" />
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="w-8 h-8 bg-emerald-500 rounded-full group-hover:animate-[pulse_2s_ease-in-out_infinite]" />
+                    </div>
+                  </div>
+
+                  {/* First level of disclosure */}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="relative w-48 h-32">
+                      <div className="absolute inset-0 bg-emerald-400/30 rounded-lg" />
+                      <div className="absolute inset-0 flex items-center justify-center gap-2">
+                        <div className="w-6 h-6 bg-emerald-500 rounded-full group-hover:animate-[bounce_1s_ease-in-out_infinite]" />
+                        <div
+                          className="w-6 h-6 bg-emerald-500 rounded-full group-hover:animate-[bounce_1s_ease-in-out_infinite]"
+                          style={{ animationDelay: "0.2s" }}
+                        />
+                        <div
+                          className="w-6 h-6 bg-emerald-500 rounded-full group-hover:animate-[bounce_1s_ease-in-out_infinite]"
+                          style={{ animationDelay: "0.4s" }}
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Second level of disclosure */}
+                  <div
+                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    style={{ transitionDelay: "0.1s" }}
+                  >
+                    <div className="relative w-64 h-40">
+                      <div className="absolute inset-0 bg-emerald-400/40 rounded-lg" />
+                      <div className="absolute inset-0 flex flex-col gap-2 p-4">
+                        <div className="h-4 bg-emerald-500/50 rounded-full group-hover:animate-[pulse_2s_ease-in-out_infinite]" />
+                        <div
+                          className="h-4 bg-emerald-500/50 rounded-full group-hover:animate-[pulse_2s_ease-in-out_infinite]"
+                          style={{ animationDelay: "0.2s" }}
+                        />
+                        <div
+                          className="h-4 bg-emerald-500/50 rounded-full group-hover:animate-[pulse_2s_ease-in-out_infinite]"
+                          style={{ animationDelay: "0.4s" }}
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Final level of disclosure */}
+                  <div
+                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    style={{ transitionDelay: "0.2s" }}
+                  >
+                    <div className="relative w-72 h-48">
+                      <div className="absolute inset-0 bg-emerald-400/50 rounded-lg" />
+                      <div className="absolute inset-0 flex flex-col gap-4 p-4">
+                        <div className="h-6 bg-emerald-500/60 rounded-lg group-hover:animate-[pulse_2s_ease-in-out_infinite]" />
+                        <div className="flex-1 grid grid-cols-2 gap-2">
+                          <div className="h-4 bg-emerald-500/40 rounded-full group-hover:animate-[pulse_2s_ease-in-out_infinite]" />
+                          <div
+                            className="h-4 bg-emerald-500/40 rounded-full group-hover:animate-[pulse_2s_ease-in-out_infinite]"
+                            style={{ animationDelay: "0.2s" }}
+                          />
+                          <div
+                            className="h-4 bg-emerald-500/40 rounded-full group-hover:animate-[pulse_2s_ease-in-out_infinite]"
+                            style={{ animationDelay: "0.4s" }}
+                          />
+                          <div
+                            className="h-4 bg-emerald-500/40 rounded-full group-hover:animate-[pulse_2s_ease-in-out_infinite]"
+                            style={{ animationDelay: "0.6s" }}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {/* Overlay text */}
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
+                  <div className="text-xs sm:text-sm text-emerald-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-dm-sans">
+                    Information reveals progressively
+                  </div>
+                </div>
               </div>
             </div>
           }
-          fontFamily="dm-sans"
           background="bg-gradient-to-br from-emerald-50/50 to-teal-50/50"
         />
 
@@ -2243,9 +2318,10 @@ function App() {
               />
             </div>
           }
+          fontFamily="lexend"
+          descriptionClassName="text-gray-700 font-lexend"
+          titleClassName="text-2xl font-bold text-gray-900 font-lexend"
           background="bg-gradient-to-br from-gray-50 to-gray-100"
-          fontFamily="helvetica"
-          descriptionClassName="font-helvetica"
         />
         <DesignSection
           title="Otl Aicher"

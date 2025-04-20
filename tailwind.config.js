@@ -25,6 +25,7 @@ export default {
         "protest-revolution": ["Protest Revolution", "sans-serif"],
         "chelsea-market": ["Chelsea Market", "cursive"],
         tektur: ["Tektur", "sans-serif"],
+        lexend: ["Lexend", "sans-serif"],
       },
     },
   },
