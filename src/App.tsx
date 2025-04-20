@@ -8,6 +8,7 @@ import {
   RefreshCw,
   Brain,
   Hand,
+  ArrowUp,
 } from "lucide-react";
 import DesignSection from "./components/DesignSection";
 
@@ -100,6 +101,12 @@ function App() {
               Design
             </a>
             <a
+              href="#designs"
+              className="text-white hover:text-white/80 transition-colors duration-300"
+            >
+              Designs
+            </a>
+            <a
               href="#designers"
               className="text-white hover:text-white/80 transition-colors duration-300"
             >
@@ -119,11 +126,19 @@ function App() {
 
       {/* Section Break */}
       <div id="design" className="col-span-full py-12">
-        <h2 className="text-3xl font-bold text-gray-900 text-center font-urbanist">
-          Design
-        </h2>
+        <div className="flex items-center justify-center gap-2 group">
+          <h2 className="text-3xl font-bold text-gray-900 text-center font-urbanist">
+            Design
+          </h2>
+          <button
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            className="opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+          >
+            <ArrowUp className="w-6 h-6 text-gray-400 hover:text-gray-600" />
+          </button>
+        </div>
         <p className="text-gray-600 text-center mt-2 font-urbanist">
-          Fundamental principles that shape visual communication
+          Fundamental principles that shape effective design
         </p>
       </div>
 
@@ -2128,31 +2143,107 @@ function App() {
           background="bg-gradient-to-br from-emerald-50/50 to-teal-50/50"
         />
 
-        {/* Designers Section */}
-        <div id="designers" className="col-span-full py-12 group">
-          <div className="flex items-center justify-center gap-2">
+        {/* Section Break */}
+        <div id="designs" className="col-span-full py-12">
+          <div className="flex items-center justify-center gap-2 group">
+            <h2 className="text-3xl font-bold text-gray-900 text-center font-urbanist">
+              Designs
+            </h2>
+            <button
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+              className="opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+            >
+              <ArrowUp className="w-6 h-6 text-gray-400 hover:text-gray-600" />
+            </button>
+          </div>
+          <p className="text-gray-600 text-center mt-2 font-urbanist">
+            Iconic designs that have transformed digital experiences
+          </p>
+        </div>
+
+        <div className="col-span-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 divide-y md:divide-y-0 md:divide-x border-gray-200/50">
+          <DesignSection
+            title="The Boston Globe"
+            description="The Boston Globe's 2011 responsive redesign, led by Ethan Marcotte and Filament Group, marked a pivotal moment in web design. As the first major news site to implement responsive design, it demonstrated how content could adapt seamlessly across devices while maintaining readability and hierarchy."
+            designPrinciple="Responsive Design - Creating fluid layouts that adapt to any screen size while maintaining content integrity"
+            exampleLink="https://zeldman.com/2011/09/15/boston-globes-responsive-redesign-discuss/"
+            visualComponent={
+              <div className="flex items-center justify-center w-full h-full">
+                <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-blue-50 to-indigo-50 p-4 relative group">
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <img
+                      src="https://scholarlykitchen.sspnet.org/wp-content/uploads/2012/09/boston_globe_responsive_website.jpg"
+                      alt="The Boston Globe responsive website design"
+                      className="w-full h-full object-cover rounded-lg shadow-lg transform transition-all duration-500 group-hover:scale-110"
+                    />
+                  </div>
+                </div>
+              </div>
+            }
+            fontFamily="source-sans"
+            descriptionClassName="text-gray-700 font-source-sans"
+            titleClassName="text-2xl font-bold text-gray-900 font-source-sans"
+            background="bg-gradient-to-br from-blue-50/50 to-indigo-50/50"
+          />
+          <DesignSection
+            title="FedEx Logo"
+            description="The FedEx logo, designed by Lindon Leader in 1994, is a masterclass in negative space design. The hidden arrow between the 'E' and 'x' represents forward movement and precision, perfectly aligning with FedEx's brand values. This subtle yet powerful design element has made it one of the most recognized and awarded logos in history."
+            designPrinciple="Negative Space - Using the space between elements to create hidden meaning and visual interest"
+            exampleLink="https://99designs.com/blog/famous-logo/fedex-logo-design/"
+            visualComponent={
+              <div className="flex items-center justify-center w-full h-full">
+                <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-amber-50 to-orange-50 p-4 relative group">
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <img
+                      src="https://logo.com/image-cdn/images/kts928pd/production/545de9c62376e6a69379aae1703674d4b66e6962-1600x894.png?w=1080&q=72&fm=webp"
+                      alt="FedEx logo with hidden arrow"
+                      className="w-full h-full object-contain rounded-lg shadow-lg transform transition-all duration-500 group-hover:scale-110"
+                    />
+                  </div>
+                </div>
+              </div>
+            }
+            fontFamily="dm-sans"
+            descriptionClassName="text-gray-700 font-dm-sans"
+            titleClassName="text-2xl font-bold text-gray-900 font-dm-sans"
+            background="bg-gradient-to-br from-amber-50/50 to-orange-50/50"
+          />
+          <DesignSection
+            title="Don't Make Me Think"
+            description="Steve Krug's 'Don't Make Me Think' revolutionized web usability with its simple, practical approach. The book emphasizes that good design should be intuitive and self-explanatory, requiring minimal cognitive effort from users. Its principles of usability testing and clear navigation have become fundamental to modern web design."
+            designPrinciple="Usability First - Creating interfaces that are intuitive and require minimal cognitive effort"
+            exampleLink="https://www.sensible.com/dmmt.html"
+            visualComponent={
+              <div className="flex items-center justify-center w-full h-full">
+                <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-emerald-50 to-teal-50 p-4 relative group">
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <img
+                      src="https://media.licdn.com/dms/image/v2/C4D34AQFcBa3aJAHZCw/ugc-proxy-shrink_800/ugc-proxy-shrink_800/0/1594646636338?e=2147483647&v=beta&t=IFoQ7PyP6METIpbPTWMVbNQTcGxFx7ax5jmr2StTdhc"
+                      alt="Don't Make Me Think book cover"
+                      className="w-full h-full object-contain rounded-lg shadow-lg transform transition-all duration-500 group-hover:scale-110"
+                    />
+                  </div>
+                </div>
+              </div>
+            }
+            fontFamily="dm-sans"
+            descriptionClassName="text-gray-700 font-dm-sans"
+            titleClassName="text-2xl font-bold text-gray-900 font-dm-sans"
+            background="bg-gradient-to-br from-emerald-50/50 to-teal-50/50"
+          />
+        </div>
+
+        {/* Section Break */}
+        <div id="designers" className="col-span-full py-12">
+          <div className="flex items-center justify-center gap-2 group">
             <h2 className="text-3xl font-bold text-gray-900 text-center font-urbanist">
               Designers
             </h2>
             <button
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              className="p-1 text-gray-600 hover:text-gray-900 transition-colors duration-300 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-              aria-label="Scroll to top"
+              className="opacity-0 group-hover:opacity-100 transition-opacity duration-200"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M5 10l7-7m0 0l7 7m-7-7v18"
-                />
-              </svg>
+              <ArrowUp className="w-6 h-6 text-gray-400 hover:text-gray-600" />
             </button>
           </div>
           <p className="text-gray-600 text-center mt-2 font-urbanist">
