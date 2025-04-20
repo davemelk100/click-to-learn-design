@@ -2306,7 +2306,27 @@ function App() {
               </div>
             </div>
           }
-          background="bg-gradient-to-br from-purple-50/50 to-pink-50/50"
+        />
+        <DesignSection
+          title="Chris Coyier"
+          description="Web designer, developer, and educator known for CSS-Tricks and CodePen. Pioneer in modern web development practices and CSS techniques."
+          designPrinciple="Web Development Education"
+          exampleLink="https://chriscoyier.net/"
+          fontFamily="source-code-pro"
+          descriptionClassName="text-gray-700 font-source-code-pro"
+          titleClassName="text-2xl font-bold text-gray-900 font-source-code-pro tracking-tight"
+          background="bg-gradient-to-br from-blue-50/50 to-indigo-50/50"
+          visualComponent={
+            <div className="w-full h-full flex items-center justify-center">
+              <div className="w-[500px] h-[300px] bg-white overflow-hidden group relative">
+                <img
+                  src="https://poststatus.com/wp-content/uploads/2014/07/chris-coyier.jpg"
+                  alt="Chris Coyier"
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+            </div>
+          }
         />
         <DesignSection
           title="Ivan Chermayeff"
