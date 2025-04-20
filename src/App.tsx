@@ -2143,7 +2143,7 @@ function App() {
           fontFamily="urbanist"
           descriptionClassName="text-gray-700 font-urbanist"
           titleClassName="text-2xl font-bold text-gray-900 font-urbanist"
-          background="bg-gradient-to-br from-gray-50 to-gray-100"
+          background="bg-gradient-to-br from-stone-50/50 to-slate-50/50"
         />
         <DesignSection
           title="Jakob Nielsen"
@@ -2184,7 +2184,7 @@ function App() {
           fontFamily="figtree"
           descriptionClassName=""
           titleClassName="text-2xl font-bold text-gray-900"
-          background="bg-gradient-to-br from-blue-50/50 to-indigo-50/50"
+          background="bg-gradient-to-br from-rose-50/50 to-pink-50/50"
         />
         <DesignSection
           title="Saul Bass"
@@ -2203,7 +2203,7 @@ function App() {
           fontFamily="bowlby-one-sc"
           descriptionClassName="text-gray-700 font-bowlby-one-sc"
           titleClassName="text-2xl font-bold text-gray-900 font-bowlby-one-sc tracking-tight"
-          background="bg-gradient-to-br from-slate-50/50 to-gray-50/50"
+          background="bg-gradient-to-br from-red-50/50 to-orange-50/50"
         />
         <DesignSection
           title="Frank Lloyd Wright"
@@ -2222,7 +2222,7 @@ function App() {
           fontFamily="roboto-slab"
           descriptionClassName="text-gray-700 font-roboto-slab"
           titleClassName="text-2xl font-bold text-gray-900"
-          background="bg-gradient-to-br from-red-50/50 to-orange-50/50"
+          background="bg-gradient-to-br from-emerald-50/50 to-teal-50/50"
         />
         <DesignSection
           title="Carolyn Davidson"
@@ -2244,7 +2244,7 @@ function App() {
           fontFamily="dm-sans"
           descriptionClassName="text-gray-700 font-dm-sans"
           titleClassName="text-2xl font-bold text-gray-900 font-dm-sans"
-          background="bg-gradient-to-br from-gray-50 to-gray-100"
+          background="bg-gradient-to-br from-sky-50/50 to-blue-50/50"
         />
         <DesignSection
           title="Vera Molnar"
@@ -2269,7 +2269,7 @@ function App() {
           fontFamily="doto"
           descriptionClassName="text-gray-700 font-doto"
           titleClassName="text-2xl font-bold text-gray-900 font-doto tracking-tight"
-          background="bg-gradient-to-br from-gray-50 to-gray-100"
+          background="bg-gradient-to-br from-violet-50/50 to-purple-50/50"
         />
         <DesignSection
           title="Ivan Chermayeff"
@@ -2291,7 +2291,7 @@ function App() {
           fontFamily="helvetica"
           descriptionClassName="text-gray-700 font-helvetica"
           titleClassName="text-2xl font-bold text-gray-900 font-helvetica tracking-tight"
-          background="bg-gradient-to-br from-gray-50 to-gray-100"
+          background="bg-gradient-to-br from-amber-50/50 to-yellow-50/50"
         />
         <DesignSection
           title="Paula Scher"
@@ -2313,7 +2313,7 @@ function App() {
           fontFamily="solway"
           descriptionClassName="text-gray-700 font-solway"
           titleClassName="text-2xl font-bold text-gray-900 font-solway tracking-tight"
-          background="bg-gradient-to-br from-gray-50 to-gray-100"
+          background="bg-gradient-to-br from-fuchsia-50/50 to-pink-50/50"
         />
         <DesignSection
           title="Alan Cooper"
@@ -2326,7 +2326,7 @@ function App() {
                 <img
                   src="https://cdn.careerfoundry.com/en/wp-content/uploads/old-blog-uploads/alan-cooper.png"
                   alt="Alan Cooper"
-                  className="object-cover transform transition-all duration-500 group-hover:scale-110"
+                  className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
@@ -2353,6 +2353,7 @@ function App() {
           fontFamily="lexend"
           descriptionClassName="text-gray-700 font-lexend"
           titleClassName="text-2xl font-bold text-gray-900 font-lexend"
+          background="bg-gradient-to-br from-lime-50/50 to-green-50/50"
         />
         <DesignSection
           title="LUST Design Studio"
@@ -2374,7 +2375,7 @@ function App() {
           fontFamily="source-code-pro"
           descriptionClassName="text-gray-700 font-source-code-pro"
           titleClassName="text-2xl font-bold text-gray-900 font-source-code-pro tracking-tight"
-          background="bg-gradient-to-br from-gray-50 to-gray-100"
+          background="bg-gradient-to-br from-cyan-50/50 to-blue-50/50"
         />
         <DesignSection
           title="Otl Aicher"
@@ -2393,7 +2394,7 @@ function App() {
           fontFamily="tektur"
           descriptionClassName="text-gray-700 font-tektur"
           titleClassName="text-2xl font-bold text-gray-900 font-tektur"
-          background="bg-gradient-to-br from-gray-50 to-gray-100"
+          background="bg-gradient-to-br from-amber-50/50 to-orange-50/50"
         />
         <DesignSection
           title="Tom Hazelmyer"
@@ -2415,7 +2416,7 @@ function App() {
           fontFamily="chelsea-market"
           descriptionClassName="text-gray-700 font-chelsea-market"
           titleClassName="text-2xl font-bold text-gray-900 font-chelsea-market"
-          background="bg-gradient-to-br from-gray-50 to-gray-100"
+          background="bg-gradient-to-br from-red-50/50 to-rose-50/50"
         />
         <DesignSection
           title="Shepard Fairey"
@@ -2437,7 +2438,7 @@ function App() {
           fontFamily="bowlby-one-sc"
           descriptionClassName="text-gray-700 font-bowlby-one-sc"
           titleClassName="text-2xl font-bold text-gray-900 font-bowlby-one-sc tracking-tight"
-          background="bg-gradient-to-br from-gray-50 to-gray-100"
+          background="bg-gradient-to-br from-indigo-50/50 to-violet-50/50"
         />
       </div>
       <footer className="py-2 bg-black">
