@@ -95,15 +95,15 @@ function App() {
         </div>
       </header>
 
-        {/* Section Break */}
-        <div className="col-span-full py-12">
-          <h2 className="text-3xl font-bold text-gray-900 text-center font-urbanist">
-            Design Concepts
-          </h2>
-          <p className="text-gray-600 text-center mt-2 font-urbanist">
-            Fundamental principles that shape visual communication
-          </p>
-        </div>
+      {/* Section Break */}
+      <div className="col-span-full py-12">
+        <h2 className="text-3xl font-bold text-gray-900 text-center font-urbanist">
+          Design Concepts
+        </h2>
+        <p className="text-gray-600 text-center mt-2 font-urbanist">
+          Fundamental principles that shape visual communication
+        </p>
+      </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 divide-y md:divide-y-0 md:divide-x border-gray-200/50">
         <DesignSection
@@ -2144,22 +2144,47 @@ function App() {
         />
         <DesignSection
           title="Carolyn Davidson"
-          description="Graphic designer who created the iconic Nike Swoosh logo in 1971 while still a student. Her simple, dynamic design has become one of the most recognizable brand symbols in the world."
-          designPrinciple="Simplicity in Motion"
-          exampleLink="https://creativemarket.com/blog/the-35-nike-logo-and-the-woman-who-designed-it"
+          description="A graphic designer who created the iconic Nike Swoosh logo in 1971 while still a student at Portland State University. Her simple, dynamic design has become one of the most recognizable brand symbols in the world."
+          designPrinciple="Simplicity in Motion - Creating timeless symbols through fluid, dynamic forms"
+          exampleLink="https://www.nike.com"
           visualComponent={
-            <div className="flex items-center justify-center h-full p-4">
-              <img
-                src="https://lh5.googleusercontent.com/gNrt5faHGfQ9mzxohBN5sToRjEifO4RiKR-wNLFxH4heisTeacwcuvozhkcPwthCig2EjB5B33uiRp8xio9grQsFgBYf-lemOKFzsavZhRdRN4o-aIH-kR6d1MEDDULNusZQAPKZ"
-                alt="Carolyn Davidson"
-                className="w-full h-full object-cover rounded-lg hover:scale-105 transition-transform duration-300"
-              />
+            <div className="w-full h-full flex items-center justify-center p-4">
+              <div className="w-[500px] h-[300px] bg-white overflow-hidden group relative">
+                <img
+                  src="https://sketchdeck.com/wp-content/uploads/2024/03/Carollyn-Davidson_Blog-Image.png.webp"
+                  alt="Carolyn Davidson's Nike Swoosh design"
+                  className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </div>
             </div>
           }
-          fontFamily="futura-condensed"
-          descriptionClassName="text-gray-700 font-futura-condensed"
-          titleClassName="text-2xl font-bold text-gray-900"
-          background="bg-gradient-to-br from-gray-50/50 to-gray-100/50"
+          fontFamily="dm-sans"
+          descriptionClassName="text-gray-700 font-dm-sans"
+          titleClassName="text-2xl font-bold text-gray-900 font-dm-sans"
+          background="bg-gradient-to-br from-gray-50 to-gray-100"
+        />
+        <DesignSection
+          title="Ivan Chermayeff"
+          description="A British-American graphic designer who co-founded Chermayeff & Geismar, creating some of the most recognizable corporate identities of the 20th century. His work for Mobil, NBC, and National Geographic established new standards for corporate branding."
+          designPrinciple="Visual Simplicity - Creating memorable identities through bold, simple forms"
+          exampleLink="https://www.cgstudionyc.com/ivan-chermayeff"
+          visualComponent={
+            <div className="w-full h-full flex items-center justify-center p-4">
+              <div className="w-[500px] h-[300px] bg-white overflow-hidden group relative">
+                <img
+                  src="https://www.zilliondesigns.com/blog/wp-content/uploads/Ivan-Chermayeff-Logos.png"
+                  alt="Ivan Chermayeff's iconic logos"
+                  className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </div>
+            </div>
+          }
+          fontFamily="urbanist"
+          descriptionClassName="text-gray-700 font-urbanist"
+          titleClassName="text-2xl font-bold text-gray-900 font-urbanist"
+          background="bg-gradient-to-br from-gray-50 to-gray-100"
         />
       </div>
       <footer className="py-2 bg-black">
