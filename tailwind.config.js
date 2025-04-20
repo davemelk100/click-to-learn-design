@@ -31,6 +31,7 @@ export default {
         "chelsea-market": ["Chelsea Market", "cursive"],
         tektur: ["Tektur", "sans-serif"],
         sriracha: ["Sriracha", "cursive"],
+        doto: ["Doto", "sans-serif"],
       },
     },
   },

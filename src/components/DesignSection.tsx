@@ -36,7 +36,8 @@ interface DesignSectionProps {
     | "urbanist"
     | "protest-revolution"
     | "chelsea-market"
-    | "tektur";
+    | "tektur"
+    | "doto";
   descriptionClassName?: string;
   titleClassName?: string;
   background?: string;
@@ -130,6 +131,8 @@ const DesignSection: React.FC<DesignSectionProps> = ({
         return "font-chelsea-market";
       case "tektur":
         return "font-tektur";
+      case "doto":
+        return "font-doto";
       default:
         return "font-roboto";
     }

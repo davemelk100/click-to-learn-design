@@ -44,7 +44,8 @@ interface DesignSectionProps {
     | "solway"
     | "chelsea-market"
     | "tektur"
-    | "sriracha";
+    | "sriracha"
+    | "doto";
   descriptionClassName?: string;
   titleClassName?: string;
   background?: string;
@@ -2244,6 +2245,31 @@ function App() {
           background="bg-gradient-to-br from-gray-50 to-gray-100"
         />
         <DesignSection
+          title="Vera Molnar"
+          description="A pioneer of computer art and generative design, Vera Molnar was one of the first artists to use computers in her creative process. Her work explores the relationship between order and chaos through systematic geometric patterns and algorithmic compositions."
+          designPrinciple="Systematic Creativity – Using algorithms and rules to generate unique visual expressions."
+          exampleLink="https://ropac.net/artists/231-vera-molnar/"
+          visualComponent={
+            <div className="w-full h-full flex items-center justify-center p-4">
+              <div className="w-[500px] h-[300px] bg-white overflow-hidden group relative">
+                <h2 className="absolute top-4 left-4 text-2xl font-bold text-gray-900 font-doto tracking-tight">
+                  Vera Molnar
+                </h2>
+                <img
+                  src="https://usercontent.one/wp/magazine.artland.com/wp-content/uploads/2022/10/vera-molnar-portrait.jpg"
+                  alt="Vera Molnar portrait"
+                  className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </div>
+            </div>
+          }
+          fontFamily="doto"
+          descriptionClassName="text-gray-700 font-doto"
+          titleClassName="text-2xl font-bold text-gray-900 font-doto tracking-tight"
+          background="bg-gradient-to-br from-gray-50 to-gray-100"
+        />
+        <DesignSection
           title="Ivan Chermayeff"
           description="A British-American graphic designer who co-founded Chermayeff & Geismar, creating some of the most recognizable corporate identities of the 20th century. His work for Mobil, NBC, and National Geographic established new standards for corporate branding."
           designPrinciple="Visual Simplicity - Creating memorable identities through bold, simple forms"
@@ -2294,11 +2320,14 @@ function App() {
           exampleLink="https://en.wikipedia.org/wiki/Alan_Cooper_(software_designer)"
           visualComponent={
             <div className="w-full h-full flex items-center justify-center p-4">
-              <img
-                src="https://cdn.careerfoundry.com/en/wp-content/uploads/old-blog-uploads/alan-cooper.png"
-                alt="Alan Cooper"
-                className="w-full h-full object-cover rounded-lg"
-              />
+              <div className="w-[500px] h-[300px] bg-white overflow-hidden group relative">
+                <img
+                  src="https://cdn.careerfoundry.com/en/wp-content/uploads/old-blog-uploads/alan-cooper.png"
+                  alt="Alan Cooper"
+                  className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </div>
             </div>
           }
           background="bg-gradient-to-br from-gray-50 to-gray-100"
