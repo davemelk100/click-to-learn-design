@@ -2181,9 +2181,9 @@ function App() {
               </div>
             </div>
           }
-          fontFamily="urbanist"
-          descriptionClassName="text-gray-700 font-urbanist"
-          titleClassName="text-2xl font-bold text-gray-900 font-urbanist"
+          fontFamily="helvetica"
+          descriptionClassName="text-gray-700 font-helvetica"
+          titleClassName="text-2xl font-bold text-gray-900 font-helvetica tracking-tight"
           background="bg-gradient-to-br from-gray-50 to-gray-100"
         />
       </div>
