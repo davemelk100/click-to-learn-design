@@ -33,7 +33,9 @@ interface DesignSectionProps {
     | "figtree"
     | "futura-condensed"
     | "permanent-marker"
-    | "urbanist";
+    | "urbanist"
+    | "protest-revolution"
+    | "chelsea-market";
   descriptionClassName?: string;
   titleClassName?: string;
   background?: string;
@@ -121,6 +123,10 @@ const DesignSection: React.FC<DesignSectionProps> = ({
         return "font-permanent-marker";
       case "urbanist":
         return "font-urbanist";
+      case "protest-revolution":
+        return "font-protest-revolution";
+      case "chelsea-market":
+        return "font-chelsea-market";
       default:
         return "font-roboto";
     }

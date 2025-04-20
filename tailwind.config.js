@@ -22,6 +22,8 @@ export default {
         courgette: ["Courgette", "cursive"],
         "permanent-marker": ["Permanent Marker", "cursive"],
         "courier-new": ["Courier New", "monospace"],
+        "protest-revolution": ["Protest Revolution", "sans-serif"],
+        "chelsea-market": ["Chelsea Market", "cursive"],
       },
     },
   },

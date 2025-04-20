@@ -41,7 +41,8 @@ interface DesignSectionProps {
     | "figtree"
     | "futura-condensed"
     | "source-sans"
-    | "solway";
+    | "solway"
+    | "chelsea-market";
   descriptionClassName?: string;
   titleClassName?: string;
   background?: string;
@@ -2226,6 +2227,64 @@ function App() {
           background="bg-gradient-to-br from-gray-50 to-gray-100"
           fontFamily="source-code-pro"
           descriptionClassName="font-source-code-pro"
+        />
+        <DesignSection
+          title="Helmut Krone"
+          description="A revolutionary art director at DDB, Helmut Krone transformed advertising with his minimalist approach and bold typography. His iconic Volkswagen 'Think Small' campaign redefined automotive advertising, proving that less could be more in visual communication."
+          designPrinciple="Minimalist Impact"
+          exampleLink="https://en.wikipedia.org/wiki/Helmut_Krone"
+          visualComponent={
+            <div className="w-full h-full flex items-center justify-center p-4">
+              <img
+                src="https://edito.houseofliteral.com/wp-content/webp-express/webp-images/uploads/2023/12/LITERAL-EDITO-IC-SAYFA-HELMUT-KRONE-v7.jpg.webp"
+                alt="Helmut Krone"
+                className="w-full h-full object-cover rounded-lg"
+              />
+            </div>
+          }
+          background="bg-gradient-to-br from-gray-50 to-gray-100"
+          fontFamily="helvetica"
+          descriptionClassName="font-helvetica"
+        />
+        <DesignSection
+          title="Otl Aicher"
+          description="A pioneer of systematic design, Otl Aicher created the iconic visual identity for the 1972 Munich Olympics. His work established new standards in wayfinding, typography, and corporate identity, demonstrating how design can create order and clarity in complex systems."
+          designPrinciple="Systematic Design"
+          exampleLink="https://en.wikipedia.org/wiki/Otl_Aicher"
+          visualComponent={
+            <div className="w-full h-full flex items-center justify-center p-4">
+              <img
+                src="https://onlyonceshop.com/media/pages/product/otl-aicher-olympic-games-munich-1972/9b51cd6d75-1714373193/otl-aicher-sw-1-948x713-q100.jpg"
+                alt="Otl Aicher"
+                className="w-full h-full object-cover rounded-lg"
+              />
+            </div>
+          }
+          background="bg-gradient-to-br from-gray-50 to-gray-100"
+          fontFamily="helvetica"
+          descriptionClassName="font-helvetica"
+        />
+        <DesignSection
+          title="Tom Hazelmyer"
+          description="Founder of Amphetamine Reptile Records, Tom Hazelmyer created a distinctive visual language for underground music through his raw, confrontational design style. His work on album covers and promotional materials helped define the aesthetic of noise rock and punk in the 1990s."
+          designPrinciple="Raw Expression"
+          exampleLink="https://www.pbs.org/video/Tom-Hazelmyer-607060H-1/"
+          visualComponent={
+            <div className="w-full h-full flex items-center justify-center p-4">
+              <div className="w-[500px] h-[300px] bg-white overflow-hidden group relative">
+                <img
+                  src="https://arc.stimg.co/startribunemedia/LY6CUNF3P6HGSMPF4ICKSP72N4.jpg?&w=1080"
+                  alt="Tom Hazelmyer"
+                  className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </div>
+            </div>
+          }
+          fontFamily="chelsea-market"
+          descriptionClassName="text-gray-700 font-chelsea-market"
+          titleClassName="text-2xl font-bold text-gray-900 font-chelsea-market"
+          background="bg-gradient-to-br from-gray-50 to-gray-100"
         />
       </div>
       <footer className="py-2 bg-black">
