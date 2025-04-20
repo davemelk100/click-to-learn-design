@@ -43,7 +43,8 @@ interface DesignSectionProps {
     | "source-sans"
     | "solway"
     | "chelsea-market"
-    | "tektur";
+    | "tektur"
+    | "sriracha";
   descriptionClassName?: string;
   titleClassName?: string;
   background?: string;
