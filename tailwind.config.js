@@ -24,6 +24,7 @@ export default {
         "courier-new": ["Courier New", "monospace"],
         "protest-revolution": ["Protest Revolution", "sans-serif"],
         "chelsea-market": ["Chelsea Market", "cursive"],
+        tektur: ["Tektur", "sans-serif"],
       },
     },
   },

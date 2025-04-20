@@ -42,7 +42,8 @@ interface DesignSectionProps {
     | "futura-condensed"
     | "source-sans"
     | "solway"
-    | "chelsea-market";
+    | "chelsea-market"
+    | "tektur";
   descriptionClassName?: string;
   titleClassName?: string;
   background?: string;
@@ -2260,9 +2261,10 @@ function App() {
               />
             </div>
           }
+          fontFamily="tektur"
+          descriptionClassName="text-gray-700 font-tektur"
+          titleClassName="text-2xl font-bold text-gray-900 font-tektur"
           background="bg-gradient-to-br from-gray-50 to-gray-100"
-          fontFamily="helvetica"
-          descriptionClassName="font-helvetica"
         />
         <DesignSection
           title="Tom Hazelmyer"

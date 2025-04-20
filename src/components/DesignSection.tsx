@@ -35,7 +35,8 @@ interface DesignSectionProps {
     | "permanent-marker"
     | "urbanist"
     | "protest-revolution"
-    | "chelsea-market";
+    | "chelsea-market"
+    | "tektur";
   descriptionClassName?: string;
   titleClassName?: string;
   background?: string;
@@ -127,6 +128,8 @@ const DesignSection: React.FC<DesignSectionProps> = ({
         return "font-protest-revolution";
       case "chelsea-market":
         return "font-chelsea-market";
+      case "tektur":
+        return "font-tektur";
       default:
         return "font-roboto";
     }
