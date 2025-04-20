@@ -39,7 +39,8 @@ interface DesignSectionProps {
     | "roboto-flex"
     | "domine"
     | "figtree"
-    | "futura-condensed";
+    | "futura-condensed"
+    | "source-sans";
   descriptionClassName?: string;
   titleClassName?: string;
   background?: string;
@@ -2093,97 +2094,23 @@ function App() {
           }
           background="bg-gradient-to-br from-emerald-50/50 to-teal-50/50"
         />
-        <DesignSection
-          title="Skip Block"
-          description="Skip Block is a design pattern that allows users to bypass large sections of content they don't need to see. This pattern is particularly useful for long pages with multiple sections, helping users quickly navigate to relevant content while maintaining context."
-          designPrinciple="Content Navigation – Enabling efficient navigation through large content blocks while preserving context."
-          exampleLink="https://universaldesign.ie/communications-digital/web-and-mobile-accessibility/web-accessibility-techniques/developers-introduction-and-index/design-accessible-navigation/allow-users-to-skip-blocks-of-information-easily"
-          fontFamily="encode-sans-sc"
-          descriptionClassName="font-encode-sans-sc"
-          titleClassName="font-encode-sans-sc"
-          visualComponent={
-            <div className="flex items-center justify-center w-full h-full">
-              <style>
-                {`
-                  @keyframes slideDown {
-                    from { transform: translateY(-100%); opacity: 0; }
-                    to { transform: translateY(0); opacity: 1; }
-                  }
-                  @keyframes highlight {
-                    0%, 100% { background-color: rgba(56, 189, 248, 0.1); }
-                    50% { background-color: rgba(56, 189, 248, 0.3); }
-                  }
-                `}
-              </style>
-              <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-sky-50 to-blue-50 p-4 relative group">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  {/* Main container */}
-                  <div className="relative w-72 h-40 bg-white rounded-lg shadow-sm overflow-hidden">
-                    {/* Sidebar */}
-                    <div className="absolute left-0 top-0 bottom-0 w-16 bg-sky-100/30" />
-
-                    {/* Main content */}
-                    <div className="absolute left-16 top-0 right-0 bottom-0">
-                      {/* Header */}
-                      <div className="h-8 bg-sky-200/30 flex items-center px-4">
-                        <div className="w-24 h-3 bg-sky-400/20 rounded" />
-                      </div>
-
-                      {/* Content blocks */}
-                      <div className="p-4 space-y-2">
-                        <div className="h-4 bg-sky-400/10 rounded" />
-                        <div className="h-4 bg-sky-400/10 rounded" />
-                        <div className="h-4 bg-sky-400/10 rounded" />
-                      </div>
-
-                      {/* Skip block indicator */}
-                      <div className="absolute top-8 left-0 right-0 h-24 bg-sky-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 animate-[slideDown_0.3s_ease-out_forwards] animate-[highlight_2s_ease-in-out_infinite]" />
-
-                      {/* Skip button */}
-                      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[60px] opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <div className="flex items-center gap-2 bg-white px-3 py-1.5 rounded-full shadow-md">
-                          <div className="w-3 h-3 bg-sky-500 rounded-full" />
-                          <div className="text-xs font-medium text-sky-600 whitespace-nowrap">
-                            Skip this section
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Focus indicator */}
-                    <div className="absolute inset-0 border-2 border-sky-400/0 group-hover:border-sky-400/20 rounded transition-colors duration-300" />
-                  </div>
-                </div>
-                {/* Overlay text */}
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
-                  <div className="text-xs sm:text-sm text-sky-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-dm-sans whitespace-nowrap">
-                    Hover to see skip option
-                  </div>
-                </div>
-              </div>
-            </div>
-          }
-          background="bg-gradient-to-br from-sky-50/50 to-blue-50/50"
-        />
+        
         <DesignSection
           title="Massimo Vignelli"
-          description="An Italian designer who profoundly influenced American design through his modernist approach to corporate identity and public signage. His work for the New York City Subway and American Airlines established new standards for clarity and functionality in public design."
-          designPrinciple="Modernist Clarity through grid systems and typography"
-          exampleLink="https://www.designculture.it/interview/massimo-vignelli.html"
+          description="An Italian designer who brought modernist principles to American design. His work in corporate identity, public signage, and typography established timeless standards for visual communication."
+          designPrinciple="Modernist Clarity - Achieving visual harmony through grid systems and typographic excellence"
+          exampleLink="https://www.vignelli.com/"
           visualComponent={
-            <div className="w-full h-full flex items-center justify-center">
-              <div className="w-[300px] h-[200px] bg-white overflow-hidden group relative">
-                <img
-                  src="https://images.ctfassets.net/nonm77rtn1g8/2BB7j2rwSUCmIqoqeIKeMY/e233f6f7f7726637742644a4f24794f8/large_fcd6634acb8a0a1ffe43b36e6f416ff6.jpg?w=1000&q=70"
-                  alt="Massimo Vignelli's work"
-                  className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              </div>
+            <div className="flex items-center justify-center h-full p-4">
+              <img
+                src="https://images.ctfassets.net/nonm77rtn1g8/2BB7j2rwSUCmIqoqeIKeMY/e233f6f7f7726637742644a4f24794f8/large_fcd6634acb8a0a1ffe43b36e6f416ff6.jpg?w=1000&q=70"
+                alt="Massimo Vignelli's work"
+                className="w-full h-full object-cover rounded-lg hover:scale-105 transition-transform duration-300"
+              />
             </div>
           }
           fontFamily="urbanist"
-          descriptionClassName="text-gray-700"
+          descriptionClassName="text-gray-700 font-urbanist"
           titleClassName="text-2xl font-bold text-gray-900"
           background="bg-gradient-to-br from-slate-50/50 to-gray-50/50"
         />
