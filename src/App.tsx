@@ -95,6 +95,16 @@ function App() {
         </div>
       </header>
 
+        {/* Section Break */}
+        <div className="col-span-full py-12">
+          <h2 className="text-3xl font-bold text-gray-900 text-center font-urbanist">
+            Design Concepts
+          </h2>
+          <p className="text-gray-600 text-center mt-2 font-urbanist">
+            Fundamental principles that shape visual communication
+          </p>
+        </div>
+
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 divide-y md:divide-y-0 md:divide-x border-gray-200/50">
         <DesignSection
           title="Dimensional Hierarchy"
@@ -2006,94 +2016,30 @@ function App() {
           descriptionClassName="font-dm-sans"
           titleClassName="font-dm-sans"
           visualComponent={
-            <div className="flex items-center justify-center w-full h-full">
-              <style>
-                {`
-                  @keyframes slideIn {
-                    from { transform: translateX(-100%) scale(0.8); opacity: 0; }
-                    to { transform: translateX(0) scale(1); opacity: 1; }
-                  }
-                  @keyframes fadeIn {
-                    from { transform: scale(0.5); opacity: 0; }
-                    to { transform: scale(1); opacity: 1; }
-                  }
-                  @keyframes pulse {
-                    0% { transform: scale(1); }
-                    50% { transform: scale(1.05); }
-                    100% { transform: scale(1); }
-                  }
-                `}
-              </style>
-              <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-emerald-50 to-teal-50 p-4 relative group">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  {/* Main container */}
-                  <div className="relative w-72 h-40">
-                    {/* Initial state - simple interface */}
-                    <div className="absolute inset-0 flex flex-col gap-2 p-4">
-                      {/* Header */}
-                      <div className="h-6 bg-emerald-400/30 rounded group-hover:animate-[pulse_1s_ease-in-out_infinite]" />
-                      {/* Main content */}
-                      <div className="flex-1 flex flex-col gap-2">
-                        <div className="h-4 bg-emerald-400/20 rounded" />
-                        <div className="h-4 bg-emerald-400/20 rounded" />
-                      </div>
-                      {/* Action button */}
-                      <div className="h-8 bg-emerald-500/30 rounded group-hover:bg-emerald-500/40 transition-colors duration-300 group-hover:animate-[pulse_1s_ease-in-out_infinite]" />
-                    </div>
-
-                    {/* Expanded state - revealed on hover */}
-                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <div className="flex flex-col gap-2 p-4">
-                        {/* Header remains */}
-                        <div className="h-6 bg-emerald-400/30 rounded animate-[pulse_1s_ease-in-out_infinite]" />
-                        {/* Expanded content */}
-                        <div className="flex-1 flex flex-col gap-2">
-                          <div
-                            className="h-4 bg-emerald-400/20 rounded animate-[slideIn_0.3s_ease-out_forwards]"
-                            style={{ animationDelay: "0.1s" }}
-                          />
-                          <div
-                            className="h-4 bg-emerald-400/20 rounded animate-[slideIn_0.3s_ease-out_forwards]"
-                            style={{ animationDelay: "0.2s" }}
-                          />
-                          <div
-                            className="h-4 bg-emerald-400/20 rounded animate-[slideIn_0.3s_ease-out_forwards]"
-                            style={{ animationDelay: "0.3s" }}
-                          />
-                          <div
-                            className="h-4 bg-emerald-400/20 rounded animate-[slideIn_0.3s_ease-out_forwards]"
-                            style={{ animationDelay: "0.4s" }}
-                          />
-                        </div>
-                        {/* Additional controls */}
-                        <div className="flex gap-2">
-                          <div
-                            className="h-8 flex-1 bg-emerald-500/30 rounded animate-[fadeIn_0.3s_ease-out_forwards]"
-                            style={{ animationDelay: "0.5s" }}
-                          />
-                          <div
-                            className="h-8 flex-1 bg-emerald-500/30 rounded animate-[fadeIn_0.3s_ease-out_forwards]"
-                            style={{ animationDelay: "0.6s" }}
-                          />
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Focus indicator */}
-                    <div className="absolute inset-0 border-2 border-emerald-400/0 group-hover:border-emerald-400/20 rounded transition-colors duration-300 group-hover:animate-[pulse_1s_ease-in-out_infinite]" />
-                  </div>
-                </div>
-                {/* Overlay text */}
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
-                  <div className="text-xs sm:text-sm text-emerald-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-dm-sans whitespace-nowrap">
-                    Reveal information progressively
-                  </div>
-                </div>
+            <div className="w-full h-full flex items-center justify-center p-4">
+              <div className="w-[500px] h-[300px] bg-white overflow-hidden group relative">
+                <img
+                  src="https://images.ctfassets.net/nonm77rtn1g8/2BB7j2rwSUCmIqoqeIKeMY/e233f6f7f7726637742644a4f24794f8/large_fcd6634acb8a0a1ffe43b36e6f416ff6.jpg?w=1000&q=70"
+                  alt="Progressive Disclosure example"
+                  className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
             </div>
           }
+          fontFamily="dm-sans"
           background="bg-gradient-to-br from-emerald-50/50 to-teal-50/50"
         />
+
+        {/* Section Break */}
+        <div className="col-span-full py-12">
+          <h2 className="text-3xl font-bold text-gray-900 text-center font-urbanist">
+            Designers
+          </h2>
+          <p className="text-gray-600 text-center mt-2 font-urbanist">
+            Influential figures who shaped modern design
+          </p>
+        </div>
 
         <DesignSection
           title="Massimo Vignelli"
