@@ -2163,7 +2163,7 @@ function App() {
               </div>
             </div>
           }
-          fontFamily="helvetica"
+          fontFamily="source-sans"
           descriptionClassName="text-gray-700"
           titleClassName="text-2xl font-bold text-gray-900"
           background="bg-gradient-to-br from-blue-50/50 to-indigo-50/50"
