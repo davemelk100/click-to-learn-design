@@ -7,7 +7,7 @@ interface DesignSectionProps {
   designPrinciple: string;
   exampleLink?: string;
   visualComponent: React.ReactNode;
-  fontFamily:
+  fontFamily?:
     | "dm-sans"
     | "eb-garamond"
     | "source-code-pro"
@@ -39,7 +39,12 @@ interface DesignSectionProps {
     | "bowlby-one-sc"
     | "protest-revolution"
     | "outfit"
-    | "syne-mono";
+    | "overlock-sc"
+    | "suwannaphum"
+    | "poppins"
+    | "encode-sans-sc"
+    | "lexend"
+    | "dm-serif-display";
   descriptionClassName?: string;
   titleClassName?: string;
   background?: string;
@@ -210,7 +215,8 @@ const DesignSection: React.FC<DesignSectionProps> = ({
           <div>
             <h2 className={`${titleClass} leading-none`}>{title}</h2>
             <p className="text-xs text-gray-600 mt-1">
-              Font: {fontFamily.charAt(0).toUpperCase() + fontFamily.slice(1)}
+              Font:{" "}
+              {fontFamily?.charAt(0)?.toUpperCase() + fontFamily?.slice(1)}
             </p>
           </div>
           {exampleLink && (

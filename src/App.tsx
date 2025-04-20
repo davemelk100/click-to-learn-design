@@ -1,7 +1,5 @@
 import React from "react";
 import {
-  MessageSquare,
-  Palette,
   Info,
   Settings,
   Eye,
@@ -2184,6 +2182,29 @@ function App() {
             descriptionClassName="text-gray-700 font-source-sans"
             titleClassName="text-2xl font-bold text-gray-900 font-source-sans"
             background="bg-gradient-to-br from-blue-50/50 to-indigo-50/50"
+          />
+          <DesignSection
+            title="960 Grid System"
+            description="The 960 Grid System, created by Nathan Smith, revolutionized web layout design in the late 2000s. This CSS framework provided a standardized 12-column grid that worked perfectly for 1024x768 displays, making it the de facto standard for web layouts during the fixed-width era. Its influence can still be seen in modern CSS frameworks."
+            designPrinciple="Grid-Based Design - Creating consistent, balanced layouts through systematic column-based structures"
+            exampleLink="https://ux.stackexchange.com/questions/5128/do-you-consider-the-960-grid-system-one-of-the-holy-grails-of-user-experienc"
+            visualComponent={
+              <div className="flex items-center justify-center w-full h-full">
+                <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-amber-50 to-orange-50 p-4 relative group">
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <img
+                      src="https://www.webfx.com/wp-content/uploads/2021/10/Screenshot_27-2.png"
+                      alt="960 Grid System layout example"
+                      className="w-full h-full object-contain rounded-lg shadow-lg transform transition-all duration-500 group-hover:scale-110"
+                    />
+                  </div>
+                </div>
+              </div>
+            }
+            fontFamily="dm-sans"
+            descriptionClassName="text-gray-700 font-dm-sans"
+            titleClassName="text-2xl font-bold text-gray-900 font-dm-sans"
+            background="bg-gradient-to-br from-amber-50/50 to-orange-50/50"
           />
           <DesignSection
             title="FedEx Logo"
