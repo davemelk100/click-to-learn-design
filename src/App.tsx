@@ -40,7 +40,8 @@ interface DesignSectionProps {
     | "domine"
     | "figtree"
     | "futura-condensed"
-    | "source-sans";
+    | "source-sans"
+    | "solway";
   descriptionClassName?: string;
   titleClassName?: string;
   background?: string;
@@ -2185,6 +2186,46 @@ function App() {
           descriptionClassName="text-gray-700 font-helvetica"
           titleClassName="text-2xl font-bold text-gray-900 font-helvetica tracking-tight"
           background="bg-gradient-to-br from-gray-50 to-gray-100"
+        />
+        <DesignSection
+          title="Paula Scher"
+          description="A pioneering graphic designer known for her innovative typography and bold visual language. As a partner at Pentagram, she has created iconic identities for clients like Citibank, The Public Theater, and Microsoft Windows."
+          designPrinciple="Expressive Typography - Using type as a primary visual element to convey meaning and emotion"
+          exampleLink="https://www.pentagram.com/about/paula-scher"
+          visualComponent={
+            <div className="w-full h-full flex items-center justify-center p-4">
+              <div className="w-[500px] h-[300px] bg-white overflow-hidden group relative">
+                <img
+                  src="https://tyler.temple.edu/sites/tyler/files/styles/620x/public/09117PH-1024x666_0.png?itok=N8pkTx3q"
+                  alt="Paula Scher's design work"
+                  className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </div>
+            </div>
+          }
+          fontFamily="solway"
+          descriptionClassName="text-gray-700 font-solway"
+          titleClassName="text-2xl font-bold text-gray-900 font-solway tracking-tight"
+          background="bg-gradient-to-br from-gray-50 to-gray-100"
+        />
+        <DesignSection
+          title="Alan Cooper"
+          description="Known as the 'Father of Visual Basic' and a pioneer in interaction design, Alan Cooper revolutionized software development with his user-centered design approach. His work on Visual Basic and his advocacy for personas and goal-directed design have shaped modern software development practices."
+          designPrinciple="Goal-Directed Design"
+          exampleLink="https://en.wikipedia.org/wiki/Alan_Cooper_(software_designer)"
+          visualComponent={
+            <div className="w-full h-full flex items-center justify-center p-4">
+              <img
+                src="https://cdn.careerfoundry.com/en/wp-content/uploads/old-blog-uploads/alan-cooper.png"
+                alt="Alan Cooper"
+                className="w-full h-full object-cover rounded-lg"
+              />
+            </div>
+          }
+          background="bg-gradient-to-br from-gray-50 to-gray-100"
+          fontFamily="source-code-pro"
+          descriptionClassName="font-source-code-pro"
         />
       </div>
       <footer className="py-2 bg-black">

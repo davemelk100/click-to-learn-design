@@ -21,6 +21,7 @@ export default {
         "bree-serif": ["Bree Serif", "serif"],
         courgette: ["Courgette", "cursive"],
         "permanent-marker": ["Permanent Marker", "cursive"],
+        "courier-new": ["Courier New", "monospace"],
       },
     },
   },
