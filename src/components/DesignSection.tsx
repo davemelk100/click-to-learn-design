@@ -38,7 +38,8 @@ interface DesignSectionProps {
     | "doto"
     | "bowlby-one-sc"
     | "protest-revolution"
-    | "outfit";
+    | "outfit"
+    | "syne-mono";
   descriptionClassName?: string;
   titleClassName?: string;
   background?: string;

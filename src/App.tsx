@@ -2463,6 +2463,50 @@ function App() {
           titleClassName="text-2xl font-bold text-gray-900 font-outfit tracking-tight"
           background="bg-gradient-to-br from-white/50 to-gray-50/50"
         />
+        <DesignSection
+          title="Raymond Pettibon"
+          description="An American artist known for his distinctive ink drawings that combine text and image, often exploring themes of American culture, politics, and society. His work, which began with album covers and flyers for punk bands, has evolved into a complex visual language that critiques and reflects on contemporary life."
+          designPrinciple="Text and Image Fusion - Creating powerful narratives through the interplay of drawing and typography"
+          exampleLink="https://www.davidzwirner.com/artists/raymond-pettibon"
+          visualComponent={
+            <div className="w-full h-full flex items-center justify-center p-4">
+              <div className="w-[500px] h-[300px] bg-white overflow-hidden group relative">
+                <img
+                  src="https://www.vice.com/wp-content/uploads/sites/2/2024/07/1486653409993-IMG_4528-scaled.jpeg"
+                  alt="Raymond Pettibon artwork"
+                  className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </div>
+            </div>
+          }
+          fontFamily="syne-mono"
+          descriptionClassName="text-gray-700 font-syne-mono"
+          titleClassName="text-2xl font-bold text-gray-900 font-syne-mono tracking-tight"
+          background="bg-gradient-to-br from-gray-100/50 to-gray-200/50"
+        />
+        <DesignSection
+          title="Max Miedinger"
+          description="A Swiss typeface designer best known for creating Helvetica, one of the most widely used typefaces in the world. His work exemplifies the Swiss Style of typography, characterized by clarity, readability, and objectivity."
+          designPrinciple="Universal Typography - Creating typefaces that work across languages and contexts"
+          exampleLink="https://www.linotype.com/1308886/max-miedinger.html"
+          visualComponent={
+            <div className="w-full h-full flex items-center justify-center p-4">
+              <div className="w-[500px] h-[300px] bg-white overflow-hidden group relative">
+                <img
+                  src="https://kingscliffgraphicdesign2017.wordpress.com/wp-content/uploads/2017/03/f94.png"
+                  alt="Helvetica typeface specimen"
+                  className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </div>
+            </div>
+          }
+          fontFamily="helvetica"
+          descriptionClassName="text-gray-700 font-helvetica"
+          titleClassName="text-2xl font-bold text-gray-900 font-helvetica tracking-tight"
+          background="bg-gradient-to-br from-slate-50/50 to-blue-50/50"
+        />
       </div>
       <footer className="py-2 bg-black">
         <div className="flex items-center pl-4">

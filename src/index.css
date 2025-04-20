@@ -18,6 +18,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Solway:wght@300;400;500;700;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Sriracha&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Syne+Mono&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -136,6 +137,10 @@
 
 .font-chelsea-market {
   font-family: 'Chelsea Market', cursive !important;
+}
+
+.font-syne-mono {
+  font-family: 'Syne Mono', monospace !important;
 }
 
 .clip-triangle {
