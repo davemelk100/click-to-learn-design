@@ -92,6 +92,20 @@ function App() {
               DESIGN PANES
             </span>
           </div>
+          <div className="flex items-center gap-4 ml-8">
+            <a
+              href="#design"
+              className="text-white hover:text-white/80 transition-colors duration-300"
+            >
+              Design
+            </a>
+            <a
+              href="#designers"
+              className="text-white hover:text-white/80 transition-colors duration-300"
+            >
+              Designers
+            </a>
+          </div>
           <a
             href="https://davemelk.com"
             target="_blank"
@@ -104,7 +118,7 @@ function App() {
       </header>
 
       {/* Section Break */}
-      <div className="col-span-full py-12">
+      <div id="design" className="col-span-full py-12">
         <h2 className="text-3xl font-bold text-gray-900 text-center font-urbanist">
           Design
         </h2>
@@ -2114,13 +2128,35 @@ function App() {
           background="bg-gradient-to-br from-emerald-50/50 to-teal-50/50"
         />
 
-        {/* Section Break */}
-        <div className="col-span-full py-12">
-          <h2 className="text-3xl font-bold text-gray-900 text-center font-urbanist">
-            Designers
-          </h2>
+        {/* Designers Section */}
+        <div id="designers" className="col-span-full py-12 group">
+          <div className="flex items-center justify-center gap-2">
+            <h2 className="text-3xl font-bold text-gray-900 text-center font-urbanist">
+              Designers
+            </h2>
+            <button
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+              className="p-1 text-gray-600 hover:text-gray-900 transition-colors duration-300 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              aria-label="Scroll to top"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M5 10l7-7m0 0l7 7m-7-7v18"
+                />
+              </svg>
+            </button>
+          </div>
           <p className="text-gray-600 text-center mt-2 font-urbanist">
-            Influential figures who shaped modern design
+            Influential figures who have shaped the field of design
           </p>
         </div>
 
@@ -2227,25 +2263,25 @@ function App() {
         />
         <DesignSection
           title="Carolyn Davidson"
-          description="A graphic designer who created the iconic Nike Swoosh logo in 1971 while still a student at Portland State University. Her simple, dynamic design has become one of the most recognizable brand symbols in the world."
-          designPrinciple="Simplicity in Motion - Creating timeless symbols through fluid, dynamic forms"
-          exampleLink="https://www.nike.com"
+          description="A graphic designer who created the iconic Nike Swoosh logo in 1971 while still a student at Portland State University. Her simple, dynamic design has become one of the most recognizable logos in the world."
+          designPrinciple="Simplicity & Impact – Creating powerful, memorable designs through minimalism and strong visual identity"
+          exampleLink="https://www.nicekicks.com/celebrating-carolyn-davidson-designer-original-nike-swoosh-logo-internationalwomensday/"
           visualComponent={
-            <div className="w-full h-full flex items-center justify-center p-4">
+            <div className="w-full h-full flex items-center justify-center">
               <div className="w-[500px] h-[300px] bg-white overflow-hidden group relative">
                 <img
-                  src="https://sketchdeck.com/wp-content/uploads/2024/03/Carollyn-Davidson_Blog-Image.png.webp"
+                  src="https://www.nicekicks.com/files/2017/03/Carolyn-Davidson-.jpg"
                   alt="Carolyn Davidson's Nike Swoosh design"
                   className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="font-futura-condensed absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
             </div>
           }
-          fontFamily="dm-sans"
-          descriptionClassName="text-gray-700 font-dm-sans"
-          titleClassName="text-2xl font-bold text-gray-900 font-dm-sans"
-          background="bg-gradient-to-br from-sky-50/50 to-blue-50/50"
+          fontFamily="futura-condensed"
+          descriptionClassName="text-gray-700 font-futura-condensed"
+          titleClassName="text-2xl font-bold text-gray-900 font-futura-condensed"
+          background="bg-gradient-to-br from-red-50/50 to-orange-50/50"
         />
         <DesignSection
           title="Vera Molnar"
@@ -2365,7 +2401,7 @@ function App() {
             <div className="w-full h-full flex items-center justify-center p-4">
               <div className="w-[500px] h-[300px] bg-white overflow-hidden group relative">
                 <img
-                  src="http://lodownmagazine.com/sites/default/files/styles/large/public/pulse/image/img_1970_1.jpg?itok=tFQPbfTv"
+                  src="https://media.itsnicethat.com/images/558c0e897e74a94e630000ad.width-1440_3w6QVUvjM3esLO1c.jpg"
                   alt="LUST Design Studio work"
                   className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110"
                 />
