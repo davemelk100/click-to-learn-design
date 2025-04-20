@@ -33,7 +33,9 @@ interface DesignSectionProps {
     | "roboto-flex"
     | "permanent-marker"
     | "urbanist"
-    | "domine";
+    | "bree-serif"
+    | "domine"
+    | "figtree";
   descriptionClassName?: string;
   titleClassName?: string;
   background?: string;
@@ -1090,8 +1092,9 @@ function App() {
             </div>
           }
           fontFamily="roboto-slab"
-          descriptionClassName="font-roboto-slab"
-          background="bg-gradient-to-br from-slate-50/50 to-indigo-50/50"
+          descriptionClassName=""
+          titleClassName="text-2xl font-bold text-gray-900"
+          background="bg-gradient-to-br from-red-50/50 to-orange-50/50"
         />
         <DesignSection
           title="Golden Ratio"
@@ -2204,9 +2207,9 @@ function App() {
         />
         <DesignSection
           title="Saul Bass"
-          description="A pioneer of modern graphic design, Saul Bass revolutionized corporate identity design with his minimalist approach. His work in film title sequences and corporate logos established a new visual language that continues to influence design today."
-          designPrinciple="Geometric Minimalism - Using simple shapes to create memorable, timeless brand identities"
-          exampleLink="http://logos.fandom.com/wiki/Saul_Bass"
+          description="A legendary graphic designer and filmmaker who revolutionized title sequences and corporate identity. His work for major Hollywood studios and corporations like AT&T and United Airlines established a new visual language for American design."
+          designPrinciple="Visual Storytelling - Using simple, bold shapes to create memorable and meaningful designs"
+          exampleLink="https://www.saulbassposterarchive.com"
           visualComponent={
             <div className="w-full h-full flex items-center justify-center">
               <div className="w-[300px] h-[200px] bg-white overflow-hidden group relative">
@@ -2219,10 +2222,48 @@ function App() {
               </div>
             </div>
           }
-          fontFamily="dm-sans"
+          fontFamily="bree-serif"
           descriptionClassName="text-gray-700"
+          titleClassName="text-2xl font-bold text-gray-900 font-bree-serif"
+          background="bg-gradient-to-br from-slate-50/50 to-gray-50/50"
+        />
+        <DesignSection
+          title="Frank Lloyd Wright"
+          description="A pioneering architect who developed the concept of organic architecture, Wright's designs harmonized buildings with their natural surroundings. His work emphasized horizontal lines, open floor plans, and integration with nature."
+          designPrinciple="Organic Architecture"
+          exampleLink="https://franklloydwright.org/"
+          visualComponent={
+            <div className="flex items-center justify-center h-full p-4">
+              <img
+                src="https://cloudfrontgharpediabucket.gharpedia.com/uploads/2023/12/Frank-Lloyd-Wright-Iconic-Architect-01-0102030020.jpg"
+                alt="Frank Lloyd Wright"
+                className="w-full h-full object-cover rounded-lg hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+          }
+          fontFamily="roboto-slab"
+          descriptionClassName="text-gray-700 font-roboto-slab"
           titleClassName="text-2xl font-bold text-gray-900"
-          background="bg-gradient-to-br from-red-50/50 to-red-100/50"
+          background="bg-gradient-to-br from-red-50/50 to-orange-50/50"
+        />
+        <DesignSection
+          title="Whitney Hess"
+          description="A leading user experience designer and coach, Hess has helped organizations create more human-centered products and services. Her work emphasizes empathy, clarity, and the importance of user research in design."
+          designPrinciple="User Experience Design"
+          exampleLink="https://whitneyhess.com/"
+          visualComponent={
+            <div className="flex items-center justify-center h-full p-4">
+              <img
+                src="https://whitneyhess.com/wp-content/uploads/WhitneyHess_glow.jpg"
+                alt="Whitney Hess"
+                className="w-full h-full object-cover rounded-lg hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+          }
+          fontFamily="figtree"
+          descriptionClassName=""
+          titleClassName="text-2xl font-bold text-gray-900"
+          background="bg-gradient-to-br from-blue-50/50 to-indigo-50/50"
         />
       </div>
       <footer className="py-2 bg-black">

@@ -28,7 +28,9 @@ interface DesignSectionProps {
     | "encode-sans-sc"
     | "lexend"
     | "dm-serif-display"
-    | "domine";
+    | "bree-serif"
+    | "domine"
+    | "figtree";
   descriptionClassName?: string;
   titleClassName?: string;
   background?: string;
@@ -104,8 +106,12 @@ const DesignSection: React.FC<DesignSectionProps> = ({
         return "font-lexend";
       case "dm-serif-display":
         return "font-dm-serif-display";
+      case "bree-serif":
+        return "font-bree-serif";
       case "domine":
         return "font-domine";
+      case "figtree":
+        return "font-figtree";
       default:
         return "font-dm-sans";
     }
