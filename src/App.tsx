@@ -2361,7 +2361,7 @@ function App() {
             <div className="w-full h-full flex items-center justify-center p-4">
               <div className="w-[500px] h-[300px] bg-white overflow-hidden group relative">
                 <img
-                  src="https://cdn.careerfoundry.com/en/wp-content/uploads/old-blog-uploads/alan-cooper.png"
+                  src="https://i0.wp.com/www.designative.info/blog/wp-content/uploads/2008/03/alan_cooper.jpg"
                   alt="Alan Cooper"
                   className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110"
                 />
