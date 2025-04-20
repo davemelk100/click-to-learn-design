@@ -32,6 +32,7 @@ export default {
         tektur: ["Tektur", "sans-serif"],
         sriracha: ["Sriracha", "cursive"],
         doto: ["Doto", "sans-serif"],
+        "bowlby-one-sc": ["Bowlby One SC", "sans-serif"],
       },
     },
   },

@@ -45,7 +45,9 @@ interface DesignSectionProps {
     | "chelsea-market"
     | "tektur"
     | "sriracha"
-    | "doto";
+    | "doto"
+    | "bowlby-one-sc"
+    | "protest-revolution";
   descriptionClassName?: string;
   titleClassName?: string;
   background?: string;
@@ -2175,7 +2177,7 @@ function App() {
               <img
                 src="https://whitneyhess.com/wp-content/uploads/WhitneyHess_glow.jpg"
                 alt="Whitney Hess"
-                className="w-full h-full object-cover rounded-lg hover:scale-105 transition-transform duration-300"
+                className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
               />
             </div>
           }
@@ -2194,13 +2196,13 @@ function App() {
               <img
                 src="https://blog.weditt.com/wp-content/uploads/2024/08/Saul-Bass-The-Master-of-Motion-Graphics.jpg"
                 alt="Saul Bass"
-                className="w-full h-full object-cover rounded-lg hover:scale-105 transition-transform duration-300"
+                className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
               />
             </div>
           }
-          fontFamily="permanent-marker"
-          descriptionClassName="text-gray-700 font-permanent-marker"
-          titleClassName="text-2xl font-bold text-gray-900"
+          fontFamily="bowlby-one-sc"
+          descriptionClassName="text-gray-700 font-bowlby-one-sc"
+          titleClassName="text-2xl font-bold text-gray-900 font-bowlby-one-sc tracking-tight"
           background="bg-gradient-to-br from-slate-50/50 to-gray-50/50"
         />
         <DesignSection
@@ -2213,7 +2215,7 @@ function App() {
               <img
                 src="https://cloudfrontgharpediabucket.gharpedia.com/uploads/2023/12/Frank-Lloyd-Wright-Iconic-Architect-01-0102030020.jpg"
                 alt="Frank Lloyd Wright"
-                className="w-full h-full object-cover rounded-lg hover:scale-105 transition-transform duration-300"
+                className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
               />
             </div>
           }
@@ -2324,7 +2326,7 @@ function App() {
                 <img
                   src="https://cdn.careerfoundry.com/en/wp-content/uploads/old-blog-uploads/alan-cooper.png"
                   alt="Alan Cooper"
-                  className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110"
+                  className="object-cover transform transition-all duration-500 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
@@ -2344,13 +2346,34 @@ function App() {
               <img
                 src="https://edito.houseofliteral.com/wp-content/webp-express/webp-images/uploads/2023/12/LITERAL-EDITO-IC-SAYFA-HELMUT-KRONE-v7.jpg.webp"
                 alt="Helmut Krone"
-                className="w-full h-full object-cover rounded-lg"
+                className="w-full h-full object-cover"
               />
             </div>
           }
           fontFamily="lexend"
           descriptionClassName="text-gray-700 font-lexend"
           titleClassName="text-2xl font-bold text-gray-900 font-lexend"
+        />
+        <DesignSection
+          title="LUST Design Studio"
+          description="A Dutch design studio known for their innovative approach to data visualization and interactive design. Their work combines technology, art, and design to create immersive experiences that challenge traditional notions of information design."
+          designPrinciple="Data as Art - Transforming complex information into engaging visual experiences"
+          exampleLink="https://www.itsnicethat.com/articles/lust-studio"
+          visualComponent={
+            <div className="w-full h-full flex items-center justify-center p-4">
+              <div className="w-[500px] h-[300px] bg-white overflow-hidden group relative">
+                <img
+                  src="http://lodownmagazine.com/sites/default/files/styles/large/public/pulse/image/img_1970_1.jpg?itok=tFQPbfTv"
+                  alt="LUST Design Studio work"
+                  className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </div>
+            </div>
+          }
+          fontFamily="source-code-pro"
+          descriptionClassName="text-gray-700 font-source-code-pro"
+          titleClassName="text-2xl font-bold text-gray-900 font-source-code-pro tracking-tight"
           background="bg-gradient-to-br from-gray-50 to-gray-100"
         />
         <DesignSection
@@ -2363,7 +2386,7 @@ function App() {
               <img
                 src="https://onlyonceshop.com/media/pages/product/otl-aicher-olympic-games-munich-1972/9b51cd6d75-1714373193/otl-aicher-sw-1-948x713-q100.jpg"
                 alt="Otl Aicher"
-                className="w-full h-full object-cover rounded-lg"
+                className="w-full h-full object-cover"
               />
             </div>
           }
@@ -2392,6 +2415,28 @@ function App() {
           fontFamily="chelsea-market"
           descriptionClassName="text-gray-700 font-chelsea-market"
           titleClassName="text-2xl font-bold text-gray-900 font-chelsea-market"
+          background="bg-gradient-to-br from-gray-50 to-gray-100"
+        />
+        <DesignSection
+          title="Shepard Fairey"
+          description="A contemporary street artist and graphic designer known for his iconic 'Hope' poster for Barack Obama's 2008 presidential campaign. Fairey's work combines elements of street art, propaganda, and commercial design, often featuring bold colors, stencil techniques, and powerful social messages."
+          designPrinciple="Visual Impact - Creating powerful messages through bold, iconic imagery and strategic use of color and composition"
+          exampleLink="https://obeygiant.com"
+          visualComponent={
+            <div className="w-full h-full flex items-center justify-center p-4">
+              <div className="w-[500px] h-[300px] bg-white overflow-hidden group relative">
+                <img
+                  src="https://s.abcnews.com/images/Politics/AP_shepard_fairey_kab_150529_16x9_992.jpg?w=1600"
+                  alt="Shepard Fairey's Hope poster"
+                  className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </div>
+            </div>
+          }
+          fontFamily="bowlby-one-sc"
+          descriptionClassName="text-gray-700 font-bowlby-one-sc"
+          titleClassName="text-2xl font-bold text-gray-900 font-bowlby-one-sc tracking-tight"
           background="bg-gradient-to-br from-gray-50 to-gray-100"
         />
       </div>
