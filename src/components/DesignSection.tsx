@@ -30,7 +30,9 @@ interface DesignSectionProps {
     | "dm-serif-display"
     | "bree-serif"
     | "domine"
-    | "figtree";
+    | "figtree"
+    | "futura-condensed"
+    | "permanent-marker";
   descriptionClassName?: string;
   titleClassName?: string;
   background?: string;
@@ -112,8 +114,12 @@ const DesignSection: React.FC<DesignSectionProps> = ({
         return "font-domine";
       case "figtree":
         return "font-figtree";
+      case "futura-condensed":
+        return "font-futura-condensed";
+      case "permanent-marker":
+        return "font-permanent-marker";
       default:
-        return "font-dm-sans";
+        return "font-roboto";
     }
   };
 

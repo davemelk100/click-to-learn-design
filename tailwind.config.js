@@ -20,6 +20,7 @@ export default {
         urbanist: ["Urbanist", "sans-serif"],
         "bree-serif": ["Bree Serif", "serif"],
         courgette: ["Courgette", "cursive"],
+        "permanent-marker": ["Permanent Marker", "cursive"],
       },
     },
   },

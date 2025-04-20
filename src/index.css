@@ -15,6 +15,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100;200;300;400;500;600;700;800;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Domine:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -80,12 +81,27 @@
 }
 
 .font-oswald {
-  font-family: Oswald, sans-serif;
-  letter-spacing: 0.2em;
+  font-family: 'Oswald', sans-serif !important;
 }
 
 .font-roboto-slab {
   font-family: 'Roboto Slab', serif !important;
+}
+
+.font-urbanist {
+  font-family: 'Urbanist', sans-serif !important;
+}
+
+.font-bree-serif {
+  font-family: 'Bree Serif', serif !important;
+}
+
+.font-courgette {
+  font-family: 'Courgette', cursive !important;
+}
+
+.font-permanent-marker {
+  font-family: 'Permanent Marker', cursive !important;
 }
 
 .font-suwannaphum {

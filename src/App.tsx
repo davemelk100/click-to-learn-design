@@ -19,23 +19,27 @@ interface DesignSectionProps {
   visualComponent: React.ReactNode;
   fontFamily?:
     | "dm-sans"
+    | "eb-garamond"
+    | "source-code-pro"
+    | "share-tech"
+    | "niconne"
+    | "rubik-scribble"
+    | "habibi"
+    | "anek-gurmukhi"
+    | "oswald"
+    | "roboto-slab"
+    | "urbanist"
+    | "bree-serif"
+    | "courgette"
+    | "permanent-marker"
     | "helvetica"
     | "avenir"
     | "roboto"
-    | "habibi"
-    | "anek-gurmukhi"
-    | "eb-garamond"
-    | "source-code-pro"
-    | "oswald"
-    | "roboto-slab"
-    | "share-tech"
     | "josefin-sans"
     | "roboto-flex"
-    | "permanent-marker"
-    | "urbanist"
-    | "bree-serif"
     | "domine"
-    | "figtree";
+    | "figtree"
+    | "futura-condensed";
   descriptionClassName?: string;
   titleClassName?: string;
   background?: string;
@@ -2206,25 +2210,41 @@ function App() {
           background="bg-gradient-to-br from-blue-50/50 to-indigo-50/50"
         />
         <DesignSection
-          title="Saul Bass"
-          description="A legendary graphic designer and filmmaker who revolutionized title sequences and corporate identity. His work for major Hollywood studios and corporations like AT&T and United Airlines established a new visual language for American design."
-          designPrinciple="Visual Storytelling - Using simple, bold shapes to create memorable and meaningful designs"
-          exampleLink="https://www.saulbassposterarchive.com"
+          title="Whitney Hess"
+          description="A leading user experience designer and coach, Hess has helped organizations create more human-centered products and services. Her work emphasizes empathy, clarity, and the importance of user research in design."
+          designPrinciple="User Experience Design"
+          exampleLink="https://whitneyhess.com/"
           visualComponent={
-            <div className="w-full h-full flex items-center justify-center">
-              <div className="w-[300px] h-[200px] bg-white overflow-hidden group relative">
-                <img
-                  src="https://blog.weditt.com/wp-content/uploads/2024/08/Saul-Bass-The-Master-of-Motion-Graphics.jpg"
-                  alt="Saul Bass's work"
-                  className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              </div>
+            <div className="flex items-center justify-center h-full p-4">
+              <img
+                src="https://whitneyhess.com/wp-content/uploads/WhitneyHess_glow.jpg"
+                alt="Whitney Hess"
+                className="w-full h-full object-cover rounded-lg hover:scale-105 transition-transform duration-300"
+              />
             </div>
           }
-          fontFamily="bree-serif"
-          descriptionClassName="text-gray-700"
-          titleClassName="text-2xl font-bold text-gray-900 font-bree-serif"
+          fontFamily="figtree"
+          descriptionClassName=""
+          titleClassName="text-2xl font-bold text-gray-900"
+          background="bg-gradient-to-br from-blue-50/50 to-indigo-50/50"
+        />
+        <DesignSection
+          title="Saul Bass"
+          description="A legendary graphic designer and filmmaker who revolutionized title sequences and corporate identity. His work for major Hollywood studios and corporations like AT&T established new standards for visual communication."
+          designPrinciple="Visual Storytelling - Creating iconic, memorable designs that communicate complex ideas through simple forms"
+          exampleLink="https://www.saulbassposterarchive.com/"
+          visualComponent={
+            <div className="flex items-center justify-center h-full p-4">
+              <img
+                src="https://blog.weditt.com/wp-content/uploads/2024/08/Saul-Bass-The-Master-of-Motion-Graphics.jpg"
+                alt="Saul Bass"
+                className="w-full h-full object-cover rounded-lg hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+          }
+          fontFamily="permanent-marker"
+          descriptionClassName="text-gray-700 font-permanent-marker"
+          titleClassName="text-2xl font-bold text-gray-900"
           background="bg-gradient-to-br from-slate-50/50 to-gray-50/50"
         />
         <DesignSection
@@ -2247,23 +2267,23 @@ function App() {
           background="bg-gradient-to-br from-red-50/50 to-orange-50/50"
         />
         <DesignSection
-          title="Whitney Hess"
-          description="A leading user experience designer and coach, Hess has helped organizations create more human-centered products and services. Her work emphasizes empathy, clarity, and the importance of user research in design."
-          designPrinciple="User Experience Design"
-          exampleLink="https://whitneyhess.com/"
+          title="Carolyn Davidson"
+          description="Graphic designer who created the iconic Nike Swoosh logo in 1971 while still a student. Her simple, dynamic design has become one of the most recognizable brand symbols in the world."
+          designPrinciple="Simplicity in Motion"
+          exampleLink="https://creativemarket.com/blog/the-35-nike-logo-and-the-woman-who-designed-it"
           visualComponent={
             <div className="flex items-center justify-center h-full p-4">
               <img
-                src="https://whitneyhess.com/wp-content/uploads/WhitneyHess_glow.jpg"
-                alt="Whitney Hess"
+                src="https://lh5.googleusercontent.com/gNrt5faHGfQ9mzxohBN5sToRjEifO4RiKR-wNLFxH4heisTeacwcuvozhkcPwthCig2EjB5B33uiRp8xio9grQsFgBYf-lemOKFzsavZhRdRN4o-aIH-kR6d1MEDDULNusZQAPKZ"
+                alt="Carolyn Davidson"
                 className="w-full h-full object-cover rounded-lg hover:scale-105 transition-transform duration-300"
               />
             </div>
           }
-          fontFamily="figtree"
-          descriptionClassName=""
+          fontFamily="futura-condensed"
+          descriptionClassName="text-gray-700 font-futura-condensed"
           titleClassName="text-2xl font-bold text-gray-900"
-          background="bg-gradient-to-br from-blue-50/50 to-indigo-50/50"
+          background="bg-gradient-to-br from-gray-50/50 to-gray-100/50"
         />
       </div>
       <footer className="py-2 bg-black">
