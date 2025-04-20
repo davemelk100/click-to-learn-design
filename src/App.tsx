@@ -2200,47 +2200,51 @@ function App() {
             </div>
           }
           fontFamily="source-sans"
-          descriptionClassName="text-gray-700"
-          titleClassName="text-2xl font-bold text-gray-900"
+          descriptionClassName="text-gray-700 font-source-sans"
+          titleClassName="text-2xl font-bold text-gray-900 font-source-sans"
           background="bg-gradient-to-br from-blue-50/50 to-indigo-50/50"
         />
         <DesignSection
           title="Whitney Hess"
-          description="A leading user experience designer and coach, Hess has helped organizations create more human-centered products and services. Her work emphasizes empathy, clarity, and the importance of user research in design."
-          designPrinciple="User Experience Design"
-          exampleLink="https://whitneyhess.com/"
+          description="A user experience designer and consultant who helps companies create more human-centered products and services. Her work focuses on empathy, research, and ethical design practices."
+          designPrinciple="Empathy & Ethics – Putting people first in design decisions and considering the broader impact of our work"
+          exampleLink="https://whitneyhess.com/blog/"
           visualComponent={
-            <div className="flex items-center justify-center h-full p-4">
-              <img
-                src="https://whitneyhess.com/wp-content/uploads/WhitneyHess_glow.jpg"
-                alt="Whitney Hess"
-                className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-              />
+            <div className="w-full h-full flex items-center justify-center">
+              <div className="w-[500px] h-[300px] bg-white overflow-hidden group relative">
+                <img
+                  src="https://whitneyhess.com/wp-content/uploads/WhitneyHess_glow.jpg"
+                  alt="Whitney Hess"
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                />
+              </div>
             </div>
           }
           fontFamily="figtree"
-          descriptionClassName=""
-          titleClassName="text-2xl font-bold text-gray-900"
-          background="bg-gradient-to-br from-rose-50/50 to-pink-50/50"
+          descriptionClassName="text-gray-700 font-figtree"
+          titleClassName="text-2xl font-bold text-gray-900 font-figtree"
+          background="bg-gradient-to-br from-amber-50/50 to-orange-50/50"
         />
         <DesignSection
           title="Saul Bass"
           description="A legendary graphic designer and filmmaker who revolutionized title sequences and corporate identity. His work for major Hollywood studios and corporations like AT&T established new standards for visual communication."
-          designPrinciple="Visual Storytelling - Creating iconic, memorable designs that communicate complex ideas through simple forms"
-          exampleLink="https://www.saulbassposterarchive.com/"
+          designPrinciple="Motion & Identity – Creating memorable brand experiences through dynamic motion graphics and iconic symbols"
+          exampleLink="https://www.artofthetitle.com/designer/saul-bass/"
           visualComponent={
-            <div className="flex items-center justify-center h-full p-4">
-              <img
-                src="https://blog.weditt.com/wp-content/uploads/2024/08/Saul-Bass-The-Master-of-Motion-Graphics.jpg"
-                alt="Saul Bass"
-                className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-              />
+            <div className="w-full h-full flex items-center justify-center">
+              <div className="w-[500px] h-[300px] bg-white overflow-hidden group relative">
+                <img
+                  src="https://blog.weditt.com/wp-content/uploads/2024/08/Saul-Bass-The-Master-of-Motion-Graphics.jpg"
+                  alt="Saul Bass"
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                />
+              </div>
             </div>
           }
-          fontFamily="bowlby-one-sc"
-          descriptionClassName="text-gray-700 font-bowlby-one-sc"
-          titleClassName="text-2xl font-bold text-gray-900 font-bowlby-one-sc tracking-tight"
-          background="bg-gradient-to-br from-red-50/50 to-orange-50/50"
+          fontFamily="permanent-marker"
+          descriptionClassName="text-gray-700 font-permanent-marker"
+          titleClassName="text-2xl font-bold text-gray-900 font-permanent-marker"
+          background="bg-gradient-to-br from-pink-50/50 to-purple-50/50"
         />
         <DesignSection
           title="Frank Lloyd Wright"
@@ -2285,28 +2289,24 @@ function App() {
         />
         <DesignSection
           title="Vera Molnar"
-          description="A pioneer of computer art and generative design, Vera Molnar was one of the first artists to use computers in her creative process. Her work explores the relationship between order and chaos through systematic geometric patterns and algorithmic compositions."
-          designPrinciple="Systematic Creativity – Using algorithms and rules to generate unique visual expressions."
-          exampleLink="https://ropac.net/artists/231-vera-molnar/"
-          visualComponent={
-            <div className="w-full h-full flex items-center justify-center p-4">
-              <div className="w-[500px] h-[300px] bg-white overflow-hidden group relative">
-                <h2 className="absolute top-4 left-4 text-2xl font-bold text-gray-900 font-doto tracking-tight">
-                  Vera Molnar
-                </h2>
-                <img
-                  src="https://usercontent.one/wp/magazine.artland.com/wp-content/uploads/2022/10/vera-molnar-portrait.jpg"
-                  alt="Vera Molnar portrait"
-                  className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              </div>
-            </div>
-          }
+          description="Pioneer of computer art and algorithmic design, known for her systematic approach to geometric abstraction."
+          designPrinciple="Systematic Design"
+          exampleLink="https://www.veramolnar.com/"
           fontFamily="doto"
           descriptionClassName="text-gray-700 font-doto"
           titleClassName="text-2xl font-bold text-gray-900 font-doto tracking-tight"
-          background="bg-gradient-to-br from-violet-50/50 to-purple-50/50"
+          visualComponent={
+            <div className="w-full h-full flex items-center justify-center">
+              <div className="w-[500px] h-[300px] bg-white overflow-hidden group relative">
+                <img
+                  src="https://usercontent.one/wp/magazine.artland.com/wp-content/uploads/2022/10/vera-molnar-portrait.jpg"
+                  alt="Vera Molnar"
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+            </div>
+          }
+          background="bg-gradient-to-br from-purple-50/50 to-pink-50/50"
         />
         <DesignSection
           title="Ivan Chermayeff"
