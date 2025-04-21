@@ -2105,7 +2105,7 @@ function App() {
               <div className="flex items-center justify-center h-full p-4">
                 <div className="w-[600px] h-[400px]">
                   <img
-                    src="https://www.webfx.com/wp-content/uploads/2021/10/Screenshot_27-2.png"
+                    src="/960grid.png"
                     alt="960 Grid System layout example"
                     className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                   />
@@ -2615,7 +2615,7 @@ function App() {
           title="Damien Hirst"
           description="A leading figure in the Young British Artists movement, Hirst is known for his controversial and thought-provoking works that explore themes of life, death, and beauty. His iconic spot paintings and formaldehyde-preserved animals have redefined contemporary art and challenged traditional notions of artistic value."
           designPrinciple="Conceptual Impact - Using bold visual statements to explore fundamental questions about existence and mortality"
-          exampleLink="https://www.damienhirst.com"
+          exampleLink="https://gagosian.com/artists/damien-hirst/"
           isListLayout={isListLayout}
           visualComponent={
             <div className="w-full h-full flex items-center justify-center p-4">
