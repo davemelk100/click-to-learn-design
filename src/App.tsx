@@ -2070,7 +2070,7 @@ function App() {
           className={`${
             isListLayout
               ? "grid grid-cols-1 gap-6 max-w-4xl mx-auto px-4"
-              : "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
+              : "col-span-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
           } divide-y md:divide-y-0 md:divide-x border-gray-200/50`}
         >
           <DesignSection
@@ -2129,7 +2129,7 @@ function App() {
             isListLayout={isListLayout}
             visualComponent={
               <div className="flex items-center justify-center w-full h-full">
-                <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-amber-50 to-orange-50 p-4 relative group">
+                <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-purple-50 to-indigo-50 p-4 relative group">
                   <div className="absolute inset-0 flex items-center justify-center">
                     <img
                       src="https://logo.com/image-cdn/images/kts928pd/production/545de9c62376e6a69379aae1703674d4b66e6962-1600x894.png?w=1080&q=72&fm=webp"
@@ -2143,7 +2143,7 @@ function App() {
             fontFamily="dm-sans"
             descriptionClassName="text-gray-700 font-dm-sans"
             titleClassName="text-2xl font-bold text-gray-900 font-dm-sans"
-            background="bg-gradient-to-br from-amber-50/50 to-orange-50/50"
+            background="bg-gradient-to-br from-purple-50/50 to-indigo-50/50"
           />
           <DesignSection
             title="Don't Make Me Think"
