@@ -2051,7 +2051,7 @@ function App() {
         {/* Section Break */}
         <div id="designs" className="col-span-full py-12">
           <div className="flex items-center justify-center gap-2 group">
-            <h2 className="text-3xl font-bold text-gray-900 text-center font-urbanist">
+            <h2 className="text-3xl font-bold text-gray-900 text-center font-urbanist tracking-[2px]">
               Designs
             </h2>
             <button
@@ -2062,7 +2062,7 @@ function App() {
             </button>
           </div>
           <p className="text-gray-600 text-center mt-2 font-urbanist">
-            Iconic designs that have transformed digital experiences
+            Iconic designs that have informed digital experiences
           </p>
         </div>
 
@@ -2160,6 +2160,29 @@ function App() {
             descriptionClassName="text-gray-700 font-dm-sans"
             titleClassName="text-2xl font-bold text-gray-900 font-dm-sans"
             background="bg-gradient-to-br from-emerald-50/50 to-teal-50/50"
+          />
+          <DesignSection
+            title="European Heraldry"
+            description="The world's first form of logo design, dating back to the 12th century. Heraldic symbols were used to identify knights in battle and evolved into sophisticated systems of visual identity for families, institutions, and nations. These designs established fundamental principles of visual communication that influence modern logo design."
+            designPrinciple="Symbolism & Identity – Creating distinctive visual marks that communicate status, heritage, and values through carefully designed symbols and colors"
+            exampleLink="https://www.heraldica.org/topics/design.htm"
+            isListLayout={isListLayout}
+            visualComponent={
+              <div className="w-full h-full flex items-center justify-center">
+                <div className="w-[600px] h-[300px] bg-white overflow-hidden group relative">
+                  <img
+                    src="https://99designs-blog.imgix.net/blog/wp-content/uploads/2018/05/Hyghalmen_Roll_Late_1400s.jpg"
+                    alt="European Heraldry - Hyghalmen Roll"
+                    className="w-full h-full object-contain transform transition-all duration-500 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                </div>
+              </div>
+            }
+            fontFamily="germania-one"
+            descriptionClassName="text-gray-700 font-germania-one"
+            titleClassName="text-2xl font-bold text-gray-900 font-germania-one"
+            background="bg-gradient-to-br from-amber-50/50 to-orange-50/50"
           />
           <DesignSection
             title="Fallingwater"
@@ -2301,12 +2324,13 @@ function App() {
           isListLayout={isListLayout}
           visualComponent={
             <div className="w-full h-full flex items-center justify-center">
-              <div className="w-[500px] h-[300px] bg-white overflow-hidden group relative">
+              <div className="w-[600px] h-[400px] bg-white overflow-hidden group relative">
                 <img
                   src="https://blog.weditt.com/wp-content/uploads/2024/08/Saul-Bass-The-Master-of-Motion-Graphics.jpg"
                   alt="Saul Bass"
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                  className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110"
                 />
+                <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
             </div>
           }

@@ -46,7 +46,8 @@ interface DesignSectionProps {
     | "encode-sans-sc"
     | "lexend"
     | "dm-serif-display"
-    | "syne-mono";
+    | "syne-mono"
+    | "germania-one";
   descriptionClassName?: string;
   titleClassName?: string;
   background?: string;
@@ -101,16 +102,52 @@ const DesignSection: React.FC<DesignSectionProps> = ({
         return "font-eb-garamond";
       case "source-code-pro":
         return "font-source-code-pro";
+      case "share-tech":
+        return "font-share-tech";
+      case "niconne":
+        return "font-niconne";
+      case "rubik-scribble":
+        return "font-rubik-scribble";
       case "oswald":
         return "font-oswald";
       case "roboto-slab":
         return "font-roboto-slab";
-      case "share-tech":
-        return "font-share-tech";
+      case "urbanist":
+        return "font-urbanist";
+      case "bree-serif":
+        return "font-bree-serif";
+      case "courgette":
+        return "font-courgette";
+      case "permanent-marker":
+        return "font-permanent-marker";
       case "josefin-sans":
         return "font-josefin-sans";
       case "roboto-flex":
         return "font-roboto-flex";
+      case "domine":
+        return "font-domine";
+      case "figtree":
+        return "font-figtree";
+      case "futura-condensed":
+        return "font-futura-condensed";
+      case "source-sans":
+        return "font-source-sans";
+      case "solway":
+        return "font-solway";
+      case "chelsea-market":
+        return "font-chelsea-market";
+      case "tektur":
+        return "font-tektur";
+      case "sriracha":
+        return "font-sriracha";
+      case "doto":
+        return "font-doto";
+      case "bowlby-one-sc":
+        return "font-bowlby-one-sc";
+      case "protest-revolution":
+        return "font-protest-revolution";
+      case "outfit":
+        return "font-outfit";
       case "overlock-sc":
         return "font-overlock-sc";
       case "suwannaphum":
@@ -123,32 +160,12 @@ const DesignSection: React.FC<DesignSectionProps> = ({
         return "font-lexend";
       case "dm-serif-display":
         return "font-dm-serif-display";
-      case "bree-serif":
-        return "font-bree-serif";
-      case "domine":
-        return "font-domine";
-      case "figtree":
-        return "font-figtree";
-      case "futura-condensed":
-        return "font-futura-condensed";
-      case "permanent-marker":
-        return "font-permanent-marker";
-      case "urbanist":
-        return "font-urbanist";
-      case "protest-revolution":
-        return "font-protest-revolution";
-      case "chelsea-market":
-        return "font-chelsea-market";
-      case "tektur":
-        return "font-tektur";
-      case "doto":
-        return "font-doto";
-      case "bowlby-one-sc":
-        return "font-bowlby-one-sc";
       case "syne-mono":
         return "font-syne-mono";
+      case "germania-one":
+        return "font-germania-one";
       default:
-        return "font-roboto";
+        return "font-dm-sans";
     }
   };
 
