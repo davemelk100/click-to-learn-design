@@ -2324,7 +2324,7 @@ function App() {
           isListLayout={isListLayout}
           visualComponent={
             <div className="w-full h-full flex items-center justify-center">
-              <div className="w-[600px] h-[400px] bg-white overflow-hidden group relative">
+              <div className="w-[500px] h-[300px] bg-white overflow-hidden group relative">
                 <img
                   src="https://blog.weditt.com/wp-content/uploads/2024/08/Saul-Bass-The-Master-of-Motion-Graphics.jpg"
                   alt="Saul Bass"
@@ -2347,11 +2347,14 @@ function App() {
           isListLayout={isListLayout}
           visualComponent={
             <div className="flex items-center justify-center h-full p-4">
-              <img
-                src="https://cloudfrontgharpediabucket.gharpedia.com/uploads/2023/12/Frank-Lloyd-Wright-Iconic-Architect-01-0102030020.jpg"
-                alt="Frank Lloyd Wright"
-                className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-              />
+              <div className="w-[500px] h-[300px] bg-white overflow-hidden group relative">
+                <img
+                  src="https://cloudfrontgharpediabucket.gharpedia.com/uploads/2023/12/Frank-Lloyd-Wright-Iconic-Architect-01-0102030020.jpg"
+                  alt="Frank Lloyd Wright"
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                />
+                <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </div>
             </div>
           }
           fontFamily="roboto-slab"
