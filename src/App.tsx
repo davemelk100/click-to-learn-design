@@ -536,12 +536,23 @@ function App() {
                 <style>
                   {`
                     @keyframes pulse {
-                      0% { transform: scale(1); }
-                      50% { transform: scale(1.1); }
-                      100% { transform: scale(1); }
+                      0% { transform: scale(1); opacity: 0.1; }
+                      50% { transform: scale(1.5); opacity: 1; }
+                      100% { transform: scale(1); opacity: 0.1; }
                     }
-                    .group:hover .pulse-animation {
-                      animation: pulse 2s ease-in-out infinite;
+                    @keyframes rotate {
+                      from { transform: rotate(0deg); }
+                      to { transform: rotate(360deg); }
+                    }
+                    @keyframes float {
+                      0% { transform: translate(0, 0); }
+                      25% { transform: translate(15px, -15px); }
+                      50% { transform: translate(0, -30px); }
+                      75% { transform: translate(-15px, -15px); }
+                      100% { transform: translate(0, 0); }
+                    }
+                    .group:hover .number-pulse {
+                      animation: pulse 1s ease-in-out infinite;
                     }
                   `}
                 </style>
@@ -588,12 +599,23 @@ function App() {
                 <style>
                   {`
                     @keyframes pulse {
-                      0% { transform: scale(1); }
-                      50% { transform: scale(1.1); }
-                      100% { transform: scale(1); }
+                      0% { transform: scale(1); opacity: 0.1; }
+                      50% { transform: scale(1.5); opacity: 1; }
+                      100% { transform: scale(1); opacity: 0.1; }
                     }
-                    .group:hover .pulse-animation {
-                      animation: pulse 2s ease-in-out infinite;
+                    @keyframes rotate {
+                      from { transform: rotate(0deg); }
+                      to { transform: rotate(360deg); }
+                    }
+                    @keyframes float {
+                      0% { transform: translate(0, 0); }
+                      25% { transform: translate(15px, -15px); }
+                      50% { transform: translate(0, -30px); }
+                      75% { transform: translate(-15px, -15px); }
+                      100% { transform: translate(0, 0); }
+                    }
+                    .group:hover .number-pulse {
+                      animation: pulse 1s ease-in-out infinite;
                     }
                   `}
                 </style>
@@ -654,12 +676,23 @@ function App() {
                 <style>
                   {`
                     @keyframes pulse {
-                      0% { transform: scale(1); }
-                      50% { transform: scale(1.1); }
-                      100% { transform: scale(1); }
+                      0% { transform: scale(1); opacity: 0.1; }
+                      50% { transform: scale(1.5); opacity: 1; }
+                      100% { transform: scale(1); opacity: 0.1; }
                     }
-                    .group:hover .pulse-animation {
-                      animation: pulse 2s ease-in-out infinite;
+                    @keyframes rotate {
+                      from { transform: rotate(0deg); }
+                      to { transform: rotate(360deg); }
+                    }
+                    @keyframes float {
+                      0% { transform: translate(0, 0); }
+                      25% { transform: translate(15px, -15px); }
+                      50% { transform: translate(0, -30px); }
+                      75% { transform: translate(-15px, -15px); }
+                      100% { transform: translate(0, 0); }
+                    }
+                    .group:hover .number-pulse {
+                      animation: pulse 1s ease-in-out infinite;
                     }
                   `}
                 </style>
@@ -720,9 +753,9 @@ function App() {
               <style>
                 {`
                   @keyframes pulse {
-                    0% { transform: scale(1); opacity: 0.2; }
-                    50% { transform: scale(1.3); opacity: 1; }
-                    100% { transform: scale(1); opacity: 0.2; }
+                    0% { transform: scale(1); opacity: 0.1; }
+                    50% { transform: scale(1.5); opacity: 1; }
+                    100% { transform: scale(1); opacity: 0.1; }
                   }
                   @keyframes rotate {
                     from { transform: rotate(0deg); }
@@ -735,6 +768,9 @@ function App() {
                     75% { transform: translate(-15px, -15px); }
                     100% { transform: translate(0, 0); }
                   }
+                  .group:hover .number-pulse {
+                    animation: pulse 1s ease-in-out infinite;
+                  }
                 `}
               </style>
               <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-violet-50 to-indigo-50 p-4 relative group">
@@ -744,9 +780,8 @@ function App() {
                     {[...Array(36)].map((_, i) => (
                       <div
                         key={`binary-${i}`}
-                        className="text-[10px] font-mono text-violet-400 transform transition-all duration-200 group-hover:animate-pulse"
+                        className="text-[10px] font-mono text-violet-400 transform transition-all duration-200 number-pulse"
                         style={{
-                          animationDuration: "1s",
                           animationDelay: `${Math.random() * 0.5}s`,
                         }}
                       >
@@ -761,7 +796,7 @@ function App() {
                       {[...Array(8)].map((_, i) => (
                         <div
                           key={`circle-binary-${i}`}
-                          className="absolute text-[12px] font-mono text-violet-500 transform transition-all duration-300"
+                          className="absolute text-[12px] font-mono text-violet-500 transform transition-all duration-300 number-pulse"
                           style={{
                             left: `${
                               50 + Math.cos((i * Math.PI * 2) / 8) * 35
@@ -770,6 +805,7 @@ function App() {
                               50 + Math.sin((i * Math.PI * 2) / 8) * 35
                             }%`,
                             transform: `translate(-50%, -50%)`,
+                            animationDelay: `${Math.random() * 0.5}s`,
                           }}
                         >
                           {Math.random() > 0.5 ? "1" : "0"}
@@ -782,7 +818,7 @@ function App() {
                   {[...Array(6)].map((_, i) => (
                     <div
                       key={`float-${i}`}
-                      className="absolute w-6 h-6 text-[12px] font-mono text-violet-400 transform transition-all duration-300 group-hover:animate-float"
+                      className="absolute w-6 h-6 text-[12px] font-mono text-violet-400 transform transition-all duration-300 group-hover:animate-float number-pulse"
                       style={{
                         left: `${Math.random() * 70 + 15}%`,
                         top: `${Math.random() * 70 + 15}%`,
@@ -795,7 +831,7 @@ function App() {
 
                   {/* Central focus element */}
                   <div className="absolute w-16 h-16 bg-violet-400/20 transform transition-all duration-300 group-hover:scale-125 group-hover:bg-violet-500/30 group-hover:rotate-45">
-                    <div className="absolute inset-0 flex items-center justify-center text-[16px] font-mono text-violet-600">
+                    <div className="absolute inset-0 flex items-center justify-center text-[16px] font-mono text-violet-600 number-pulse">
                       {Math.random() > 0.5 ? "1" : "0"}
                     </div>
                   </div>
@@ -985,12 +1021,23 @@ function App() {
                 <style>
                   {`
                     @keyframes pulse {
-                      0% { transform: scale(1); }
-                      50% { transform: scale(1.1); }
-                      100% { transform: scale(1); }
+                      0% { transform: scale(1); opacity: 0.1; }
+                      50% { transform: scale(1.5); opacity: 1; }
+                      100% { transform: scale(1); opacity: 0.1; }
                     }
-                    .group:hover .pulse-animation {
-                      animation: pulse 2s ease-in-out infinite;
+                    @keyframes rotate {
+                      from { transform: rotate(0deg); }
+                      to { transform: rotate(360deg); }
+                    }
+                    @keyframes float {
+                      0% { transform: translate(0, 0); }
+                      25% { transform: translate(15px, -15px); }
+                      50% { transform: translate(0, -30px); }
+                      75% { transform: translate(-15px, -15px); }
+                      100% { transform: translate(0, 0); }
+                    }
+                    .group:hover .number-pulse {
+                      animation: pulse 1s ease-in-out infinite;
                     }
                   `}
                 </style>
