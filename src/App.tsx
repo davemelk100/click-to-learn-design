@@ -2244,7 +2244,7 @@ function App() {
           isListLayout={isListLayout}
           visualComponent={
             <div className="w-full h-full flex items-center justify-center">
-              <div className="w-[600px] h-[400px] bg-white overflow-hidden group relative">
+              <div className="w-[600px] h-[300px] bg-white overflow-hidden group relative">
                 <img
                   src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*bD4vGn_s9B9vFClbG-UqpQ.jpeg"
                   alt="Jakob Nielsen's work"
@@ -2352,8 +2352,8 @@ function App() {
           designPrinciple="Systematic Design"
           exampleLink="https://www.veramolnar.com/"
           fontFamily="doto"
-          descriptionClassName="text-gray-700 font-doto"
-          titleClassName="text-2xl font-bold text-gray-900 font-doto tracking-tight"
+          descriptionClassName="text-gray-700 font-doto tracking-[0.2em]"
+          titleClassName="text-2xl font-bold text-gray-900 font-doto tracking-[0.2em]"
           isListLayout={isListLayout}
           visualComponent={
             <div className="w-full h-full flex items-center justify-center">
@@ -2465,11 +2465,14 @@ function App() {
           isListLayout={isListLayout}
           visualComponent={
             <div className="w-full h-full flex items-center justify-center p-4">
-              <img
-                src="https://edito.houseofliteral.com/wp-content/webp-express/webp-images/uploads/2023/12/LITERAL-EDITO-IC-SAYFA-HELMUT-KRONE-v7.jpg.webp"
-                alt="Helmut Krone"
-                className="w-full h-full object-cover"
-              />
+              <div className="w-[500px] h-[300px] bg-white overflow-hidden group relative">
+                <img
+                  src="https://edito.houseofliteral.com/wp-content/webp-express/webp-images/uploads/2023/12/LITERAL-EDITO-IC-SAYFA-HELMUT-KRONE-v7.jpg.webp"
+                  alt="Helmut Krone"
+                  className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </div>
             </div>
           }
           fontFamily="lexend"
@@ -2508,11 +2511,14 @@ function App() {
           isListLayout={isListLayout}
           visualComponent={
             <div className="w-full h-full flex items-center justify-center p-4">
-              <img
-                src="https://onlyonceshop.com/media/pages/product/otl-aicher-olympic-games-munich-1972/9b51cd6d75-1714373193/otl-aicher-sw-1-948x713-q100.jpg"
-                alt="Otl Aicher"
-                className="w-full h-full object-cover"
-              />
+              <div className="w-[500px] h-[300px] bg-white overflow-hidden group relative">
+                <img
+                  src="https://onlyonceshop.com/media/pages/product/otl-aicher-olympic-games-munich-1972/9b51cd6d75-1714373193/otl-aicher-sw-1-948x713-q100.jpg"
+                  alt="Otl Aicher"
+                  className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </div>
             </div>
           }
           fontFamily="tektur"
