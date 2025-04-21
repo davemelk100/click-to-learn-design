@@ -2678,7 +2678,7 @@ function App() {
           background="bg-gradient-to-br from-slate-50/50 to-blue-50/50"
         />
       </div>
-      <footer className="py-2 bg-black">
+      <footer className="sticky bottom-0 py-2 bg-black z-50">
         <div className="flex items-center pl-4">
           <div className="flex items-center gap-2">
             <div className="w-8 h-8 relative group">
