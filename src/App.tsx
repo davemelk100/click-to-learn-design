@@ -952,66 +952,42 @@ function App() {
                     ))}
                   </div>
 
-                  {/* 3D cube */}
-                  <div className="absolute w-16 h-16 transform transition-all duration-500 group-hover:rotate-12 group-hover:scale-110">
+                  {/* 3D Cube */}
+                  <div className="relative w-32 h-32 group-hover:animate-[rotate-cube_8s_linear_infinite]">
                     {/* Front face */}
-                    <div className="absolute inset-0 bg-stone-600/80 transform transition-all duration-500 group-hover:bg-stone-700" />
-
+                    <div className="absolute w-full h-full bg-stone-600/80 border-2 border-stone-700 transform-[translateZ(16px)]" />
+                    {/* Back face */}
+                    <div className="absolute w-full h-full bg-stone-600/80 border-2 border-stone-700 transform-[translateZ(-16px)]" />
                     {/* Top face */}
-                    <div
-                      className="absolute inset-0 bg-stone-500/60 transform transition-all duration-500 group-hover:bg-stone-600"
-                      style={{
-                        transform: "skewX(-30deg) translateY(-50%)",
-                        transformOrigin: "bottom left",
-                      }}
-                    />
-
+                    <div className="absolute w-full h-full bg-stone-500/60 border-2 border-stone-600 transform-[rotateX(90deg)_translateZ(16px)]" />
+                    {/* Bottom face */}
+                    <div className="absolute w-full h-full bg-stone-500/60 border-2 border-stone-600 transform-[rotateX(-90deg)_translateZ(16px)]" />
                     {/* Right face */}
-                    <div
-                      className="absolute inset-0 bg-stone-700/60 transform transition-all duration-500 group-hover:bg-stone-800"
-                      style={{
-                        transform: "skewY(30deg) translateX(50%)",
-                        transformOrigin: "top left",
-                      }}
-                    />
-
-                    {/* Edge highlights */}
-                    <div className="absolute inset-0 border-2 border-stone-800/20" />
-                    <div
-                      className="absolute inset-0 border-2 border-stone-800/20"
-                      style={{
-                        transform: "skewX(-30deg) translateY(-50%)",
-                        transformOrigin: "bottom left",
-                      }}
-                    />
-                    <div
-                      className="absolute inset-0 border-2 border-stone-800/20"
-                      style={{
-                        transform: "skewY(30deg) translateX(50%)",
-                        transformOrigin: "top left",
-                      }}
-                    />
+                    <div className="absolute w-full h-full bg-stone-700/60 border-2 border-stone-800 transform-[rotateY(90deg)_translateZ(16px)]" />
+                    {/* Left face */}
+                    <div className="absolute w-full h-full bg-stone-700/60 border-2 border-stone-800 transform-[rotateY(-90deg)_translateZ(16px)]" />
                   </div>
 
-                  {/* Dimension lines */}
-                  <div className="absolute w-48 h-48 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    {/* Horizontal */}
-                    <div className="absolute w-32 h-px bg-stone-600 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
-                    <div className="absolute w-2 h-2 border-2 border-stone-600 rounded-full top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2" />
-                    <div className="absolute w-2 h-2 border-2 border-stone-600 rounded-full top-1/2 right-1/4 translate-x-1/2 -translate-y-1/2" />
-
-                    {/* Vertical */}
-                    <div className="absolute w-px h-32 bg-stone-600 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
-                    <div className="absolute w-2 h-2 border-2 border-stone-600 rounded-full top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2" />
-                    <div className="absolute w-2 h-2 border-2 border-stone-600 rounded-full bottom-1/4 left-1/2 -translate-x-1/2 translate-y-1/2" />
-                  </div>
+                  <style jsx>{`
+                    @keyframes rotate-cube {
+                      0% {
+                        transform: rotateX(0deg) rotateY(0deg);
+                      }
+                      25% {
+                        transform: rotateX(90deg) rotateY(0deg);
+                      }
+                      50% {
+                        transform: rotateX(180deg) rotateY(90deg);
+                      }
+                      75% {
+                        transform: rotateX(270deg) rotateY(180deg);
+                      }
+                      100% {
+                        transform: rotateX(360deg) rotateY(360deg);
+                      }
+                    }
+                  `}</style>
                 </div>
-                {/* Remove overlay text */}
-                {/* <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-20">
-                  <div className="text-xs sm:text-sm text-stone-600 font-medium bg-white/80 px-3 py-2 backdrop-blur-sm font-oswald tracking-wider">
-                    Parallel lines remain parallel
-                  </div>
-                </div> */}
               </div>
             </div>
           }
