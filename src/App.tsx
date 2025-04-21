@@ -272,16 +272,28 @@ function App() {
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
               <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-sky-50 to-blue-50 p-4 flex items-center justify-center group">
+                <style>
+                  {`
+                    @keyframes pulse {
+                      0% { transform: scale(1); opacity: 0.1; }
+                      50% { transform: scale(1.3); opacity: 1; }
+                      100% { transform: scale(1); opacity: 0.1; }
+                    }
+                    .group:hover .number-pulse {
+                      animation: pulse 3s ease-in-out infinite;
+                    }
+                  `}
+                </style>
                 <div className="relative w-[280px] h-[120px] group">
                   {/* Background layer */}
-                  <div className="absolute inset-0 bg-sky-100 transform group-hover:rotate-6 transition-transform duration-500" />
+                  <div className="absolute inset-0 bg-sky-100 transform group-hover:rotate-6 transition-transform duration-500 number-pulse" />
 
                   {/* Middle layers - geometric patterns */}
                   <div className="absolute inset-0 flex items-center justify-center">
                     {[...Array(3)].map((_, i) => (
                       <div
                         key={i}
-                        className="absolute w-32 h-32 border-2 border-sky-200 transform transition-all duration-500"
+                        className="absolute w-32 h-32 border-2 border-sky-200 transform transition-all duration-500 number-pulse"
                         style={{
                           transform: `rotate(${i * 30}deg) scale(${
                             0.8 + i * 0.1
@@ -301,7 +313,7 @@ function App() {
                   {[...Array(4)].map((_, i) => (
                     <div
                       key={`float-${i}`}
-                      className="absolute w-6 h-6 bg-white shadow-lg transform transition-all duration-500 group-hover:scale-110 group-hover:animate-float"
+                      className="absolute w-6 h-6 bg-white shadow-lg transform transition-all duration-500 group-hover:scale-110 group-hover:animate-float number-pulse"
                       style={{
                         left: `${20 + i * 70}px`,
                         top: `${30 + (i % 2) * 60}px`,
@@ -314,15 +326,9 @@ function App() {
                   ))}
 
                   {/* Foreground accent elements */}
-                  <div className="absolute -right-2 top-1/2 -translate-y-1/2 w-20 h-20 opacity-20 blur-xl group-hover:opacity-40 transition-opacity duration-500" />
-                  <div className="absolute -left-4 bottom-0 w-16 h-16 opacity-30 blur-lg group-hover:opacity-50 transition-opacity duration-500" />
+                  <div className="absolute -right-2 top-1/2 -translate-y-1/2 w-20 h-20 opacity-20 blur-xl group-hover:opacity-40 transition-opacity duration-500 number-pulse" />
+                  <div className="absolute -left-4 bottom-0 w-16 h-16 opacity-30 blur-lg group-hover:opacity-50 transition-opacity duration-500 number-pulse" />
                 </div>
-                {/* Overlay text */}
-                {/* <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-20">
-                  <div className="text-xs sm:text-sm text-sky-600 font-medium bg-white/80 px-3 py-2 backdrop-blur-sm font-helvetica">
-                    Layers create depth and hierarchy
-                  </div>
-                </div> */}
               </div>
             </div>
           }
@@ -857,47 +863,78 @@ function App() {
           isListLayout={isListLayout}
           visualComponent={
             <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-sky-50 to-blue-50 p-4 relative group">
+              <style>
+                {`
+                  @keyframes rotate-circle {
+                    from { transform: rotate(0deg) translate(40px) rotate(0deg); }
+                    to { transform: rotate(360deg) translate(40px) rotate(-360deg); }
+                  }
+                  .group:hover .color-ball {
+                    animation: rotate-circle 4s linear infinite;
+                  }
+                `}
+              </style>
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="relative w-48 h-48">
+                <div className="relative w-48 h-48 flex items-center justify-center">
                   {/* Red */}
-                  <div className="absolute w-8 h-8 bg-red-500 rounded-full transform transition-all duration-500 top-0 left-1/2 -translate-x-1/2 group-hover:left-0 group-hover:translate-x-0 group-hover:top-1/2 group-hover:-translate-y-1/2" />
+                  <div
+                    className="absolute w-8 h-8 bg-red-500 rounded-full color-ball"
+                    style={{ animationDelay: "0s" }}
+                  />
+                  {/* Red-Orange */}
+                  <div
+                    className="absolute w-8 h-8 bg-orange-400 rounded-full color-ball"
+                    style={{ animationDelay: "0.4s" }}
+                  />
                   {/* Orange */}
                   <div
-                    className="absolute w-8 h-8 bg-orange-500 rounded-full transform transition-all duration-500 group-hover:left-[20%] group-hover:translate-x-0 group-hover:top-1/2 group-hover:-translate-y-1/2"
-                    style={{
-                      top: "25%",
-                      right: "10%",
-                      transform: "translate(50%, -50%)",
-                    }}
+                    className="absolute w-8 h-8 bg-orange-500 rounded-full color-ball"
+                    style={{ animationDelay: "0.8s" }}
+                  />
+                  {/* Orange-Yellow */}
+                  <div
+                    className="absolute w-8 h-8 bg-amber-400 rounded-full color-ball"
+                    style={{ animationDelay: "1.2s" }}
                   />
                   {/* Yellow */}
                   <div
-                    className="absolute w-8 h-8 bg-yellow-500 rounded-full transform transition-all duration-500 group-hover:left-[40%] group-hover:translate-x-0 group-hover:top-1/2 group-hover:-translate-y-1/2"
-                    style={{
-                      bottom: "25%",
-                      right: "10%",
-                      transform: "translate(50%, 50%)",
-                    }}
+                    className="absolute w-8 h-8 bg-yellow-500 rounded-full color-ball"
+                    style={{ animationDelay: "1.6s" }}
+                  />
+                  {/* Yellow-Green */}
+                  <div
+                    className="absolute w-8 h-8 bg-lime-400 rounded-full color-ball"
+                    style={{ animationDelay: "2s" }}
                   />
                   {/* Green */}
-                  <div className="absolute w-8 h-8 bg-green-500 rounded-full transform transition-all duration-500 bottom-0 left-1/2 -translate-x-1/2 group-hover:left-[60%] group-hover:translate-x-0 group-hover:top-1/2 group-hover:-translate-y-1/2" />
+                  <div
+                    className="absolute w-8 h-8 bg-green-500 rounded-full color-ball"
+                    style={{ animationDelay: "2.4s" }}
+                  />
+                  {/* Green-Blue */}
+                  <div
+                    className="absolute w-8 h-8 bg-teal-400 rounded-full color-ball"
+                    style={{ animationDelay: "2.8s" }}
+                  />
                   {/* Blue */}
                   <div
-                    className="absolute w-8 h-8 bg-blue-500 rounded-full transform transition-all duration-500 group-hover:left-[80%] group-hover:translate-x-0 group-hover:top-1/2 group-hover:-translate-y-1/2"
-                    style={{
-                      bottom: "25%",
-                      left: "10%",
-                      transform: "translate(-50%, 50%)",
-                    }}
+                    className="absolute w-8 h-8 bg-blue-500 rounded-full color-ball"
+                    style={{ animationDelay: "3.2s" }}
+                  />
+                  {/* Blue-Purple */}
+                  <div
+                    className="absolute w-8 h-8 bg-indigo-400 rounded-full color-ball"
+                    style={{ animationDelay: "3.6s" }}
                   />
                   {/* Purple */}
                   <div
-                    className="absolute w-8 h-8 bg-purple-500 rounded-full transform transition-all duration-500 group-hover:right-0 group-hover:translate-x-0 group-hover:top-1/2 group-hover:-translate-y-1/2"
-                    style={{
-                      top: "25%",
-                      left: "10%",
-                      transform: "translate(-50%, -50%)",
-                    }}
+                    className="absolute w-8 h-8 bg-purple-500 rounded-full color-ball"
+                    style={{ animationDelay: "4s" }}
+                  />
+                  {/* Purple-Red */}
+                  <div
+                    className="absolute w-8 h-8 bg-pink-400 rounded-full color-ball"
+                    style={{ animationDelay: "4.4s" }}
                   />
                 </div>
               </div>
@@ -1215,23 +1252,21 @@ function App() {
                 <div className="absolute inset-0 flex items-center justify-center">
                   {/* Initial state - decorative but complex */}
                   <div className="absolute w-48 h-48 opacity-100 group-hover:opacity-0 transition-all duration-500">
-                    {/* Ornamental background */}
-                    <div className="absolute inset-0 grid grid-cols-4 grid-rows-4 gap-1">
+                    {/* Background grid */}
+                    <div className="absolute inset-0 grid grid-cols-4 grid-rows-4 gap-2">
                       {[...Array(16)].map((_, i) => (
                         <div
-                          key={`decor-${i}`}
-                          className="bg-stone-600/30 transform transition-all duration-500"
-                          style={{
-                            transform: `rotate(${i * 22.5}deg)`,
-                          }}
+                          key={`grid-${i}`}
+                          className="bg-stone-300/30 transform transition-all duration-1000 animate-infinite pulse-animation"
                         />
                       ))}
                     </div>
-                    {/* Decorative elements */}
+
+                    {/* Overlapping circles */}
                     {[...Array(8)].map((_, i) => (
                       <div
-                        key={`ornament-${i}`}
-                        className="absolute w-4 h-4 border-2 border-stone-500/40 rounded-full transform transition-all duration-500"
+                        key={`circle-${i}`}
+                        className="absolute w-24 h-24 border-2 border-stone-400/40 rounded-full transform transition-all duration-1000 animate-infinite pulse-animation"
                         style={{
                           left: `${25 + Math.cos((i * Math.PI * 2) / 8) * 20}%`,
                           top: `${25 + Math.sin((i * Math.PI * 2) / 8) * 20}%`,
@@ -1243,35 +1278,22 @@ function App() {
                     ))}
                   </div>
 
-                  {/* Final state - simple and functional */}
-                  <div className="absolute w-48 h-48 opacity-0 group-hover:opacity-100 transition-all duration-500">
-                    {/* Functional interface elements */}
-                    <div className="absolute inset-0 flex flex-col gap-2 p-4">
-                      {/* Header */}
-                      <div className="h-6 bg-stone-600/50" />
-                      {/* Content area */}
-                      <div className="flex-1 flex flex-col gap-2">
-                        <div className="h-4 bg-stone-600/30" />
-                        <div className="h-4 bg-stone-600/30" />
-                        <div className="h-4 bg-stone-600/30" />
-                      </div>
-                      {/* Action buttons */}
-                      <div className="flex gap-2">
-                        <div className="h-6 flex-1 bg-stone-600/50" />
-                        <div className="h-6 flex-1 bg-stone-600/50" />
-                      </div>
+                  {/* Final state - single focused element */}
+                  <div className="absolute w-48 h-48 opacity-0 group-hover:opacity-100 transition-all duration-1000 animate-infinite">
+                    {/* Central focus element */}
+                    <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-stone-800 transform transition-all duration-1000 group-hover:scale-110 group-hover:rotate-6 animate-infinite pulse-animation">
+                      <div className="absolute inset-1" />
+                      {/* Subtle shadow */}
+                      <div className="absolute inset-0 shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 animate-infinite" />
                     </div>
                   </div>
                 </div>
-                {/* Remove overlay text */}
-                {/* <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
-                  <div className="text-xs sm:text-sm text-stone-300 font-medium bg-stone-800/80 px-3 py-2 backdrop-blur-sm font-overlock-sc">
-                    Simple and functional beats decorative
-                  </div>
-                </div> */}
               </div>
             </div>
           }
+          fontFamily="helvetica"
+          descriptionClassName="font-helvetica"
+          background="bg-gradient-to-br from-stone-50/50 to-slate-50/50"
         />
         <DesignSection
           title="Designing Networks"
