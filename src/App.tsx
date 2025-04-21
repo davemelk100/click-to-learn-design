@@ -2037,7 +2037,7 @@ function App() {
               <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-blue-50 to-indigo-50 p-4 relative group">
                 <div className="absolute inset-0 flex items-center justify-center">
                   <img
-                    src="https://upload.wikimedia.org/wikipedia/commons/3/3b/3D_Cartesian_coordinates.PNG"
+                    src="https://media.istockphoto.com/id/1353209101/vector/abstract-texture-from-3d-cubes-rectangular-background-from-geometric-shapes-vector.jpg?s=612x612&w=0&k=20&c=ZzXC6iE6KbxocW-1dxHDgkgA1UVqt7K5oHsag2T5FVw="
                     alt="3D Cartesian Coordinates"
                     className="w-full h-full object-contain transform transition-transform duration-300 group-hover:scale-105"
                   />
