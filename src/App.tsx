@@ -2121,7 +2121,7 @@ function App() {
             title="FedEx Logo"
             description="The FedEx logo, designed by Lindon Leader in 1994, is a masterclass in negative space design. The hidden arrow between the 'E' and 'x' represents forward movement and precision, perfectly aligning with FedEx's brand values. This subtle yet powerful design element has made it one of the most recognized and awarded logos in history."
             designPrinciple="Negative Space - Using the space between elements to create hidden meaning and visual interest"
-            exampleLink="https://99designs.com/blog/famous-logo/fedex-logo-design/"
+            exampleLink="https://logo.com/blog/fedex-logo"
             isListLayout={isListLayout}
             visualComponent={
               <div className="flex items-center justify-center h-full p-4">
@@ -2156,9 +2156,9 @@ function App() {
                 </div>
               </div>
             }
-            fontFamily="dm-sans"
-            descriptionClassName="text-gray-700 font-dm-sans"
-            titleClassName="text-2xl font-bold text-gray-900 font-dm-sans"
+            fontFamily="mitr"
+            descriptionClassName="text-gray-700 font-mitr"
+            titleClassName="text-2xl font-bold text-gray-900 font-mitr"
             background="bg-gradient-to-br from-emerald-50/50 to-teal-50/50"
           />
           <DesignSection
@@ -2169,9 +2169,9 @@ function App() {
             isListLayout={isListLayout}
             visualComponent={
               <div className="w-full h-full flex items-center justify-center">
-                <div className="w-[600px] h-[300px] bg-white overflow-hidden group relative">
+                <div className="w-[800px] h-[400px] bg-white overflow-hidden group relative">
                   <img
-                    src="https://99designs-blog.imgix.net/blog/wp-content/uploads/2018/05/Hyghalmen_Roll_Late_1400s.jpg"
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Wapenboek_Beyeren_%28armorial%29_-_KB79K21_-_folios_001v_%28left%29_and_002r_%28right%29.jpg/640px-Wapenboek_Beyeren_%28armorial%29_-_KB79K21_-_folios_001v_%28left%29_and_002r_%28right%29.jpg"
                     alt="European Heraldry - Hyghalmen Roll"
                     className="w-full h-full object-contain transform transition-all duration-500 group-hover:scale-110"
                   />

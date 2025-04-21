@@ -37,6 +37,7 @@ export default {
         outfit: ["Outfit", "sans-serif"],
         "germania-one": ["Germania One", "cursive"],
         alice: ["Alice", "serif"],
+        mitr: ["Mitr", "sans-serif"],
       },
     },
   },

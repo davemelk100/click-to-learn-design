@@ -48,7 +48,8 @@ interface DesignSectionProps {
     | "dm-serif-display"
     | "syne-mono"
     | "germania-one"
-    | "alice";
+    | "alice"
+    | "mitr";
   descriptionClassName?: string;
   titleClassName?: string;
   background?: string;
@@ -167,6 +168,8 @@ const DesignSection: React.FC<DesignSectionProps> = ({
         return "font-germania-one";
       case "alice":
         return "font-alice";
+      case "mitr":
+        return "font-mitr";
       default:
         return "font-dm-sans";
     }
@@ -242,7 +245,7 @@ const DesignSection: React.FC<DesignSectionProps> = ({
           <div className={`flex-shrink-0 ${isListLayout ? "w-1/3" : ""}`}>
             {visualComponent}
           </div>
-          <div className="flex-grow">
+          <div className="flex-grow relative">
             <div className="flex justify-between items-start mb-4">
               <div>
                 <h2 className={`${titleClass} leading-none`}>{title}</h2>
@@ -256,7 +259,7 @@ const DesignSection: React.FC<DesignSectionProps> = ({
                   href={exampleLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-xs text-gray-600 hover:text-gray-500 transition-colors uppercase"
+                  className="text-xs text-gray-600 hover:text-gray-500 transition-colors uppercase z-10"
                 >
                   Resource
                 </a>
