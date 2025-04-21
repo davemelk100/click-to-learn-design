@@ -2074,21 +2074,19 @@ function App() {
           } divide-y md:divide-y-0 md:divide-x border-gray-200/50`}
         >
           <DesignSection
-            title="The Boston Globe"
+            title="Boston Globe Redesign"
             description="The Boston Globe's 2011 responsive redesign, led by Ethan Marcotte and Filament Group, marked a pivotal moment in web design. As the first major news site to implement responsive design, it demonstrated how content could adapt seamlessly across devices while maintaining readability and hierarchy."
             designPrinciple="Responsive Design - Creating fluid layouts that adapt to any screen size while maintaining content integrity"
             exampleLink="https://zeldman.com/2011/09/15/boston-globes-responsive-redesign-discuss/"
             isListLayout={isListLayout}
             visualComponent={
-              <div className="flex items-center justify-center w-full h-full">
-                <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-blue-50 to-indigo-50 p-4 relative group">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <img
-                      src="https://scholarlykitchen.sspnet.org/wp-content/uploads/2012/09/boston_globe_responsive_website.jpg"
-                      alt="The Boston Globe responsive website design"
-                      className="w-full h-full object-cover shadow-lg transform transition-all duration-500 group-hover:scale-110"
-                    />
-                  </div>
+              <div className="flex items-center justify-center h-full p-4">
+                <div className="w-[600px] h-[400px]">
+                  <img
+                    src="https://scholarlykitchen.sspnet.org/wp-content/uploads/2012/09/boston_globe_responsive_website.jpg"
+                    alt="The Boston Globe responsive website design"
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                  />
                 </div>
               </div>
             }
@@ -2104,15 +2102,13 @@ function App() {
             exampleLink="https://ux.stackexchange.com/questions/5128/do-you-consider-the-960-grid-system-one-of-the-holy-grails-of-user-experienc"
             isListLayout={isListLayout}
             visualComponent={
-              <div className="flex items-center justify-center w-full h-full">
-                <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-amber-50 to-orange-50 p-4 relative group">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <img
-                      src="https://www.webfx.com/wp-content/uploads/2021/10/Screenshot_27-2.png"
-                      alt="960 Grid System layout example"
-                      className="w-full h-full object-contain shadow-lg transform transition-all duration-500 group-hover:scale-110"
-                    />
-                  </div>
+              <div className="flex items-center justify-center h-full p-4">
+                <div className="w-[600px] h-[400px]">
+                  <img
+                    src="https://www.webfx.com/wp-content/uploads/2021/10/Screenshot_27-2.png"
+                    alt="960 Grid System layout example"
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                  />
                 </div>
               </div>
             }
@@ -2128,15 +2124,13 @@ function App() {
             exampleLink="https://99designs.com/blog/famous-logo/fedex-logo-design/"
             isListLayout={isListLayout}
             visualComponent={
-              <div className="flex items-center justify-center w-full h-full">
-                <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-purple-50 to-indigo-50 p-4 relative group">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <img
-                      src="https://logo.com/image-cdn/images/kts928pd/production/545de9c62376e6a69379aae1703674d4b66e6962-1600x894.png?w=1080&q=72&fm=webp"
-                      alt="FedEx logo with hidden arrow"
-                      className="w-full h-full object-contain shadow-lg transform transition-all duration-500 group-hover:scale-110"
-                    />
-                  </div>
+              <div className="flex items-center justify-center h-full p-4">
+                <div className="w-[600px] h-[400px]">
+                  <img
+                    src="https://logo.com/image-cdn/images/kts928pd/production/545de9c62376e6a69379aae1703674d4b66e6962-1600x894.png?w=1080&q=72&fm=webp"
+                    alt="FedEx logo with hidden arrow"
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                  />
                 </div>
               </div>
             }
@@ -2152,15 +2146,13 @@ function App() {
             exampleLink="https://www.sensible.com/dmmt.html"
             isListLayout={isListLayout}
             visualComponent={
-              <div className="flex items-center justify-center w-full h-full">
-                <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-emerald-50 to-teal-50 p-4 relative group">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <img
-                      src="https://media.licdn.com/dms/image/v2/C4D34AQFcBa3aJAHZCw/ugc-proxy-shrink_800/ugc-proxy-shrink_800/0/1594646636338?e=2147483647&v=beta&t=IFoQ7PyP6METIpbPTWMVbNQTcGxFx7ax5jmr2StTdhc"
-                      alt="Don't Make Me Think book cover"
-                      className="w-full h-full object-contain shadow-lg transform transition-all duration-500 group-hover:scale-110"
-                    />
-                  </div>
+              <div className="flex items-center justify-center h-full p-4">
+                <div className="w-[600px] h-[400px]">
+                  <img
+                    src="https://media.licdn.com/dms/image/v2/C4D34AQFcBa3aJAHZCw/ugc-proxy-shrink_800/ugc-proxy-shrink_800/0/1594646636338?e=2147483647&v=beta&t=IFoQ7PyP6METIpbPTWMVbNQTcGxFx7ax5jmr2StTdhc"
+                    alt="Don't Make Me Think book cover"
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                  />
                 </div>
               </div>
             }
@@ -2174,23 +2166,43 @@ function App() {
             description="Fallingwater, designed by Frank Lloyd Wright in 1935, is a masterpiece of organic architecture that harmoniously integrates with its natural surroundings. The house appears to float above a waterfall, creating a seamless connection between built and natural environments."
             designPrinciple="Organic Architecture – Creating harmony between human habitation and the natural world."
             exampleLink="https://www.fallingwater.org/"
-            fontFamily="dm-sans"
-            descriptionClassName="font-dm-sans"
-            titleClassName="font-dm-sans"
             isListLayout={isListLayout}
             visualComponent={
-              <div className="flex items-center justify-center w-full h-full">
-                <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-stone-50 to-slate-50 p-4 relative group">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <img
-                      src="https://upload.wikimedia.org/wikipedia/commons/b/bc/Fallingwater3.jpg"
-                      alt="Fallingwater by Frank Lloyd Wright"
-                      className="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-105"
-                    />
-                  </div>
+              <div className="flex items-center justify-center h-full p-4">
+                <div className="w-[600px] h-[400px]">
+                  <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/b/bc/Fallingwater3.jpg"
+                    alt="Fallingwater by Frank Lloyd Wright"
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                  />
                 </div>
               </div>
             }
+            fontFamily="dm-sans"
+            descriptionClassName="text-gray-700 font-dm-sans"
+            titleClassName="text-2xl font-bold text-gray-900 font-dm-sans"
+            background="bg-gradient-to-br from-stone-50/50 to-slate-50/50"
+          />
+          <DesignSection
+            title="The Dot Matrix Printer"
+            description="The dot matrix printer revolutionized computer output in the 1970s and 1980s. Its design principle of using a matrix of pins to create characters through impact printing demonstrated how mechanical precision could create digital output. The distinctive sound and visual pattern of its printing process became iconic, showing how functional design can create memorable user experiences."
+            designPrinciple="Functionality Meets Innovation"
+            exampleLink="https://en.wikipedia.org/wiki/Dot_matrix_printing"
+            isListLayout={isListLayout}
+            visualComponent={
+              <div className="flex items-center justify-center h-full p-4">
+                <div className="w-[600px] h-[400px]">
+                  <img
+                    src="https://i.ytimg.com/vi/MikoF6KZjm0/maxresdefault.jpg"
+                    alt="Dot Matrix Printer"
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+              </div>
+            }
+            fontFamily="doto"
+            descriptionClassName="text-gray-700 font-doto tracking-[2px]"
+            titleClassName="text-2xl font-bold text-gray-900 font-doto tracking-[2px]"
             background="bg-gradient-to-br from-stone-50/50 to-slate-50/50"
           />
         </div>
