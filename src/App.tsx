@@ -2134,9 +2134,9 @@ function App() {
                 </div>
               </div>
             }
-            fontFamily="dm-sans"
-            descriptionClassName="text-gray-700 font-dm-sans"
-            titleClassName="text-2xl font-bold text-gray-900 font-dm-sans"
+            fontFamily="helvetica"
+            descriptionClassName="text-gray-700 font-helvetica"
+            titleClassName="text-2xl font-bold text-gray-900 font-helvetica tracking-tight"
             background="bg-gradient-to-br from-purple-50/50 to-indigo-50/50"
           />
           <DesignSection
