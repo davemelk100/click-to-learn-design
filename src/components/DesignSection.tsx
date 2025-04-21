@@ -229,17 +229,13 @@ const DesignSection: React.FC<DesignSectionProps> = ({
 
   return (
     <div
-      className={`relative group hover:shadow-lg transition-shadow duration-300 ${
+      className={`relative group ${
+        isListLayout ? "hover:shadow-lg" : "shadow-lg hover:shadow-xl"
+      } transition-shadow duration-300 ${
         isListLayout ? "flex gap-6 p-6" : "min-h-[400px]"
-      } border border-gray-200 ${background} overflow-hidden ${
-        shouldRemoveRightBorder ? "border-r-0" : ""
-      }`}
+      } ${background} overflow-hidden`}
     >
-      <div
-        className={`absolute inset-0 border border-gray-200 ${
-          shouldRemoveRightBorder ? "border-r-0" : ""
-        }`}
-      />
+      <div className="absolute inset-0" />
       {isListLayout ? (
         <>
           <div className={`flex-shrink-0 ${isListLayout ? "w-1/3" : ""}`}>

@@ -32,8 +32,8 @@ function App() {
         className={`${
           isListLayout
             ? "grid grid-cols-1 gap-6 max-w-4xl mx-auto px-4"
-            : "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
-        } divide-y md:divide-y-0 md:divide-x border-gray-200/50`}
+            : "col-span-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
+        } divide-y md:divide-y-0 md:divide-x-0 border-gray-200/50`}
       >
         <DesignSection
           title="Dimensional Hierarchy"
@@ -2071,7 +2071,7 @@ function App() {
             isListLayout
               ? "grid grid-cols-1 gap-6 max-w-4xl mx-auto px-4"
               : "col-span-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
-          } divide-y md:divide-y-0 md:divide-x border-gray-200/50`}
+          } divide-y md:divide-y-0 md:divide-x-0 border-gray-200/50`}
         >
           <DesignSection
             title="Boston Globe Redesign"
