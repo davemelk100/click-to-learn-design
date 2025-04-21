@@ -47,7 +47,8 @@ interface DesignSectionProps {
     | "lexend"
     | "dm-serif-display"
     | "syne-mono"
-    | "germania-one";
+    | "germania-one"
+    | "alice";
   descriptionClassName?: string;
   titleClassName?: string;
   background?: string;
@@ -164,6 +165,8 @@ const DesignSection: React.FC<DesignSectionProps> = ({
         return "font-syne-mono";
       case "germania-one":
         return "font-germania-one";
+      case "alice":
+        return "font-alice";
       default:
         return "font-dm-sans";
     }

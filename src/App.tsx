@@ -2677,6 +2677,29 @@ function App() {
           titleClassName="text-2xl font-bold text-gray-900 font-helvetica tracking-tight"
           background="bg-gradient-to-br from-slate-50/50 to-blue-50/50"
         />
+        <DesignSection
+          title="The Wiener Werkstätte"
+          description="A pioneering design collective that revolutionized applied arts through Gesamtkunstwerk (total work of art). Their innovative approach to pattern, form, and material continues to influence modern design."
+          designPrinciple="Gesamtkunstwerk – The integration of all elements into a unified whole."
+          exampleLink="https://www.moma.org/artists/6288"
+          isListLayout={isListLayout}
+          visualComponent={
+            <div className="w-full h-full flex items-center justify-center p-4">
+              <div className="w-[500px] h-[300px] bg-white overflow-hidden group relative">
+                <img
+                  src="https://s.turbifycdn.com/aah/artbook/postcards-of-the-wiener-werkst-tte-at-first-sight-259.jpg"
+                  alt="Wiener Werkstätte postcard design"
+                  className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </div>
+            </div>
+          }
+          fontFamily="alice"
+          descriptionClassName="font-alice"
+          titleClassName="font-alice"
+          background="bg-gradient-to-br from-amber-50/50 to-orange-50/50"
+        />
       </div>
       <footer className="sticky bottom-0 py-2 bg-black z-50">
         <div className="flex items-center pl-4">

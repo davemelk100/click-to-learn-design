@@ -36,6 +36,7 @@ export default {
         "protest-revolution": ["Protest Revolution", "cursive"],
         outfit: ["Outfit", "sans-serif"],
         "germania-one": ["Germania One", "cursive"],
+        alice: ["Alice", "serif"],
       },
     },
   },
