@@ -24,7 +24,7 @@ function App() {
           </button>
         </div>
         <p className="text-gray-600 text-center mt-2 font-urbanist">
-          Fundamental principles that shape effective design
+          Fundamentals that shape effective design
         </p>
       </div>
 
@@ -632,13 +632,13 @@ function App() {
               <div className="w-full max-w-[360px] h-[180px] p-4 relative group">
                 <div className="absolute inset-0 flex items-center justify-center">
                   {/* Initial state - complex overlapping shapes */}
-                  <div className="absolute w-48 h-48 opacity-100 group-hover:opacity-0 transition-all duration-500">
+                  <div className="absolute w-48 h-48 opacity-100 group-hover:opacity-0 transition-all duration-1000 animate-infinite">
                     {/* Background grid */}
                     <div className="absolute inset-0 grid grid-cols-4 grid-rows-4 gap-2">
                       {[...Array(16)].map((_, i) => (
                         <div
                           key={`grid-${i}`}
-                          className="bg-stone-300/30 transform transition-all duration-500"
+                          className="bg-stone-300/30 transform transition-all duration-1000 animate-infinite"
                         />
                       ))}
                     </div>
@@ -647,7 +647,7 @@ function App() {
                     {[...Array(8)].map((_, i) => (
                       <div
                         key={`circle-${i}`}
-                        className="absolute w-24 h-24 border-2 border-stone-400/40 rounded-full transform transition-all duration-500"
+                        className="absolute w-24 h-24 border-2 border-stone-400/40 rounded-full transform transition-all duration-1000 animate-infinite"
                         style={{
                           left: `${25 + Math.cos((i * Math.PI * 2) / 8) * 20}%`,
                           top: `${25 + Math.sin((i * Math.PI * 2) / 8) * 20}%`,
@@ -660,12 +660,12 @@ function App() {
                   </div>
 
                   {/* Final state - single focused element */}
-                  <div className="absolute w-48 h-48 opacity-0 group-hover:opacity-100 transition-all duration-500">
+                  <div className="absolute w-48 h-48 opacity-0 group-hover:opacity-100 transition-all duration-1000 animate-infinite">
                     {/* Central focus element */}
-                    <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-stone-800 transform transition-all duration-500 group-hover:scale-110 group-hover:rotate-6">
+                    <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-stone-800 transform transition-all duration-1000 group-hover:scale-110 group-hover:rotate-6 animate-infinite">
                       <div className="absolute inset-1" />
                       {/* Subtle shadow */}
-                      <div className="absolute inset-0 shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      <div className="absolute inset-0 shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 animate-infinite" />
                     </div>
                   </div>
                 </div>
@@ -2062,7 +2062,7 @@ function App() {
             </button>
           </div>
           <p className="text-gray-600 text-center mt-2 font-urbanist">
-            Iconic designs that have informed digital experiences
+            Iconic designs that have shaped digital experiences
           </p>
         </div>
 
