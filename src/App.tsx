@@ -417,17 +417,17 @@ function App() {
                         animationDuration: `${2 + i * 0.5}s`,
                       }}
                     >
-                      <div className="absolute inset-1 bg-sky-100 rounded" />
+                      <div className="absolute inset-1 bg-sky-100" />
                     </div>
                   ))}
 
                   {/* Foreground accent elements */}
-                  <div className="absolute -right-2 top-1/2 -translate-y-1/2 w-20 h-20 bg-gradient-to-br from-sky-200 to-blue-100 rounded-full opacity-20 blur-xl group-hover:opacity-40 transition-opacity duration-500" />
-                  <div className="absolute -left-4 bottom-0 w-16 h-16 bg-gradient-to-tr from-sky-100 to-white rounded-lg opacity-30 blur-lg group-hover:opacity-50 transition-opacity duration-500" />
+                  <div className="absolute -right-2 top-1/2 -translate-y-1/2 w-20 h-20 opacity-20 blur-xl group-hover:opacity-40 transition-opacity duration-500" />
+                  <div className="absolute -left-4 bottom-0 w-16 h-16 opacity-30 blur-lg group-hover:opacity-50 transition-opacity duration-500" />
                 </div>
                 {/* Overlay text */}
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-20">
-                  <div className="text-xs sm:text-sm text-sky-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-helvetica">
+                  <div className="text-xs sm:text-sm text-sky-600 font-medium bg-white/80 px-3 py-2 backdrop-blur-sm font-helvetica">
                     Layers create depth and hierarchy
                   </div>
                 </div>
@@ -437,7 +437,6 @@ function App() {
           fontFamily="helvetica"
           descriptionClassName="font-helvetica"
           titleClassName="tracking-[2px]"
-          background="bg-gradient-to-br from-sky-50/50 to-blue-50/50"
         />
         <DesignSection
           title="Bezold Effect"
@@ -1153,46 +1152,15 @@ function App() {
           exampleLink="https://www.canva.com/learn/what-is-the-golden-ratio/"
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
-              <style>
-                {`
-                  @keyframes pulseGlow {
-                    0%, 100% { box-shadow: 0 0 0 0 rgba(245,158,11,0.4); }
-                    50% { box-shadow: 0 0 20px 10px rgba(245,158,11,0.4); }
-                  }
-                `}
-              </style>
               <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-amber-50 to-yellow-50 p-4 relative group">
                 <div className="absolute inset-0 flex items-center justify-center">
-                  {/* Golden Rectangle and Spiral */}
-                  <div className="relative w-40 h-24 border-2 border-amber-600/40 group-hover:border-amber-600/60 transition-all duration-300 group-hover:animate-[pulseGlow_2s_ease-in-out_infinite]">
-                    {/* Nested Golden Rectangles */}
-                    <div className="absolute right-0 top-0 w-[61.8%] h-full border-l-2 border-amber-600/40 group-hover:border-amber-600/60 transition-all duration-300">
-                      <div className="absolute bottom-0 right-0 h-[61.8%] w-full border-t-2 border-amber-600/40 group-hover:border-amber-600/60 transition-all duration-300">
-                        <div className="absolute top-0 left-0 w-[61.8%] h-full border-r-2 border-amber-600/40 group-hover:border-amber-600/60 transition-all duration-300" />
-                      </div>
-                    </div>
-                    {/* Spiral curve */}
-                    <div className="absolute right-0 top-0 w-[61.8%] h-full">
-                      <div className="absolute inset-0 border-t-2 border-l-2 rounded-tl-full border-amber-600/60 group-hover:border-amber-600 transition-all duration-300" />
-                    </div>
-                  </div>
-                  {/* Ratio numbers */}
-                  <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <span className="text-xs font-medium text-amber-700">
-                      1
-                    </span>
-                    <span className="text-xs text-amber-600">:</span>
-                    <span className="text-xs font-medium text-amber-700">
-                      1.618
-                    </span>
-                  </div>
+                  <img
+                    src="https://www.elegantthemes.com/blog/wp-content/uploads/2019/06/Ratio-1024x648.png"
+                    alt="Golden Ratio visualization"
+                    className="w-full h-full object-contain transform transition-all duration-500 group-hover:scale-105"
+                  />
                 </div>
-                {/* Overlay text */}
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                  <div className="text-xs sm:text-sm text-amber-700 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-habibi">
-                    Nature's perfect proportion
-                  </div>
-                </div>
+                <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
             </div>
           }
@@ -1891,7 +1859,7 @@ function App() {
           title="Hick's Law"
           description="Hick's Law states that the time it takes to make a decision increases with the number and complexity of choices. This principle helps designers create interfaces that minimize cognitive load and improve decision-making efficiency."
           designPrinciple="Decision Time – The relationship between the number of choices and the time it takes to make a decision."
-          exampleLink="https://www.ted.com/talks/barry_schwartz_the_paradox_of_choice"
+          exampleLink="https://www.ted.com/talks/barry_schwartz_the-paradox-of-choice"
           fontFamily="dm-sans"
           descriptionClassName="font-dm-sans"
           titleClassName="font-dm-sans"
