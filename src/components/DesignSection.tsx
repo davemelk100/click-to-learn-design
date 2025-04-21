@@ -213,7 +213,7 @@ const DesignSection: React.FC<DesignSectionProps> = ({
       }`}
     >
       <div
-        className={`absolute inset-0 border border-gray-200 pointer-events-none ${
+        className={`absolute inset-0 border border-gray-200 ${
           shouldRemoveRightBorder ? "border-r-0" : ""
         }`}
       />
@@ -306,7 +306,7 @@ const DesignSection: React.FC<DesignSectionProps> = ({
       )}
       <button
         onClick={() => setIsAiOpen(!isAiOpen)}
-        className="absolute bottom-4 right-4 p-2 rounded-full bg-black text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+        className="absolute bottom-4 right-4 p-2 rounded-full bg-black text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20"
         aria-label={
           isAiOpen ? `Close ${title} discussion` : `Learn more about ${title}`
         }
@@ -319,7 +319,7 @@ const DesignSection: React.FC<DesignSectionProps> = ({
       </button>
 
       {isAiOpen && (
-        <div className="absolute inset-0 bg-black/95 flex flex-col z-10">
+        <div className="absolute inset-0 bg-black/95 flex flex-col z-20">
           <div className="flex justify-between items-center p-6">
             <h3 className="text-xl font-bold text-white">Ask about {title}</h3>
             <button
