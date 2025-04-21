@@ -3,8 +3,6 @@ import {
   ArrowUp,
   Info,
   Settings,
-  Eye,
-  RefreshCw,
   Brain,
   Hand,
 } from "lucide-react";
@@ -42,7 +40,7 @@ function App() {
           exampleLink="https://www.toptal.com/designers/visual/principles-of-design"
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
-              <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-amber-50 to-orange-50 p-4 relative group">
+              <div className="w-full max-w-[360px] h-[180px] p-4 relative group">
                 <div className="absolute inset-0 flex items-center justify-center">
                   {/* Background layer - subtle grid */}
                   <div className="absolute w-48 h-48 opacity-20">
@@ -63,7 +61,7 @@ function App() {
                     {[...Array(6)].map((_, i) => (
                       <div
                         key={`float-${i}`}
-                        className="absolute w-6 h-6 bg-amber-500/60 rounded-lg shadow-lg transform transition-all duration-500 group-hover:translate-y-[-4px] group-hover:shadow-xl"
+                        className="absolute w-6 h-6 bg-amber-500/60 shadow-lg transform transition-all duration-500 group-hover:translate-y-[-4px] group-hover:shadow-xl"
                         style={{
                           left: `${
                             Math.cos((i * Math.PI * 2) / 6) * 30 + 48
@@ -75,16 +73,16 @@ function App() {
                           zIndex: i,
                         }}
                       >
-                        <div className="absolute inset-0.5 bg-gradient-to-br from-amber-400 to-amber-600 rounded-lg" />
+                        <div className="absolute inset-0.5" />
                       </div>
                     ))}
                   </div>
 
                   {/* Foreground layer - prominent element */}
-                  <div className="absolute w-12 h-12 bg-amber-700 rounded-lg shadow-2xl transform transition-all duration-500 group-hover:translate-y-[-8px] group-hover:shadow-3xl">
-                    <div className="absolute inset-0.5 bg-gradient-to-br from-amber-600 to-amber-800 rounded-lg" />
+                  <div className="absolute w-12 h-12 bg-amber-700 shadow-2xl transform transition-all duration-500 group-hover:translate-y-[-8px] group-hover:shadow-3xl">
+                    <div className="absolute inset-0.5" />
                     {/* Inner shadow */}
-                    <div className="absolute inset-0 rounded-lg shadow-inner" />
+                    <div className="absolute inset-0 shadow-inner" />
                   </div>
 
                   {/* Accent elements - depth indicators */}
@@ -105,12 +103,12 @@ function App() {
                     ))}
                   </div>
                 </div>
-                {/* Overlay text */}
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
-                  <div className="text-xs sm:text-sm text-amber-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-dm-sans">
+                {/* Remove overlay text */}
+                {/* <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
+                  <div className="text-xs sm:text-sm text-amber-600 font-medium bg-white/80 px-3 py-2 backdrop-blur-sm font-dm-sans">
                     Depth creates visual importance
-                  </div>
-                </div>
+                  </div> 
+                </div> */}
               </div>
             </div>
           }
@@ -205,12 +203,6 @@ function App() {
                     <div className="absolute w-2 h-2 border-2 border-stone-600 rounded-full bottom-1/4 left-1/2 -translate-x-1/2 translate-y-1/2" />
                   </div>
                 </div>
-                {/* Overlay text */}
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-20">
-                  <div className="text-xs sm:text-sm text-rose-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-josefin-sans">
-                    Overlapping creates visual connections
-                  </div>
-                </div>
               </div>
             </div>
           }
@@ -247,7 +239,7 @@ function App() {
                   ))}
                   {/* Example composition elements */}
                   <div className="absolute right-1/3 top-1/3 transform translate-x-4 -translate-y-4 group-hover:translate-x-6 group-hover:-translate-y-6 transition-transform duration-300">
-                    <div className="w-24 h-24 bg-emerald-600/20 rounded-lg transform -rotate-12 group-hover:rotate-0 group-hover:bg-emerald-600/30 transition-all duration-300" />
+                    <div className="w-24 h-24 bg-emerald-600/20 transform -rotate-12 group-hover:rotate-0 group-hover:bg-emerald-600/30 transition-all duration-300" />
                   </div>
                   <div className="absolute left-1/3 bottom-1/3 transform -translate-x-8 translate-y-8 group-hover:-translate-x-10 group-hover:translate-y-10 transition-transform duration-300">
                     <div className="w-16 h-16 bg-teal-600/20 rounded-full group-hover:bg-teal-600/30 transition-all duration-300" />
@@ -255,9 +247,9 @@ function App() {
                 </div>
                 {/* Hover overlay text */}
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="text-xs sm:text-sm text-emerald-600 font-medium bg-white/80 px-2 py-1 rounded font-habibi">
+                  {/* <div className="text-xs sm:text-sm text-emerald-600 font-medium bg-white/80 px-2 py-1 font-habibi">
                     Key elements at intersections
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>
@@ -276,14 +268,14 @@ function App() {
               <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-sky-50 to-blue-50 p-4 flex items-center justify-center group">
                 <div className="relative w-[280px] h-[120px] group">
                   {/* Background layer */}
-                  <div className="absolute inset-0 bg-sky-100 rounded-lg transform group-hover:rotate-6 transition-transform duration-500" />
+                  <div className="absolute inset-0 bg-sky-100 transform group-hover:rotate-6 transition-transform duration-500" />
 
                   {/* Middle layers - geometric patterns */}
                   <div className="absolute inset-0 flex items-center justify-center">
                     {[...Array(3)].map((_, i) => (
                       <div
                         key={i}
-                        className="absolute w-32 h-32 border-2 border-sky-200 rounded-lg transform transition-all duration-500"
+                        className="absolute w-32 h-32 border-2 border-sky-200 transform transition-all duration-500"
                         style={{
                           transform: `rotate(${i * 30}deg) scale(${
                             0.8 + i * 0.1
@@ -293,8 +285,8 @@ function App() {
                         }}
                       >
                         {/* Inner decorative elements */}
-                        <div className="absolute inset-4 border border-sky-300/50 rounded" />
-                        <div className="absolute inset-8 bg-sky-50/30 rounded" />
+                        <div className="absolute inset-4 border border-sky-300/50" />
+                        <div className="absolute inset-8 bg-sky-50/30" />
                       </div>
                     ))}
                   </div>
@@ -303,7 +295,7 @@ function App() {
                   {[...Array(4)].map((_, i) => (
                     <div
                       key={`float-${i}`}
-                      className="absolute w-6 h-6 bg-white shadow-lg rounded transform transition-all duration-500 group-hover:scale-110 group-hover:animate-float"
+                      className="absolute w-6 h-6 bg-white shadow-lg transform transition-all duration-500 group-hover:scale-110 group-hover:animate-float"
                       style={{
                         left: `${20 + i * 70}px`,
                         top: `${30 + (i % 2) * 60}px`,
@@ -320,11 +312,11 @@ function App() {
                   <div className="absolute -left-4 bottom-0 w-16 h-16 opacity-30 blur-lg group-hover:opacity-50 transition-opacity duration-500" />
                 </div>
                 {/* Overlay text */}
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-20">
+                {/* <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-20">
                   <div className="text-xs sm:text-sm text-sky-600 font-medium bg-white/80 px-3 py-2 backdrop-blur-sm font-helvetica">
                     Layers create depth and hierarchy
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           }
@@ -360,11 +352,11 @@ function App() {
                 ))}
               </div>
               {/* Overlay text */}
-              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                <div className="text-xs sm:text-sm text-white font-medium bg-black/60 px-3 py-2 rounded-lg backdrop-blur-sm font-avenir">
+              {/* <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                <div className="text-xs sm:text-sm text-white font-medium bg-black/60 px-3 py-2 backdrop-blur-sm font-avenir">
                   Same red squares appear different due to their backgrounds
                 </div>
-              </div>
+              </div> */}
             </div>
           }
           fontFamily="avenir"
@@ -414,11 +406,11 @@ function App() {
                 ))}
 
                 {/* Overlay text */}
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
-                  <div className="text-xs sm:text-sm text-indigo-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-roboto">
+                {/* <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
+                  <div className="text-xs sm:text-sm text-indigo-600 font-medium bg-white/80 px-3 py-2 backdrop-blur-sm font-roboto">
                     Circular patterns create visual rhythm
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           }
@@ -440,7 +432,7 @@ function App() {
                     {[...Array(3)].map((_, i) => (
                       <div
                         key={i}
-                        className="absolute left-1/2 top-1/2 border-2 border-zinc-300 rounded-lg transition-all duration-700 group-hover:scale-110 group-hover:rotate-45"
+                        className="absolute left-1/2 top-1/2 border-2 border-zinc-300 transition-all duration-700 group-hover:scale-110 group-hover:rotate-45"
                         style={{
                           width: `${120 + i * 40}px`,
                           height: `${120 + i * 40}px`,
@@ -450,8 +442,8 @@ function App() {
                           opacity: 0.5 - i * 0.1,
                         }}
                       >
-                        <div className="absolute inset-4 border border-zinc-300/50 rounded" />
-                        <div className="absolute inset-8 bg-zinc-50/30 rounded" />
+                        <div className="absolute inset-4 border border-zinc-300/50" />
+                        <div className="absolute inset-8 bg-zinc-50/30" />
                       </div>
                     ))}
 
@@ -498,12 +490,12 @@ function App() {
                     </div>
                   </div>
                 </div>
-                {/* Overlay text */}
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                  <div className="text-xs sm:text-sm text-zinc-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-anek-gurmukhi">
+                {/* Remove overlay text */}
+                {/* <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                  <div className="text-xs sm:text-sm text-zinc-600 font-medium bg-white/80 px-3 py-2 backdrop-blur-sm font-anek-gurmukhi">
                     Size relationships create visual puzzles
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           }
@@ -549,12 +541,12 @@ function App() {
                   <div className="absolute bottom-4 left-4 w-8 h-8 bg-amber-600/30 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   <div className="absolute bottom-4 right-4 w-8 h-8 bg-orange-600/30 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
-                {/* Overlay text */}
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                  <div className="text-xs sm:text-sm text-amber-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-dm-sans">
+                {/* Remove overlay text */}
+                {/* <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                  <div className="text-xs sm:text-sm text-amber-600 font-medium bg-white/80 px-3 py-2 backdrop-blur-sm font-dm-sans">
                     Close elements are perceived as related
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           }
@@ -566,7 +558,7 @@ function App() {
           exampleLink="https://www.behance.net/gallery/101333357/Interwoven-Space"
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
-              <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-rose-50 to-pink-50 p-4 relative group">
+              <div className="w-full max-w-[360px] h-[180px] p-4 relative group">
                 <div className="absolute inset-0 flex items-center justify-center">
                   {/* Base grid */}
                   <div className="absolute w-36 h-36 opacity-20">
@@ -584,9 +576,9 @@ function App() {
 
                   {/* Simple overlapping squares */}
                   <div className="absolute w-24 h-24 transform rotate-12 transition-all duration-500 group-hover:rotate-0">
-                    <div className="absolute inset-0 border-2 border-rose-400/60 rounded-lg" />
-                    <div className="absolute inset-2 border-2 border-rose-500/40 rounded-lg" />
-                    <div className="absolute inset-4 border-2 border-rose-600/20 rounded-lg" />
+                    <div className="absolute inset-0 border-2 border-rose-400/60" />
+                    <div className="absolute inset-2 border-2 border-rose-500/40" />
+                    <div className="absolute inset-4 border-2 border-rose-600/20" />
                   </div>
 
                   {/* Vertical line */}
@@ -605,12 +597,12 @@ function App() {
                     style={{ bottom: "20%", right: "20%" }}
                   />
                 </div>
-                {/* Overlay text */}
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
-                  <div className="text-xs sm:text-sm text-rose-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-eb-garamond">
+                {/* Remove overlay text */}
+                {/* <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
+                  <div className="text-xs sm:text-sm text-rose-600 font-medium bg-white/80 px-3 py-2 backdrop-blur-sm font-eb-garamond">
                     Simple shapes create depth
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           }
@@ -625,7 +617,7 @@ function App() {
           exampleLink="https://www.nngroup.com/articles/characteristics-minimalism/"
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
-              <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-stone-50 to-slate-50 p-4 relative group">
+              <div className="w-full max-w-[360px] h-[180px] p-4 relative group">
                 <div className="absolute inset-0 flex items-center justify-center">
                   {/* Initial state - complex overlapping shapes */}
                   <div className="absolute w-48 h-48 opacity-100 group-hover:opacity-0 transition-all duration-500">
@@ -634,7 +626,7 @@ function App() {
                       {[...Array(16)].map((_, i) => (
                         <div
                           key={`grid-${i}`}
-                          className="bg-stone-300/30 rounded transform transition-all duration-500"
+                          className="bg-stone-300/30 transform transition-all duration-500"
                         />
                       ))}
                     </div>
@@ -658,19 +650,19 @@ function App() {
                   {/* Final state - single focused element */}
                   <div className="absolute w-48 h-48 opacity-0 group-hover:opacity-100 transition-all duration-500">
                     {/* Central focus element */}
-                    <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-stone-800 rounded-lg transform transition-all duration-500 group-hover:scale-110 group-hover:rotate-6">
-                      <div className="absolute inset-1 bg-gradient-to-br from-stone-700 to-stone-900 rounded-lg" />
+                    <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-stone-800 transform transition-all duration-500 group-hover:scale-110 group-hover:rotate-6">
+                      <div className="absolute inset-1" />
                       {/* Subtle shadow */}
-                      <div className="absolute inset-0 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      <div className="absolute inset-0 shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     </div>
                   </div>
                 </div>
-                {/* Overlay text */}
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
-                  <div className="text-xs sm:text-sm text-stone-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-helvetica">
+                {/* Remove overlay text */}
+                {/* <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
+                  <div className="text-xs sm:text-sm text-stone-600 font-medium bg-white/80 px-3 py-2 backdrop-blur-sm font-helvetica">
                     Less elements create more impact
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           }
@@ -762,18 +754,18 @@ function App() {
                   ))}
 
                   {/* Central focus element */}
-                  <div className="absolute w-16 h-16 rounded-lg bg-violet-400/20 transform transition-all duration-300 group-hover:scale-125 group-hover:bg-violet-500/30 group-hover:rotate-45">
+                  <div className="absolute w-16 h-16 bg-violet-400/20 transform transition-all duration-300 group-hover:scale-125 group-hover:bg-violet-500/30 group-hover:rotate-45">
                     <div className="absolute inset-0 flex items-center justify-center text-[16px] font-mono text-violet-600">
                       {Math.random() > 0.5 ? "1" : "0"}
                     </div>
                   </div>
                 </div>
-                {/* Overlay text */}
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
-                  <div className="text-xs sm:text-sm text-violet-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-source-code-pro">
+                {/* Remove overlay text */}
+                {/* <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
+                  <div className="text-xs sm:text-sm text-violet-600 font-medium bg-white/80 px-3 py-2 backdrop-blur-sm font-source-code-pro">
                     Code creates mathematical beauty
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           }
@@ -850,12 +842,12 @@ function App() {
                   <div className="w-4 h-4 bg-blue-500 rounded-full" />
                   <div className="w-4 h-4 bg-purple-500 rounded-full" />
                 </div>
-                {/* Overlay text */}
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-20">
-                  <div className="text-xs sm:text-sm text-sky-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-helvetica">
+                {/* Remove overlay text */}
+                {/* <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-20">
+                  <div className="text-xs sm:text-sm text-sky-600 font-medium bg-white/80 px-3 py-2 backdrop-blur-sm font-helvetica">
                     Colors create visual harmony
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           }
@@ -950,12 +942,12 @@ function App() {
                     <div className="absolute w-2 h-2 border-2 border-stone-600 rounded-full bottom-1/4 left-1/2 -translate-x-1/2 translate-y-1/2" />
                   </div>
                 </div>
-                {/* Overlay text */}
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-20">
-                  <div className="text-xs sm:text-sm text-stone-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-oswald tracking-wider">
+                {/* Remove overlay text */}
+                {/* <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-20">
+                  <div className="text-xs sm:text-sm text-stone-600 font-medium bg-white/80 px-3 py-2 backdrop-blur-sm font-oswald tracking-wider">
                     Parallel lines remain parallel
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           }
@@ -978,7 +970,7 @@ function App() {
                     {[...Array(16)].map((_, i) => (
                       <div
                         key={`bg-${i}`}
-                        className="absolute w-4 h-4 bg-slate-400/30 rounded transform transition-all duration-500"
+                        className="absolute w-4 h-4 bg-slate-400/30 transform transition-all duration-500"
                         style={{
                           left: `${(i % 4) * 16}px`,
                           top: `${Math.floor(i / 4) * 16}px`,
@@ -988,17 +980,17 @@ function App() {
                   </div>
 
                   {/* Main emphasized element */}
-                  <div className="absolute w-16 h-16 bg-slate-600 rounded-lg shadow-lg transform transition-all duration-700 group-hover:scale-125 group-hover:bg-indigo-600 group-hover:shadow-xl">
-                    <div className="absolute inset-1 bg-gradient-to-br from-slate-500 to-slate-700 rounded-lg" />
+                  <div className="absolute w-16 h-16 bg-slate-600 hadow-lg transform transition-all duration-700 group-hover:scale-125 group-hover:bg-indigo-600 group-hover:shadow-xl">
+                    <div className="absolute inset-1 " />
                     {/* Inner glow effect */}
-                    <div className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-slate-400/20 to-transparent" />
+                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-slate-400/20 to-transparent" />
                   </div>
 
                   {/* Supporting elements */}
                   {[...Array(6)].map((_, i) => (
                     <div
                       key={`support-${i}`}
-                      className="absolute w-8 h-8 bg-slate-400/60 rounded transform transition-all duration-500 group-hover:opacity-30"
+                      className="absolute w-8 h-8 bg-slate-400/60 transform transition-all duration-500 group-hover:opacity-30"
                       style={{
                         left: `${Math.cos((i * Math.PI * 2) / 6) * 40 + 48}px`,
                         top: `${Math.sin((i * Math.PI * 2) / 6) * 40 + 48}px`,
@@ -1025,12 +1017,12 @@ function App() {
                     ))}
                   </div>
                 </div>
-                {/* Overlay text */}
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
-                  <div className="text-xs sm:text-sm text-slate-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-roboto-slab">
+                {/* Remove overlay text */}
+                {/* <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
+                  <div className="text-xs sm:text-sm text-slate-600 font-medium bg-white/80 px-3 py-2 backdrop-blur-sm font-roboto-slab">
                     Design elements create visual emphasis
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           }
@@ -1072,19 +1064,19 @@ function App() {
               <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-blue-50 to-purple-50 p-4 relative group">
                 <div className="absolute inset-0 flex items-center justify-center">
                   {/* Main container with focus ring */}
-                  <div className="relative w-48 h-48 rounded-lg border-2 border-blue-400/50 group-hover:ring-4 group-hover:ring-purple-300/50 transition-all duration-300">
+                  <div className="relative w-48 h-48 border-2 border-blue-400/50 group-hover:ring-4 group-hover:ring-purple-300/50 transition-all duration-300">
                     {/* Color contrast example */}
                     <div className="absolute top-4 left-4 flex gap-2">
-                      <div className="w-8 h-8 bg-blue-700 rounded flex items-center justify-center text-white text-xs font-bold">
+                      <div className="w-8 h-8 bg-blue-700 flex items-center justify-center text-white text-xs font-bold">
                         AAA
                       </div>
-                      <div className="w-8 h-8 bg-blue-200 rounded flex items-center justify-center text-blue-900 text-xs font-bold">
+                      <div className="w-8 h-8 bg-blue-200 flex items-center justify-center text-blue-900 text-xs font-bold">
                         AA
                       </div>
                     </div>
 
                     {/* Keyboard focus indicators */}
-                    <div className="absolute top-4 right-4 w-8 h-8 border-2 border-purple-400 rounded group-hover:ring-2 group-hover:ring-purple-300 transition-all duration-300 flex items-center justify-center">
+                    <div className="absolute top-4 right-4 w-8 h-8 border-2 border-purple-400 group-hover:ring-2 group-hover:ring-purple-300 transition-all duration-300 flex items-center justify-center">
                       <span className="text-purple-600 text-sm">⌨️</span>
                     </div>
 
@@ -1093,7 +1085,7 @@ function App() {
                       {[...Array(3)].map((_, i) => (
                         <div
                           key={i}
-                          className="absolute bottom-0 left-0 w-full h-1 bg-blue-400/30 rounded group-hover:animate-pulse"
+                          className="absolute bottom-0 left-0 w-full h-1 bg-blue-400/30 group-hover:animate-pulse"
                           style={{
                             transform: `translateY(-${i * 8}px)`,
                             opacity: 1 - i * 0.2,
@@ -1123,12 +1115,12 @@ function App() {
                     </div>
                   </div>
                 </div>
-                {/* Overlay text */}
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
-                  <div className="text-xs sm:text-sm text-blue-700 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-helvetica">
+                {/* Remove overlay text */}
+                {/* <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
+                  <div className="text-xs sm:text-sm text-blue-700 font-medium bg-white/80 px-3 py-2 backdrop-blur-sm font-helvetica">
                     Design for everyone
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           }
@@ -1154,7 +1146,7 @@ function App() {
                       {[...Array(16)].map((_, i) => (
                         <div
                           key={`decor-${i}`}
-                          className="bg-stone-600/30 rounded transform transition-all duration-500"
+                          className="bg-stone-600/30 transform transition-all duration-500"
                           style={{
                             transform: `rotate(${i * 22.5}deg)`,
                           }}
@@ -1182,27 +1174,27 @@ function App() {
                     {/* Functional interface elements */}
                     <div className="absolute inset-0 flex flex-col gap-2 p-4">
                       {/* Header */}
-                      <div className="h-6 bg-stone-600/50 rounded" />
+                      <div className="h-6 bg-stone-600/50" />
                       {/* Content area */}
                       <div className="flex-1 flex flex-col gap-2">
-                        <div className="h-4 bg-stone-600/30 rounded" />
-                        <div className="h-4 bg-stone-600/30 rounded" />
-                        <div className="h-4 bg-stone-600/30 rounded" />
+                        <div className="h-4 bg-stone-600/30" />
+                        <div className="h-4 bg-stone-600/30" />
+                        <div className="h-4 bg-stone-600/30" />
                       </div>
                       {/* Action buttons */}
                       <div className="flex gap-2">
-                        <div className="h-6 flex-1 bg-stone-600/50 rounded" />
-                        <div className="h-6 flex-1 bg-stone-600/50 rounded" />
+                        <div className="h-6 flex-1 bg-stone-600/50" />
+                        <div className="h-6 flex-1 bg-stone-600/50" />
                       </div>
                     </div>
                   </div>
                 </div>
-                {/* Overlay text */}
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
-                  <div className="text-xs sm:text-sm text-stone-300 font-medium bg-stone-800/80 px-3 py-2 rounded-lg backdrop-blur-sm font-overlock-sc">
+                {/* Remove overlay text */}
+                {/* <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
+                  <div className="text-xs sm:text-sm text-stone-300 font-medium bg-stone-800/80 px-3 py-2 backdrop-blur-sm font-overlock-sc">
                     Simple and functional beats decorative
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           }
@@ -1259,12 +1251,12 @@ function App() {
                     </div>
                   </div>
                 </div>
-                {/* Overlay text */}
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
+                {/* Remove overlay text */}
+                {/* <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
                   <div className="text-xs sm:text-sm text-rose-600 font-medium bg-white/80 px-2 py-1 rounded">
                     Lines create network connections
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           }
@@ -1332,12 +1324,12 @@ function App() {
                     </div>
                   </div>
                 </div>
-                {/* Overlay text */}
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
-                  <div className="text-xs sm:text-sm text-indigo-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-suwannaphum">
+                {/* Remove overlay text */}
+                {/* <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
+                  <div className="text-xs sm:text-sm text-indigo-600 font-medium bg-white/80 px-3 py-2 backdrop-blur-sm font-suwannaphum">
                     Unfolded pattern
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           }
@@ -1403,16 +1395,16 @@ function App() {
                     </div>
                   </div>
                 </div>
-                {/* Overlay text */}
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
-                  <div className="text-xs sm:text-sm text-slate-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-poppins">
+                {/* Remove overlay text */}
+                {/* <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
+                  <div className="text-xs sm:text-sm text-slate-600 font-medium bg-white/80 px-3 py-2 backdrop-blur-sm font-poppins">
                     Visual hierarchy through type
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           }
-          background="bg-gradient-to-br from-slate-50/50 to-gray-50/50"
+          background=""
         />
         <DesignSection
           title="Microinteractions"
@@ -1429,7 +1421,7 @@ function App() {
                     {/* Simple tooltip */}
                     <div className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-emerald-400/20 group-hover:bg-emerald-400/40 transition-colors duration-300 cursor-pointer flex items-center justify-center">
                       <Info className="w-6 h-6 text-emerald-600" />
-                      <div className="absolute -top-8 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all duration-300 bg-white/90 text-emerald-800 text-xs px-2 py-1 rounded-lg shadow-lg">
+                      <div className="absolute -top-8 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all duration-300 bg-white/90 text-emerald-800 text-xs px-2 py-1 shadow-lg">
                         Information tooltip
                       </div>
                     </div>
@@ -1437,7 +1429,7 @@ function App() {
                     {/* Rich tooltip */}
                     <div className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-emerald-400/20 group-hover:bg-emerald-400/40 transition-colors duration-300 cursor-pointer flex items-center justify-center">
                       <Settings className="w-6 h-6 text-emerald-600" />
-                      <div className="absolute -top-20 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all duration-300 bg-white/90 text-emerald-800 text-xs p-2 rounded-lg shadow-lg w-32">
+                      <div className="absolute -top-20 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all duration-300 bg-white/90 text-emerald-800 text-xs p-2 shadow-lg w-32">
                         <div className="font-bold mb-1">Settings</div>
                         <div className="text-emerald-600/80">
                           Customize your preferences
@@ -1526,7 +1518,7 @@ function App() {
                     <div className="absolute right-6 top-1/2 -translate-y-1/2">
                       <div className="relative w-16 h-16 group-hover:animate-[slowSpin_8s_linear_infinite]">
                         {/* Incomplete square */}
-                        <div className="absolute inset-0 border-2 border-rose-600 rounded-lg border-r-transparent border-b-transparent transform rotate-45" />
+                        <div className="absolute inset-0 border-2 border-rose-600 border-r-transparent border-b-transparent transform rotate-45" />
                         {/* Missing corner */}
                         <div className="absolute top-0 right-0 w-3 h-3 bg-rose-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                       </div>
@@ -1550,12 +1542,12 @@ function App() {
                     </div>
                   </div>
                 </div>
-                {/* Overlay text */}
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
-                  <div className="text-xs sm:text-sm text-rose-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-lexend">
+                {/* Remove overlay text */}
+                {/* <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
+                  <div className="text-xs sm:text-sm text-rose-600 font-medium bg-white/80 px-3 py-2 backdrop-blur-sm font-lexend">
                     Gestalt Principles in Action
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           }
@@ -1647,12 +1639,12 @@ function App() {
                     </div>
                   </div>
                 </div>
-                {/* Overlay text */}
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
-                  <div className="text-xs sm:text-sm text-sky-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-dm-serif-display">
+                {/* Remove overlay text */}
+                {/* <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
+                  <div className="text-xs sm:text-sm text-sky-600 font-medium bg-white/80 px-3 py-2 backdrop-blur-sm font-dm-serif-display">
                     Curves create natural flow
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           }
@@ -1690,7 +1682,7 @@ function App() {
                 {[...Array(16)].map((_, i) => (
                   <div
                     key={`bg-${i}`}
-                    className="absolute w-4 h-4 bg-gray-400/30 rounded transform transition-all duration-700"
+                    className="absolute w-4 h-4 bg-gray-400/30 transform transition-all duration-700"
                     style={{
                       left: `${(i % 4) * 16}px`,
                       top: `${Math.floor(i / 4) * 16}px`,
@@ -1704,7 +1696,7 @@ function App() {
                 {[...Array(8)].map((_, i) => (
                   <div
                     key={`part-${i}`}
-                    className="absolute w-8 h-8 bg-gray-400/60 rounded-lg transform transition-all duration-700 group-hover:animate-[assemble_1.5s_ease-in-out_forwards]"
+                    className="absolute w-8 h-8 bg-gray-400/60 transform transition-all duration-700 group-hover:animate-[assemble_1.5s_ease-in-out_forwards]"
                     style={{
                       left: `${Math.cos((i * Math.PI * 2) / 8) * 40 + 48}px`,
                       top: `${Math.sin((i * Math.PI * 2) / 8) * 40 + 48}px`,
@@ -1717,11 +1709,11 @@ function App() {
 
               {/* Central whole */}
               <div className="absolute w-32 h-32 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
-                <div className="absolute inset-0 bg-gray-600 rounded-lg transform transition-all duration-700 group-hover:scale-110">
-                  <div className="absolute inset-0 bg-gray-600 rounded-lg" />
+                <div className="absolute inset-0 bg-gray-600 transform transition-all duration-700 group-hover:scale-110">
+                  <div className="absolute inset-0 bg-gray-600" />
                 </div>
                 {/* Reveal animation */}
-                <div className="absolute inset-0 bg-gray-600 rounded-lg animate-[reveal_1.5s_ease-in-out_forwards]" />
+                <div className="absolute inset-0 bg-gray-600 animate-[reveal_1.5s_ease-in-out_forwards]" />
               </div>
 
               {/* Connection lines */}
@@ -1741,11 +1733,11 @@ function App() {
               </div>
 
               {/* Hover caption */}
-              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
-                <div className="text-xs sm:text-sm text-gray-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-domine whitespace-nowrap">
+              {/* <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
+                <div className="text-xs sm:text-sm text-gray-600 font-medium bg-white/80 px-3 py-2 backdrop-blur-sm font-domine whitespace-nowrap">
                   Parts assemble into a meaningful whole
                 </div>
-              </div>
+              </div> */}
             </div>
           }
         />
@@ -1783,7 +1775,7 @@ function App() {
                         {[...Array(16)].map((_, i) => (
                           <div
                             key={`option-${i}`}
-                            className="w-6 h-6 bg-amber-400/30 rounded-lg group-hover:animate-[highlight_1s_ease-in-out_infinite]"
+                            className="w-6 h-6 bg-amber-400/30 group-hover:animate-[highlight_1s_ease-in-out_infinite]"
                             style={{
                               animationDelay: `${i * 0.1}s`,
                               transition: "all 0.5s ease-in-out",
@@ -1805,11 +1797,11 @@ function App() {
                     </div>
 
                     {/* Overlay text */}
-                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-700 ease-in-out pointer-events-none z-10">
-                      <div className="text-xs sm:text-sm text-amber-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-dm-sans">
+                    {/* <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-700 ease-in-out pointer-events-none z-10">
+                      <div className="text-xs sm:text-sm text-amber-600 font-medium bg-white/80 px-3 py-2 backdrop-blur-sm font-dm-sans">
                         More choices = Longer decisions
                       </div>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               </div>
@@ -1849,7 +1841,7 @@ function App() {
                     {/* VIMM components */}
                     <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
                       {/* Visual */}
-                      <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-16 h-16 bg-violet-500/30 rounded-lg group-hover:animate-[vimmPulse_2s_ease-in-out_infinite]">
+                      <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-16 h-16 bg-violet-500/30 group-hover:animate-[vimmPulse_2s_ease-in-out_infinite]">
                         <div className="absolute inset-0 flex items-center justify-center text-violet-600">
                           <Info className="w-8 h-8" />
                         </div>
@@ -1857,7 +1849,7 @@ function App() {
 
                       {/* Interactive */}
                       <div
-                        className="absolute top-1/2 -right-20 -translate-y-1/2 w-16 h-16 bg-violet-500/30 rounded-lg group-hover:animate-[vimmPulse_2s_ease-in-out_infinite]"
+                        className="absolute top-1/2 -right-20 -translate-y-1/2 w-16 h-16 bg-violet-500/30 group-hover:animate-[vimmPulse_2s_ease-in-out_infinite]"
                         style={{ animationDelay: "0.5s" }}
                       >
                         <div className="absolute inset-0 flex items-center justify-center text-violet-600">
@@ -1867,7 +1859,7 @@ function App() {
 
                       {/* Mental */}
                       <div
-                        className="absolute -bottom-20 left-1/2 -translate-x-1/2 w-16 h-16 bg-violet-500/30 rounded-lg group-hover:animate-[vimmPulse_2s_ease-in-out_infinite]"
+                        className="absolute -bottom-20 left-1/2 -translate-x-1/2 w-16 h-16 bg-violet-500/30 group-hover:animate-[vimmPulse_2s_ease-in-out_infinite]"
                         style={{ animationDelay: "1s" }}
                       >
                         <div className="absolute inset-0 flex items-center justify-center text-violet-600">
@@ -1877,7 +1869,7 @@ function App() {
 
                       {/* Motor */}
                       <div
-                        className="absolute top-1/2 -left-20 -translate-y-1/2 w-16 h-16 bg-violet-500/30 rounded-lg group-hover:animate-[vimmPulse_2s_ease-in-out_infinite]"
+                        className="absolute top-1/2 -left-20 -translate-y-1/2 w-16 h-16 bg-violet-500/30 group-hover:animate-[vimmPulse_2s_ease-in-out_infinite]"
                         style={{ animationDelay: "1.5s" }}
                       >
                         <div className="absolute inset-0 flex items-center justify-center text-violet-600">
@@ -1893,12 +1885,12 @@ function App() {
                     </div>
                   </div>
                 </div>
-                {/* Overlay text */}
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
-                  <div className="text-xs sm:text-sm text-violet-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-dm-sans whitespace-nowrap">
+                {/* Remove overlay text */}
+                {/* <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
+                  <div className="text-xs sm:text-sm text-violet-600 font-medium bg-white/80 px-3 py-2 backdrop-blur-sm font-dm-sans whitespace-nowrap">
                     Visual Interactive Mental Motor
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           }
@@ -1918,7 +1910,7 @@ function App() {
                 <div className="absolute inset-0 flex items-center justify-center">
                   {/* Initial state - minimal information */}
                   <div className="relative w-32 h-32">
-                    <div className="absolute inset-0 bg-emerald-400/20 rounded-lg" />
+                    <div className="absolute inset-0 bg-emerald-400/20" />
                     <div className="absolute inset-0 flex items-center justify-center">
                       <div className="w-8 h-8 bg-emerald-500 rounded-full group-hover:animate-[pulse_2s_ease-in-out_infinite]" />
                     </div>
@@ -1927,7 +1919,7 @@ function App() {
                   {/* First level of disclosure */}
                   <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <div className="relative w-48 h-32">
-                      <div className="absolute inset-0 bg-emerald-400/30 rounded-lg" />
+                      <div className="absolute inset-0 bg-emerald-400/30" />
                       <div className="absolute inset-0 flex items-center justify-center gap-2">
                         <div className="w-6 h-6 bg-emerald-500 rounded-full group-hover:animate-[bounce_1s_ease-in-out_infinite]" />
                         <div
@@ -1948,7 +1940,7 @@ function App() {
                     style={{ transitionDelay: "0.1s" }}
                   >
                     <div className="relative w-64 h-40">
-                      <div className="absolute inset-0 bg-emerald-400/40 rounded-lg" />
+                      <div className="absolute inset-0 bg-emerald-400/40" />
                       <div className="absolute inset-0 flex flex-col gap-2 p-4">
                         <div className="h-4 bg-emerald-500/50 rounded-full group-hover:animate-[pulse_2s_ease-in-out_infinite]" />
                         <div
@@ -1969,9 +1961,9 @@ function App() {
                     style={{ transitionDelay: "0.2s" }}
                   >
                     <div className="relative w-72 h-48">
-                      <div className="absolute inset-0 bg-emerald-400/50 rounded-lg" />
+                      <div className="absolute inset-0 bg-emerald-400/50" />
                       <div className="absolute inset-0 flex flex-col gap-4 p-4">
-                        <div className="h-6 bg-emerald-500/60 rounded-lg group-hover:animate-[pulse_2s_ease-in-out_infinite]" />
+                        <div className="h-6 bg-emerald-500/60 group-hover:animate-[pulse_2s_ease-in-out_infinite]" />
                         <div className="flex-1 grid grid-cols-2 gap-2">
                           <div className="h-4 bg-emerald-500/40 rounded-full group-hover:animate-[pulse_2s_ease-in-out_infinite]" />
                           <div
@@ -1991,12 +1983,12 @@ function App() {
                     </div>
                   </div>
                 </div>
-                {/* Overlay text */}
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
-                  <div className="text-xs sm:text-sm text-emerald-600 font-medium bg-white/80 px-3 py-2 rounded-lg backdrop-blur-sm font-dm-sans">
+                {/* Remove overlay text */}
+                {/* <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
+                  <div className="text-xs sm:text-sm text-emerald-600 font-medium bg-white/80 px-3 py-2 backdrop-blur-sm font-dm-sans">
                     Information reveals progressively
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           }
@@ -2034,7 +2026,7 @@ function App() {
                     <img
                       src="https://scholarlykitchen.sspnet.org/wp-content/uploads/2012/09/boston_globe_responsive_website.jpg"
                       alt="The Boston Globe responsive website design"
-                      className="w-full h-full object-cover rounded-lg shadow-lg transform transition-all duration-500 group-hover:scale-110"
+                      className="w-full h-full object-cover shadow-lg transform transition-all duration-500 group-hover:scale-110"
                     />
                   </div>
                 </div>
@@ -2057,7 +2049,7 @@ function App() {
                     <img
                       src="https://www.webfx.com/wp-content/uploads/2021/10/Screenshot_27-2.png"
                       alt="960 Grid System layout example"
-                      className="w-full h-full object-contain rounded-lg shadow-lg transform transition-all duration-500 group-hover:scale-110"
+                      className="w-full h-full object-contain shadow-lg transform transition-all duration-500 group-hover:scale-110"
                     />
                   </div>
                 </div>
@@ -2080,7 +2072,7 @@ function App() {
                     <img
                       src="https://logo.com/image-cdn/images/kts928pd/production/545de9c62376e6a69379aae1703674d4b66e6962-1600x894.png?w=1080&q=72&fm=webp"
                       alt="FedEx logo with hidden arrow"
-                      className="w-full h-full object-contain rounded-lg shadow-lg transform transition-all duration-500 group-hover:scale-110"
+                      className="w-full h-full object-contain shadow-lg transform transition-all duration-500 group-hover:scale-110"
                     />
                   </div>
                 </div>
@@ -2103,7 +2095,7 @@ function App() {
                     <img
                       src="https://media.licdn.com/dms/image/v2/C4D34AQFcBa3aJAHZCw/ugc-proxy-shrink_800/ugc-proxy-shrink_800/0/1594646636338?e=2147483647&v=beta&t=IFoQ7PyP6METIpbPTWMVbNQTcGxFx7ax5jmr2StTdhc"
                       alt="Don't Make Me Think book cover"
-                      className="w-full h-full object-contain rounded-lg shadow-lg transform transition-all duration-500 group-hover:scale-110"
+                      className="w-full h-full object-contain shadow-lg transform transition-all duration-500 group-hover:scale-110"
                     />
                   </div>
                 </div>
