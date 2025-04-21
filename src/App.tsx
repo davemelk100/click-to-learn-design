@@ -434,6 +434,18 @@ function App() {
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
               <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-zinc-50 to-neutral-50 p-4 relative overflow-hidden group">
+                <style>
+                  {`
+                    @keyframes pulse {
+                      0% { transform: scale(1); }
+                      50% { transform: scale(1.1); }
+                      100% { transform: scale(1); }
+                    }
+                    .group:hover .pulse-animation {
+                      animation: pulse 2s ease-in-out infinite;
+                    }
+                  `}
+                </style>
                 <div className="absolute inset-0 flex items-center justify-center">
                   {/* Main geometric shapes with ambiguous depth */}
                   <div className="relative w-48 h-48 group">
@@ -441,7 +453,7 @@ function App() {
                     {[...Array(3)].map((_, i) => (
                       <div
                         key={i}
-                        className="absolute left-1/2 top-1/2 border-2 border-zinc-300 transition-all duration-700 group-hover:scale-110 group-hover:rotate-45"
+                        className="absolute left-1/2 top-1/2 border-2 border-zinc-300 pulse-animation"
                         style={{
                           width: `${120 + i * 40}px`,
                           height: `${120 + i * 40}px`,
@@ -460,21 +472,23 @@ function App() {
                     {[...Array(5)].map((_, i) => (
                       <div
                         key={`cube-${i}`}
-                        className="absolute transform-gpu transition-all duration-1000 cursor-pointer group-hover:scale-150 group-hover:translate-z-20"
+                        className="absolute transform-gpu pulse-animation"
                         style={{
                           left: `${
                             Math.cos((i * Math.PI * 2) / 5) * 80 + 96
                           }px`,
                           top: `${Math.sin((i * Math.PI * 2) / 5) * 80 + 96}px`,
                           perspective: "1000px",
+                          animation: "none",
                         }}
                       >
                         <div
-                          className="w-8 h-8 relative transform-gpu transition-transform duration-1000 group-hover:rotate-45 group-hover:skew-x-12 group-hover:skew-y-12"
+                          className="w-8 h-8 relative transform-gpu"
                           style={{
                             transform: `rotateX(45deg) rotateZ(${
                               45 + i * 30
                             }deg)`,
+                            animation: "none",
                           }}
                         >
                           <div className="absolute inset-0 bg-zinc-200 transform-gpu -translate-z-4 rotate-x-60" />
@@ -489,22 +503,17 @@ function App() {
                       {[...Array(8)].map((_, i) => (
                         <div
                           key={`line-${i}`}
-                          className="absolute left-0 right-0 h-px bg-zinc-400 transform transition-transform duration-500 group-hover:scale-150 group-hover:rotate-45"
+                          className="absolute left-0 right-0 h-px bg-zinc-400 pulse-animation"
                           style={{
                             top: `${(i + 1) * 12.5}%`,
                             transform: `rotate(${i * 22.5}deg)`,
+                            animation: "none",
                           }}
                         />
                       ))}
                     </div>
                   </div>
                 </div>
-                {/* Remove overlay text */}
-                {/* <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                  <div className="text-xs sm:text-sm text-zinc-600 font-medium bg-white/80 px-3 py-2 backdrop-blur-sm font-anek-gurmukhi">
-                    Size relationships create visual puzzles
-                  </div>
-                </div> */}
               </div>
             </div>
           }
@@ -524,13 +533,25 @@ function App() {
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
               <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-amber-50 to-orange-50 p-4 relative group">
+                <style>
+                  {`
+                    @keyframes pulse {
+                      0% { transform: scale(1); }
+                      50% { transform: scale(1.1); }
+                      100% { transform: scale(1); }
+                    }
+                    .group:hover .pulse-animation {
+                      animation: pulse 2s ease-in-out infinite;
+                    }
+                  `}
+                </style>
                 <div className="absolute inset-0 flex flex-col items-center justify-center gap-8">
                   {/* Group 1 - Close proximity */}
                   <div className="flex gap-2">
                     {[...Array(4)].map((_, i) => (
                       <div
                         key={`group1-${i}`}
-                        className="w-8 h-8 bg-amber-600 rounded-full transition-all duration-300 group-hover:scale-110"
+                        className="w-8 h-8 bg-amber-600 rounded-full transition-all duration-300 group-hover:scale-110 pulse-animation"
                       />
                     ))}
                   </div>
@@ -540,23 +561,17 @@ function App() {
                     {[...Array(4)].map((_, i) => (
                       <div
                         key={`group2-${i}`}
-                        className="w-8 h-8 bg-orange-600 rounded-full transition-all duration-300 group-hover:scale-110"
+                        className="w-8 h-8 bg-orange-600 rounded-full transition-all duration-300 group-hover:scale-110 pulse-animation"
                       />
                     ))}
                   </div>
 
                   {/* Isolated elements */}
-                  <div className="absolute top-4 left-4 w-8 h-8 bg-amber-600/30 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  <div className="absolute top-4 right-4 w-8 h-8 bg-orange-600/30 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  <div className="absolute bottom-4 left-4 w-8 h-8 bg-amber-600/30 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  <div className="absolute bottom-4 right-4 w-8 h-8 bg-orange-600/30 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute top-4 left-4 w-8 h-8 bg-amber-600/30 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 pulse-animation" />
+                  <div className="absolute top-4 right-4 w-8 h-8 bg-orange-600/30 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 pulse-animation" />
+                  <div className="absolute bottom-4 left-4 w-8 h-8 bg-amber-600/30 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 pulse-animation" />
+                  <div className="absolute bottom-4 right-4 w-8 h-8 bg-orange-600/30 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 pulse-animation" />
                 </div>
-                {/* Remove overlay text */}
-                {/* <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                  <div className="text-xs sm:text-sm text-amber-600 font-medium bg-white/80 px-3 py-2 backdrop-blur-sm font-dm-sans">
-                    Close elements are perceived as related
-                  </div>
-                </div> */}
               </div>
             </div>
           }
@@ -794,74 +809,49 @@ function App() {
           isListLayout={isListLayout}
           visualComponent={
             <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-sky-50 to-blue-50 p-4 relative group">
-              <style>
-                {`
-                  @keyframes color-mix {
-                    0% { transform: scale(1); }
-                    50% { transform: scale(1.2); }
-                    100% { transform: scale(1); }
-                  }
-                  @keyframes color-rotate {
-                    from { transform: rotate(0deg); }
-                    to { transform: rotate(360deg); }
-                  }
-                `}
-              </style>
               <div className="absolute inset-0 flex items-center justify-center">
-                {/* Color wheel base */}
-                <div className="absolute w-36 h-36 rounded-full border-2 border-sky-200/50 translate-y-4 group-hover:animate-color-rotate group-hover:border-sky-300/70 transition-all duration-500">
-                  {/* Primary colors */}
+                <div className="relative w-48 h-48">
+                  {/* Red */}
+                  <div className="absolute w-8 h-8 bg-red-500 rounded-full transform transition-all duration-500 top-0 left-1/2 -translate-x-1/2 group-hover:left-0 group-hover:translate-x-0 group-hover:top-1/2 group-hover:-translate-y-1/2" />
+                  {/* Orange */}
                   <div
-                    className="absolute w-12 h-12 bg-red-500 rounded-full transform -translate-x-1/2 -translate-y-1/2 group-hover:animate-color-mix transition-all duration-500"
-                    style={{ left: "50%", top: "0%" }}
+                    className="absolute w-8 h-8 bg-orange-500 rounded-full transform transition-all duration-500 group-hover:left-[20%] group-hover:translate-x-0 group-hover:top-1/2 group-hover:-translate-y-1/2"
+                    style={{
+                      top: "25%",
+                      right: "10%",
+                      transform: "translate(50%, -50%)",
+                    }}
                   />
+                  {/* Yellow */}
                   <div
-                    className="absolute w-12 h-12 bg-yellow-500 rounded-full transform -translate-x-1/2 -translate-y-1/2 group-hover:animate-color-mix transition-all duration-500"
-                    style={{ left: "25%", top: "75%" }}
+                    className="absolute w-8 h-8 bg-yellow-500 rounded-full transform transition-all duration-500 group-hover:left-[40%] group-hover:translate-x-0 group-hover:top-1/2 group-hover:-translate-y-1/2"
+                    style={{
+                      bottom: "25%",
+                      right: "10%",
+                      transform: "translate(50%, 50%)",
+                    }}
                   />
+                  {/* Green */}
+                  <div className="absolute w-8 h-8 bg-green-500 rounded-full transform transition-all duration-500 bottom-0 left-1/2 -translate-x-1/2 group-hover:left-[60%] group-hover:translate-x-0 group-hover:top-1/2 group-hover:-translate-y-1/2" />
+                  {/* Blue */}
                   <div
-                    className="absolute w-12 h-12 bg-blue-500 rounded-full transform -translate-x-1/2 -translate-y-1/2 group-hover:animate-color-mix transition-all duration-500"
-                    style={{ left: "75%", top: "75%" }}
+                    className="absolute w-8 h-8 bg-blue-500 rounded-full transform transition-all duration-500 group-hover:left-[80%] group-hover:translate-x-0 group-hover:top-1/2 group-hover:-translate-y-1/2"
+                    style={{
+                      bottom: "25%",
+                      left: "10%",
+                      transform: "translate(-50%, 50%)",
+                    }}
                   />
-
-                  {/* Secondary colors */}
+                  {/* Purple */}
                   <div
-                    className="absolute w-8 h-8 bg-orange-500 rounded-full transform -translate-x-1/2 -translate-y-1/2 group-hover:animate-color-mix transition-all duration-500"
-                    style={{ left: "37.5%", top: "37.5%" }}
+                    className="absolute w-8 h-8 bg-purple-500 rounded-full transform transition-all duration-500 group-hover:right-0 group-hover:translate-x-0 group-hover:top-1/2 group-hover:-translate-y-1/2"
+                    style={{
+                      top: "25%",
+                      left: "10%",
+                      transform: "translate(-50%, -50%)",
+                    }}
                   />
-                  <div
-                    className="absolute w-8 h-8 bg-green-500 rounded-full transform -translate-x-1/2 -translate-y-1/2 group-hover:animate-color-mix transition-all duration-500"
-                    style={{ left: "50%", top: "75%" }}
-                  />
-                  <div
-                    className="absolute w-8 h-8 bg-purple-500 rounded-full transform -translate-x-1/2 -translate-y-1/2 group-hover:animate-color-mix transition-all duration-500"
-                    style={{ left: "62.5%", top: "37.5%" }}
-                  />
-
-                  {/* Color mixing effects */}
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    {/* Mixing lines */}
-                    <div className="absolute w-36 h-px bg-sky-200/30 transform rotate-30" />
-                    <div className="absolute w-36 h-px bg-sky-200/30 transform -rotate-30" />
-                    <div className="absolute w-36 h-px bg-sky-200/30 transform rotate-90" />
-                  </div>
                 </div>
-
-                {/* Color harmony examples */}
-                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="w-4 h-4 bg-red-500 rounded-full" />
-                  <div className="w-4 h-4 bg-orange-500 rounded-full" />
-                  <div className="w-4 h-4 bg-yellow-500 rounded-full" />
-                  <div className="w-4 h-4 bg-green-500 rounded-full" />
-                  <div className="w-4 h-4 bg-blue-500 rounded-full" />
-                  <div className="w-4 h-4 bg-purple-500 rounded-full" />
-                </div>
-                {/* Remove overlay text */}
-                {/* <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-20">
-                  <div className="text-xs sm:text-sm text-sky-600 font-medium bg-white/80 px-3 py-2 backdrop-blur-sm font-helvetica">
-                    Colors create visual harmony
-                  </div>
-                </div> */}
               </div>
             </div>
           }
@@ -2038,8 +2028,8 @@ function App() {
                 <div className="absolute inset-0 flex items-center justify-center">
                   <img
                     src="https://media.istockphoto.com/id/1353209101/vector/abstract-texture-from-3d-cubes-rectangular-background-from-geometric-shapes-vector.jpg?s=612x612&w=0&k=20&c=ZzXC6iE6KbxocW-1dxHDgkgA1UVqt7K5oHsag2T5FVw="
-                    alt="3D Cartesian Coordinates"
-                    className="w-full h-full object-contain transform transition-transform duration-300 group-hover:scale-105"
+                    alt="3D cubes and geometric shapes"
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                   />
                 </div>
               </div>
