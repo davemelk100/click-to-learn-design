@@ -7,6 +7,7 @@ interface DesignSectionProps {
   designPrinciple: string;
   exampleLink?: string;
   visualComponent: React.ReactNode;
+  isListLayout?: boolean;
   fontFamily?:
     | "dm-sans"
     | "eb-garamond"
@@ -44,7 +45,8 @@ interface DesignSectionProps {
     | "poppins"
     | "encode-sans-sc"
     | "lexend"
-    | "dm-serif-display";
+    | "dm-serif-display"
+    | "syne-mono";
   descriptionClassName?: string;
   titleClassName?: string;
   background?: string;
@@ -56,9 +58,10 @@ const DesignSection: React.FC<DesignSectionProps> = ({
   designPrinciple,
   exampleLink,
   visualComponent,
-  fontFamily = "roboto",
-  descriptionClassName = "",
-  titleClassName = "",
+  isListLayout = false,
+  fontFamily = "dm-sans",
+  descriptionClassName,
+  titleClassName,
   background = "bg-white",
 }) => {
   const [isAiOpen, setIsAiOpen] = useState(false);
@@ -142,6 +145,8 @@ const DesignSection: React.FC<DesignSectionProps> = ({
         return "font-doto";
       case "bowlby-one-sc":
         return "font-bowlby-one-sc";
+      case "syne-mono":
+        return "font-syne-mono";
       default:
         return "font-roboto";
     }
@@ -201,7 +206,9 @@ const DesignSection: React.FC<DesignSectionProps> = ({
 
   return (
     <div
-      className={`relative group hover:shadow-lg transition-shadow duration-300 min-h-[400px] border border-gray-200 ${background} overflow-hidden ${
+      className={`relative group hover:shadow-lg transition-shadow duration-300 ${
+        isListLayout ? "flex gap-6 p-6" : "min-h-[400px]"
+      } border border-gray-200 ${background} overflow-hidden ${
         shouldRemoveRightBorder ? "border-r-0" : ""
       }`}
     >
@@ -210,64 +217,106 @@ const DesignSection: React.FC<DesignSectionProps> = ({
           shouldRemoveRightBorder ? "border-r-0" : ""
         }`}
       />
-      <div className="h-full flex flex-col relative z-10">
-        <div className="flex justify-between items-center pt-3 pl-3 mb-2">
-          <div>
-            <h2 className={`${titleClass} leading-none`}>{title}</h2>
-            <p className="text-xs text-gray-600 mt-1">
-              Font:{" "}
-              {fontFamily?.charAt(0)?.toUpperCase() + fontFamily?.slice(1)}
-            </p>
-          </div>
-          {exampleLink && (
-            <a
-              href={exampleLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-xs text-gray-600 hover:text-gray-500 transition-colors absolute top-4 right-4 uppercase"
-            >
-              Resource
-            </a>
-          )}
-        </div>
-        <div className={`flex-1 flex flex-col ${contentClass}`}>
-          <div className="flex-1 flex items-center justify-center py-2">
+      {isListLayout ? (
+        <>
+          <div className={`flex-shrink-0 ${isListLayout ? "w-1/3" : ""}`}>
             {visualComponent}
           </div>
-          <div className="px-6 pb-4">
-            <div className="flex flex-col gap-2">
-              <p
-                className={`text-sm text-gray-600 ${
-                  descriptionClassName || ""
-                }`}
-              >
-                {description}
-              </p>
-              {designPrinciple && (
-                <div className="mt-2">
-                  <p className="text-xs text-gray-500">
-                    <span className="font-medium">Design Principle:</span>{" "}
-                    {designPrinciple}
-                  </p>
-                </div>
+          <div className="flex-grow">
+            <div className="flex justify-between items-start mb-4">
+              <div>
+                <h2 className={`${titleClass} leading-none`}>{title}</h2>
+                <p className="text-xs text-gray-600 mt-1">
+                  Font:{" "}
+                  {fontFamily?.charAt(0)?.toUpperCase() + fontFamily?.slice(1)}
+                </p>
+              </div>
+              {exampleLink && (
+                <a
+                  href={exampleLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs text-gray-600 hover:text-gray-500 transition-colors uppercase"
+                >
+                  Resource
+                </a>
               )}
+            </div>
+            <p
+              className={`text-sm text-gray-600 ${descriptionClassName || ""}`}
+            >
+              {description}
+            </p>
+            {designPrinciple && (
+              <div className="mt-4">
+                <p className="text-xs text-gray-500">
+                  <span className="font-medium">Design Principle:</span>{" "}
+                  {designPrinciple}
+                </p>
+              </div>
+            )}
+          </div>
+        </>
+      ) : (
+        <div className="h-full flex flex-col relative z-10">
+          <div className="flex justify-between items-center pt-3 pl-3 mb-2">
+            <div>
+              <h2 className={`${titleClass} leading-none`}>{title}</h2>
+              <p className="text-xs text-gray-600 mt-1">
+                Font:{" "}
+                {fontFamily?.charAt(0)?.toUpperCase() + fontFamily?.slice(1)}
+              </p>
+            </div>
+            {exampleLink && (
+              <a
+                href={exampleLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs text-gray-600 hover:text-gray-500 transition-colors absolute top-4 right-4 uppercase"
+              >
+                Resource
+              </a>
+            )}
+          </div>
+          <div className={`flex-1 flex flex-col ${contentClass}`}>
+            <div className="flex-1 flex items-center justify-center py-2">
+              {visualComponent}
+            </div>
+            <div className="px-6 pb-4">
+              <div className="flex flex-col gap-2">
+                <p
+                  className={`text-sm text-gray-600 ${
+                    descriptionClassName || ""
+                  }`}
+                >
+                  {description}
+                </p>
+                {designPrinciple && (
+                  <div className="mt-2">
+                    <p className="text-xs text-gray-500">
+                      <span className="font-medium">Design Principle:</span>{" "}
+                      {designPrinciple}
+                    </p>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>
-        <button
-          onClick={() => setIsAiOpen(!isAiOpen)}
-          className="absolute bottom-4 right-4 p-2 rounded-full bg-black text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-          aria-label={
-            isAiOpen ? `Close ${title} discussion` : `Learn more about ${title}`
-          }
-        >
-          {isAiOpen ? (
-            <X className="w-5 h-5" aria-hidden="true" />
-          ) : (
-            <MessageSquare className="w-5 h-5" aria-hidden="true" />
-          )}
-        </button>
-      </div>
+      )}
+      <button
+        onClick={() => setIsAiOpen(!isAiOpen)}
+        className="absolute bottom-4 right-4 p-2 rounded-full bg-black text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+        aria-label={
+          isAiOpen ? `Close ${title} discussion` : `Learn more about ${title}`
+        }
+      >
+        {isAiOpen ? (
+          <X className="w-5 h-5" aria-hidden="true" />
+        ) : (
+          <MessageSquare className="w-5 h-5" aria-hidden="true" />
+        )}
+      </button>
 
       {isAiOpen && (
         <div className="absolute inset-0 bg-black/95 flex flex-col z-10">

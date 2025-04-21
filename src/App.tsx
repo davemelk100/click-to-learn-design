@@ -1,19 +1,15 @@
-import React from "react";
-import {
-  ArrowUp,
-  Info,
-  Settings,
-  Brain,
-  Hand,
-} from "lucide-react";
+import React, { useState } from "react";
+import { ArrowUp, Info, Settings, Brain, Hand, Grid, List } from "lucide-react";
 import DesignSection from "./components/DesignSection";
 import Header from "./components/Header";
 import { content } from "./data/content";
 
 function App() {
+  const [isListLayout, setIsListLayout] = useState(false);
+
   return (
     <div className="min-h-screen w-full">
-      <Header />
+      <Header isListLayout={isListLayout} setIsListLayout={setIsListLayout} />
       {/* Section Break */}
       <div id="design" className="col-span-full py-12">
         <div className="flex items-center justify-center gap-2 group">
@@ -32,12 +28,19 @@ function App() {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 divide-y md:divide-y-0 md:divide-x border-gray-200/50">
+      <div
+        className={`${
+          isListLayout
+            ? "grid grid-cols-1 gap-6 max-w-4xl mx-auto px-4"
+            : "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
+        } divide-y md:divide-y-0 md:divide-x border-gray-200/50`}
+      >
         <DesignSection
           title="Dimensional Hierarchy"
           description="Dimensional Hierarchy creates visual importance through varying levels of depth and dimensionality. By using shadows, perspective, and strategic layering, elements can appear to float at different levels, creating a clear visual hierarchy."
           designPrinciple="Depth – Using three-dimensional space to establish visual importance and relationships."
           exampleLink="https://www.toptal.com/designers/visual/principles-of-design"
+          isListLayout={isListLayout}
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
               <div className="w-full max-w-[360px] h-[180px] p-4 relative group">
@@ -121,6 +124,7 @@ function App() {
           description="Overlapping Relationships demonstrate how elements can create visual connections and depth through strategic layering. By carefully controlling transparency, shadows, and positioning, we can create a sense of depth and establish visual relationships between elements."
           designPrinciple="Depth & Connection – Using overlapping elements to create visual hierarchy and relationships."
           exampleLink="https://www.behance.net/gallery/101333357/Overlapping-Relationships"
+          isListLayout={isListLayout}
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
               <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-rose-50 to-pink-50 p-4 relative group">
@@ -215,6 +219,7 @@ function App() {
           description="The Rule of Thirds divides a composition into nine equal parts using two horizontal and two vertical lines. Key elements placed along these lines or at their intersections create more engaging and balanced designs."
           designPrinciple="Balance – Distributing elements evenly to create a feeling of stability (can be symmetrical or asymmetrical)."
           exampleLink="https://www.photographymad.com/pages/view/rule-of-thirds"
+          isListLayout={isListLayout}
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
               <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-emerald-50 to-teal-50 p-4 relative group">
@@ -263,6 +268,7 @@ function App() {
           description="Spatial Layers create visual hierarchy through the careful arrangement of overlapping elements. This technique uses depth, shadow, and transparency to establish clear relationships between components while maintaining visual harmony."
           designPrinciple="Contrast – Using differences in color, size, or shape to create visual interest and hierarchy."
           exampleLink="https://www.canva.com/learn/visual-hierarchy/"
+          isListLayout={isListLayout}
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
               <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-sky-50 to-blue-50 p-4 flex items-center justify-center group">
@@ -329,6 +335,7 @@ function App() {
           description="The Bezold Effect occurs when the appearance of a color is altered by the colors adjacent to it. This optical illusion demonstrates how our perception of color can be dramatically influenced by its surrounding colors."
           designPrinciple="Contrast – Using differences in color, size, or shape to create visual interest and hierarchy."
           exampleLink="https://www.interaction-design.org/literature/topics/color-theory"
+          isListLayout={isListLayout}
           visualComponent={
             <div className="flex items-center justify-center w-full h-full gap-6 flex-wrap">
               <div className="w-[180px] h-[180px] grid grid-cols-8 gap-0.5 bg-orange-100 p-2 group transition-all duration-500 hover:bg-orange-200">
@@ -368,6 +375,7 @@ function App() {
           description="Observed Rhythm creates visual flow through repeating elements. This dynamic pattern uses varying sizes and spacing to guide the viewer's eye naturally through the design."
           designPrinciple="Repetition – Reusing visual elements to create consistency."
           exampleLink="https://www.nngroup.com/articles/rhythm/"
+          isListLayout={isListLayout}
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
               <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-r from-purple-100 to-indigo-50 p-4 relative group">
@@ -422,6 +430,7 @@ function App() {
           description="Ambiguous Scale challenges perception by presenting elements whose size relationships are intentionally unclear. This creates an engaging visual puzzle that draws viewers in to resolve the spatial ambiguity, demonstrating how scale can be used to create visual hierarchy and guide attention."
           designPrinciple="Scale & Perception – Using relative size to create visual hierarchy and relationships between elements."
           exampleLink="https://www.microsoft.com/en-us/microsoft-365-life-hacks/presentations/scale-in-graphic-design"
+          isListLayout={isListLayout}
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
               <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-zinc-50 to-neutral-50 p-4 relative overflow-hidden group">
@@ -511,6 +520,7 @@ function App() {
           fontFamily="dm-sans"
           descriptionClassName="font-dm-sans"
           background="bg-gradient-to-br from-amber-50/50 to-orange-50/50"
+          isListLayout={isListLayout}
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
               <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-amber-50 to-orange-50 p-4 relative group">
@@ -556,6 +566,7 @@ function App() {
           description="Interwoven Space creates complex visual relationships by carefully layering and connecting elements. This technique uses overlapping forms, transparency, and strategic placement to create a sense of depth and interconnectedness."
           designPrinciple="Depth – Creating the illusion of three-dimensional space through layering and perspective."
           exampleLink="https://www.behance.net/gallery/101333357/Interwoven-Space"
+          isListLayout={isListLayout}
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
               <div className="w-full max-w-[360px] h-[180px] p-4 relative group">
@@ -615,6 +626,7 @@ function App() {
           description="Artful Reduction demonstrates how removing elements can strengthen a design. By carefully eliminating unnecessary components, the remaining elements gain more impact and clarity, creating a more focused and powerful visual statement."
           designPrinciple="Minimalism – Using the fewest elements necessary to create maximum impact."
           exampleLink="https://www.nngroup.com/articles/characteristics-minimalism/"
+          isListLayout={isListLayout}
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
               <div className="w-full max-w-[360px] h-[180px] p-4 relative group">
@@ -675,6 +687,7 @@ function App() {
           description="Drawing With Code demonstrates how programming can be used to create artistic patterns and designs. By using algorithms, mathematical functions, and creative coding techniques, we can generate complex and beautiful visual compositions."
           designPrinciple="Algorithmic Art – Using code to create visual patterns and designs."
           exampleLink="https://www.openprocessing.org/browse/"
+          isListLayout={isListLayout}
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
               <style>
@@ -778,6 +791,7 @@ function App() {
           description="Basic Color Theory explores the fundamental relationships between colors. By understanding primary colors, color harmony, and the color wheel, we can create visually appealing and meaningful color combinations."
           designPrinciple="Color Relationships – Understanding how colors interact and complement each other."
           exampleLink="https://www.canva.com/learn/color-theory/"
+          isListLayout={isListLayout}
           visualComponent={
             <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-sky-50 to-blue-50 p-4 relative group">
               <style>
@@ -860,6 +874,7 @@ function App() {
           description="Axonometric Projection is a method of representing 3D objects in 2D space using parallel projection. Unlike perspective projection, it maintains consistent scale and angles, making it ideal for technical drawings and architectural visualization."
           designPrinciple="Parallel Projection – Representing 3D space in 2D while maintaining consistent measurements."
           exampleLink="https://en.wikipedia.org/wiki/Axonometric_projection"
+          isListLayout={isListLayout}
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
               <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-stone-50 to-slate-50 p-4 relative group">
@@ -961,6 +976,7 @@ function App() {
           description="Subjective Emphasis demonstrates how visual elements can be highlighted through various design techniques. By using contrast, scale, color, and positioning, designers can guide the viewer's attention to specific elements, creating a visual hierarchy that communicates importance and meaning."
           designPrinciple="Visual Hierarchy – Using design elements to create emphasis and guide attention."
           exampleLink="https://www.canva.com/learn/visual-hierarchy/"
+          isListLayout={isListLayout}
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
               <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-slate-50 to-indigo-50 p-4 relative group">
@@ -1036,6 +1052,7 @@ function App() {
           description="The Golden Ratio, approximately 1:1.618, is a mathematical proportion found in nature that creates aesthetically pleasing compositions. When used in design, it helps create balanced and harmonious layouts that feel naturally beautiful."
           designPrinciple="Proportion – Using mathematical relationships to create visually pleasing compositions."
           exampleLink="https://www.canva.com/learn/what-is-the-golden-ratio/"
+          isListLayout={isListLayout}
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
               <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-amber-50 to-yellow-50 p-4 relative group">
@@ -1059,6 +1076,7 @@ function App() {
           description="Accessibility in design ensures that digital experiences are usable by everyone, regardless of their abilities. This includes considerations for color contrast, keyboard navigation, screen reader compatibility, and clear visual hierarchy."
           designPrinciple="Inclusive Design – Creating experiences that work for all users regardless of their abilities or circumstances."
           exampleLink="https://www.w3.org/WAI/fundamentals/accessibility-principles/"
+          isListLayout={isListLayout}
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
               <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-blue-50 to-purple-50 p-4 relative group">
@@ -1135,6 +1153,7 @@ function App() {
           exampleLink="https://hyperweb.ca/which-is-more-important-in-web-design-form-or-function/"
           fontFamily="overlock-sc"
           descriptionClassName="font-overlock-sc"
+          isListLayout={isListLayout}
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
               <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-stone-400 to-slate-500 p-4 relative group">
@@ -1204,6 +1223,7 @@ function App() {
           description="Designing Networks explores how to create visual representations of connected systems and relationships. By using nodes, connections, and strategic layout, we can create clear and intuitive visualizations of complex networks and their interactions."
           designPrinciple="Connection & Flow – Using visual elements to represent relationships and interactions in a network."
           exampleLink="https://www.lucidchart.com/pages/network-diagram"
+          isListLayout={isListLayout}
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
               <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-rose-50 to-pink-50 p-4 relative group">
@@ -1273,6 +1293,7 @@ function App() {
           fontFamily="suwannaphum"
           descriptionClassName="font-suwannaphum"
           titleClassName="font-suwannaphum"
+          isListLayout={isListLayout}
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
               <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-indigo-50 to-purple-50 p-4 relative group">
@@ -1343,6 +1364,7 @@ function App() {
           fontFamily="poppins"
           descriptionClassName="font-poppins"
           titleClassName="font-poppins"
+          isListLayout={isListLayout}
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
               <style>
@@ -1412,6 +1434,7 @@ function App() {
           designPrinciple="Feedback & Engagement – Using subtle animations to create responsive and intuitive interfaces."
           exampleLink="https://www.nngroup.com/articles/microinteractions/"
           fontFamily="encode-sans-sc"
+          isListLayout={isListLayout}
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
               <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-emerald-50 to-teal-50 p-4 relative group">
@@ -1452,6 +1475,7 @@ function App() {
           fontFamily="lexend"
           descriptionClassName="font-lexend"
           titleClassName="font-lexend"
+          isListLayout={isListLayout}
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
               <style>
@@ -1561,6 +1585,7 @@ function App() {
           fontFamily="dm-serif-display"
           descriptionClassName="font-dm-serif-display"
           titleClassName="font-dm-serif-display"
+          isListLayout={isListLayout}
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
               <style>
@@ -1658,6 +1683,7 @@ function App() {
           fontFamily="domine"
           descriptionClassName="font-['Domine'] text-slate-800"
           titleClassName="text-slate-800"
+          isListLayout={isListLayout}
           visualComponent={
             <div className="relative w-48 h-48 group">
               <style>
@@ -1749,6 +1775,7 @@ function App() {
           fontFamily="dm-sans"
           descriptionClassName="font-dm-sans"
           titleClassName="font-dm-sans"
+          isListLayout={isListLayout}
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
               <style>
@@ -1817,6 +1844,7 @@ function App() {
           fontFamily="dm-sans"
           descriptionClassName="font-dm-sans"
           titleClassName="font-dm-sans"
+          isListLayout={isListLayout}
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
               <style>
@@ -1904,6 +1932,7 @@ function App() {
           fontFamily="dm-sans"
           descriptionClassName="font-dm-sans"
           titleClassName="font-dm-sans"
+          isListLayout={isListLayout}
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
               <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-emerald-50 to-teal-50 p-4 relative group">
@@ -1994,6 +2023,30 @@ function App() {
           }
           background="bg-gradient-to-br from-emerald-50/50 to-teal-50/50"
         />
+        <DesignSection
+          title="3D Illustration"
+          description="3D Illustration brings designs to life through movement, depth, and spatial relationships. By carefully controlling timing, easing, and perspective, we can create engaging and dynamic visual experiences that guide user attention and enhance understanding."
+          designPrinciple="Motion & Depth – Using three-dimensional space and movement to create engaging visual experiences."
+          exampleLink="https://www.blender.org/"
+          fontFamily="dm-sans"
+          descriptionClassName="font-dm-sans"
+          titleClassName="font-dm-sans"
+          isListLayout={isListLayout}
+          visualComponent={
+            <div className="flex items-center justify-center w-full h-full">
+              <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-blue-50 to-indigo-50 p-4 relative group">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/3/3b/3D_Cartesian_coordinates.PNG"
+                    alt="3D Cartesian Coordinates"
+                    className="w-full h-full object-contain transform transition-transform duration-300 group-hover:scale-105"
+                  />
+                </div>
+              </div>
+            </div>
+          }
+          background="bg-gradient-to-br from-blue-50/50 to-indigo-50/50"
+        />
 
         {/* Section Break */}
         <div id="designs" className="col-span-full py-12">
@@ -2019,6 +2072,7 @@ function App() {
             description="The Boston Globe's 2011 responsive redesign, led by Ethan Marcotte and Filament Group, marked a pivotal moment in web design. As the first major news site to implement responsive design, it demonstrated how content could adapt seamlessly across devices while maintaining readability and hierarchy."
             designPrinciple="Responsive Design - Creating fluid layouts that adapt to any screen size while maintaining content integrity"
             exampleLink="https://zeldman.com/2011/09/15/boston-globes-responsive-redesign-discuss/"
+            isListLayout={isListLayout}
             visualComponent={
               <div className="flex items-center justify-center w-full h-full">
                 <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-blue-50 to-indigo-50 p-4 relative group">
@@ -2042,6 +2096,7 @@ function App() {
             description="The 960 Grid System, created by Nathan Smith, revolutionized web layout design in the late 2000s. This CSS framework provided a standardized 12-column grid that worked perfectly for 1024x768 displays, making it the de facto standard for web layouts during the fixed-width era. Its influence can still be seen in modern CSS frameworks."
             designPrinciple="Grid-Based Design - Creating consistent, balanced layouts through systematic column-based structures"
             exampleLink="https://ux.stackexchange.com/questions/5128/do-you-consider-the-960-grid-system-one-of-the-holy-grails-of-user-experienc"
+            isListLayout={isListLayout}
             visualComponent={
               <div className="flex items-center justify-center w-full h-full">
                 <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-amber-50 to-orange-50 p-4 relative group">
@@ -2065,6 +2120,7 @@ function App() {
             description="The FedEx logo, designed by Lindon Leader in 1994, is a masterclass in negative space design. The hidden arrow between the 'E' and 'x' represents forward movement and precision, perfectly aligning with FedEx's brand values. This subtle yet powerful design element has made it one of the most recognized and awarded logos in history."
             designPrinciple="Negative Space - Using the space between elements to create hidden meaning and visual interest"
             exampleLink="https://99designs.com/blog/famous-logo/fedex-logo-design/"
+            isListLayout={isListLayout}
             visualComponent={
               <div className="flex items-center justify-center w-full h-full">
                 <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-amber-50 to-orange-50 p-4 relative group">
@@ -2088,6 +2144,7 @@ function App() {
             description="Steve Krug's 'Don't Make Me Think' revolutionized web usability with its simple, practical approach. The book emphasizes that good design should be intuitive and self-explanatory, requiring minimal cognitive effort from users. Its principles of usability testing and clear navigation have become fundamental to modern web design."
             designPrinciple="Usability First - Creating interfaces that are intuitive and require minimal cognitive effort"
             exampleLink="https://www.sensible.com/dmmt.html"
+            isListLayout={isListLayout}
             visualComponent={
               <div className="flex items-center justify-center w-full h-full">
                 <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-emerald-50 to-teal-50 p-4 relative group">
@@ -2105,6 +2162,30 @@ function App() {
             descriptionClassName="text-gray-700 font-dm-sans"
             titleClassName="text-2xl font-bold text-gray-900 font-dm-sans"
             background="bg-gradient-to-br from-emerald-50/50 to-teal-50/50"
+          />
+          <DesignSection
+            title="Fallingwater"
+            description="Fallingwater, designed by Frank Lloyd Wright in 1935, is a masterpiece of organic architecture that harmoniously integrates with its natural surroundings. The house appears to float above a waterfall, creating a seamless connection between built and natural environments."
+            designPrinciple="Organic Architecture – Creating harmony between human habitation and the natural world."
+            exampleLink="https://www.fallingwater.org/"
+            fontFamily="dm-sans"
+            descriptionClassName="font-dm-sans"
+            titleClassName="font-dm-sans"
+            isListLayout={isListLayout}
+            visualComponent={
+              <div className="flex items-center justify-center w-full h-full">
+                <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-stone-50 to-slate-50 p-4 relative group">
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <img
+                      src="https://upload.wikimedia.org/wikipedia/commons/b/bc/Fallingwater3.jpg"
+                      alt="Fallingwater by Frank Lloyd Wright"
+                      className="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-105"
+                    />
+                  </div>
+                </div>
+              </div>
+            }
+            background="bg-gradient-to-br from-stone-50/50 to-slate-50/50"
           />
         </div>
 
@@ -2131,6 +2212,7 @@ function App() {
           description="Massimo Vignelli was an Italian designer who profoundly influenced American design through his modernist approach. His work in corporate identity, public signage, and typography established new standards for clarity and functionality in design."
           designPrinciple="Modernist Clarity through grid systems and typography"
           exampleLink="https://vignelli.com"
+          isListLayout={isListLayout}
           visualComponent={
             <div className="w-full h-full flex items-center justify-center p-4">
               <div className="w-[500px] h-[300px] bg-white overflow-hidden group relative">
@@ -2153,6 +2235,7 @@ function App() {
           description="A Danish web usability consultant and co-founder of the Nielsen Norman Group. Nielsen's research and principles have shaped modern web design, emphasizing user-centered design and accessibility."
           designPrinciple="Usability Heuristics - Ten general principles for interaction design that ensure intuitive and efficient user experiences"
           exampleLink="https://www.nngroup.com/people/jakob-nielsen/"
+          isListLayout={isListLayout}
           visualComponent={
             <div className="w-full h-full flex items-center justify-center">
               <div className="w-[600px] h-[400px] bg-white overflow-hidden group relative">
@@ -2175,6 +2258,7 @@ function App() {
           description="A user experience designer and consultant who helps companies create more human-centered products and services. Her work focuses on empathy, research, and ethical design practices."
           designPrinciple="Empathy & Ethics – Putting people first in design decisions and considering the broader impact of our work"
           exampleLink="https://whitneyhess.com/blog/"
+          isListLayout={isListLayout}
           visualComponent={
             <div className="w-full h-full flex items-center justify-center">
               <div className="w-[500px] h-[300px] bg-white overflow-hidden group relative">
@@ -2196,6 +2280,7 @@ function App() {
           description="A legendary graphic designer and filmmaker who revolutionized title sequences and corporate identity. His work for major Hollywood studios and corporations like AT&T established new standards for visual communication."
           designPrinciple="Motion & Identity – Creating memorable brand experiences through dynamic motion graphics and iconic symbols"
           exampleLink="https://www.artofthetitle.com/designer/saul-bass/"
+          isListLayout={isListLayout}
           visualComponent={
             <div className="w-full h-full flex items-center justify-center">
               <div className="w-[500px] h-[300px] bg-white overflow-hidden group relative">
@@ -2217,6 +2302,7 @@ function App() {
           description="A pioneering architect who developed the concept of organic architecture, Wright's designs harmonized buildings with their natural surroundings. His work emphasized horizontal lines, open floor plans, and integration with nature."
           designPrinciple="Organic Architecture"
           exampleLink="https://franklloydwright.org/"
+          isListLayout={isListLayout}
           visualComponent={
             <div className="flex items-center justify-center h-full p-4">
               <img
@@ -2236,6 +2322,7 @@ function App() {
           description="A graphic designer who created the iconic Nike Swoosh logo in 1971 while still a student at Portland State University. Her simple, dynamic design has become one of the most recognizable logos in the world."
           designPrinciple="Simplicity & Impact – Creating powerful, memorable designs through minimalism and strong visual identity"
           exampleLink="https://www.nicekicks.com/celebrating-carolyn-davidson-designer-original-nike-swoosh-logo-internationalwomensday/"
+          isListLayout={isListLayout}
           visualComponent={
             <div className="w-full h-full flex items-center justify-center">
               <div className="w-[500px] h-[300px] bg-white overflow-hidden group relative">
@@ -2261,6 +2348,7 @@ function App() {
           fontFamily="doto"
           descriptionClassName="text-gray-700 font-doto"
           titleClassName="text-2xl font-bold text-gray-900 font-doto tracking-tight"
+          isListLayout={isListLayout}
           visualComponent={
             <div className="w-full h-full flex items-center justify-center">
               <div className="w-[500px] h-[300px] bg-white overflow-hidden group relative">
@@ -2282,6 +2370,7 @@ function App() {
           descriptionClassName="text-gray-700 font-source-code-pro"
           titleClassName="text-2xl font-bold text-gray-900 font-source-code-pro tracking-tight"
           background="bg-gradient-to-br from-blue-50/50 to-indigo-50/50"
+          isListLayout={isListLayout}
           visualComponent={
             <div className="w-full h-full flex items-center justify-center">
               <div className="w-[500px] h-[300px] bg-white overflow-hidden group relative">
@@ -2299,6 +2388,7 @@ function App() {
           description="A British-American graphic designer who co-founded Chermayeff & Geismar, creating some of the most recognizable corporate identities of the 20th century. His work for Mobil, NBC, and National Geographic established new standards for corporate branding."
           designPrinciple="Visual Simplicity - Creating memorable identities through bold, simple forms"
           exampleLink="https://www.cgstudionyc.com/ivan-chermayeff"
+          isListLayout={isListLayout}
           visualComponent={
             <div className="w-full h-full flex items-center justify-center p-4">
               <div className="w-[500px] h-[300px] bg-white overflow-hidden group relative">
@@ -2321,6 +2411,7 @@ function App() {
           description="A pioneering graphic designer known for her innovative typography and bold visual language. As a partner at Pentagram, she has created iconic identities for clients like Citibank, The Public Theater, and Microsoft Windows."
           designPrinciple="Expressive Typography - Using type as a primary visual element to convey meaning and emotion"
           exampleLink="https://www.pentagram.com/about/paula-scher"
+          isListLayout={isListLayout}
           visualComponent={
             <div className="w-full h-full flex items-center justify-center p-4">
               <div className="w-[500px] h-[300px] bg-white overflow-hidden group relative">
@@ -2343,6 +2434,7 @@ function App() {
           description="Known as the 'Father of Visual Basic' and a pioneer in interaction design, Alan Cooper revolutionized software development with his user-centered design approach. His work on Visual Basic and his advocacy for personas and goal-directed design have shaped modern software development practices."
           designPrinciple="Goal-Directed Design"
           exampleLink="https://en.wikipedia.org/wiki/Alan_Cooper_(software_designer)"
+          isListLayout={isListLayout}
           visualComponent={
             <div className="w-full h-full flex items-center justify-center p-4">
               <div className="w-[500px] h-[300px] bg-white overflow-hidden group relative">
@@ -2364,6 +2456,7 @@ function App() {
           description="A revolutionary art director at DDB, Helmut Krone transformed advertising with his minimalist approach and bold typography. His iconic Volkswagen 'Think Small' campaign redefined automotive advertising, proving that less could be more in visual communication."
           designPrinciple="Minimalist Impact"
           exampleLink="https://en.wikipedia.org/wiki/Helmut_Krone"
+          isListLayout={isListLayout}
           visualComponent={
             <div className="w-full h-full flex items-center justify-center p-4">
               <img
@@ -2383,6 +2476,7 @@ function App() {
           description="A Dutch design studio known for their innovative approach to data visualization and interactive design. Their work combines technology, art, and design to create immersive experiences that challenge traditional notions of information design."
           designPrinciple="Data as Art - Transforming complex information into engaging visual experiences"
           exampleLink="https://www.itsnicethat.com/articles/lust-studio"
+          isListLayout={isListLayout}
           visualComponent={
             <div className="w-full h-full flex items-center justify-center p-4">
               <div className="w-[500px] h-[300px] bg-white overflow-hidden group relative">
@@ -2405,6 +2499,7 @@ function App() {
           description="A pioneer of systematic design, Otl Aicher created the iconic visual identity for the 1972 Munich Olympics. His work established new standards in wayfinding, typography, and corporate identity, demonstrating how design can create order and clarity in complex systems."
           designPrinciple="Systematic Design"
           exampleLink="https://en.wikipedia.org/wiki/Otl_Aicher"
+          isListLayout={isListLayout}
           visualComponent={
             <div className="w-full h-full flex items-center justify-center p-4">
               <img
@@ -2424,6 +2519,7 @@ function App() {
           description="Founder of Amphetamine Reptile Records, Tom Hazelmyer created a distinctive visual language for underground music through his raw, confrontational design style. His work on album covers and promotional materials helped define the aesthetic of noise rock and punk in the 1990s."
           designPrinciple="Raw Expression"
           exampleLink="https://www.pbs.org/video/Tom-Hazelmyer-607060H-1/"
+          isListLayout={isListLayout}
           visualComponent={
             <div className="w-full h-full flex items-center justify-center p-4">
               <div className="w-[500px] h-[300px] bg-white overflow-hidden group relative">
@@ -2446,6 +2542,7 @@ function App() {
           description="A contemporary street artist and graphic designer known for his iconic 'Hope' poster for Barack Obama's 2008 presidential campaign. Fairey's work combines elements of street art, propaganda, and commercial design, often featuring bold colors, stencil techniques, and powerful social messages."
           designPrinciple="Visual Impact - Creating powerful messages through bold, iconic imagery and strategic use of color and composition"
           exampleLink="https://obeygiant.com"
+          isListLayout={isListLayout}
           visualComponent={
             <div className="w-full h-full flex items-center justify-center p-4">
               <div className="w-[500px] h-[300px] bg-white overflow-hidden group relative">
@@ -2468,6 +2565,7 @@ function App() {
           description="A leading figure in the Young British Artists movement, Hirst is known for his controversial and thought-provoking works that explore themes of life, death, and beauty. His iconic spot paintings and formaldehyde-preserved animals have redefined contemporary art and challenged traditional notions of artistic value."
           designPrinciple="Conceptual Impact - Using bold visual statements to explore fundamental questions about existence and mortality"
           exampleLink="https://www.damienhirst.com"
+          isListLayout={isListLayout}
           visualComponent={
             <div className="w-full h-full flex items-center justify-center p-4">
               <div className="w-[500px] h-[300px] bg-white overflow-hidden group relative">
@@ -2490,6 +2588,7 @@ function App() {
           description="An American artist known for his distinctive ink drawings that combine text and image, often exploring themes of American culture, politics, and society. His work, which began with album covers and flyers for punk bands, has evolved into a complex visual language that critiques and reflects on contemporary life."
           designPrinciple="Text and Image Fusion - Creating powerful narratives through the interplay of drawing and typography"
           exampleLink="https://www.davidzwirner.com/artists/raymond-pettibon"
+          isListLayout={isListLayout}
           visualComponent={
             <div className="w-full h-full flex items-center justify-center p-4">
               <div className="w-[500px] h-[300px] bg-white overflow-hidden group relative">
@@ -2512,6 +2611,7 @@ function App() {
           description="A Swiss typeface designer best known for creating Helvetica, one of the most widely used typefaces in the world. His work exemplifies the Swiss Style of typography, characterized by clarity, readability, and objectivity."
           designPrinciple="Universal Typography - Creating typefaces that work across languages and contexts"
           exampleLink="https://www.linotype.com/1308886/max-miedinger.html"
+          isListLayout={isListLayout}
           visualComponent={
             <div className="w-full h-full flex items-center justify-center p-4">
               <div className="w-[500px] h-[300px] bg-white overflow-hidden group relative">

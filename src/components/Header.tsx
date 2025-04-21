@@ -1,10 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { content } from "../data/content";
+import { Grid, List, Menu, X } from "lucide-react";
 
-const Header: React.FC = () => {
+interface HeaderProps {
+  isListLayout: boolean;
+  setIsListLayout: (value: boolean) => void;
+}
+
+const Header: React.FC<HeaderProps> = ({ isListLayout, setIsListLayout }) => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   return (
     <header className="sticky top-0 z-50 py-2 bg-black">
-      <div className="flex items-center justify-center">
+      <div className="flex items-center max-w-7xl mx-auto px-4 sm:px-6">
+        {/* Logo */}
         <div className="flex items-center gap-2">
           <div className="w-8 h-8 relative group">
             <div className="absolute w-8 h-8">
@@ -38,25 +47,101 @@ const Header: React.FC = () => {
             {content.header.title}
           </span>
         </div>
-        <div className="flex items-center gap-4 ml-8">
-          {content.header.navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="text-white hover:text-white/80 transition-colors duration-300"
-            >
-              {link.text}
-            </a>
-          ))}
-        </div>
-        <a
-          href={content.header.portfolioLink.href}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="ml-auto mr-4 px-2 py-1 bg-white text-black text-sm font-medium hover:bg-white/90 transition-colors duration-300"
+
+        {/* Mobile Menu Button */}
+        <button
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          className="ml-auto p-2 rounded-full hover:bg-white/10 transition-colors duration-200 sm:hidden"
         >
-          {content.header.portfolioLink.text}
-        </a>
+          {isMenuOpen ? (
+            <X className="w-5 h-5 text-white" />
+          ) : (
+            <Menu className="w-5 h-5 text-white" />
+          )}
+        </button>
+
+        {/* Desktop Navigation */}
+        <div className="hidden sm:flex-1 sm:flex sm:items-center sm:justify-center">
+          <div className="flex items-center gap-8">
+            {content.header.navLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                className="text-white hover:text-white/80 transition-colors duration-300"
+              >
+                {link.text}
+              </a>
+            ))}
+          </div>
+        </div>
+
+        {/* Desktop Right Side */}
+        <div className="hidden sm:flex sm:items-center sm:gap-4">
+          <button
+            onClick={() => setIsListLayout(!isListLayout)}
+            className="p-2 rounded-full hover:bg-white/10 transition-colors duration-200"
+            title={isListLayout ? "Switch to grid view" : "Switch to list view"}
+          >
+            {isListLayout ? (
+              <Grid className="w-5 h-5 text-white" />
+            ) : (
+              <List className="w-5 h-5 text-white" />
+            )}
+          </button>
+          <a
+            href={content.header.portfolioLink.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-2 py-1 bg-white text-black text-sm font-medium hover:bg-white/90 transition-colors duration-300"
+          >
+            {content.header.portfolioLink.text}
+          </a>
+        </div>
+
+        {/* Mobile Menu */}
+        {isMenuOpen && (
+          <div className="absolute top-full left-0 right-0 bg-black py-4 px-4 sm:hidden">
+            <div className="flex flex-col items-center gap-4">
+              {content.header.navLinks.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className="text-white hover:text-white/80 transition-colors duration-300"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {link.text}
+                </a>
+              ))}
+              <div className="flex items-center gap-4 mt-4">
+                <button
+                  onClick={() => {
+                    setIsListLayout(!isListLayout);
+                    setIsMenuOpen(false);
+                  }}
+                  className="p-2 rounded-full hover:bg-white/10 transition-colors duration-200"
+                  title={
+                    isListLayout ? "Switch to grid view" : "Switch to list view"
+                  }
+                >
+                  {isListLayout ? (
+                    <Grid className="w-5 h-5 text-white" />
+                  ) : (
+                    <List className="w-5 h-5 text-white" />
+                  )}
+                </button>
+                <a
+                  href={content.header.portfolioLink.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-2 py-1 bg-white text-black text-sm font-medium hover:bg-white/90 transition-colors duration-300"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {content.header.portfolioLink.text}
+                </a>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </header>
   );
