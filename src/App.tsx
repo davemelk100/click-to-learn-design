@@ -876,66 +876,40 @@ function App() {
               </style>
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="relative w-48 h-48 flex items-center justify-center">
-                  {/* Red */}
-                  <div
-                    className="absolute w-8 h-8 bg-red-500 rounded-full color-ball"
-                    style={{ animationDelay: "0s" }}
-                  />
-                  {/* Red-Orange */}
-                  <div
-                    className="absolute w-8 h-8 bg-orange-400 rounded-full color-ball"
-                    style={{ animationDelay: "0.4s" }}
-                  />
-                  {/* Orange */}
-                  <div
-                    className="absolute w-8 h-8 bg-orange-500 rounded-full color-ball"
-                    style={{ animationDelay: "0.8s" }}
-                  />
-                  {/* Orange-Yellow */}
-                  <div
-                    className="absolute w-8 h-8 bg-amber-400 rounded-full color-ball"
-                    style={{ animationDelay: "1.2s" }}
-                  />
-                  {/* Yellow */}
-                  <div
-                    className="absolute w-8 h-8 bg-yellow-500 rounded-full color-ball"
-                    style={{ animationDelay: "1.6s" }}
-                  />
-                  {/* Yellow-Green */}
-                  <div
-                    className="absolute w-8 h-8 bg-lime-400 rounded-full color-ball"
-                    style={{ animationDelay: "2s" }}
-                  />
-                  {/* Green */}
-                  <div
-                    className="absolute w-8 h-8 bg-green-500 rounded-full color-ball"
-                    style={{ animationDelay: "2.4s" }}
-                  />
-                  {/* Green-Blue */}
-                  <div
-                    className="absolute w-8 h-8 bg-teal-400 rounded-full color-ball"
-                    style={{ animationDelay: "2.8s" }}
-                  />
-                  {/* Blue */}
-                  <div
-                    className="absolute w-8 h-8 bg-blue-500 rounded-full color-ball"
-                    style={{ animationDelay: "3.2s" }}
-                  />
-                  {/* Blue-Purple */}
-                  <div
-                    className="absolute w-8 h-8 bg-indigo-400 rounded-full color-ball"
-                    style={{ animationDelay: "3.6s" }}
-                  />
-                  {/* Purple */}
-                  <div
-                    className="absolute w-8 h-8 bg-purple-500 rounded-full color-ball"
-                    style={{ animationDelay: "4s" }}
-                  />
-                  {/* Purple-Red */}
-                  <div
-                    className="absolute w-8 h-8 bg-pink-400 rounded-full color-ball"
-                    style={{ animationDelay: "4.4s" }}
-                  />
+                  {/* Center ball */}
+                  <div className="absolute w-8 h-8 bg-white/50 rounded-full" />
+
+                  {/* Static color wheel */}
+                  <div className="absolute w-full h-full group-hover:animate-[spin_3s_linear_infinite]">
+                    {[
+                      { color: "bg-red-500/70", angle: 0 },
+                      { color: "bg-orange-500/70", angle: 30 },
+                      { color: "bg-yellow-500/70", angle: 60 },
+                      { color: "bg-green-500/70", angle: 90 },
+                      { color: "bg-blue-500/70", angle: 120 },
+                      { color: "bg-indigo-500/70", angle: 150 },
+                      { color: "bg-purple-500/70", angle: 180 },
+                      { color: "bg-pink-500/70", angle: 210 },
+                      { color: "bg-red-500/70", angle: 240 },
+                      { color: "bg-orange-500/70", angle: 270 },
+                      { color: "bg-yellow-500/70", angle: 300 },
+                      { color: "bg-green-500/70", angle: 330 },
+                    ].map(({ color, angle }, i) => (
+                      <div
+                        key={`color-${i}`}
+                        className={`absolute w-4 h-4 ${color} rounded-full`}
+                        style={{
+                          left: `${
+                            Math.cos((angle * Math.PI) / 180) * 40 + 96
+                          }px`,
+                          top: `${
+                            Math.sin((angle * Math.PI) / 180) * 40 + 96
+                          }px`,
+                          transform: `translate(-50%, -50%)`,
+                        }}
+                      />
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
