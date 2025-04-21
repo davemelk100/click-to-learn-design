@@ -2476,7 +2476,7 @@ function App() {
         />
         <DesignSection
           title="Alan Cooper"
-          description="Known as the 'Father of Visual Basic' and a pioneer in interaction design, Alan Cooper revolutionized software development with his user-centered design approach. His work on Visual Basic and his advocacy for personas and goal-directed design have shaped modern software development practices."
+          description="Known as the 'Father of Visual Basic', Alan Cooper pioneered user-centered design in software development. His work on Visual Basic and development of personas established new standards for creating intuitive user experiences."
           designPrinciple="Goal-Directed Design"
           exampleLink="https://en.wikipedia.org/wiki/Alan_Cooper_(software_designer)"
           isListLayout={isListLayout}
@@ -2498,7 +2498,7 @@ function App() {
         />
         <DesignSection
           title="Helmut Krone"
-          description="A revolutionary art director at DDB, Helmut Krone transformed advertising with his minimalist approach and bold typography. His iconic Volkswagen 'Think Small' campaign redefined automotive advertising, proving that less could be more in visual communication."
+          description="A revolutionary art director at DDB, Helmut Krone transformed advertising with his minimalist approach and bold typography. His iconic Volkswagen 'Think Small' campaign redefined automotive advertising, establishing new standards for honest, straightforward communication."
           designPrinciple="Minimalist Impact"
           exampleLink="https://en.wikipedia.org/wiki/Helmut_Krone"
           isListLayout={isListLayout}
@@ -2544,7 +2544,7 @@ function App() {
         />
         <DesignSection
           title="Otl Aicher"
-          description="A pioneer of systematic design, Otl Aicher created the iconic visual identity for the 1972 Munich Olympics. His work established new standards in wayfinding, typography, and corporate identity, demonstrating how design can create order and clarity in complex systems."
+          description="A pioneer of systematic design, Otl Aicher created the iconic visual identity for the 1972 Munich Olympics. His work established new standards in wayfinding and corporate identity, demonstrating how design creates order in complex systems."
           designPrinciple="Systematic Design"
           exampleLink="https://en.wikipedia.org/wiki/Otl_Aicher"
           isListLayout={isListLayout}
@@ -2561,8 +2561,8 @@ function App() {
             </div>
           }
           fontFamily="tektur"
-          descriptionClassName="text-gray-700 font-tektur"
-          titleClassName="text-2xl font-bold text-gray-900 font-tektur"
+          descriptionClassName="text-gray-700 font-tektur tracking-[2px]"
+          titleClassName="text-2xl font-bold text-gray-900 font-tektur tracking-[2px]"
           background="bg-gradient-to-br from-amber-50/50 to-orange-50/50"
         />
         <DesignSection
@@ -2584,8 +2584,8 @@ function App() {
             </div>
           }
           fontFamily="chelsea-market"
-          descriptionClassName="text-gray-700 font-chelsea-market"
-          titleClassName="text-2xl font-bold text-gray-900 font-chelsea-market"
+          descriptionClassName="text-gray-700 font-chelsea-market tracking-[1px]"
+          titleClassName="text-2xl font-bold text-gray-900 font-chelsea-market tracking-[1px]"
           background="bg-gradient-to-br from-red-50/50 to-rose-50/50"
         />
         <DesignSection
