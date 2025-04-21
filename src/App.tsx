@@ -2066,7 +2066,13 @@ function App() {
           </p>
         </div>
 
-        <div className="col-span-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 divide-y md:divide-y-0 md:divide-x border-gray-200/50">
+        <div
+          className={`${
+            isListLayout
+              ? "grid grid-cols-1 gap-6 max-w-4xl mx-auto px-4"
+              : "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
+          } divide-y md:divide-y-0 md:divide-x border-gray-200/50`}
+        >
           <DesignSection
             title="The Boston Globe"
             description="The Boston Globe's 2011 responsive redesign, led by Ethan Marcotte and Filament Group, marked a pivotal moment in web design. As the first major news site to implement responsive design, it demonstrated how content could adapt seamlessly across devices while maintaining readability and hierarchy."
