@@ -585,6 +585,18 @@ function App() {
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
               <div className="w-full max-w-[360px] h-[180px] p-4 relative group">
+                <style>
+                  {`
+                    @keyframes pulse {
+                      0% { transform: scale(1); }
+                      50% { transform: scale(1.1); }
+                      100% { transform: scale(1); }
+                    }
+                    .group:hover .pulse-animation {
+                      animation: pulse 2s ease-in-out infinite;
+                    }
+                  `}
+                </style>
                 <div className="absolute inset-0 flex items-center justify-center">
                   {/* Base grid */}
                   <div className="absolute w-36 h-36 opacity-20">
@@ -615,20 +627,14 @@ function App() {
 
                   {/* Floating elements */}
                   <div
-                    className="absolute w-4 h-4 bg-rose-500/60 rounded-full transform transition-all duration-500 group-hover:scale-150 group-hover:bg-rose-600/80"
+                    className="absolute w-4 h-4 bg-rose-500/60 rounded-full transform transition-all duration-500 group-hover:scale-150 group-hover:bg-rose-600/80 pulse-animation"
                     style={{ top: "20%", left: "20%" }}
                   />
                   <div
-                    className="absolute w-4 h-4 bg-rose-500/60 rounded-full transform transition-all duration-500 group-hover:scale-150 group-hover:bg-rose-600/80"
+                    className="absolute w-4 h-4 bg-rose-500/60 rounded-full transform transition-all duration-500 group-hover:scale-150 group-hover:bg-rose-600/80 pulse-animation"
                     style={{ bottom: "20%", right: "20%" }}
                   />
                 </div>
-                {/* Remove overlay text */}
-                {/* <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
-                  <div className="text-xs sm:text-sm text-rose-600 font-medium bg-white/80 px-3 py-2 backdrop-blur-sm font-eb-garamond">
-                    Simple shapes create depth
-                  </div>
-                </div> */}
               </div>
             </div>
           }
@@ -645,6 +651,18 @@ function App() {
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
               <div className="w-full max-w-[360px] h-[180px] p-4 relative group">
+                <style>
+                  {`
+                    @keyframes pulse {
+                      0% { transform: scale(1); }
+                      50% { transform: scale(1.1); }
+                      100% { transform: scale(1); }
+                    }
+                    .group:hover .pulse-animation {
+                      animation: pulse 2s ease-in-out infinite;
+                    }
+                  `}
+                </style>
                 <div className="absolute inset-0 flex items-center justify-center">
                   {/* Initial state - complex overlapping shapes */}
                   <div className="absolute w-48 h-48 opacity-100 group-hover:opacity-0 transition-all duration-1000 animate-infinite">
@@ -653,7 +671,7 @@ function App() {
                       {[...Array(16)].map((_, i) => (
                         <div
                           key={`grid-${i}`}
-                          className="bg-stone-300/30 transform transition-all duration-1000 animate-infinite"
+                          className="bg-stone-300/30 transform transition-all duration-1000 animate-infinite pulse-animation"
                         />
                       ))}
                     </div>
@@ -662,7 +680,7 @@ function App() {
                     {[...Array(8)].map((_, i) => (
                       <div
                         key={`circle-${i}`}
-                        className="absolute w-24 h-24 border-2 border-stone-400/40 rounded-full transform transition-all duration-1000 animate-infinite"
+                        className="absolute w-24 h-24 border-2 border-stone-400/40 rounded-full transform transition-all duration-1000 animate-infinite pulse-animation"
                         style={{
                           left: `${25 + Math.cos((i * Math.PI * 2) / 8) * 20}%`,
                           top: `${25 + Math.sin((i * Math.PI * 2) / 8) * 20}%`,
@@ -677,19 +695,13 @@ function App() {
                   {/* Final state - single focused element */}
                   <div className="absolute w-48 h-48 opacity-0 group-hover:opacity-100 transition-all duration-1000 animate-infinite">
                     {/* Central focus element */}
-                    <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-stone-800 transform transition-all duration-1000 group-hover:scale-110 group-hover:rotate-6 animate-infinite">
+                    <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-stone-800 transform transition-all duration-1000 group-hover:scale-110 group-hover:rotate-6 animate-infinite pulse-animation">
                       <div className="absolute inset-1" />
                       {/* Subtle shadow */}
                       <div className="absolute inset-0 shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 animate-infinite" />
                     </div>
                   </div>
                 </div>
-                {/* Remove overlay text */}
-                {/* <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
-                  <div className="text-xs sm:text-sm text-stone-600 font-medium bg-white/80 px-3 py-2 backdrop-blur-sm font-helvetica">
-                    Less elements create more impact
-                  </div>
-                </div> */}
               </div>
             </div>
           }
@@ -970,13 +982,25 @@ function App() {
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
               <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-slate-50 to-indigo-50 p-4 relative group">
+                <style>
+                  {`
+                    @keyframes pulse {
+                      0% { transform: scale(1); }
+                      50% { transform: scale(1.1); }
+                      100% { transform: scale(1); }
+                    }
+                    .group:hover .pulse-animation {
+                      animation: pulse 2s ease-in-out infinite;
+                    }
+                  `}
+                </style>
                 <div className="absolute inset-0 flex items-center justify-center">
                   {/* Background elements */}
                   <div className="absolute w-48 h-48 opacity-20">
                     {[...Array(16)].map((_, i) => (
                       <div
                         key={`bg-${i}`}
-                        className="absolute w-4 h-4 bg-slate-400/30 transform transition-all duration-500"
+                        className="absolute w-4 h-4 bg-slate-400/30 transform transition-all duration-500 pulse-animation"
                         style={{
                           left: `${(i % 4) * 16}px`,
                           top: `${Math.floor(i / 4) * 16}px`,
@@ -986,17 +1010,17 @@ function App() {
                   </div>
 
                   {/* Main emphasized element */}
-                  <div className="absolute w-16 h-16 bg-slate-600 hadow-lg transform transition-all duration-700 group-hover:scale-125 group-hover:bg-indigo-600 group-hover:shadow-xl">
+                  <div className="absolute w-16 h-16 bg-gray-600 hadow-lg transform transition-all duration-700 group-hover:scale-125 group-hover:bg-gray-500 group-hover:shadow-xl pulse-animation">
                     <div className="absolute inset-1 " />
                     {/* Inner glow effect */}
-                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-slate-400/20 to-transparent" />
+                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-gray-400/20 to-transparent" />
                   </div>
 
                   {/* Supporting elements */}
                   {[...Array(6)].map((_, i) => (
                     <div
                       key={`support-${i}`}
-                      className="absolute w-8 h-8 bg-slate-400/60 transform transition-all duration-500 group-hover:opacity-30"
+                      className="absolute w-8 h-8 bg-slate-400/60 transform transition-all duration-500 group-hover:opacity-30 pulse-animation"
                       style={{
                         left: `${Math.cos((i * Math.PI * 2) / 6) * 40 + 48}px`,
                         top: `${Math.sin((i * Math.PI * 2) / 6) * 40 + 48}px`,
@@ -1011,7 +1035,7 @@ function App() {
                     {[...Array(8)].map((_, i) => (
                       <div
                         key={`line-${i}`}
-                        className="absolute w-24 h-px bg-slate-600/20 transform transition-all duration-500"
+                        className="absolute w-24 h-px bg-slate-600/20 transform transition-all duration-500 pulse-animation"
                         style={{
                           left: "50%",
                           top: "50%",
@@ -1023,12 +1047,6 @@ function App() {
                     ))}
                   </div>
                 </div>
-                {/* Remove overlay text */}
-                {/* <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
-                  <div className="text-xs sm:text-sm text-slate-600 font-medium bg-white/80 px-3 py-2 backdrop-blur-sm font-roboto-slab">
-                    Design elements create visual emphasis
-                  </div>
-                </div> */}
               </div>
             </div>
           }
