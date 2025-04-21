@@ -1,57 +1,15 @@
 import React from "react";
 import {
+  ArrowUp,
   Info,
   Settings,
   Eye,
   RefreshCw,
   Brain,
   Hand,
-  ArrowUp,
 } from "lucide-react";
 import DesignSection from "./components/DesignSection";
-
-interface DesignSectionProps {
-  title: string;
-  description: string;
-  designPrinciple: string;
-  exampleLink: string;
-  visualComponent: React.ReactNode;
-  fontFamily?:
-    | "dm-sans"
-    | "eb-garamond"
-    | "source-code-pro"
-    | "share-tech"
-    | "niconne"
-    | "rubik-scribble"
-    | "habibi"
-    | "anek-gurmukhi"
-    | "oswald"
-    | "roboto-slab"
-    | "urbanist"
-    | "bree-serif"
-    | "courgette"
-    | "permanent-marker"
-    | "helvetica"
-    | "avenir"
-    | "roboto"
-    | "josefin-sans"
-    | "roboto-flex"
-    | "domine"
-    | "figtree"
-    | "futura-condensed"
-    | "source-sans"
-    | "solway"
-    | "chelsea-market"
-    | "tektur"
-    | "sriracha"
-    | "doto"
-    | "bowlby-one-sc"
-    | "protest-revolution"
-    | "outfit";
-  descriptionClassName?: string;
-  titleClassName?: string;
-  background?: string;
-}
+import { content } from "./data/content";
 
 function App() {
   return (
@@ -88,36 +46,27 @@ function App() {
               />
             </div>
             <span className="text-2xl font-medium text-white ml-[10px]">
-              DESIGN PANES
+              {content.header.title}
             </span>
           </div>
           <div className="flex items-center gap-4 ml-8">
-            <a
-              href="#design"
-              className="text-white hover:text-white/80 transition-colors duration-300"
-            >
-              Design
-            </a>
-            <a
-              href="#designs"
-              className="text-white hover:text-white/80 transition-colors duration-300"
-            >
-              Designs
-            </a>
-            <a
-              href="#designers"
-              className="text-white hover:text-white/80 transition-colors duration-300"
-            >
-              Designers
-            </a>
+            {content.header.navLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                className="text-white hover:text-white/80 transition-colors duration-300"
+              >
+                {link.text}
+              </a>
+            ))}
           </div>
           <a
-            href="https://davemelk.com"
+            href={content.header.portfolioLink.href}
             target="_blank"
             rel="noopener noreferrer"
             className="ml-auto mr-4 px-2 py-1 bg-white text-black text-sm font-medium hover:bg-white/90 transition-colors duration-300"
           >
-            DM
+            {content.header.portfolioLink.text}
           </a>
         </div>
       </header>
@@ -1957,7 +1906,7 @@ function App() {
                       {/* Visual */}
                       <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-16 h-16 bg-violet-500/30 rounded-lg group-hover:animate-[vimmPulse_2s_ease-in-out_infinite]">
                         <div className="absolute inset-0 flex items-center justify-center text-violet-600">
-                          <Eye className="w-8 h-8" />
+                          <Info className="w-8 h-8" />
                         </div>
                       </div>
 
@@ -1967,7 +1916,7 @@ function App() {
                         style={{ animationDelay: "0.5s" }}
                       >
                         <div className="absolute inset-0 flex items-center justify-center text-violet-600">
-                          <RefreshCw className="w-8 h-8" />
+                          <Settings className="w-8 h-8" />
                         </div>
                       </div>
 
