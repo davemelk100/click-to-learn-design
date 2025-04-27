@@ -2074,6 +2074,77 @@ function App() {
           }
           background="bg-gradient-to-br from-blue-50/50 to-indigo-50/50"
         />
+        <DesignSection
+          title="Affordance"
+          description="Affordance refers to the perceived and actual properties of an object that determine how it can be used. In design, affordances help users understand how to interact with elements by making their functionality obvious through visual cues and physical properties."
+          designPrinciple="Perception – Making the function of elements clear through their appearance and behavior."
+          exampleLink="https://www.nngroup.com/articles/affordances/"
+          isListLayout={isListLayout}
+          fontFamily="roboto-slab"
+          descriptionClassName="text-gray-700 font-roboto-slab"
+          titleClassName="text-2xl font-bold text-gray-900 font-roboto-slab"
+          background="bg-gradient-to-br from-cyan-50/50 to-blue-50/50"
+          visualComponent={
+            <div className="flex items-center justify-center w-full h-full">
+              <div className="w-full max-w-[360px] h-[180px] p-4 relative group">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  {/* Interactive elements demonstrating affordance */}
+                  <div className="flex flex-col gap-4 items-center">
+                    {/* Button with clear affordance */}
+                    <button className="px-4 py-2 bg-blue-500 text-white rounded-lg shadow-md hover:bg-blue-600 transition-colors duration-200">
+                      Click Me
+                    </button>
+
+                    {/* Slider with clear affordance */}
+                    <div className="w-48 h-2 bg-gray-200 rounded-full relative">
+                      <div className="absolute left-0 top-0 h-full w-1/3 bg-blue-500 rounded-full"></div>
+                      <div className="absolute left-1/3 top-0 w-4 h-4 bg-white rounded-full shadow-md"></div>
+                    </div>
+
+                    {/* Text input with clear affordance */}
+                    <input
+                      type="text"
+                      placeholder="Type here..."
+                      className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          }
+        />
+        <DesignSection
+          title="Negative Space"
+          description="Negative space, also known as white space, is the empty area between and around design elements. It's not just empty space—it's a powerful design element that helps create balance, hierarchy, and focus. Effective use of negative space can enhance readability and create visual harmony."
+          designPrinciple="Balance – Using empty space to create visual equilibrium and guide attention."
+          exampleLink="https://www.toptal.com/designers/visual/negative-space-design"
+          isListLayout={isListLayout}
+          fontFamily="lexend"
+          descriptionClassName="text-gray-700 font-lexend"
+          titleClassName="text-2xl font-bold text-gray-900 font-lexend"
+          background="bg-gradient-to-br from-purple-50/50 to-pink-50/50"
+          visualComponent={
+            <div className="flex items-center justify-center w-full h-full">
+              <div className="w-full max-w-[360px] h-[180px] p-4 relative group">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  {/* Negative space demonstration */}
+                  <div className="w-full h-full flex flex-col items-center justify-center gap-4">
+                    {/* Minimalist composition with negative space */}
+                    <div className="w-32 h-32 relative">
+                      {/* Positive space elements */}
+                      <div className="absolute top-0 left-0 w-16 h-16 bg-blue-500 rounded-lg"></div>
+                      <div className="absolute bottom-0 right-0 w-16 h-16 bg-blue-500 rounded-lg"></div>
+                      {/* Negative space creates an implied circle */}
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="w-24 h-24 border-2 border-dashed border-gray-300 rounded-full"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          }
+        />
 
         {/* Section Break */}
         <div id="designs" className="col-span-full py-12">
