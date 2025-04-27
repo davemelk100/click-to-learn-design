@@ -265,76 +265,64 @@ function App() {
         />
         <DesignSection
           title="Spatial Layers"
-          description="Spatial Layers create visual hierarchy through the careful arrangement of overlapping elements. This technique uses depth, shadow, and transparency to establish clear relationships between components while maintaining visual harmony."
-          designPrinciple="Contrast – Using differences in color, size, or shape to create visual interest and hierarchy."
-          exampleLink="https://www.canva.com/learn/visual-hierarchy/"
+          description="Spatial layering creates depth and hierarchy by organizing elements into distinct planes. This technique uses shadows, transparency, and positioning to create a sense of three-dimensional space, making designs more dynamic and engaging."
+          designPrinciple="Depth – Creating visual hierarchy through layered elements."
+          exampleLink="https://www.toptal.com/designers/visual/principles-of-design"
           isListLayout={isListLayout}
+          fontFamily="tektur"
+          descriptionClassName="text-gray-700 font-tektur"
+          titleClassName="text-2xl font-bold text-gray-900 font-tektur"
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
-              <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-sky-50 to-blue-50 p-4 flex items-center justify-center group">
+              <div className="w-full max-w-[360px] h-[180px] p-4 relative group">
                 <style>
                   {`
-                    @keyframes pulse {
-                      0% { transform: scale(1); opacity: 0.1; }
-                      50% { transform: scale(1.3); opacity: 1; }
-                      100% { transform: scale(1); opacity: 0.1; }
+                    @keyframes float {
+                      0% { transform: translateY(0) rotate(0deg); }
+                      50% { transform: translateY(-10px) rotate(5deg); }
+                      100% { transform: translateY(0) rotate(0deg); }
                     }
-                    .group:hover .number-pulse {
-                      animation: pulse 3s ease-in-out infinite;
+                    .group:hover .layer-float {
+                      animation: float 3s ease-in-out infinite;
                     }
                   `}
                 </style>
-                <div className="relative w-[280px] h-[120px] group">
-                  {/* Background layer */}
-                  <div className="absolute inset-0 bg-sky-100 transform group-hover:rotate-6 transition-transform duration-500 number-pulse" />
+                <div className="absolute inset-0 flex items-center justify-center">
+                  {/* Spatial layers demonstration */}
+                  <div className="relative w-48 h-48">
+                    {/* Base layer - static */}
+                    <div className="absolute inset-0 bg-gray-100 rounded-lg shadow-sm transform -rotate-3"></div>
 
-                  {/* Middle layers - geometric patterns */}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    {[...Array(3)].map((_, i) => (
-                      <div
-                        key={i}
-                        className="absolute w-32 h-32 border-2 border-sky-200 transform transition-all duration-500 number-pulse"
-                        style={{
-                          transform: `rotate(${i * 30}deg) scale(${
-                            0.8 + i * 0.1
-                          })`,
-                          zIndex: i,
-                          opacity: 0.7 - i * 0.1,
-                        }}
-                      >
-                        {/* Inner decorative elements */}
-                        <div className="absolute inset-4 border border-sky-300/50" />
-                        <div className="absolute inset-8 bg-sky-50/30" />
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* Floating elements */}
-                  {[...Array(4)].map((_, i) => (
+                    {/* Middle layer - subtle movement */}
                     <div
-                      key={`float-${i}`}
-                      className="absolute w-6 h-6 bg-white shadow-lg transform transition-all duration-500 group-hover:scale-110 group-hover:animate-float number-pulse"
-                      style={{
-                        left: `${20 + i * 70}px`,
-                        top: `${30 + (i % 2) * 60}px`,
-                        zIndex: 10,
-                        animationDuration: `${2 + i * 0.5}s`,
-                      }}
-                    >
-                      <div className="absolute inset-1 bg-sky-100" />
-                    </div>
-                  ))}
+                      className="absolute inset-4 bg-white rounded-lg shadow-md layer-float"
+                      style={{ animationDelay: "0.2s" }}
+                    ></div>
 
-                  {/* Foreground accent elements */}
-                  <div className="absolute -right-2 top-1/2 -translate-y-1/2 w-20 h-20 opacity-20 blur-xl group-hover:opacity-40 transition-opacity duration-500 number-pulse" />
-                  <div className="absolute -left-4 bottom-0 w-16 h-16 opacity-30 blur-lg group-hover:opacity-50 transition-opacity duration-500 number-pulse" />
+                    {/* Top layer - more movement */}
+                    <div
+                      className="absolute inset-8 bg-blue-500 rounded-lg shadow-lg layer-float"
+                      style={{ animationDelay: "0.4s" }}
+                    >
+                      {/* Inner decorative elements */}
+                      <div className="absolute inset-2 border-2 border-white/20 rounded"></div>
+                      <div className="absolute inset-4 border border-white/10 rounded"></div>
+                    </div>
+
+                    {/* Floating accent elements */}
+                    <div
+                      className="absolute -top-2 -right-2 w-4 h-4 bg-blue-400 rounded-full shadow-md layer-float"
+                      style={{ animationDelay: "0.6s" }}
+                    ></div>
+                    <div
+                      className="absolute -bottom-2 -left-2 w-4 h-4 bg-blue-400 rounded-full shadow-md layer-float"
+                      style={{ animationDelay: "0.8s" }}
+                    ></div>
+                  </div>
                 </div>
               </div>
             </div>
           }
-          fontFamily="helvetica"
-          descriptionClassName="font-helvetica"
-          titleClassName="tracking-[2px]"
         />
         <DesignSection
           title="Bezold Effect"
@@ -998,96 +986,77 @@ function App() {
         />
         <DesignSection
           title="Subjective Emphasis"
-          description="Subjective Emphasis demonstrates how visual elements can be highlighted through various design techniques. By using contrast, scale, color, and positioning, designers can guide the viewer's attention to specific elements, creating a visual hierarchy that communicates importance and meaning."
-          designPrinciple="Visual Hierarchy – Using design elements to create emphasis and guide attention."
-          exampleLink="https://www.canva.com/learn/visual-hierarchy/"
+          description="Subjective emphasis uses visual hierarchy to guide attention and create focal points. By manipulating size, color, and movement, designers can control what viewers notice first and how they navigate through content."
+          designPrinciple="Focus – Directing attention through visual hierarchy and movement."
+          exampleLink="https://www.toptal.com/designers/visual/principles-of-design"
           isListLayout={isListLayout}
+          fontFamily="dm-sans"
+          descriptionClassName="text-gray-700 font-dm-sans"
+          titleClassName="text-2xl font-bold text-gray-900 font-dm-sans"
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
-              <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-slate-50 to-indigo-50 p-4 relative group">
+              <div className="w-full max-w-[360px] h-[180px] p-4 relative group">
                 <style>
                   {`
-                    @keyframes pulse {
-                      0% { transform: scale(1); opacity: 0.1; }
-                      50% { transform: scale(1.5); opacity: 1; }
-                      100% { transform: scale(1); opacity: 0.1; }
+                    @keyframes pulse-emphasis {
+                      0% { transform: scale(1); }
+                      50% { transform: scale(1.2); }
+                      100% { transform: scale(1); }
                     }
-                    @keyframes rotate {
-                      from { transform: rotate(0deg); }
-                      to { transform: rotate(360deg); }
+                    @keyframes fade-emphasis {
+                      0% { opacity: 0.3; }
+                      50% { opacity: 1; }
+                      100% { opacity: 0.3; }
                     }
-                    @keyframes float {
-                      0% { transform: translate(0, 0); }
-                      25% { transform: translate(15px, -15px); }
-                      50% { transform: translate(0, -30px); }
-                      75% { transform: translate(-15px, -15px); }
-                      100% { transform: translate(0, 0); }
+                    .group:hover .emphasis-pulse {
+                      animation: pulse-emphasis 2s ease-in-out infinite;
                     }
-                    .group:hover .number-pulse {
-                      animation: pulse 1s ease-in-out infinite;
+                    .group:hover .emphasis-fade {
+                      animation: fade-emphasis 3s ease-in-out infinite;
                     }
                   `}
                 </style>
                 <div className="absolute inset-0 flex items-center justify-center">
-                  {/* Background elements */}
-                  <div className="absolute w-48 h-48 opacity-20">
-                    {[...Array(16)].map((_, i) => (
-                      <div
-                        key={`bg-${i}`}
-                        className="absolute w-4 h-4 bg-slate-400/30 transform transition-all duration-500 pulse-animation"
-                        style={{
-                          left: `${(i % 4) * 16}px`,
-                          top: `${Math.floor(i / 4) * 16}px`,
-                        }}
-                      />
-                    ))}
-                  </div>
+                  {/* Emphasis demonstration */}
+                  <div className="relative w-48 h-48">
+                    {/* Background elements */}
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      {[...Array(4)].map((_, i) => (
+                        <div
+                          key={`bg-${i}`}
+                          className="absolute w-8 h-8 bg-gray-300 rounded-full emphasis-fade"
+                          style={{
+                            left: `${25 + (i % 2) * 50}%`,
+                            top: `${25 + Math.floor(i / 2) * 50}%`,
+                            animationDelay: `${i * 0.5}s`,
+                          }}
+                        />
+                      ))}
+                    </div>
 
-                  {/* Main emphasized element */}
-                  <div className="absolute w-16 h-16 bg-gray-600 hadow-lg transform transition-all duration-700 group-hover:scale-125 group-hover:bg-gray-500 group-hover:shadow-xl pulse-animation">
-                    <div className="absolute inset-1 " />
-                    {/* Inner glow effect */}
-                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-gray-400/20 to-transparent" />
-                  </div>
+                    {/* Central emphasized element */}
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="w-16 h-16 bg-blue-500 rounded-lg shadow-lg emphasis-pulse transform transition-all duration-300 group-hover:rotate-12">
+                        {/* Inner decorative elements */}
+                        <div className="absolute inset-2 border-2 border-white/20 rounded"></div>
+                        <div className="absolute inset-4 border border-white/10 rounded"></div>
+                      </div>
+                    </div>
 
-                  {/* Supporting elements */}
-                  {[...Array(6)].map((_, i) => (
+                    {/* Floating accent elements */}
                     <div
-                      key={`support-${i}`}
-                      className="absolute w-8 h-8 bg-slate-400/60 transform transition-all duration-500 group-hover:opacity-30 pulse-animation"
-                      style={{
-                        left: `${Math.cos((i * Math.PI * 2) / 6) * 40 + 48}px`,
-                        top: `${Math.sin((i * Math.PI * 2) / 6) * 40 + 48}px`,
-                        transform: `rotate(${i * 30}deg)`,
-                      }}
-                    />
-                  ))}
-
-                  {/* Accent elements */}
-                  <div className="absolute w-48 h-48 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    {/* Radial lines */}
-                    {[...Array(8)].map((_, i) => (
-                      <div
-                        key={`line-${i}`}
-                        className="absolute w-24 h-px bg-slate-600/20 transform transition-all duration-500 pulse-animation"
-                        style={{
-                          left: "50%",
-                          top: "50%",
-                          transform: `rotate(${
-                            i * 45
-                          }deg) translate(-50%, -50%)`,
-                        }}
-                      />
-                    ))}
+                      className="absolute -top-2 -right-2 w-4 h-4 bg-blue-400 rounded-full shadow-md emphasis-pulse"
+                      style={{ animationDelay: "0.2s" }}
+                    ></div>
+                    <div
+                      className="absolute -bottom-2 -left-2 w-4 h-4 bg-blue-400 rounded-full shadow-md emphasis-pulse"
+                      style={{ animationDelay: "0.4s" }}
+                    ></div>
                   </div>
                 </div>
               </div>
             </div>
           }
-          fontFamily="roboto-slab"
-          descriptionClassName=""
-          titleClassName="text-2xl font-bold text-gray-900"
-          background="bg-gradient-to-br from-red-50/50 to-orange-50/50"
         />
         <DesignSection
           title="Golden Ratio"
@@ -1190,60 +1159,166 @@ function App() {
         />
         <DesignSection
           title="Function Over Form"
-          description="Prioritize usability and practical functionality over aesthetic considerations. While visual appeal is important, it should never compromise the core functionality of the design."
-          designPrinciple="Usability First"
-          exampleLink="https://hyperweb.ca/which-is-more-important-in-web-design-form-or-function/"
-          fontFamily="overlock-sc"
-          descriptionClassName="font-overlock-sc"
+          description="Function Over Form emphasizes practical usability over decorative aesthetics. While visual appeal is important, the primary focus is on creating designs that are intuitive, efficient, and serve their purpose effectively."
+          designPrinciple="Utility – Prioritizing practical functionality while maintaining visual clarity."
+          exampleLink="https://www.toptal.com/designers/visual/principles-of-design"
           isListLayout={isListLayout}
+          fontFamily="roboto"
+          descriptionClassName="text-gray-700 font-roboto"
+          titleClassName="text-2xl font-bold text-gray-900 font-roboto"
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
-              <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-stone-400 to-slate-500 p-4 relative group">
+              <div className="w-full max-w-[360px] h-[180px] p-4 relative group">
+                <style>
+                  {`
+                    @keyframes snap-to-grid {
+                      0% { transform: translate(var(--start-x), var(--start-y)) rotate(var(--start-rot)); }
+                      100% { transform: translate(var(--end-x), var(--end-y)) rotate(0deg); }
+                    }
+                    .group:hover .snap-animation {
+                      animation: snap-to-grid 1s ease-out forwards;
+                    }
+                  `}
+                </style>
                 <div className="absolute inset-0 flex items-center justify-center">
-                  {/* Initial state - decorative but complex */}
-                  <div className="absolute w-48 h-48 opacity-100 group-hover:opacity-0 transition-all duration-500">
-                    {/* Background grid */}
-                    <div className="absolute inset-0 grid grid-cols-4 grid-rows-4 gap-2">
-                      {[...Array(16)].map((_, i) => (
+                  {/* Function demonstration */}
+                  <div className="relative w-48 h-48">
+                    {/* Grid container */}
+                    <div className="absolute inset-0 grid grid-cols-3 grid-rows-4 gap-2">
+                      {[...Array(12)].map((_, i) => (
                         <div
                           key={`grid-${i}`}
-                          className="bg-stone-300/30 transform transition-all duration-1000 animate-infinite pulse-animation"
-                        />
+                          className="border border-gray-200 rounded"
+                        ></div>
                       ))}
                     </div>
 
-                    {/* Overlapping circles */}
-                    {[...Array(8)].map((_, i) => (
+                    {/* Disorganized blocks */}
+                    <div className="absolute inset-0">
+                      {/* Blocks with random initial positions */}
                       <div
-                        key={`circle-${i}`}
-                        className="absolute w-24 h-24 border-2 border-stone-400/40 rounded-full transform transition-all duration-1000 animate-infinite pulse-animation"
-                        style={{
-                          left: `${25 + Math.cos((i * Math.PI * 2) / 8) * 20}%`,
-                          top: `${25 + Math.sin((i * Math.PI * 2) / 8) * 20}%`,
-                          transform: `translate(-50%, -50%) rotate(${
-                            i * 45
-                          }deg)`,
-                        }}
-                      />
-                    ))}
-                  </div>
-
-                  {/* Final state - single focused element */}
-                  <div className="absolute w-48 h-48 opacity-0 group-hover:opacity-100 transition-all duration-1000 animate-infinite">
-                    {/* Central focus element */}
-                    <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-stone-800 transform transition-all duration-1000 group-hover:scale-110 group-hover:rotate-6 animate-infinite pulse-animation">
-                      <div className="absolute inset-1" />
-                      {/* Subtle shadow */}
-                      <div className="absolute inset-0 shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 animate-infinite" />
+                        className="absolute w-[calc(33.33%-2px)] h-[calc(25%-2px)] bg-blue-500 rounded snap-animation"
+                        style={
+                          {
+                            transform: "translate(-20px, -30px) rotate(45deg)",
+                            "--start-x": "-20px",
+                            "--start-y": "-30px",
+                            "--start-rot": "45deg",
+                            "--end-x": "0px",
+                            "--end-y": "0px",
+                          } as React.CSSProperties
+                        }
+                      ></div>
+                      <div
+                        className="absolute w-[calc(33.33%-2px)] h-[calc(25%-2px)] bg-blue-500 rounded snap-animation"
+                        style={
+                          {
+                            transform: "translate(40px, -20px) rotate(-30deg)",
+                            "--start-x": "40px",
+                            "--start-y": "-20px",
+                            "--start-rot": "-30deg",
+                            "--end-x": "calc(33.33% + 1px)",
+                            "--end-y": "0px",
+                          } as React.CSSProperties
+                        }
+                      ></div>
+                      <div
+                        className="absolute w-[calc(33.33%-2px)] h-[calc(25%-2px)] bg-blue-500 rounded snap-animation"
+                        style={
+                          {
+                            transform: "translate(-30px, 30px) rotate(60deg)",
+                            "--start-x": "-30px",
+                            "--start-y": "30px",
+                            "--start-rot": "60deg",
+                            "--end-x": "calc(66.66% + 2px)",
+                            "--end-y": "0px",
+                          } as React.CSSProperties
+                        }
+                      ></div>
+                      <div
+                        className="absolute w-[calc(33.33%-2px)] h-[calc(25%-2px)] bg-blue-500 rounded snap-animation"
+                        style={
+                          {
+                            transform: "translate(50px, 40px) rotate(-45deg)",
+                            "--start-x": "50px",
+                            "--start-y": "40px",
+                            "--start-rot": "-45deg",
+                            "--end-x": "0px",
+                            "--end-y": "calc(25% + 1px)",
+                          } as React.CSSProperties
+                        }
+                      ></div>
+                      <div
+                        className="absolute w-[calc(33.33%-2px)] h-[calc(25%-2px)] bg-blue-500 rounded snap-animation"
+                        style={
+                          {
+                            transform: "translate(10px, 60px) rotate(15deg)",
+                            "--start-x": "10px",
+                            "--start-y": "60px",
+                            "--start-rot": "15deg",
+                            "--end-x": "calc(33.33% + 1px)",
+                            "--end-y": "calc(25% + 1px)",
+                          } as React.CSSProperties
+                        }
+                      ></div>
+                      <div
+                        className="absolute w-[calc(33.33%-2px)] h-[calc(25%-2px)] bg-blue-500 rounded snap-animation"
+                        style={
+                          {
+                            transform: "translate(-40px, 10px) rotate(-60deg)",
+                            "--start-x": "-40px",
+                            "--start-y": "10px",
+                            "--start-rot": "-60deg",
+                            "--end-x": "calc(66.66% + 2px)",
+                            "--end-y": "calc(25% + 1px)",
+                          } as React.CSSProperties
+                        }
+                      ></div>
+                      <div
+                        className="absolute w-[calc(33.33%-2px)] h-[calc(25%-2px)] bg-blue-500 rounded snap-animation"
+                        style={
+                          {
+                            transform: "translate(60px, -40px) rotate(30deg)",
+                            "--start-x": "60px",
+                            "--start-y": "-40px",
+                            "--start-rot": "30deg",
+                            "--end-x": "0px",
+                            "--end-y": "calc(50% + 2px)",
+                          } as React.CSSProperties
+                        }
+                      ></div>
+                      <div
+                        className="absolute w-[calc(33.33%-2px)] h-[calc(25%-2px)] bg-blue-500 rounded snap-animation"
+                        style={
+                          {
+                            transform: "translate(-20px, 80px) rotate(-15deg)",
+                            "--start-x": "-20px",
+                            "--start-y": "80px",
+                            "--start-rot": "-15deg",
+                            "--end-x": "calc(33.33% + 1px)",
+                            "--end-y": "calc(50% + 2px)",
+                          } as React.CSSProperties
+                        }
+                      ></div>
+                      <div
+                        className="absolute w-[calc(33.33%-2px)] h-[calc(25%-2px)] bg-blue-500 rounded snap-animation"
+                        style={
+                          {
+                            transform: "translate(30px, -60px) rotate(75deg)",
+                            "--start-x": "30px",
+                            "--start-y": "-60px",
+                            "--start-rot": "75deg",
+                            "--end-x": "calc(66.66% + 2px)",
+                            "--end-y": "calc(50% + 2px)",
+                          } as React.CSSProperties
+                        }
+                      ></div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           }
-          fontFamily="helvetica"
-          descriptionClassName="font-helvetica"
-          background="bg-gradient-to-br from-stone-50/50 to-slate-50/50"
         />
         <DesignSection
           title="Designing Networks"
