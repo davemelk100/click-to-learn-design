@@ -2571,7 +2571,7 @@ function App() {
             <div className="w-full h-full flex items-center justify-center">
               <div className="w-[500px] h-[300px] bg-white overflow-hidden group relative">
                 <img
-                  src="https://usercontent.one/wp/magazine.artland.com/wp-content/uploads/2022/10/vera-molnar-portrait.jpg"
+                  src="https://i.ytimg.com/vi/8tNESHtfkr0/sddefault.jpg"
                   alt="Vera Molnar"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                 />
