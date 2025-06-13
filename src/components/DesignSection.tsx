@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { MessageSquare, X } from "lucide-react";
+import { MessageSquare, X, ArrowUpRight } from "lucide-react";
 
 interface DesignSectionProps {
   title: string;
@@ -8,48 +8,7 @@ interface DesignSectionProps {
   exampleLink?: string;
   visualComponent: React.ReactNode;
   isListLayout?: boolean;
-  fontFamily?:
-    | "dm-sans"
-    | "eb-garamond"
-    | "source-code-pro"
-    | "share-tech"
-    | "niconne"
-    | "rubik-scribble"
-    | "habibi"
-    | "anek-gurmukhi"
-    | "oswald"
-    | "roboto-slab"
-    | "urbanist"
-    | "bree-serif"
-    | "courgette"
-    | "permanent-marker"
-    | "helvetica"
-    | "avenir"
-    | "roboto"
-    | "josefin-sans"
-    | "roboto-flex"
-    | "domine"
-    | "figtree"
-    | "futura-condensed"
-    | "source-sans"
-    | "solway"
-    | "chelsea-market"
-    | "tektur"
-    | "sriracha"
-    | "doto"
-    | "bowlby-one-sc"
-    | "protest-revolution"
-    | "outfit"
-    | "overlock-sc"
-    | "suwannaphum"
-    | "poppins"
-    | "encode-sans-sc"
-    | "lexend"
-    | "dm-serif-display"
-    | "syne-mono"
-    | "germania-one"
-    | "alice"
-    | "mitr";
+  fontFamily?: string;
   descriptionClassName?: string;
   titleClassName?: string;
   background?: string;
@@ -62,9 +21,9 @@ const DesignSection: React.FC<DesignSectionProps> = ({
   exampleLink,
   visualComponent,
   isListLayout = false,
-  fontFamily = "dm-sans",
-  descriptionClassName,
-  titleClassName,
+  fontFamily = "avenir",
+  descriptionClassName = "text-gray-700 font-avenir",
+  titleClassName = "text-2xl font-bold text-gray-900 font-avenir",
   background = "bg-white",
 }) => {
   const [isAiOpen, setIsAiOpen] = useState(false);
@@ -83,97 +42,6 @@ const DesignSection: React.FC<DesignSectionProps> = ({
     window.addEventListener("keydown", handleEscape);
     return () => window.removeEventListener("keydown", handleEscape);
   }, [isAiOpen]);
-
-  const getFontClass = (
-    fontFamily: DesignSectionProps["fontFamily"]
-  ): string => {
-    switch (fontFamily) {
-      case "dm-sans":
-        return "font-dm-sans";
-      case "helvetica":
-        return "font-helvetica";
-      case "avenir":
-        return "font-avenir";
-      case "roboto":
-        return "font-roboto";
-      case "habibi":
-        return "font-habibi";
-      case "anek-gurmukhi":
-        return "font-anek-gurmukhi";
-      case "eb-garamond":
-        return "font-eb-garamond";
-      case "source-code-pro":
-        return "font-source-code-pro";
-      case "share-tech":
-        return "font-share-tech";
-      case "niconne":
-        return "font-niconne";
-      case "rubik-scribble":
-        return "font-rubik-scribble";
-      case "oswald":
-        return "font-oswald";
-      case "roboto-slab":
-        return "font-roboto-slab";
-      case "urbanist":
-        return "font-urbanist";
-      case "bree-serif":
-        return "font-bree-serif";
-      case "courgette":
-        return "font-courgette";
-      case "permanent-marker":
-        return "font-permanent-marker";
-      case "josefin-sans":
-        return "font-josefin-sans";
-      case "roboto-flex":
-        return "font-roboto-flex";
-      case "domine":
-        return "font-domine";
-      case "figtree":
-        return "font-figtree";
-      case "futura-condensed":
-        return "font-futura-condensed";
-      case "source-sans":
-        return "font-source-sans";
-      case "solway":
-        return "font-solway";
-      case "chelsea-market":
-        return "font-chelsea-market";
-      case "tektur":
-        return "font-tektur";
-      case "sriracha":
-        return "font-sriracha";
-      case "doto":
-        return "font-doto";
-      case "bowlby-one-sc":
-        return "font-bowlby-one-sc";
-      case "protest-revolution":
-        return "font-protest-revolution";
-      case "outfit":
-        return "font-outfit";
-      case "overlock-sc":
-        return "font-overlock-sc";
-      case "suwannaphum":
-        return "font-suwannaphum";
-      case "poppins":
-        return "font-poppins";
-      case "encode-sans-sc":
-        return "font-encode-sans-sc";
-      case "lexend":
-        return "font-lexend";
-      case "dm-serif-display":
-        return "font-dm-serif-display";
-      case "syne-mono":
-        return "font-syne-mono";
-      case "germania-one":
-        return "font-germania-one";
-      case "alice":
-        return "font-alice";
-      case "mitr":
-        return "font-mitr";
-      default:
-        return "font-dm-sans";
-    }
-  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -212,10 +80,6 @@ const DesignSection: React.FC<DesignSectionProps> = ({
     }
   };
 
-  const fontClass = getFontClass(fontFamily);
-  const titleClass = `text-2xl font-medium text-gray-900 ${fontClass} ${titleClassName}`;
-  const contentClass = "";
-
   const shouldRemoveRightBorder =
     title === "Spatial Layers" ||
     title === "Rule of Thirds" ||
@@ -244,7 +108,7 @@ const DesignSection: React.FC<DesignSectionProps> = ({
           <div className="flex-grow relative">
             <div className="flex justify-between items-start mb-4">
               <div>
-                <h2 className={`${titleClass} leading-none`}>{title}</h2>
+                <h2 className={`${titleClassName} leading-none`}>{title}</h2>
                 <p className="text-xs text-gray-600 mt-1">
                   Font:{" "}
                   {fontFamily?.charAt(0)?.toUpperCase() + fontFamily?.slice(1)}
@@ -280,7 +144,7 @@ const DesignSection: React.FC<DesignSectionProps> = ({
         <div className="h-full flex flex-col relative z-10 bg-transparent">
           <div className="flex justify-between items-center pt-3 pl-3 mb-2">
             <div>
-              <h2 className={`${titleClass} leading-none`}>{title}</h2>
+              <h2 className={`${titleClassName} leading-none`}>{title}</h2>
               <p className="text-xs text-gray-600 mt-1">
                 Font:{" "}
                 {fontFamily?.charAt(0)?.toUpperCase() + fontFamily?.slice(1)}
@@ -297,7 +161,7 @@ const DesignSection: React.FC<DesignSectionProps> = ({
               </a>
             )}
           </div>
-          <div className={`flex-1 flex flex-col ${contentClass}`}>
+          <div className={`flex-1 flex flex-col`}>
             <div className="flex-1 flex items-center justify-center py-2 bg-white">
               {visualComponent}
             </div>

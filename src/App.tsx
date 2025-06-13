@@ -12,7 +12,7 @@ function App() {
       {/* Section Break */}
       <div id="design" className="col-span-full py-12">
         <div className="flex items-center justify-center gap-2 group">
-          <h2 className="text-3xl font-bold text-gray-900 text-center font-urbanist pt-10">
+          <h2 className="text-2xl font-bold text-gray-900 font-dm-sans leading-none">
             Design
           </h2>
           <button
@@ -22,7 +22,7 @@ function App() {
             <ArrowUp className="w-6 h-6 text-gray-400 hover:text-gray-600" />
           </button>
         </div>
-        <p className="text-gray-600 text-center mt-2 font-urbanist">
+        <p className="text-gray-600 text-center mt-2 font-avenir">
           Fundamentals that shape effective design
         </p>
       </div>
@@ -969,9 +969,6 @@ function App() {
               </div>
             </div>
           }
-          fontFamily="oswald"
-          descriptionClassName="font-oswald"
-          titleClassName="tracking-[2px]"
           background="bg-gradient-to-br from-stone-50/50 to-slate-50/50"
         />
         <DesignSection
@@ -1382,9 +1379,6 @@ function App() {
           description="Understanding and manipulating objects in 3D space, visualizing transformations, and comprehending spatial relationships."
           designPrinciple="Spatial Awareness"
           exampleLink="https://www.123test.com/spatial-reasoning-test/"
-          fontFamily="suwannaphum"
-          descriptionClassName="font-suwannaphum"
-          titleClassName="font-suwannaphum"
           isListLayout={isListLayout}
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
@@ -1453,9 +1447,6 @@ function App() {
           description="Creating clear visual hierarchy through type size, weight, and spacing to guide readers through content."
           designPrinciple="Visual Hierarchy"
           exampleLink="https://www.nngroup.com/articles/typography-terms-ux/"
-          fontFamily="poppins"
-          descriptionClassName="font-poppins"
-          titleClassName="font-poppins"
           isListLayout={isListLayout}
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
@@ -1564,9 +1555,6 @@ function App() {
           description="The Gestalt principles explain how humans naturally organize visual elements into groups and unified wholes. These laws help designers create more intuitive and meaningful visual compositions."
           designPrinciple="Visual Organization – Understanding how the human brain naturally groups and organizes visual elements."
           exampleLink="https://study.com/academy/lesson/perceptual-organization-definition-examples.html"
-          fontFamily="lexend"
-          descriptionClassName="font-lexend"
-          titleClassName="font-lexend"
           isListLayout={isListLayout}
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
@@ -1674,9 +1662,6 @@ function App() {
           description="The Law of Continuity states that the human eye naturally follows continuous lines and patterns. Elements arranged in a continuous line or curve are perceived as more related than elements not on the line or curve."
           designPrinciple="Visual Flow – Using continuous lines and patterns to guide the viewer's eye through a design."
           exampleLink="https://www.merriam-webster.com/dictionary/law%20of%20continuity"
-          fontFamily="dm-serif-display"
-          descriptionClassName="font-dm-serif-display"
-          titleClassName="font-dm-serif-display"
           isListLayout={isListLayout}
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
@@ -1772,9 +1757,6 @@ function App() {
           description="Emergence describes how we perceive complex patterns as a whole before recognizing their individual parts. The whole is perceived before the individual elements that make it up, creating a unified and meaningful perception."
           designPrinciple="Holistic Perception – Understanding how the mind perceives complete patterns before analyzing their components."
           exampleLink="https://medium.com/@uxdesigncc/emergence-in-design-why-the-whole-is-greater-than-the-sum-of-its-parts-5a1b0c0c0c0c"
-          fontFamily="domine"
-          descriptionClassName="font-['Domine'] text-slate-800"
-          titleClassName="text-slate-800"
           isListLayout={isListLayout}
           visualComponent={
             <div className="relative w-48 h-48 group">
@@ -1864,9 +1846,6 @@ function App() {
           description="Hick's Law states that the time it takes to make a decision increases with the number and complexity of choices. This principle helps designers create interfaces that minimize cognitive load and improve decision-making efficiency."
           designPrinciple="Decision Time – The relationship between the number of choices and the time it takes to make a decision."
           exampleLink="https://www.ted.com/talks/barry_schwartz_the-paradox-of-choice"
-          fontFamily="dm-sans"
-          descriptionClassName="font-dm-sans"
-          titleClassName="font-dm-sans"
           isListLayout={isListLayout}
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
@@ -1933,9 +1912,6 @@ function App() {
           description="The VIMM model breaks down user interaction into four key components: Visual (what users see), Interactive (how users engage), Mental (cognitive processing), and Motor (physical actions). This framework helps designers create more intuitive and efficient user experiences."
           designPrinciple="Interaction Framework – Understanding the four key components of user interaction."
           exampleLink="https://www.interaction-design.org/literature/topics/vimm-model"
-          fontFamily="dm-sans"
-          descriptionClassName="font-dm-sans"
-          titleClassName="font-dm-sans"
           isListLayout={isListLayout}
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
@@ -2021,9 +1997,6 @@ function App() {
           description="Progressive Disclosure is a design pattern that reveals information gradually, showing only what's necessary at each step. This approach reduces cognitive load, prevents overwhelming users, and helps maintain focus on the current task."
           designPrinciple="Information Hierarchy – Revealing information progressively to maintain focus and reduce cognitive load."
           exampleLink="https://www.nngroup.com/articles/progressive-disclosure/"
-          fontFamily="dm-sans"
-          descriptionClassName="font-dm-sans"
-          titleClassName="font-dm-sans"
           isListLayout={isListLayout}
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
@@ -2120,9 +2093,6 @@ function App() {
           description="3D Illustration brings designs to life through movement, depth, and spatial relationships. By carefully controlling timing, easing, and perspective, we can create engaging and dynamic visual experiences that guide user attention and enhance understanding."
           designPrinciple="Motion & Depth – Using three-dimensional space and movement to create engaging visual experiences."
           exampleLink="https://www.blender.org/"
-          fontFamily="dm-sans"
-          descriptionClassName="font-dm-sans"
-          titleClassName="font-dm-sans"
           isListLayout={isListLayout}
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
@@ -2214,7 +2184,7 @@ function App() {
         {/* Section Break */}
         <div id="designs" className="col-span-full py-12">
           <div className="flex items-center justify-center gap-2 group">
-            <h2 className="text-3xl font-bold text-gray-900 text-center font-urbanist pt-10 tracking-[2px] pt-10">
+            <h2 className="text-2xl font-bold text-gray-900 font-dm-sans leading-none">
               Designs
             </h2>
             <button
@@ -2224,7 +2194,7 @@ function App() {
               <ArrowUp className="w-6 h-6 text-gray-400 hover:text-gray-600" />
             </button>
           </div>
-          <p className="text-gray-600 text-center mt-2 font-urbanist">
+          <p className="text-gray-600 text-center mt-2 font-avenir">
             Iconic designs that have shaped digital experiences
           </p>
         </div>
@@ -2442,17 +2412,17 @@ function App() {
         {/* Section Break */}
         <div id="designers" className="col-span-full py-12">
           <div className="flex items-center justify-center gap-2 group">
-            <h2 className="text-3xl font-bold text-gray-900 text-center font-urbanist pt-10">
+            <h2 className="text-3xl font-bold text-gray-900 text-center font-avenir pt-10">
               Designers
             </h2>
             <button
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              className="opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+              className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 font-avenir"
             >
               <ArrowUp className="w-6 h-6 text-gray-400 hover:text-gray-600" />
             </button>
           </div>
-          <p className="text-gray-600 text-center mt-2 font-urbanist">
+          <p className="text-gray-600 text-center mt-2 font-avenir">
             Influential figures who have shaped the field of design
           </p>
         </div>
@@ -2475,9 +2445,6 @@ function App() {
               </div>
             </div>
           }
-          fontFamily="urbanist"
-          descriptionClassName="text-gray-700 font-urbanist"
-          titleClassName="text-2xl font-bold text-gray-900 font-urbanist"
           background="bg-gradient-to-br from-stone-50/50 to-slate-50/50"
         />
         <DesignSection
@@ -2498,7 +2465,6 @@ function App() {
               </div>
             </div>
           }
-          fontFamily="helvetica"
           background="bg-gradient-to-br from-stone-50/50 to-slate-50/50"
         />
         <DesignSection
@@ -2519,7 +2485,6 @@ function App() {
               </div>
             </div>
           }
-          fontFamily="dm-sans"
           background="bg-gradient-to-br from-stone-50/50 to-slate-50/50"
         />
         <DesignSection
@@ -2540,7 +2505,6 @@ function App() {
               </div>
             </div>
           }
-          fontFamily="dm-sans"
           background="bg-gradient-to-br from-stone-50/50 to-slate-50/50"
         />
         <DesignSection
@@ -2561,7 +2525,6 @@ function App() {
               </div>
             </div>
           }
-          fontFamily="dm-sans"
           background="bg-gradient-to-br from-stone-50/50 to-slate-50/50"
         />
         <DesignSection
@@ -2582,7 +2545,6 @@ function App() {
               </div>
             </div>
           }
-          fontFamily="dm-sans"
           background="bg-gradient-to-br from-stone-50/50 to-slate-50/50"
         />
         <DesignSection
@@ -2603,7 +2565,6 @@ function App() {
               </div>
             </div>
           }
-          fontFamily="helvetica"
           background="bg-gradient-to-br from-stone-50/50 to-slate-50/50"
         />
       </div>
