@@ -12,7 +12,7 @@ function App() {
       {/* Section Break */}
       <div id="design" className="col-span-full py-12">
         <div className="flex items-center justify-center gap-2 group">
-          <h2 className="text-3xl font-bold text-gray-900 text-center font-urbanist">
+          <h2 className="text-3xl font-bold text-gray-900 text-center font-urbanist pt-10">
             Design
           </h2>
           <button
@@ -2214,7 +2214,7 @@ function App() {
         {/* Section Break */}
         <div id="designs" className="col-span-full py-12">
           <div className="flex items-center justify-center gap-2 group">
-            <h2 className="text-3xl font-bold text-gray-900 text-center font-urbanist tracking-[2px]">
+            <h2 className="text-3xl font-bold text-gray-900 text-center font-urbanist pt-10 tracking-[2px] pt-10">
               Designs
             </h2>
             <button
@@ -2442,7 +2442,7 @@ function App() {
         {/* Section Break */}
         <div id="designers" className="col-span-full py-12">
           <div className="flex items-center justify-center gap-2 group">
-            <h2 className="text-3xl font-bold text-gray-900 text-center font-urbanist">
+            <h2 className="text-3xl font-bold text-gray-900 text-center font-urbanist pt-10">
               Designers
             </h2>
             <button
@@ -2541,6 +2541,69 @@ function App() {
             </div>
           }
           fontFamily="dm-sans"
+          background="bg-gradient-to-br from-stone-50/50 to-slate-50/50"
+        />
+        <DesignSection
+          title="Luke Wroblewski"
+          description="Luke Wroblewski is a product leader and author known for his influential work in mobile-first design and product strategy. As the founder of Polar and former Product Director at Google, he has shaped how we think about designing for multiple devices and creating cohesive user experiences across platforms."
+          designPrinciple="Mobile-first design and cross-platform product strategy"
+          exampleLink="https://www.lukew.com"
+          isListLayout={isListLayout}
+          visualComponent={
+            <div className="w-full h-full flex items-center justify-center p-4">
+              <div className="w-[500px] h-[300px] bg-white overflow-hidden group relative">
+                <img
+                  src="https://static.lukew.com/lukew_highres.jpg"
+                  alt="Luke Wroblewski"
+                  className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </div>
+            </div>
+          }
+          fontFamily="dm-sans"
+          background="bg-gradient-to-br from-stone-50/50 to-slate-50/50"
+        />
+        <DesignSection
+          title="Chris Coyier"
+          description="Chris Coyier is a web designer, developer, and educator best known for founding CSS-Tricks, a leading resource for web development. His work in front-end development, CSS, and web design has helped shape modern web development practices and has educated countless developers through his writing and speaking."
+          designPrinciple="Practical web development education and community building"
+          exampleLink="https://css-tricks.com"
+          isListLayout={isListLayout}
+          visualComponent={
+            <div className="w-full h-full flex items-center justify-center p-4">
+              <div className="w-[500px] h-[300px] bg-white overflow-hidden group relative">
+                <img
+                  src="https://theygotacquired.com/wp-content/uploads/2022/06/Chris-Coyier-founder-of-CSS-Tricks-copy-scaled.jpg"
+                  alt="Chris Coyier"
+                  className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </div>
+            </div>
+          }
+          fontFamily="dm-sans"
+          background="bg-gradient-to-br from-stone-50/50 to-slate-50/50"
+        />
+        <DesignSection
+          title="Max Miedinger"
+          description="Max Miedinger was a Swiss typeface designer best known for creating Helvetica in 1957. His work revolutionized typography and became one of the most widely used typefaces in the world. His design philosophy emphasized clarity, neutrality, and timelessness, principles that continue to influence modern typography."
+          designPrinciple="Clarity and neutrality through precise typographic design"
+          exampleLink="https://www.designandpaper.com/the-story-of-the-worlds-most-famous-font-helvetica/"
+          isListLayout={isListLayout}
+          visualComponent={
+            <div className="w-full h-full flex items-center justify-center p-4">
+              <div className="w-[500px] h-[300px] bg-white overflow-hidden group relative">
+                <img
+                  src="https://kingscliffgraphicdesign2017.wordpress.com/wp-content/uploads/2017/03/f94.png"
+                  alt="Max Miedinger"
+                  className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </div>
+            </div>
+          }
+          fontFamily="helvetica"
           background="bg-gradient-to-br from-stone-50/50 to-slate-50/50"
         />
       </div>
