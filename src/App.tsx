@@ -2480,6 +2480,69 @@ function App() {
           titleClassName="text-2xl font-bold text-gray-900 font-urbanist"
           background="bg-gradient-to-br from-stone-50/50 to-slate-50/50"
         />
+        <DesignSection
+          title="Saul Bass"
+          description="Saul Bass was a legendary graphic designer and filmmaker known for his iconic movie title sequences and corporate logos. His work revolutionized the way we think about visual storytelling and brand identity, combining bold simplicity with powerful symbolism."
+          designPrinciple="Visual storytelling through minimal, symbolic design"
+          exampleLink="https://www.saulbassposterarchive.com"
+          isListLayout={isListLayout}
+          visualComponent={
+            <div className="w-full h-full flex items-center justify-center p-4">
+              <div className="w-[500px] h-[300px] bg-white overflow-hidden group relative">
+                <img
+                  src="https://blog.weditt.com/wp-content/uploads/2024/08/Saul-Bass-The-Master-of-Motion-Graphics-1024x576.jpg"
+                  alt="Saul Bass"
+                  className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </div>
+            </div>
+          }
+          fontFamily="helvetica"
+          background="bg-gradient-to-br from-stone-50/50 to-slate-50/50"
+        />
+        <DesignSection
+          title="Raymond Pettibon"
+          description="Raymond Pettibon is an influential artist known for his distinctive pen-and-ink drawings that blend punk aesthetics with literary and cultural references. His work, which began with album covers for Black Flag and other punk bands, has evolved into a complex visual language that challenges conventional narratives and explores themes of American culture, politics, and society."
+          designPrinciple="Raw, expressive line work combined with subversive cultural commentary"
+          exampleLink="https://www.davidzwirner.com/artists/raymond-pettibon"
+          isListLayout={isListLayout}
+          visualComponent={
+            <div className="w-full h-full flex items-center justify-center p-4">
+              <div className="w-[500px] h-[300px] bg-white overflow-hidden group relative">
+                <img
+                  src="https://www.vice.com/wp-content/uploads/sites/2/2017/02/1486652390153-IMG_4484.jpeg?resize=1024,683"
+                  alt="Raymond Pettibon"
+                  className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </div>
+            </div>
+          }
+          fontFamily="dm-sans"
+          background="bg-gradient-to-br from-stone-50/50 to-slate-50/50"
+        />
+        <DesignSection
+          title="Jakob Nielsen"
+          description="Jakob Nielsen is a renowned usability expert and principal of the Nielsen Norman Group. Known as the 'King of Usability,' he has pioneered many of the fundamental principles of web usability and user experience design. His research and methodologies have shaped how we think about and implement user-centered design in digital products."
+          designPrinciple="User-centered design through empirical research and usability testing"
+          exampleLink="https://www.nngroup.com/articles/author/jakob-nielsen/"
+          isListLayout={isListLayout}
+          visualComponent={
+            <div className="w-full h-full flex items-center justify-center p-4">
+              <div className="w-[500px] h-[300px] bg-white overflow-hidden group relative">
+                <img
+                  src="https://media.nngroup.com/media/videos/thumbnails/Jakobs_Law_of_Internet_User_Experience_Thumbnail.jpg"
+                  alt="Jakob Nielsen"
+                  className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </div>
+            </div>
+          }
+          fontFamily="dm-sans"
+          background="bg-gradient-to-br from-stone-50/50 to-slate-50/50"
+        />
       </div>
       <footer className="sticky bottom-0 py-2 bg-black z-50">
         <div className="flex items-center pl-4">
