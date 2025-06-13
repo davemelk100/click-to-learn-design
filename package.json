@@ -10,8 +10,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@agent-ui-lab/chatbot": "github:davemelk100/chatbot-agent-ui",
+    "@chakra-ui/react": "^3.17.0",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
     "@fontsource/bowlby-one-sc": "^5.2.5",
-    "framer-motion": "^12.7.3",
+    "framer-motion": "^12.11.0",
     "lucide-react": "^0.344.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",

@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { ArrowUp, Info, Settings, Brain, Hand, Grid, List } from "lucide-react";
 import DesignSection from "./components/DesignSection";
 import Header from "./components/Header";
-import { content } from "./data/content";
 
 function App() {
   const [isListLayout, setIsListLayout] = useState(false);
@@ -960,15 +959,6 @@ function App() {
                     @keyframes rotate-cube {
                       0% {
                         transform: rotateX(0deg) rotateY(0deg);
-                      }
-                      25% {
-                        transform: rotateX(90deg) rotateY(0deg);
-                      }
-                      50% {
-                        transform: rotateX(180deg) rotateY(90deg);
-                      }
-                      75% {
-                        transform: rotateX(270deg) rotateY(180deg);
                       }
                       100% {
                         transform: rotateX(360deg) rotateY(360deg);
@@ -2401,6 +2391,52 @@ function App() {
             titleClassName="text-2xl font-bold text-gray-900 font-doto tracking-[2px]"
             background="bg-gradient-to-br from-stone-50/50 to-slate-50/50"
           />
+          <DesignSection
+            title="Scarfolk"
+            description="Scarfolk is a fictional northwestern English town created by writer and designer Richard Littler. Through its distinctive visual language of public information posters and official documents, it creates a satirical critique of bureaucracy and social control. The design style draws from British public information campaigns of the 1970s, using stark typography and unsettling imagery to create a world that is both familiar and deeply unsettling."
+            designPrinciple="Retro Design & Social Commentary"
+            exampleLink="https://scarfolk.blogspot.com/"
+            isListLayout={isListLayout}
+            visualComponent={
+              <div className="w-full h-full flex items-center justify-center">
+                <div className="w-[800px] h-[400px] bg-white overflow-hidden group relative">
+                  <img
+                    src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj86aEo7IxOTRss8qUMbprKclM9xQP77nKWKCG0ScSlzTarKrrSDpq5eDK6H_lWU1plS0KhxTNUkdc8DmuSzoQcOQjRL5uUfd9Yi-TMvQ1bWn8QXGYilvZSlqAdxOgysCWrsH923h4Hlatd/s1400/Scarfolk_map_cover.jpg"
+                    alt="Scarfolk Map Cover"
+                    className="w-full h-full object-contain transform transition-all duration-500 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                </div>
+              </div>
+            }
+            fontFamily="helvetica"
+            descriptionClassName="text-gray-700 font-helvetica"
+            titleClassName="text-2xl font-bold text-gray-900 font-helvetica"
+            background="bg-gradient-to-br from-stone-50/50 to-slate-50/50"
+          />
+          <DesignSection
+            title="Negativland: U2"
+            description="Negativland's controversial 1991 album 'U2' became a landmark case in copyright law and artistic freedom. The album cover, featuring a large 'U2' logo with a small 'Negativland' credit, was designed to critique media manipulation and corporate branding. The resulting legal battle with Island Records and U2's label became a seminal moment in discussions about fair use, artistic appropriation, and the boundaries of copyright law. Learn more about the case in their book Fair Use: The Story of the Letter U and the Numeral 2."
+            designPrinciple="Media Critique & Copyright"
+            exampleLink="https://negativland.com/products/013-negativland-fair-use-book"
+            isListLayout={isListLayout}
+            visualComponent={
+              <div className="w-full h-full flex items-center justify-center">
+                <div className="w-[800px] h-[400px] bg-white overflow-hidden group relative">
+                  <img
+                    src="https://images.squarespace-cdn.com/content/v1/5d33a1f97b99b80001812595/1564508368509-Q353DG1VKMVVKZIKYP7N/negativland_1991+by+Negativland_5.jpg"
+                    alt="Negativland U2 Album Cover"
+                    className="w-full h-full object-contain transform transition-all duration-500 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                </div>
+              </div>
+            }
+            fontFamily="helvetica"
+            descriptionClassName="text-gray-700 font-helvetica uppercase tracking-wider text-xs"
+            titleClassName="text-2xl font-bold text-gray-900 font-helvetica uppercase tracking-[-1px]"
+            background="bg-gray-100"
+          />
         </div>
 
         {/* Section Break */}
@@ -2443,438 +2479,6 @@ function App() {
           descriptionClassName="text-gray-700 font-urbanist"
           titleClassName="text-2xl font-bold text-gray-900 font-urbanist"
           background="bg-gradient-to-br from-stone-50/50 to-slate-50/50"
-        />
-        <DesignSection
-          title="Jakob Nielsen"
-          description="A Danish web usability consultant and co-founder of the Nielsen Norman Group. Nielsen's research and principles have shaped modern web design, emphasizing user-centered design and accessibility."
-          designPrinciple="Usability Heuristics - Ten general principles for interaction design that ensure intuitive and efficient user experiences"
-          exampleLink="https://www.nngroup.com/people/jakob-nielsen/"
-          isListLayout={isListLayout}
-          visualComponent={
-            <div className="w-full h-full flex items-center justify-center">
-              <div className="w-[600px] h-[300px] bg-white overflow-hidden group relative">
-                <img
-                  src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*bD4vGn_s9B9vFClbG-UqpQ.jpeg"
-                  alt="Jakob Nielsen's work"
-                  className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              </div>
-            </div>
-          }
-          fontFamily="source-sans"
-          descriptionClassName="text-gray-700 font-source-sans"
-          titleClassName="text-2xl font-bold text-gray-900 font-source-sans"
-          background="bg-gradient-to-br from-blue-50/50 to-indigo-50/50"
-        />
-        <DesignSection
-          title="Whitney Hess"
-          description="A user experience designer and consultant who helps companies create more human-centered products and services. Her work focuses on empathy, research, and ethical design practices."
-          designPrinciple="Empathy & Ethics – Putting people first in design decisions and considering the broader impact of our work"
-          exampleLink="https://whitneyhess.com/blog/"
-          isListLayout={isListLayout}
-          visualComponent={
-            <div className="w-full h-full flex items-center justify-center">
-              <div className="w-[500px] h-[300px] bg-white overflow-hidden group relative">
-                <img
-                  src="https://whitneyhess.com/wp-content/uploads/WhitneyHess_glow.jpg"
-                  alt="Whitney Hess"
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-            </div>
-          }
-          fontFamily="figtree"
-          descriptionClassName="text-gray-700 font-figtree"
-          titleClassName="text-2xl font-bold text-gray-900 font-figtree"
-          background="bg-gradient-to-br from-amber-50/50 to-orange-50/50"
-        />
-        <DesignSection
-          title="Saul Bass"
-          description="A legendary graphic designer and filmmaker who revolutionized title sequences and corporate identity. His work for major Hollywood studios and corporations like AT&T established new standards for visual communication."
-          designPrinciple="Motion & Identity – Creating memorable brand experiences through dynamic motion graphics and iconic symbols"
-          exampleLink="https://www.artofthetitle.com/designer/saul-bass/"
-          isListLayout={isListLayout}
-          visualComponent={
-            <div className="w-full h-full flex items-center justify-center">
-              <div className="w-[500px] h-[300px] bg-white overflow-hidden group relative">
-                <img
-                  src="https://blog.weditt.com/wp-content/uploads/2024/08/Saul-Bass-The-Master-of-Motion-Graphics.jpg"
-                  alt="Saul Bass"
-                  className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              </div>
-            </div>
-          }
-          fontFamily="permanent-marker"
-          descriptionClassName="text-gray-700 font-permanent-marker"
-          titleClassName="text-2xl font-bold text-gray-900 font-permanent-marker"
-          background="bg-gradient-to-br from-pink-50/50 to-purple-50/50"
-        />
-        <DesignSection
-          title="Frank Lloyd Wright"
-          description="A pioneering architect who developed the concept of organic architecture, Wright's designs harmonized buildings with their natural surroundings. His work emphasized horizontal lines, open floor plans, and integration with nature."
-          designPrinciple="Organic Architecture"
-          exampleLink="https://franklloydwright.org/"
-          isListLayout={isListLayout}
-          visualComponent={
-            <div className="flex items-center justify-center h-full p-4">
-              <div className="w-[500px] h-[300px] bg-white overflow-hidden group relative">
-                <img
-                  src="https://cloudfrontgharpediabucket.gharpedia.com/uploads/2023/12/Frank-Lloyd-Wright-Iconic-Architect-01-0102030020.jpg"
-                  alt="Frank Lloyd Wright"
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                />
-                <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              </div>
-            </div>
-          }
-          fontFamily="roboto-slab"
-          descriptionClassName="text-gray-700 font-roboto-slab"
-          titleClassName="text-2xl font-bold text-gray-900"
-          background="bg-gradient-to-br from-emerald-50/50 to-teal-50/50"
-        />
-        <DesignSection
-          title="Carolyn Davidson"
-          description="A graphic designer who created the iconic Nike Swoosh logo in 1971 while still a student at Portland State University. Her simple, dynamic design has become one of the most recognizable logos in the world."
-          designPrinciple="Simplicity & Impact – Creating powerful, memorable designs through minimalism and strong visual identity"
-          exampleLink="https://www.nicekicks.com/celebrating-carolyn-davidson-designer-original-nike-swoosh-logo-internationalwomensday/"
-          isListLayout={isListLayout}
-          visualComponent={
-            <div className="w-full h-full flex items-center justify-center">
-              <div className="w-[500px] h-[300px] bg-white overflow-hidden group relative">
-                <img
-                  src="https://www.nicekicks.com/files/2017/03/Carolyn-Davidson-.jpg"
-                  alt="Carolyn Davidson's Nike Swoosh design"
-                  className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110"
-                />
-                <div className="font-futura-condensed absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              </div>
-            </div>
-          }
-          fontFamily="futura-condensed"
-          descriptionClassName="text-gray-700 font-futura-condensed"
-          titleClassName="text-2xl font-bold text-gray-900 font-futura-condensed"
-          background="bg-gradient-to-br from-red-50/50 to-orange-50/50"
-        />
-        <DesignSection
-          title="Vera Molnar"
-          description="Pioneer of computer art and algorithmic design, known for her systematic approach to geometric abstraction."
-          designPrinciple="Systematic Design"
-          exampleLink="https://www.veramolnar.com/"
-          fontFamily="doto"
-          descriptionClassName="text-gray-700 font-doto tracking-[0.2em]"
-          titleClassName="text-2xl font-bold text-gray-900 font-doto tracking-[0.2em]"
-          isListLayout={isListLayout}
-          visualComponent={
-            <div className="w-full h-full flex items-center justify-center">
-              <div className="w-[500px] h-[300px] bg-white overflow-hidden group relative">
-                <img
-                  src="https://i.ytimg.com/vi/8tNESHtfkr0/sddefault.jpg"
-                  alt="Vera Molnar"
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-            </div>
-          }
-        />
-        <DesignSection
-          title="Chris Coyier"
-          description="Web designer, developer, and educator known for CSS-Tricks and CodePen. Pioneer in modern web development practices and CSS techniques."
-          designPrinciple="Web Development Education"
-          exampleLink="https://chriscoyier.net/"
-          fontFamily="source-code-pro"
-          descriptionClassName="text-gray-700 font-source-code-pro"
-          titleClassName="text-2xl font-bold text-gray-900 font-source-code-pro tracking-tight"
-          background="bg-gradient-to-br from-blue-50/50 to-indigo-50/50"
-          isListLayout={isListLayout}
-          visualComponent={
-            <div className="w-full h-full flex items-center justify-center">
-              <div className="w-[500px] h-[300px] bg-white overflow-hidden group relative">
-                <img
-                  src="https://poststatus.com/wp-content/uploads/2014/07/chris-coyier.jpg"
-                  alt="Chris Coyier"
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-            </div>
-          }
-        />
-        <DesignSection
-          title="Ivan Chermayeff"
-          description="A British-American graphic designer who co-founded Chermayeff & Geismar, creating some of the most recognizable corporate identities of the 20th century. His work for Mobil, NBC, and National Geographic established new standards for corporate branding."
-          designPrinciple="Visual Simplicity - Creating memorable identities through bold, simple forms"
-          exampleLink="https://www.cgstudionyc.com/ivan-chermayeff"
-          isListLayout={isListLayout}
-          visualComponent={
-            <div className="w-full h-full flex items-center justify-center p-4">
-              <div className="w-[500px] h-[300px] bg-white overflow-hidden group relative">
-                <img
-                  src="https://www.zilliondesigns.com/blog/wp-content/uploads/Ivan-Chermayeff-Logos.png"
-                  alt="Ivan Chermayeff's iconic logos"
-                  className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              </div>
-            </div>
-          }
-          fontFamily="helvetica"
-          descriptionClassName="text-gray-700 font-helvetica"
-          titleClassName="text-2xl font-bold text-gray-900 font-helvetica tracking-tight"
-          background="bg-gradient-to-br from-amber-50/50 to-yellow-50/50"
-        />
-        <DesignSection
-          title="Paula Scher"
-          description="A pioneering graphic designer known for her innovative typography and bold visual language. As a partner at Pentagram, she has created iconic identities for clients like Citibank, The Public Theater, and Microsoft Windows."
-          designPrinciple="Expressive Typography - Using type as a primary visual element to convey meaning and emotion"
-          exampleLink="https://www.pentagram.com/about/paula-scher"
-          isListLayout={isListLayout}
-          visualComponent={
-            <div className="w-full h-full flex items-center justify-center p-4">
-              <div className="w-[500px] h-[300px] bg-white overflow-hidden group relative">
-                <img
-                  src="https://tyler.temple.edu/sites/tyler/files/styles/620x/public/09117PH-1024x666_0.png?itok=N8pkTx3q"
-                  alt="Paula Scher's design work"
-                  className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              </div>
-            </div>
-          }
-          fontFamily="solway"
-          descriptionClassName="text-gray-700 font-solway"
-          titleClassName="text-2xl font-bold text-gray-900 font-solway tracking-tight"
-          background="bg-gradient-to-br from-fuchsia-50/50 to-pink-50/50"
-        />
-        <DesignSection
-          title="Alan Cooper"
-          description="Known as the 'Father of Visual Basic', Alan Cooper pioneered user-centered design in software development. His work on Visual Basic and development of personas established new standards for creating intuitive user experiences."
-          designPrinciple="Goal-Directed Design"
-          exampleLink="https://en.wikipedia.org/wiki/Alan_Cooper_(software_designer)"
-          isListLayout={isListLayout}
-          visualComponent={
-            <div className="w-full h-full flex items-center justify-center p-4">
-              <div className="w-[500px] h-[300px] bg-white overflow-hidden group relative">
-                <img
-                  src="https://i0.wp.com/www.designative.info/blog/wp-content/uploads/2008/03/alan_cooper.jpg"
-                  alt="Alan Cooper"
-                  className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              </div>
-            </div>
-          }
-          background="bg-gradient-to-br from-gray-50 to-gray-100"
-          fontFamily="source-code-pro"
-          descriptionClassName="font-source-code-pro"
-        />
-        <DesignSection
-          title="Helmut Krone"
-          description="A revolutionary art director at DDB, Helmut Krone transformed advertising with his minimalist approach and bold typography. His iconic Volkswagen 'Think Small' campaign redefined automotive advertising, establishing new standards for honest, straightforward communication."
-          designPrinciple="Minimalist Impact"
-          exampleLink="https://en.wikipedia.org/wiki/Helmut_Krone"
-          isListLayout={isListLayout}
-          visualComponent={
-            <div className="w-full h-full flex items-center justify-center p-4">
-              <div className="w-[500px] h-[300px] bg-white overflow-hidden group relative">
-                <img
-                  src="https://edito.houseofliteral.com/wp-content/webp-express/webp-images/uploads/2023/12/LITERAL-EDITO-IC-SAYFA-HELMUT-KRONE-v7.jpg.webp"
-                  alt="Helmut Krone"
-                  className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              </div>
-            </div>
-          }
-          fontFamily="lexend"
-          descriptionClassName="text-gray-700 font-lexend"
-          titleClassName="text-2xl font-bold text-gray-900 font-lexend"
-          background="bg-gradient-to-br from-lime-50/50 to-green-50/50"
-        />
-        <DesignSection
-          title="LUST Design Studio"
-          description="A Dutch design studio known for their innovative approach to data visualization and interactive design. Their work combines technology, art, and design to create immersive experiences that challenge traditional notions of information design."
-          designPrinciple="Data as Art - Transforming complex information into engaging visual experiences"
-          exampleLink="https://www.itsnicethat.com/articles/lust-studio"
-          isListLayout={isListLayout}
-          visualComponent={
-            <div className="w-full h-full flex items-center justify-center p-4">
-              <div className="w-[500px] h-[300px] bg-white overflow-hidden group relative">
-                <img
-                  src="https://media.itsnicethat.com/images/558c0e897e74a94e630000ad.width-1440_3w6QVUvjM3esLO1c.jpg"
-                  alt="LUST Design Studio work"
-                  className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              </div>
-            </div>
-          }
-          fontFamily="source-code-pro"
-          descriptionClassName="text-gray-700 font-source-code-pro"
-          titleClassName="text-2xl font-bold text-gray-900 font-source-code-pro tracking-tight"
-          background="bg-gradient-to-br from-cyan-50/50 to-blue-50/50"
-        />
-        <DesignSection
-          title="Otl Aicher"
-          description="A pioneer of systematic design, Otl Aicher created the iconic visual identity for the 1972 Munich Olympics. His work established new standards in wayfinding and corporate identity, demonstrating how design creates order in complex systems."
-          designPrinciple="Systematic Design"
-          exampleLink="https://en.wikipedia.org/wiki/Otl_Aicher"
-          isListLayout={isListLayout}
-          visualComponent={
-            <div className="w-full h-full flex items-center justify-center p-4">
-              <div className="w-[500px] h-[300px] bg-white overflow-hidden group relative">
-                <img
-                  src="https://onlyonceshop.com/media/pages/product/otl-aicher-olympic-games-munich-1972/9b51cd6d75-1714373193/otl-aicher-sw-1-948x713-q100.jpg"
-                  alt="Otl Aicher"
-                  className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              </div>
-            </div>
-          }
-          fontFamily="tektur"
-          descriptionClassName="text-gray-700 font-tektur tracking-[2px]"
-          titleClassName="text-2xl font-bold text-gray-900 font-tektur tracking-[2px]"
-          background="bg-gradient-to-br from-amber-50/50 to-orange-50/50"
-        />
-        <DesignSection
-          title="Tom Hazelmyer"
-          description="Founder of Amphetamine Reptile Records, Tom Hazelmyer created a distinctive visual language for underground music through his raw, confrontational design style. His work on album covers and promotional materials helped define the aesthetic of noise rock and punk in the 1990s."
-          designPrinciple="Raw Expression"
-          exampleLink="https://www.pbs.org/video/Tom-Hazelmyer-607060H-1/"
-          isListLayout={isListLayout}
-          visualComponent={
-            <div className="w-full h-full flex items-center justify-center p-4">
-              <div className="w-[500px] h-[300px] bg-white overflow-hidden group relative">
-                <img
-                  src="https://arc.stimg.co/startribunemedia/LY6CUNF3P6HGSMPF4ICKSP72N4.jpg?&w=1080"
-                  alt="Tom Hazelmyer"
-                  className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              </div>
-            </div>
-          }
-          fontFamily="chelsea-market"
-          descriptionClassName="text-gray-700 font-chelsea-market tracking-[1px]"
-          titleClassName="text-2xl font-bold text-gray-900 font-chelsea-market tracking-[1px]"
-          background="bg-gradient-to-br from-red-50/50 to-rose-50/50"
-        />
-        <DesignSection
-          title="Shepard Fairey"
-          description="A contemporary street artist and graphic designer known for his iconic 'Hope' poster for Barack Obama's 2008 presidential campaign. Fairey's work combines elements of street art, propaganda, and commercial design, often featuring bold colors, stencil techniques, and powerful social messages."
-          designPrinciple="Visual Impact - Creating powerful messages through bold, iconic imagery and strategic use of color and composition"
-          exampleLink="https://obeygiant.com"
-          isListLayout={isListLayout}
-          visualComponent={
-            <div className="w-full h-full flex items-center justify-center p-4">
-              <div className="w-[500px] h-[300px] bg-white overflow-hidden group relative">
-                <img
-                  src="https://s.abcnews.com/images/Politics/AP_shepard_fairey_kab_150529_16x9_992.jpg?w=1600"
-                  alt="Shepard Fairey's Hope poster"
-                  className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              </div>
-            </div>
-          }
-          fontFamily="bowlby-one-sc"
-          descriptionClassName="text-gray-700 font-bowlby-one-sc"
-          titleClassName="text-2xl font-bold text-gray-900 font-bowlby-one-sc tracking-tight"
-          background="bg-gradient-to-br from-indigo-50/50 to-violet-50/50"
-        />
-        <DesignSection
-          title="Damien Hirst"
-          description="A leading figure in the Young British Artists movement, Hirst is known for his controversial and thought-provoking works that explore themes of life, death, and beauty. His iconic spot paintings and formaldehyde-preserved animals have redefined contemporary art and challenged traditional notions of artistic value."
-          designPrinciple="Conceptual Impact - Using bold visual statements to explore fundamental questions about existence and mortality"
-          exampleLink="https://gagosian.com/artists/damien-hirst/"
-          isListLayout={isListLayout}
-          visualComponent={
-            <div className="w-full h-full flex items-center justify-center p-4">
-              <div className="w-[500px] h-[300px] bg-white overflow-hidden group relative">
-                <img
-                  src="https://d16kd6gzalkogb.cloudfront.net/magazine_images/Damien-Hirst-in-front-of-his-The-Physical-Impossibility-of-Death-in-the-Mind-of-Someone-Living-1991-artwork-photo-via-GQ.jpg"
-                  alt="Damien Hirst with his shark artwork"
-                  className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              </div>
-            </div>
-          }
-          fontFamily="outfit"
-          descriptionClassName="text-gray-700 font-outfit"
-          titleClassName="text-2xl font-bold text-gray-900 font-outfit tracking-tight"
-          background="bg-gradient-to-br from-white/50 to-gray-50/50"
-        />
-        <DesignSection
-          title="Raymond Pettibon"
-          description="An American artist known for his distinctive ink drawings that combine text and image, often exploring themes of American culture, politics, and society. His work, which began with album covers and flyers for punk bands, has evolved into a complex visual language that critiques and reflects on contemporary life."
-          designPrinciple="Text and Image Fusion - Creating powerful narratives through the interplay of drawing and typography"
-          exampleLink="https://www.davidzwirner.com/artists/raymond-pettibon"
-          isListLayout={isListLayout}
-          visualComponent={
-            <div className="w-full h-full flex items-center justify-center p-4">
-              <div className="w-[500px] h-[300px] bg-white overflow-hidden group relative">
-                <img
-                  src="https://www.vice.com/wp-content/uploads/sites/2/2024/07/1486653409993-IMG_4528-scaled.jpeg"
-                  alt="Raymond Pettibon artwork"
-                  className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              </div>
-            </div>
-          }
-          fontFamily="syne-mono"
-          descriptionClassName="text-gray-700 font-syne-mono"
-          titleClassName="text-2xl font-bold text-gray-900 font-syne-mono tracking-tight"
-          background="bg-gradient-to-br from-gray-100/50 to-gray-200/50"
-        />
-        <DesignSection
-          title="Max Miedinger"
-          description="A Swiss typeface designer best known for creating Helvetica, one of the most widely used typefaces in the world. His work exemplifies the Swiss Style of typography, characterized by clarity, readability, and objectivity."
-          designPrinciple="Universal Typography - Creating typefaces that work across languages and contexts"
-          exampleLink="https://www.linotype.com/1308886/max-miedinger.html"
-          isListLayout={isListLayout}
-          visualComponent={
-            <div className="w-full h-full flex items-center justify-center p-4">
-              <div className="w-[500px] h-[300px] bg-white overflow-hidden group relative">
-                <img
-                  src="https://kingscliffgraphicdesign2017.wordpress.com/wp-content/uploads/2017/03/f94.png"
-                  alt="Helvetica typeface specimen"
-                  className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              </div>
-            </div>
-          }
-          fontFamily="helvetica"
-          descriptionClassName="text-gray-700 font-helvetica"
-          titleClassName="text-2xl font-bold text-gray-900 font-helvetica tracking-tight"
-          background="bg-gradient-to-br from-slate-50/50 to-blue-50/50"
-        />
-        <DesignSection
-          title="The Wiener Werkstätte"
-          description="A pioneering design collective that revolutionized applied arts through Gesamtkunstwerk (total work of art). Their innovative approach to pattern, form, and material continues to influence modern design."
-          designPrinciple="Gesamtkunstwerk – The integration of all elements into a unified whole."
-          exampleLink="https://www.moma.org/artists/6288"
-          isListLayout={isListLayout}
-          visualComponent={
-            <div className="w-full h-full flex items-center justify-center p-4">
-              <div className="w-[500px] h-[300px] bg-white overflow-hidden group relative">
-                <img
-                  src="https://s.turbifycdn.com/aah/artbook/postcards-of-the-wiener-werkst-tte-at-first-sight-259.jpg"
-                  alt="Wiener Werkstätte postcard design"
-                  className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              </div>
-            </div>
-          }
-          fontFamily="alice"
-          descriptionClassName="font-alice"
-          titleClassName="font-alice"
-          background="bg-gradient-to-br from-amber-50/50 to-orange-50/50"
         />
       </div>
       <footer className="sticky bottom-0 py-2 bg-black z-50">
