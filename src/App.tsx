@@ -10,29 +10,29 @@ function App() {
     <div className="min-h-screen w-full">
       <Header isListLayout={isListLayout} setIsListLayout={setIsListLayout} />
       {/* Section Break */}
-      <div id="design" className="col-span-full py-12">
+      <div id="design" className="col-span-full py-24 bg-black text-white">
         <div className="flex items-center justify-center gap-2 group">
-          <h2 className="text-2xl font-bold text-gray-900 font-dm-sans leading-none">
+          <h2 className="text-2xl font-bold text-white font-dm-sans leading-none">
             Design
           </h2>
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+            className="transition-opacity duration-200"
           >
-            <ArrowUp className="w-6 h-6 text-gray-400 hover:text-gray-600" />
+            <ArrowUp className="w-6 h-6 text-white" />
           </button>
         </div>
-        <p className="text-gray-600 text-center mt-2 font-avenir">
-          Fundamentals that shape effective design
+        <p className="text-white text-center mt-2 font-avenir">
+          Explore the fundamental principles that shape effective design
         </p>
       </div>
 
       <div
         className={`${
           isListLayout
-            ? "grid grid-cols-1 gap-6 max-w-4xl mx-auto px-4"
-            : "col-span-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
-        } divide-y md:divide-y-0 md:divide-x-0 border-gray-200/50`}
+            ? "grid grid-cols-1 gap-6 max-w-4xl mx-auto px-4 py-8"
+            : "col-span-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-8 gap-12"
+        }`}
       >
         <DesignSection
           title="Dimensional Hierarchy"
@@ -2182,29 +2182,29 @@ function App() {
         />
 
         {/* Section Break */}
-        <div id="designs" className="col-span-full py-12">
+        <div id="designs" className="col-span-full py-24 bg-black text-white">
           <div className="flex items-center justify-center gap-2 group">
-            <h2 className="text-2xl font-bold text-gray-900 font-dm-sans leading-none">
+            <h2 className="text-2xl font-bold text-white font-dm-sans leading-none">
               Designs
             </h2>
             <button
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              className="opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+              className="transition-opacity duration-200"
             >
-              <ArrowUp className="w-6 h-6 text-gray-400 hover:text-gray-600" />
+              <ArrowUp className="w-6 h-6 text-white" />
             </button>
           </div>
-          <p className="text-gray-600 text-center mt-2 font-avenir">
-            Iconic designs that have shaped digital experiences
+          <p className="text-white text-center mt-2 font-avenir">
+            Explore the fundamental principles that shape effective design
           </p>
         </div>
 
         <div
           className={`${
             isListLayout
-              ? "grid grid-cols-1 gap-6 max-w-4xl mx-auto px-4"
-              : "col-span-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
-          } divide-y md:divide-y-0 md:divide-x-0 border-gray-200/50`}
+              ? "grid grid-cols-1 gap-6 max-w-4xl mx-auto px-4 py-8"
+              : "col-span-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-8 gap-12"
+          }`}
         >
           <DesignSection
             title="Boston Globe Redesign"
@@ -2410,20 +2410,20 @@ function App() {
         </div>
 
         {/* Section Break */}
-        <div id="designers" className="col-span-full py-12">
+        <div id="designers" className="col-span-full py-24 bg-black text-white">
           <div className="flex items-center justify-center gap-2 group">
-            <h2 className="text-3xl font-bold text-gray-900 text-center font-avenir pt-10">
+            <h2 className="text-2xl font-bold text-white font-dm-sans leading-none">
               Designers
             </h2>
             <button
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 font-avenir"
+              className="transition-opacity duration-200"
             >
-              <ArrowUp className="w-6 h-6 text-gray-400 hover:text-gray-600" />
+              <ArrowUp className="w-6 h-6 text-white" />
             </button>
           </div>
-          <p className="text-gray-600 text-center mt-2 font-avenir">
-            Influential figures who have shaped the field of design
+          <p className="text-white text-center mt-2 font-avenir">
+            Meet the visionaries who have shaped the world of design
           </p>
         </div>
 

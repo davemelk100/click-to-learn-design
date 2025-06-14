@@ -29,8 +29,11 @@
 @tailwind utilities;
 
 @layer base {
+  html {
+    @apply bg-white;
+  }
+
   body {
-    @apply bg-gray-50;
     /* font-family: 'Source Sans 3', sans-serif; */
   }
 
@@ -125,5 +128,25 @@
   100% {
     transform: scale(1) translateY(0);
     opacity: 1;
+  }
+}
+
+@layer components {
+  .emphasis-fade {
+    animation: emphasisFade 2s ease-in-out infinite;
+  }
+
+  @keyframes emphasisFade {
+    0% {
+      opacity: 0.3;
+    }
+
+    50% {
+      opacity: 1;
+    }
+
+    100% {
+      opacity: 0.3;
+    }
   }
 }

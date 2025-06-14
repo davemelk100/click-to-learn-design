@@ -92,175 +92,110 @@ const DesignSection: React.FC<DesignSectionProps> = ({
     title === "Basic Color Theory";
 
   return (
-    <div
-      className={`relative group ${
-        isListLayout ? "hover:shadow-lg" : "shadow-lg hover:shadow-xl"
-      } transition-shadow duration-300 ${
-        isListLayout ? "flex gap-6 p-6" : "min-h-[400px]"
-      } ${background} overflow-hidden`}
-    >
-      <div className="absolute inset-0" />
-      {isListLayout ? (
-        <>
-          <div className={`flex-shrink-0 ${isListLayout ? "w-1/3" : ""}`}>
-            {visualComponent}
-          </div>
-          <div className="flex-grow relative">
-            <div className="flex justify-between items-start mb-4">
-              <div>
-                <h2 className={`${titleClassName} leading-none`}>{title}</h2>
-                <p className="text-xs text-gray-600 mt-1">
-                  Font:{" "}
-                  {fontFamily?.charAt(0)?.toUpperCase() + fontFamily?.slice(1)}
-                </p>
-              </div>
-              {exampleLink && (
-                <a
-                  href={exampleLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-xs text-gray-600 hover:text-gray-500 transition-colors uppercase z-10"
-                >
-                  Resource
-                </a>
-              )}
-            </div>
-            <p
-              className={`text-sm text-gray-600 ${descriptionClassName || ""}`}
-            >
-              {description}
-            </p>
-            {designPrinciple && (
-              <div className="mt-4">
-                <p className="text-xs text-gray-500">
-                  <span className="font-medium">Design Principle:</span>{" "}
-                  {designPrinciple}
-                </p>
-              </div>
-            )}
-          </div>
-        </>
-      ) : (
-        <div className="h-full flex flex-col relative z-10 bg-transparent">
-          <div className="flex justify-between items-center pt-3 pl-3 mb-2">
-            <div>
-              <h2 className={`${titleClassName} leading-none`}>{title}</h2>
-              <p className="text-xs text-gray-600 mt-1">
-                Font:{" "}
-                {fontFamily?.charAt(0)?.toUpperCase() + fontFamily?.slice(1)}
-              </p>
-            </div>
-            {exampleLink && (
-              <a
-                href={exampleLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-xs text-gray-600 hover:text-gray-500 transition-colors absolute top-4 right-4 uppercase"
-              >
-                Resource
-              </a>
-            )}
-          </div>
-          <div className={`flex-1 flex flex-col`}>
-            <div className="flex-1 flex items-center justify-center py-2 bg-white">
-              {visualComponent}
-            </div>
-            <div className="px-6 pb-4 bg-white">
-              <div className="flex flex-col gap-2">
-                <p
-                  className={`text-sm text-gray-600 ${
-                    descriptionClassName || ""
-                  }`}
-                >
-                  {description}
-                </p>
-                {designPrinciple && (
-                  <div className="mt-2">
-                    <p className="text-xs text-gray-500">
-                      <span className="font-medium">Design Principle:</span>{" "}
-                      {designPrinciple}
-                    </p>
-                  </div>
-                )}
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-      <button
-        onClick={() => setIsAiOpen(!isAiOpen)}
-        className="absolute bottom-4 right-4 p-2 rounded-full bg-black text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20"
-        aria-label={
-          isAiOpen ? `Close ${title} discussion` : `Learn more about ${title}`
-        }
+    <div className="relative">
+      <div
+        className={`relative p-8 bg-white border border-gray-300 ${
+          isListLayout ? "" : ""
+        }`}
       >
-        {isAiOpen ? (
-          <X className="w-5 h-5" aria-hidden="true" />
-        ) : (
-          <MessageSquare className="w-5 h-5" aria-hidden="true" />
-        )}
-      </button>
+        <div className="relative z-10">
+          <h3 className="text-2xl font-bold text-black leading-none">
+            {title}
+          </h3>
+          <p className="mt-4 text-black">{description}</p>
+          <div className="mt-6">
+            <span className="font-medium">Design Principle:</span>{" "}
+            {designPrinciple}
+          </div>
+          <a
+            href={exampleLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center mt-6 text-blue-600 hover:text-blue-800"
+          >
+            Learn more <ArrowUpRight className="w-4 h-4 ml-1" />
+          </a>
+        </div>
+        <div className="mt-8 bg-white">
+          <div className="bg-white">{visualComponent}</div>
+        </div>
+        <button
+          onClick={() => setIsAiOpen(!isAiOpen)}
+          className="absolute bottom-4 right-4 p-2 rounded-full bg-black text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20"
+          aria-label={
+            isAiOpen ? `Close ${title} discussion` : `Learn more about ${title}`
+          }
+        >
+          {isAiOpen ? (
+            <X className="w-5 h-5" aria-hidden="true" />
+          ) : (
+            <MessageSquare className="w-5 h-5" aria-hidden="true" />
+          )}
+        </button>
 
-      {isAiOpen && (
-        <div className="absolute inset-0 bg-black/95 flex flex-col z-20">
-          <div className="flex justify-between items-center p-6">
-            <h3 className="text-xl font-bold text-white">Ask about {title}</h3>
-            <button
-              onClick={() => setIsAiOpen(false)}
-              className="p-2 hover:bg-white/10 rounded-full transition-colors text-white"
-              aria-label={`Close ${title} discussion`}
-            >
-              <X className="w-5 h-5" aria-hidden="true" />
-            </button>
-          </div>
-          <p className="text-xs text-gray-400 px-6 mb-3">
-            Ask specific questions about this design principle
-          </p>
-          <div className="flex-1 overflow-y-auto px-6">
-            {error && (
-              <div className="text-red-400 mb-4" role="alert">
-                {error}
-              </div>
-            )}
-            {response && (
-              <div
-                className="bg-white/10 rounded-lg p-4 text-white text-sm leading-relaxed"
-                role="region"
-                aria-label="AI Response"
-              >
-                {response}
-              </div>
-            )}
-          </div>
-          <form onSubmit={handleSubmit} className="p-6">
-            <div className="relative">
-              <input
-                type="text"
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                placeholder="Type your question..."
-                disabled={isLoading}
-                className="w-full p-3 bg-white/10 rounded text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white/20 pr-24"
-                aria-label={`Ask a question about ${title}`}
-              />
+        {isAiOpen && (
+          <div className="absolute inset-0 bg-black/95 flex flex-col z-20">
+            <div className="flex justify-between items-center p-6">
+              <h3 className="text-xl font-bold text-white">
+                Ask about {title}
+              </h3>
               <button
-                type="submit"
-                disabled={isLoading}
-                className="absolute right-2 top-1/2 -translate-y-1/2 px-4 py-1 bg-white/20 rounded text-white text-sm hover:bg-white/30 transition-colors disabled:opacity-50 disabled:hover:bg-white/20"
-                aria-label={
-                  isLoading
-                    ? "Processing your question"
-                    : "Submit your question"
-                }
+                onClick={() => setIsAiOpen(false)}
+                className="p-2 hover:bg-white/10 rounded-full transition-colors text-white"
+                aria-label={`Close ${title} discussion`}
               >
-                <span aria-hidden="true">
-                  {isLoading ? "Thinking..." : "Ask"}
-                </span>
+                <X className="w-5 h-5" aria-hidden="true" />
               </button>
             </div>
-          </form>
-        </div>
-      )}
+            <p className="text-xs text-gray-400 px-6 mb-3">
+              Ask specific questions about this design principle
+            </p>
+            <div className="flex-1 overflow-y-auto px-6">
+              {error && (
+                <div className="text-red-400 mb-4" role="alert">
+                  {error}
+                </div>
+              )}
+              {response && (
+                <div
+                  className="bg-white/10 rounded-lg p-4 text-white text-sm leading-relaxed"
+                  role="region"
+                  aria-label="AI Response"
+                >
+                  {response}
+                </div>
+              )}
+            </div>
+            <form onSubmit={handleSubmit} className="p-6">
+              <div className="relative">
+                <input
+                  type="text"
+                  value={query}
+                  onChange={(e) => setQuery(e.target.value)}
+                  placeholder="Type your question..."
+                  disabled={isLoading}
+                  className="w-full p-3 bg-white/10 rounded text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white/20 pr-24"
+                  aria-label={`Ask a question about ${title}`}
+                />
+                <button
+                  type="submit"
+                  disabled={isLoading}
+                  className="absolute right-2 top-1/2 -translate-y-1/2 px-4 py-1 bg-white/20 rounded text-white text-sm hover:bg-white/30 transition-colors disabled:opacity-50 disabled:hover:bg-white/20"
+                  aria-label={
+                    isLoading
+                      ? "Processing your question"
+                      : "Submit your question"
+                  }
+                >
+                  <span aria-hidden="true">
+                    {isLoading ? "Thinking..." : "Ask"}
+                  </span>
+                </button>
+              </div>
+            </form>
+          </div>
+        )}
+      </div>
     </div>
   );
 };
