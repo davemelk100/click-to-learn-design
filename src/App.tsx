@@ -128,11 +128,9 @@ function App() {
                 <style>
                   {`
                     @keyframes floatSquare {
-                      0% { transform: translate(0, 0) rotate(0deg); }
-                      25% { transform: translate(10px, -10px) rotate(5deg); }
-                      50% { transform: translate(0, -15px) rotate(0deg); }
-                      75% { transform: translate(-10px, -10px) rotate(-5deg); }
-                      100% { transform: translate(0, 0) rotate(0deg); }
+                      0% { transform: translateY(0) rotate(0deg); }
+                      50% { transform: translateY(-20px) rotate(5deg); }
+                      100% { transform: translateY(0) rotate(0deg); }
                     }
                     .square-animation {
                       animation: floatSquare 6s ease-in-out infinite;
@@ -143,34 +141,14 @@ function App() {
                   `}
                 </style>
                 <div className="absolute inset-0 flex items-center justify-center">
-                  {/* Three overlapping squares */}
-                  <div className="relative w-48 h-48">
-                    {/* Square 1 - Rose */}
-                    <div
-                      className="absolute w-32 h-32 bg-rose-400/60 square-animation square-1"
-                      style={{
-                        transform: "translate(-20px, -20px) rotate(-15deg)",
-                        transformOrigin: "center",
-                      }}
-                    />
-
-                    {/* Square 2 - Pink */}
-                    <div
-                      className="absolute w-32 h-32 bg-pink-400/60 square-animation square-2"
-                      style={{
-                        transform: "translate(20px, -20px) rotate(15deg)",
-                        transformOrigin: "center",
-                      }}
-                    />
-
-                    {/* Square 3 - Fuchsia */}
-                    <div
-                      className="absolute w-32 h-32 bg-fuchsia-400/60 square-animation square-3"
-                      style={{
-                        transform: "translate(0, 20px) rotate(0deg)",
-                        transformOrigin: "center",
-                      }}
-                    />
+                  {/* Main container */}
+                  <div className="w-80 h-80 relative">
+                    {/* Three overlapping squares */}
+                    <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+                      <div className="w-20 h-20 bg-rose-500/60 rounded-lg transform rotate-12 square-animation square-1" />
+                      <div className="w-20 h-20 bg-pink-500/60 rounded-lg transform -rotate-12 square-animation square-2" />
+                      <div className="w-20 h-20 bg-fuchsia-500/60 rounded-lg transform rotate-0 square-animation square-3" />
+                    </div>
                   </div>
                 </div>
               </div>
@@ -502,60 +480,65 @@ function App() {
           isListLayout={isListLayout}
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
-              <div className="w-full max-w-[600px] h-[300px] bg-gradient-to-br from-amber-50 to-orange-50 p-4 relative group">
+              <div className="w-full max-w-[600px] h-[300px] bg-white p-4 relative group">
                 <style>
                   {`
-                    @keyframes pulse {
-                      0% { transform: scale(1); opacity: 0.1; }
-                      50% { transform: scale(1.5); opacity: 1; }
-                      100% { transform: scale(1); opacity: 0.1; }
-                    }
-                    @keyframes rotate {
-                      from { transform: rotate(0deg); }
-                      to { transform: rotate(360deg); }
-                    }
-                    @keyframes float {
+                    @keyframes groupMove {
                       0% { transform: translate(0, 0); }
-                      25% { transform: translate(15px, -15px); }
-                      50% { transform: translate(0, -30px); }
-                      75% { transform: translate(-15px, -15px); }
+                      25% { transform: translate(20px, -20px); }
+                      50% { transform: translate(0, 0); }
+                      75% { transform: translate(-20px, 20px); }
                       100% { transform: translate(0, 0); }
                     }
-                    .group:hover .number-pulse {
-                      animation: pulse 1s ease-in-out infinite;
+                    @keyframes separateMove {
+                      0% { transform: translate(0, 0); }
+                      25% { transform: translate(-20px, -20px); }
+                      50% { transform: translate(0, 0); }
+                      75% { transform: translate(20px, 20px); }
+                      100% { transform: translate(0, 0); }
+                    }
+                    .group-animation {
+                      animation: groupMove 6s ease-in-out infinite;
+                    }
+                    .separate-animation {
+                      animation: separateMove 6s ease-in-out infinite;
                     }
                   `}
                 </style>
-                <div className="absolute inset-0 flex flex-col items-center justify-center gap-8">
-                  {/* Group 1 - Close proximity */}
-                  <div className="flex gap-2">
-                    {[...Array(4)].map((_, i) => (
-                      <div
-                        key={`group1-${i}`}
-                        className="w-8 h-8 bg-amber-600 rounded-full transition-all duration-300 group-hover:scale-110 pulse-animation"
-                      />
-                    ))}
-                  </div>
+                <div className="absolute inset-0 flex items-center justify-center">
+                  {/* Main container */}
+                  <div className="w-64 h-64 relative">
+                    {/* Grouped elements */}
+                    <div className="absolute top-0 left-0 group-animation">
+                      <div className="grid grid-cols-2 gap-2">
+                        {[...Array(4)].map((_, i) => (
+                          <div
+                            key={i}
+                            className="w-8 h-8 bg-blue-500/80 rounded-lg"
+                            style={{ animationDelay: `${i * 0.2}s` }}
+                          />
+                        ))}
+                      </div>
+                    </div>
 
-                  {/* Group 2 - Close proximity */}
-                  <div className="flex gap-2">
-                    {[...Array(4)].map((_, i) => (
-                      <div
-                        key={`group2-${i}`}
-                        className="w-8 h-8 bg-orange-600 rounded-full transition-all duration-300 group-hover:scale-110 pulse-animation"
-                      />
-                    ))}
+                    {/* Separated elements */}
+                    <div className="absolute bottom-0 right-0 separate-animation">
+                      <div className="grid grid-cols-2 gap-8">
+                        {[...Array(4)].map((_, i) => (
+                          <div
+                            key={i}
+                            className="w-8 h-8 bg-rose-500/80 rounded-lg"
+                            style={{ animationDelay: `${i * 0.2}s` }}
+                          />
+                        ))}
+                      </div>
+                    </div>
                   </div>
-
-                  {/* Isolated elements */}
-                  <div className="absolute top-4 left-4 w-8 h-8 bg-amber-600/30 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 pulse-animation" />
-                  <div className="absolute top-4 right-4 w-8 h-8 bg-orange-600/30 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 pulse-animation" />
-                  <div className="absolute bottom-4 left-4 w-8 h-8 bg-amber-600/30 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 pulse-animation" />
-                  <div className="absolute bottom-4 right-4 w-8 h-8 bg-orange-600/30 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 pulse-animation" />
                 </div>
               </div>
             </div>
           }
+          background="bg-gradient-to-br from-amber-50/50 to-orange-50/50"
         />
         <DesignSection
           title="Interwoven Space"
@@ -568,64 +551,65 @@ function App() {
               <div className="w-full max-w-[600px] h-[300px] p-4 relative group">
                 <style>
                   {`
-                    @keyframes pulse {
-                      0% { transform: scale(1); opacity: 0.1; }
-                      50% { transform: scale(1.5); opacity: 1; }
-                      100% { transform: scale(1); opacity: 0.1; }
-                    }
-                    @keyframes rotate {
-                      from { transform: rotate(0deg); }
-                      to { transform: rotate(360deg); }
+                    @keyframes weave {
+                      0% { transform: translateX(-20px) translateY(0) rotate(0deg); }
+                      25% { transform: translateX(0) translateY(-20px) rotate(90deg); }
+                      50% { transform: translateX(20px) translateY(0) rotate(180deg); }
+                      75% { transform: translateX(0) translateY(20px) rotate(270deg); }
+                      100% { transform: translateX(-20px) translateY(0) rotate(360deg); }
                     }
                     @keyframes float {
-                      0% { transform: translate(0, 0); }
-                      25% { transform: translate(15px, -15px); }
-                      50% { transform: translate(0, -30px); }
-                      75% { transform: translate(-15px, -15px); }
-                      100% { transform: translate(0, 0); }
+                      0%, 100% { transform: translateY(0); }
+                      50% { transform: translateY(-15px); }
                     }
-                    .group:hover .number-pulse {
-                      animation: pulse 1s ease-in-out infinite;
+                    .weave-element {
+                      animation: weave 12s ease-in-out infinite;
+                    }
+                    .float-element {
+                      animation: float 6s ease-in-out infinite;
                     }
                   `}
                 </style>
                 <div className="absolute inset-0 flex items-center justify-center">
-                  {/* Base grid */}
-                  <div className="absolute w-36 h-36 opacity-20">
-                    {[...Array(4)].map((_, i) => (
-                      <div
-                        key={`grid-${i}`}
-                        className="absolute w-36 h-px bg-rose-400 transform transition-all duration-500"
-                        style={{
-                          top: `${i * 12}px`,
-                          transform: `rotate(${i * 45}deg)`,
-                        }}
-                      />
-                    ))}
+                  {/* Main container */}
+                  <div className="w-64 h-64 relative">
+                    {/* Base layer */}
+                    <div className="absolute inset-0 grid grid-cols-3 gap-2">
+                      {[...Array(9)].map((_, i) => (
+                        <div key={i} className="bg-gray-200/30 rounded-lg" />
+                      ))}
+                    </div>
+
+                    {/* Interwoven elements */}
+                    <div className="absolute inset-0">
+                      {/* Horizontal strips */}
+                      {[...Array(3)].map((_, i) => (
+                        <div
+                          key={`h-${i}`}
+                          className="absolute left-0 right-0 h-8 bg-blue-500/60 rounded-lg weave-element"
+                          style={{
+                            top: `${i * 33.33}%`,
+                            animationDelay: `${i * 2}s`,
+                          }}
+                        />
+                      ))}
+
+                      {/* Vertical strips */}
+                      {[...Array(3)].map((_, i) => (
+                        <div
+                          key={`v-${i}`}
+                          className="absolute top-0 bottom-0 w-8 bg-rose-500/60 rounded-lg weave-element"
+                          style={{
+                            left: `${i * 33.33}%`,
+                            animationDelay: `${i * 2 + 1}s`,
+                          }}
+                        />
+                      ))}
+
+                      {/* Floating center element */}
+                      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-emerald-500/80 rounded-lg float-element" />
+                    </div>
                   </div>
-
-                  {/* Simple overlapping squares */}
-                  <div className="absolute w-24 h-24 transform rotate-12 transition-all duration-500 group-hover:rotate-0">
-                    <div className="absolute inset-0 border-2 border-rose-400/60" />
-                    <div className="absolute inset-2 border-2 border-rose-500/40" />
-                    <div className="absolute inset-4 border-2 border-rose-600/20" />
-                  </div>
-
-                  {/* Vertical line */}
-                  <div className="absolute w-px h-24 bg-rose-400/40 transform transition-all duration-500 group-hover:h-32 group-hover:bg-rose-500/60" />
-
-                  {/* Horizontal line */}
-                  <div className="absolute w-24 h-px bg-rose-400/40 transform transition-all duration-500 group-hover:w-32 group-hover:bg-rose-500/60" />
-
-                  {/* Floating elements */}
-                  <div
-                    className="absolute w-4 h-4 bg-rose-500/60 rounded-full transform transition-all duration-500 group-hover:scale-150 group-hover:bg-rose-600/80 pulse-animation"
-                    style={{ top: "20%", left: "20%" }}
-                  />
-                  <div
-                    className="absolute w-4 h-4 bg-rose-500/60 rounded-full transform transition-all duration-500 group-hover:scale-150 group-hover:bg-rose-600/80 pulse-animation"
-                    style={{ bottom: "20%", right: "20%" }}
-                  />
                 </div>
               </div>
             </div>
