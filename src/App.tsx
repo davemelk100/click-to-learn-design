@@ -2533,6 +2533,26 @@ function App() {
           }
           background="bg-gradient-to-br from-stone-50/50 to-slate-50/50"
         />
+        <DesignSection
+          title="Paula Scher"
+          description="Paula Scher is a renowned graphic designer known for her bold, expressive typography and innovative approach to branding. As a partner at Pentagram, she has created iconic identities for major institutions and brands, demonstrating how typography can be both functional and emotionally resonant."
+          designPrinciple="Expressive typography that balances form and function"
+          exampleLink="https://www.pentagram.com/about/paula-scher"
+          isListLayout={isListLayout}
+          visualComponent={
+            <div className="w-full h-full flex items-center justify-center p-4">
+              <div className="w-[500px] h-[300px] bg-white overflow-hidden group relative">
+                <img
+                  src="https://www.ucreative.com/wp-content/uploads/2014/11/51.jpg"
+                  alt="Paula Scher"
+                  className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </div>
+            </div>
+          }
+          background="bg-gradient-to-br from-stone-50/50 to-slate-50/50"
+        />
       </div>
       <footer className="sticky bottom-0 py-2 bg-black z-50">
         <div className="flex items-center pl-4">
