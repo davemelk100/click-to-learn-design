@@ -699,6 +699,122 @@ function App() {
           background="bg-gradient-to-br from-stone-50/50 to-slate-50/50"
         />
         <DesignSection
+          title="Microinteractions"
+          description="Microinteractions are small, purposeful animations that provide feedback, guide users, and enhance the overall experience. They make interfaces feel more responsive and engaging through subtle motion and state changes."
+          designPrinciple="Feedback & Engagement – Using small animations to provide feedback and enhance user experience."
+          exampleLink="https://www.nngroup.com/articles/microinteractions/"
+          isListLayout={isListLayout}
+          visualComponent={
+            <div className="flex items-center justify-center w-full h-full">
+              <div className="w-full max-w-[600px] h-[300px] bg-white p-4 relative group">
+                <style>
+                  {`
+                    @keyframes buttonPress {
+                      0%, 100% { transform: scale(1); }
+                      50% { transform: scale(0.95); }
+                    }
+                    @keyframes toggleSwitch {
+                      0% { transform: translateX(0); }
+                      100% { transform: translateX(100%); }
+                    }
+                    @keyframes checkmark {
+                      0% { stroke-dashoffset: 100; }
+                      100% { stroke-dashoffset: 0; }
+                    }
+                    .button-press {
+                      animation: buttonPress 0.3s ease-in-out;
+                    }
+                    .toggle-switch {
+                      transition: transform 0.3s ease-in-out;
+                    }
+                    .checkmark-path {
+                      stroke-dasharray: 100;
+                      stroke-dashoffset: 100;
+                      transition: stroke-dashoffset 0.5s ease-in-out;
+                    }
+                    .checkmark-path.checked {
+                      stroke-dashoffset: 0;
+                    }
+                  `}
+                </style>
+                <div className="absolute inset-0 flex items-center justify-center">
+                  {/* Interactive elements container */}
+                  <div className="relative w-64 space-y-8">
+                    {/* Button */}
+                    <div className="flex justify-center">
+                      <button
+                        onClick={(e) => {
+                          e.currentTarget.classList.add("button-press");
+                          setTimeout(
+                            () =>
+                              e.currentTarget.classList.remove("button-press"),
+                            300
+                          );
+                        }}
+                        className="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors duration-200"
+                      >
+                        Click Me
+                      </button>
+                    </div>
+
+                    {/* Toggle switch */}
+                    <div className="flex justify-center">
+                      <div
+                        onClick={(e) => {
+                          const toggle =
+                            e.currentTarget.querySelector(".toggle-switch");
+                          const isOn =
+                            toggle?.classList.contains("translate-x-7");
+                          toggle?.classList.toggle("translate-x-7");
+                          e.currentTarget.classList.toggle(
+                            "bg-blue-500",
+                            !isOn
+                          );
+                          e.currentTarget.classList.toggle("bg-gray-200", isOn);
+                        }}
+                        className="w-14 h-7 bg-gray-200 rounded-full p-1 cursor-pointer transition-colors duration-200"
+                      >
+                        <div className="w-5 h-5 bg-white rounded-full shadow toggle-switch" />
+                      </div>
+                    </div>
+
+                    {/* Checkbox with checkmark */}
+                    <div className="flex justify-center">
+                      <div
+                        onClick={(e) => {
+                          const checkbox = e.currentTarget;
+                          const checkmark =
+                            checkbox.querySelector(".checkmark-path");
+                          checkbox.classList.toggle("bg-green-500");
+                          checkmark?.classList.toggle("checked");
+                          checkmark?.classList.toggle("text-white");
+                        }}
+                        className="w-6 h-6 border-2 border-green-500 rounded flex items-center justify-center cursor-pointer transition-colors duration-200"
+                      >
+                        <svg
+                          className="w-4 h-4"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                        >
+                          <path
+                            className="checkmark-path"
+                            d="M20 6L9 17L4 12"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          }
+        />
+        <DesignSection
           title="Drawing With Code"
           description="Drawing With Code demonstrates how programming can be used to create artistic patterns and designs. By using algorithms, mathematical functions, and creative coding techniques, we can generate complex and beautiful visual compositions."
           designPrinciple="Algorithmic Art – Using code to create visual patterns and designs."
@@ -708,96 +824,116 @@ function App() {
             <div className="flex items-center justify-center w-full h-full">
               <style>
                 {`
-                  @keyframes pulse {
-                    0% { transform: scale(1); opacity: 0.1; }
-                    50% { transform: scale(1.5); opacity: 1; }
-                    100% { transform: scale(1); opacity: 0.1; }
+                  @keyframes drawLine {
+                    0% { stroke-dashoffset: 1000; }
+                    100% { stroke-dashoffset: 0; }
                   }
-                  @keyframes rotate {
-                    from { transform: rotate(0deg); }
-                    to { transform: rotate(360deg); }
+                  @keyframes drawCircle {
+                    0% { stroke-dashoffset: 1000; }
+                    100% { stroke-dashoffset: 0; }
                   }
-                  @keyframes float {
-                    0% { transform: translate(0, 0); }
-                    25% { transform: translate(15px, -15px); }
-                    50% { transform: translate(0, -30px); }
-                    75% { transform: translate(-15px, -15px); }
-                    100% { transform: translate(0, 0); }
+                  @keyframes pulseCode {
+                    0%, 100% { opacity: 0.3; }
+                    50% { opacity: 1; }
                   }
-                  .group:hover .number-pulse {
-                    animation: pulse 1s ease-in-out infinite;
+                  .draw-line {
+                    stroke-dasharray: 1000;
+                    stroke-dashoffset: 1000;
+                    animation: drawLine 8s linear infinite;
+                  }
+                  .draw-circle {
+                    stroke-dasharray: 1000;
+                    stroke-dashoffset: 1000;
+                    animation: drawCircle 8s linear infinite;
+                  }
+                  .code-pulse {
+                    animation: pulseCode 2s ease-in-out infinite;
                   }
                 `}
               </style>
-              <div className="w-full max-w-[600px] h-[300px] bg-gradient-to-br from-violet-50 to-indigo-50 p-4 relative group">
+              <div className="w-full max-w-[600px] h-[300px] bg-white p-4 relative group">
                 <div className="absolute inset-0 flex items-center justify-center">
-                  {/* Binary grid background */}
-                  <div className="absolute w-48 h-48 grid grid-cols-6 grid-rows-6 gap-2 opacity-20">
-                    {[...Array(36)].map((_, i) => (
-                      <div
-                        key={`binary-${i}`}
-                        className="text-[10px] font-mono text-violet-400 transform transition-all duration-200 number-pulse"
-                        style={{
-                          animationDelay: `${Math.random() * 0.5}s`,
-                        }}
-                      >
-                        {Math.random() > 0.5 ? "1" : "0"}
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* Rotating binary circle */}
-                  <div className="absolute w-32 h-32 rounded-full border-2 border-violet-300/50 group-hover:border-violet-500/70 transition-all duration-300 group-hover:animate-rotate">
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      {[...Array(8)].map((_, i) => (
+                  {/* Main container */}
+                  <div className="w-64 h-64 relative">
+                    {/* Code-like background elements */}
+                    <div className="absolute inset-0 grid grid-cols-4 gap-1">
+                      {[...Array(16)].map((_, i) => (
                         <div
-                          key={`circle-binary-${i}`}
-                          className="absolute text-[12px] font-mono text-violet-500 transform transition-all duration-300 number-pulse"
-                          style={{
-                            left: `${
-                              50 + Math.cos((i * Math.PI * 2) / 8) * 35
-                            }%`,
-                            top: `${
-                              50 + Math.sin((i * Math.PI * 2) / 8) * 35
-                            }%`,
-                            transform: `translate(-50%, -50%)`,
-                            animationDelay: `${Math.random() * 0.5}s`,
-                          }}
-                        >
-                          {Math.random() > 0.5 ? "1" : "0"}
-                        </div>
+                          key={i}
+                          className="code-pulse bg-gray-100 rounded"
+                          style={{ animationDelay: `${i * 0.1}s` }}
+                        />
                       ))}
                     </div>
-                  </div>
 
-                  {/* Floating binary elements */}
-                  {[...Array(6)].map((_, i) => (
-                    <div
-                      key={`float-${i}`}
-                      className="absolute w-6 h-6 text-[12px] font-mono text-violet-400 transform transition-all duration-300 group-hover:animate-float number-pulse"
-                      style={{
-                        left: `${Math.random() * 70 + 15}%`,
-                        top: `${Math.random() * 70 + 15}%`,
-                        animationDelay: `${Math.random() * 2}s`,
-                      }}
-                    >
-                      {Math.random() > 0.5 ? "1" : "0"}
-                    </div>
-                  ))}
+                    {/* SVG drawing elements */}
+                    <svg className="absolute inset-0" viewBox="0 0 100 100">
+                      {/* Horizontal lines */}
+                      <line
+                        x1="20"
+                        y1="30"
+                        x2="80"
+                        y2="30"
+                        className="draw-line"
+                        stroke="#3B82F6"
+                        strokeWidth="2"
+                        style={{ animationDelay: "0s" }}
+                      />
+                      <line
+                        x1="20"
+                        y1="50"
+                        x2="80"
+                        y2="50"
+                        className="draw-line"
+                        stroke="#3B82F6"
+                        strokeWidth="2"
+                        style={{ animationDelay: "2s" }}
+                      />
+                      <line
+                        x1="20"
+                        y1="70"
+                        x2="80"
+                        y2="70"
+                        className="draw-line"
+                        stroke="#3B82F6"
+                        strokeWidth="2"
+                        style={{ animationDelay: "4s" }}
+                      />
 
-                  {/* Central focus element */}
-                  <div className="absolute w-16 h-16 bg-violet-400/20 transform transition-all duration-300 group-hover:scale-125 group-hover:bg-violet-500/30 group-hover:rotate-45">
-                    <div className="absolute inset-0 flex items-center justify-center text-[16px] font-mono text-violet-600 number-pulse">
-                      {Math.random() > 0.5 ? "1" : "0"}
-                    </div>
+                      {/* Circles */}
+                      <circle
+                        cx="30"
+                        cy="30"
+                        r="10"
+                        className="draw-circle"
+                        stroke="#EC4899"
+                        strokeWidth="2"
+                        fill="none"
+                        style={{ animationDelay: "1s" }}
+                      />
+                      <circle
+                        cx="70"
+                        cy="50"
+                        r="10"
+                        className="draw-circle"
+                        stroke="#EC4899"
+                        strokeWidth="2"
+                        fill="none"
+                        style={{ animationDelay: "3s" }}
+                      />
+                      <circle
+                        cx="50"
+                        cy="70"
+                        r="10"
+                        className="draw-circle"
+                        stroke="#EC4899"
+                        strokeWidth="2"
+                        fill="none"
+                        style={{ animationDelay: "5s" }}
+                      />
+                    </svg>
                   </div>
                 </div>
-                {/* Remove overlay text */}
-                {/* <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
-                  <div className="text-xs sm:text-sm text-violet-600 font-medium bg-white/80 px-3 py-2 backdrop-blur-sm font-source-code-pro">
-                    Code creates mathematical beauty
-                  </div>
-                </div> */}
               </div>
             </div>
           }
@@ -812,61 +948,66 @@ function App() {
           exampleLink="https://www.canva.com/learn/color-theory/"
           isListLayout={isListLayout}
           visualComponent={
-            <div className="w-full max-w-[600px] h-[300px] bg-gradient-to-br from-sky-50 to-blue-50 p-4 relative group">
-              <style>
-                {`
-                  @keyframes rotate-circle {
-                    from { transform: rotate(0deg) translate(40px) rotate(0deg); }
-                    to { transform: rotate(360deg) translate(40px) rotate(-360deg); }
-                  }
-                  .group:hover .color-ball {
-                    animation: rotate-circle 4s linear infinite;
-                  }
-                `}
-              </style>
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="relative w-48 h-48 flex items-center justify-center">
-                  {/* Center ball */}
-                  <div className="absolute w-8 h-8 bg-white/50 rounded-full" />
-
-                  {/* Static color wheel */}
-                  <div className="absolute w-full h-full group-hover:animate-[spin_3s_linear_infinite]">
-                    {[
-                      { color: "bg-red-500/70", angle: 0 },
-                      { color: "bg-orange-500/70", angle: 30 },
-                      { color: "bg-yellow-500/70", angle: 60 },
-                      { color: "bg-green-500/70", angle: 90 },
-                      { color: "bg-blue-500/70", angle: 120 },
-                      { color: "bg-indigo-500/70", angle: 150 },
-                      { color: "bg-purple-500/70", angle: 180 },
-                      { color: "bg-pink-500/70", angle: 210 },
-                      { color: "bg-red-500/70", angle: 240 },
-                      { color: "bg-orange-500/70", angle: 270 },
-                      { color: "bg-yellow-500/70", angle: 300 },
-                      { color: "bg-green-500/70", angle: 330 },
-                    ].map(({ color, angle }, i) => (
+            <div className="flex items-center justify-center w-full h-full">
+              <div className="w-full max-w-[600px] h-[300px] bg-white p-4 relative group">
+                <style>
+                  {`
+                    @keyframes colorShift {
+                      0% { background-color: rgb(239, 68, 68); }
+                      33% { background-color: rgb(34, 197, 94); }
+                      66% { background-color: rgb(59, 130, 246); }
+                      100% { background-color: rgb(239, 68, 68); }
+                    }
+                    @keyframes complementaryShift {
+                      0% { background-color: rgb(14, 165, 233); }
+                      33% { background-color: rgb(249, 115, 22); }
+                      66% { background-color: rgb(168, 85, 247); }
+                      100% { background-color: rgb(14, 165, 233); }
+                    }
+                    @keyframes float {
+                      0%, 100% { transform: translateY(0); }
+                      50% { transform: translateY(-15px); }
+                    }
+                    .color-shift {
+                      animation: colorShift 8s ease-in-out infinite;
+                    }
+                    .complementary-shift {
+                      animation: complementaryShift 8s ease-in-out infinite;
+                    }
+                    .float-animation {
+                      animation: float 4s ease-in-out infinite;
+                    }
+                  `}
+                </style>
+                <div className="absolute inset-0 flex items-center justify-center">
+                  {/* Main container */}
+                  <div className="w-64 h-64 relative">
+                    {/* Primary colors */}
+                    <div className="absolute inset-0 flex items-center justify-center gap-4">
                       <div
-                        key={`color-${i}`}
-                        className={`absolute w-4 h-4 ${color} rounded-full`}
-                        style={{
-                          left: `${
-                            Math.cos((angle * Math.PI) / 180) * 40 + 96
-                          }px`,
-                          top: `${
-                            Math.sin((angle * Math.PI) / 180) * 40 + 96
-                          }px`,
-                          transform: `translate(-50%, -50%)`,
-                        }}
+                        className="w-16 h-16 rounded-lg color-shift float-animation"
+                        style={{ animationDelay: "0s" }}
                       />
-                    ))}
+                      <div
+                        className="w-16 h-16 rounded-lg color-shift float-animation"
+                        style={{ animationDelay: "2s" }}
+                      />
+                      <div
+                        className="w-16 h-16 rounded-lg color-shift float-animation"
+                        style={{ animationDelay: "4s" }}
+                      />
+                    </div>
+
+                    {/* Complementary colors */}
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="w-24 h-24 rounded-full complementary-shift opacity-50" />
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           }
-          fontFamily="helvetica"
-          descriptionClassName="font-helvetica"
-          background="bg-gradient-to-br from-sky-50/50 to-blue-50/50"
+          background="bg-gradient-to-br from-amber-50/50 to-yellow-50/50"
         />
         <DesignSection
           title="Axonometric Projection"
@@ -876,58 +1017,57 @@ function App() {
           isListLayout={isListLayout}
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
-              <div className="w-full max-w-[600px] h-[300px] bg-gradient-to-br from-stone-50 to-slate-50 p-4 relative group">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  {/* Base grid */}
-                  <div className="absolute w-24 h-24 opacity-20">
-                    {[...Array(8)].map((_, i) => (
-                      <div
-                        key={`grid-${i}`}
-                        className="absolute w-24 h-px bg-stone-400 transform transition-all duration-500"
-                        style={{
-                          top: `${i * 6}px`,
-                          transform: `rotate(30deg)`,
-                        }}
-                      />
-                    ))}
-                    {[...Array(8)].map((_, i) => (
-                      <div
-                        key={`grid-${i + 8}`}
-                        className="absolute w-24 h-px bg-stone-400 transform transition-all duration-500"
-                        style={{
-                          top: `${i * 6}px`,
-                          transform: `rotate(-30deg)`,
-                        }}
-                      />
-                    ))}
-                  </div>
-
-                  {/* 3D Cube */}
-                  <div className="relative w-32 h-32 group-hover:animate-[rotate-cube_8s_linear_infinite]">
-                    {/* Front face */}
-                    <div className="absolute w-full h-full bg-stone-600/80 border-2 border-stone-700 transform-[translateZ(16px)]" />
-                    {/* Back face */}
-                    <div className="absolute w-full h-full bg-stone-600/80 border-2 border-stone-700 transform-[translateZ(-16px)]" />
-                    {/* Top face */}
-                    <div className="absolute w-full h-full bg-stone-500/60 border-2 border-stone-600 transform-[rotateX(90deg)_translateZ(16px)]" />
-                    {/* Bottom face */}
-                    <div className="absolute w-full h-full bg-stone-500/60 border-2 border-stone-600 transform-[rotateX(-90deg)_translateZ(16px)]" />
-                    {/* Right face */}
-                    <div className="absolute w-full h-full bg-stone-700/60 border-2 border-stone-800 transform-[rotateY(90deg)_translateZ(16px)]" />
-                    {/* Left face */}
-                    <div className="absolute w-full h-full bg-stone-700/60 border-2 border-stone-800 transform-[rotateY(-90deg)_translateZ(16px)]" />
-                  </div>
-
-                  <style jsx>{`
-                    @keyframes rotate-cube {
-                      0% {
-                        transform: rotateX(0deg) rotateY(0deg);
-                      }
-                      100% {
-                        transform: rotateX(360deg) rotateY(360deg);
-                      }
+              <div className="w-full max-w-[600px] h-[300px] bg-white p-4 relative group">
+                <style>
+                  {`
+                    @keyframes rotate3D {
+                      0% { transform: perspective(1000px) rotateX(20deg) rotateY(0deg); }
+                      50% { transform: perspective(1000px) rotateX(20deg) rotateY(180deg); }
+                      100% { transform: perspective(1000px) rotateX(20deg) rotateY(360deg); }
                     }
-                  `}</style>
+                    @keyframes float {
+                      0%, 100% { transform: translateY(0); }
+                      50% { transform: translateY(-10px); }
+                    }
+                    .cube-container {
+                      animation: rotate3D 12s linear infinite;
+                    }
+                    .float-element {
+                      animation: float 4s ease-in-out infinite;
+                    }
+                  `}
+                </style>
+                <div className="absolute inset-0 flex items-center justify-center">
+                  {/* Main container */}
+                  <div className="w-64 h-64 relative">
+                    {/* 3D Cube */}
+                    <div className="cube-container absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32">
+                      {/* Front face */}
+                      <div className="absolute inset-0 bg-blue-500/60 transform-gpu translate-z-16" />
+                      {/* Back face */}
+                      <div className="absolute inset-0 bg-blue-500/60 transform-gpu -translate-z-16" />
+                      {/* Top face */}
+                      <div className="absolute inset-0 bg-blue-400/60 transform-gpu rotate-x-90 translate-y-[-50%] translate-z-16" />
+                      {/* Bottom face */}
+                      <div className="absolute inset-0 bg-blue-400/60 transform-gpu rotate-x-90 translate-y-[50%] translate-z-16" />
+                      {/* Left face */}
+                      <div className="absolute inset-0 bg-blue-600/60 transform-gpu rotate-y-90 translate-x-[-50%] translate-z-16" />
+                      {/* Right face */}
+                      <div className="absolute inset-0 bg-blue-600/60 transform-gpu rotate-y-90 translate-x-[50%] translate-z-16" />
+                    </div>
+
+                    {/* Floating elements */}
+                    <div className="absolute inset-0">
+                      <div
+                        className="absolute top-4 left-4 w-8 h-8 bg-rose-500/60 rounded-lg float-element"
+                        style={{ animationDelay: "0s" }}
+                      />
+                      <div
+                        className="absolute bottom-4 right-4 w-8 h-8 bg-rose-500/60 rounded-lg float-element"
+                        style={{ animationDelay: "2s" }}
+                      />
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -1016,202 +1156,67 @@ function App() {
           isListLayout={isListLayout}
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
-              <div className="w-full max-w-[600px] h-[300px] bg-gradient-to-br from-amber-50 to-yellow-50 p-4 relative group">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <img
-                    src="https://www.elegantthemes.com/blog/wp-content/uploads/2019/06/Ratio-1024x648.png"
-                    alt="Golden Ratio visualization"
-                    className="w-full h-full object-contain transform transition-all duration-500 group-hover:scale-105 animate-[float_3s_ease-in-out_infinite] group-hover:animate-none"
-                  />
-                </div>
-                <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              </div>
-            </div>
-          }
-          fontFamily="habibi"
-          descriptionClassName="font-habibi"
-          background="bg-gradient-to-br from-amber-50/50 to-yellow-50/50"
-        />
-        <DesignSection
-          title="Accessibility"
-          description="Accessibility in design ensures that digital experiences are usable by everyone, regardless of their abilities. This includes considerations for color contrast, keyboard navigation, screen reader compatibility, and clear visual hierarchy."
-          designPrinciple="Inclusive Design – Creating experiences that work for all users regardless of their abilities or circumstances."
-          exampleLink="https://www.w3.org/WAI/fundamentals/accessibility-principles/"
-          isListLayout={isListLayout}
-          visualComponent={
-            <div className="flex items-center justify-center w-full h-full">
-              <div className="w-full max-w-[600px] h-[300px] bg-gradient-to-br from-blue-50 to-purple-50 p-4 relative group">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <img
-                    src="https://www.w3.org/WAI/fundamentals/accessibility-principles/images/accessibility-principles.svg"
-                    alt="Accessibility principles"
-                    className="w-full h-full object-contain transform transition-all duration-500 group-hover:scale-105 animate-[float_3s_ease-in-out_infinite] group-hover:animate-none"
-                  />
-                </div>
-                <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              </div>
-            </div>
-          }
-          fontFamily="roboto-flex"
-          descriptionClassName="font-roboto-flex"
-          background="bg-gradient-to-br from-blue-50/50 to-purple-50/50"
-        />
-        <DesignSection
-          title="Function Over Form"
-          description="Function Over Form emphasizes practical usability over decorative aesthetics. While visual appeal is important, the primary focus is on creating designs that are intuitive, efficient, and serve their purpose effectively."
-          designPrinciple="Utility – Prioritizing practical functionality while maintaining visual clarity."
-          exampleLink="https://www.toptal.com/designers/visual/principles-of-design"
-          isListLayout={isListLayout}
-          fontFamily="roboto"
-          descriptionClassName="text-gray-700 font-roboto"
-          titleClassName="text-2xl font-bold text-gray-900 font-roboto"
-          visualComponent={
-            <div className="flex items-center justify-center w-full h-full">
-              <div className="w-full max-w-[600px] h-[300px] p-4 relative group">
+              <div className="w-full max-w-[600px] h-[300px] bg-white p-4 relative group">
                 <style>
                   {`
-                    @keyframes snap-to-grid {
-                      0% { transform: translate(var(--start-x), var(--start-y)) rotate(var(--start-rot)); }
-                      100% { transform: translate(var(--end-x), var(--end-y)) rotate(0deg); }
+                    @keyframes drawSpiral {
+                      0% { stroke-dashoffset: 1000; }
+                      100% { stroke-dashoffset: 0; }
                     }
-                    .snap-animation {
-                      animation: snap-to-grid 1s ease-out infinite;
+                    @keyframes pulseRect {
+                      0%, 100% { opacity: 0.3; }
+                      50% { opacity: 0.8; }
+                    }
+                    .spiral-path {
+                      stroke-dasharray: 1000;
+                      stroke-dashoffset: 1000;
+                      animation: drawSpiral 8s linear infinite;
+                    }
+                    .golden-rect {
+                      animation: pulseRect 4s ease-in-out infinite;
                     }
                   `}
                 </style>
                 <div className="absolute inset-0 flex items-center justify-center">
-                  {/* Function demonstration */}
-                  <div className="relative w-48 h-48">
-                    {/* Grid container */}
-                    <div className="absolute inset-0 grid grid-cols-3 grid-rows-4 gap-2">
-                      {[...Array(12)].map((_, i) => (
-                        <div
-                          key={`grid-${i}`}
-                          className="border border-gray-200 rounded"
-                        ></div>
-                      ))}
+                  {/* Main container */}
+                  <div className="w-64 h-64 relative">
+                    {/* Golden rectangles */}
+                    <div className="absolute inset-0">
+                      <div
+                        className="absolute top-0 left-0 w-40 h-64 bg-amber-500/20 golden-rect"
+                        style={{ animationDelay: "0s" }}
+                      />
+                      <div
+                        className="absolute top-0 left-0 w-24 h-40 bg-amber-500/30 golden-rect"
+                        style={{ animationDelay: "1s" }}
+                      />
+                      <div
+                        className="absolute top-0 left-0 w-16 h-24 bg-amber-500/40 golden-rect"
+                        style={{ animationDelay: "2s" }}
+                      />
+                      <div
+                        className="absolute top-0 left-0 w-10 h-16 bg-amber-500/50 golden-rect"
+                        style={{ animationDelay: "3s" }}
+                      />
                     </div>
 
-                    {/* Disorganized blocks */}
-                    <div className="absolute inset-0">
-                      {/* Blocks with random initial positions */}
-                      <div
-                        className="absolute w-[calc(33.33%-2px)] h-[calc(25%-2px)] bg-blue-500 rounded snap-animation"
-                        style={
-                          {
-                            transform: "translate(-20px, -30px) rotate(45deg)",
-                            "--start-x": "-20px",
-                            "--start-y": "-30px",
-                            "--start-rot": "45deg",
-                            "--end-x": "0px",
-                            "--end-y": "0px",
-                          } as React.CSSProperties
-                        }
-                      ></div>
-                      <div
-                        className="absolute w-[calc(33.33%-2px)] h-[calc(25%-2px)] bg-blue-500 rounded snap-animation"
-                        style={
-                          {
-                            transform: "translate(40px, -20px) rotate(-30deg)",
-                            "--start-x": "40px",
-                            "--start-y": "-20px",
-                            "--start-rot": "-30deg",
-                            "--end-x": "calc(33.33% + 1px)",
-                            "--end-y": "0px",
-                          } as React.CSSProperties
-                        }
-                      ></div>
-                      <div
-                        className="absolute w-[calc(33.33%-2px)] h-[calc(25%-2px)] bg-blue-500 rounded snap-animation"
-                        style={
-                          {
-                            transform: "translate(-30px, 30px) rotate(60deg)",
-                            "--start-x": "-30px",
-                            "--start-y": "30px",
-                            "--start-rot": "60deg",
-                            "--end-x": "calc(66.66% + 2px)",
-                            "--end-y": "0px",
-                          } as React.CSSProperties
-                        }
-                      ></div>
-                      <div
-                        className="absolute w-[calc(33.33%-2px)] h-[calc(25%-2px)] bg-blue-500 rounded snap-animation"
-                        style={
-                          {
-                            transform: "translate(50px, 40px) rotate(-45deg)",
-                            "--start-x": "50px",
-                            "--start-y": "40px",
-                            "--start-rot": "-45deg",
-                            "--end-x": "0px",
-                            "--end-y": "calc(25% + 1px)",
-                          } as React.CSSProperties
-                        }
-                      ></div>
-                      <div
-                        className="absolute w-[calc(33.33%-2px)] h-[calc(25%-2px)] bg-blue-500 rounded snap-animation"
-                        style={
-                          {
-                            transform: "translate(10px, 60px) rotate(15deg)",
-                            "--start-x": "10px",
-                            "--start-y": "60px",
-                            "--start-rot": "15deg",
-                            "--end-x": "calc(33.33% + 1px)",
-                            "--end-y": "calc(25% + 1px)",
-                          } as React.CSSProperties
-                        }
-                      ></div>
-                      <div
-                        className="absolute w-[calc(33.33%-2px)] h-[calc(25%-2px)] bg-blue-500 rounded snap-animation"
-                        style={
-                          {
-                            transform: "translate(-40px, 10px) rotate(-60deg)",
-                            "--start-x": "-40px",
-                            "--start-y": "10px",
-                            "--start-rot": "-60deg",
-                            "--end-x": "calc(66.66% + 2px)",
-                            "--end-y": "calc(25% + 1px)",
-                          } as React.CSSProperties
-                        }
-                      ></div>
-                      <div
-                        className="absolute w-[calc(33.33%-2px)] h-[calc(25%-2px)] bg-blue-500 rounded snap-animation"
-                        style={
-                          {
-                            transform: "translate(60px, -40px) rotate(30deg)",
-                            "--start-x": "60px",
-                            "--start-y": "-40px",
-                            "--start-rot": "30deg",
-                            "--end-x": "0px",
-                            "--end-y": "calc(50% + 2px)",
-                          } as React.CSSProperties
-                        }
-                      ></div>
-                      <div
-                        className="absolute w-[calc(33.33%-2px)] h-[calc(25%-2px)] bg-blue-500 rounded snap-animation"
-                        style={
-                          {
-                            transform: "translate(-20px, 80px) rotate(-15deg)",
-                            "--start-x": "-20px",
-                            "--start-y": "80px",
-                            "--start-rot": "-15deg",
-                            "--end-x": "calc(33.33% + 1px)",
-                            "--end-y": "calc(50% + 2px)",
-                          } as React.CSSProperties
-                        }
-                      ></div>
-                      <div
-                        className="absolute w-[calc(33.33%-2px)] h-[calc(25%-2px)] bg-blue-500 rounded snap-animation"
-                        style={
-                          {
-                            transform: "translate(30px, -60px) rotate(75deg)",
-                            "--start-x": "30px",
-                            "--start-y": "-60px",
-                            "--start-rot": "75deg",
-                            "--end-x": "calc(66.66% + 2px)",
-                            "--end-y": "calc(50% + 2px)",
-                          } as React.CSSProperties
-                        }
-                      ></div>
+                    {/* Golden spiral */}
+                    <svg className="absolute inset-0" viewBox="0 0 100 100">
+                      <path
+                        d="M 0,0 Q 25,0 25,25 Q 25,50 50,50 Q 75,50 75,75 Q 75,100 100,100"
+                        className="spiral-path"
+                        stroke="#B45309"
+                        strokeWidth="2"
+                        fill="none"
+                      />
+                    </svg>
+
+                    {/* Ratio markers */}
+                    <div className="absolute top-2 left-2 text-xs text-amber-700 font-mono">
+                      1
+                    </div>
+                    <div className="absolute top-2 left-[42px] text-xs text-amber-700 font-mono">
+                      1.618
                     </div>
                   </div>
                 </div>
@@ -1227,1140 +1232,419 @@ function App() {
           isListLayout={isListLayout}
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
-              <div className="w-full max-w-[600px] h-[300px] bg-gradient-to-br from-rose-50 to-pink-50 p-4 relative group">
+              <div className="w-full max-w-[600px] h-[300px] bg-white p-4 relative group">
+                <style>
+                  {`
+                    @keyframes pulseNode {
+                      0%, 100% { transform: scale(1); }
+                      50% { transform: scale(1.2); }
+                    }
+                    @keyframes flowData {
+                      0% { stroke-dashoffset: 100; }
+                      100% { stroke-dashoffset: 0; }
+                    }
+                    .network-node {
+                      animation: pulseNode 6s ease-in-out infinite;
+                    }
+                    .flow-path {
+                      stroke-dasharray: 10;
+                      stroke-dashoffset: 100;
+                      animation: flowData 4s linear infinite;
+                    }
+                  `}
+                </style>
                 <div className="absolute inset-0 flex items-center justify-center">
-                  {/* Network nodes */}
-                  <div className="relative w-48 h-48">
-                    {[...Array(6)].map((_, i) => (
+                  {/* Network visualization */}
+                  <div className="relative w-64 h-64">
+                    {/* Nodes */}
+                    <div className="absolute inset-0">
+                      {/* Center node */}
+                      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-rose-500 rounded-full network-node" />
+
+                      {/* Outer nodes */}
                       <div
-                        key={`node-${i}`}
-                        className="absolute w-8 h-8 bg-rose-500/20 rounded-full transform transition-all duration-500 group-hover:scale-110 group-hover:bg-rose-600/20"
-                        style={{
-                          left: `${
-                            Math.cos((i * Math.PI * 2) / 6) * 60 + 84
-                          }px`,
-                          top: `${Math.sin((i * Math.PI * 2) / 6) * 60 + 84}px`,
-                        }}
-                      >
-                        <div className="absolute inset-1 bg-gradient-to-br from-rose-400/20 to-rose-600/20 rounded-full" />
-                      </div>
-                    ))}
-
-                    {/* Central node */}
-                    <div className="absolute left-1/2 top-1/2 w-12 h-12 bg-pink-600/20 rounded-full transform -translate-x-1/2 -translate-y-1/2 transition-all duration-500 group-hover:scale-125 group-hover:bg-pink-700/20">
-                      <div className="absolute inset-1 bg-gradient-to-br from-pink-500/20 to-pink-700/20 rounded-full" />
+                        className="absolute top-4 left-1/2 -translate-x-1/2 w-6 h-6 bg-rose-400 rounded-full network-node"
+                        style={{ animationDelay: "0.5s" }}
+                      />
+                      <div
+                        className="absolute bottom-4 left-1/2 -translate-x-1/2 w-6 h-6 bg-rose-400 rounded-full network-node"
+                        style={{ animationDelay: "1s" }}
+                      />
+                      <div
+                        className="absolute top-1/2 left-4 -translate-y-1/2 w-6 h-6 bg-rose-400 rounded-full network-node"
+                        style={{ animationDelay: "1.5s" }}
+                      />
+                      <div
+                        className="absolute top-1/2 right-4 -translate-y-1/2 w-6 h-6 bg-rose-400 rounded-full network-node"
+                        style={{ animationDelay: "2s" }}
+                      />
                     </div>
 
-                    {/* Spinning animation */}
-                    <div className="absolute w-48 h-48 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      {[...Array(12)].map((_, i) => (
-                        <div
-                          key={`line-${i}`}
-                          className="absolute w-32 h-px border-t-2 border-dashed border-rose-500/40 transform transition-all duration-500 group-hover:animate-spin"
-                          style={{
-                            left: "50%",
-                            top: "50%",
-                            transform: `translate(-50%, -50%) rotate(${
-                              i * 30
-                            }deg) translate(16px)`,
-                            animationDuration: `${3 + i}s`,
-                          }}
-                        >
-                          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-rose-500/30 to-transparent"></div>
-                        </div>
-                      ))}
-                    </div>
+                    {/* Connections */}
+                    <svg className="absolute inset-0" viewBox="0 0 100 100">
+                      {/* Center to top */}
+                      <path
+                        d="M 50,50 L 50,20"
+                        className="flow-path"
+                        stroke="#FB7185"
+                        strokeWidth="2"
+                        fill="none"
+                      />
+                      {/* Center to bottom */}
+                      <path
+                        d="M 50,50 L 50,80"
+                        className="flow-path"
+                        stroke="#FB7185"
+                        strokeWidth="2"
+                        fill="none"
+                        style={{ animationDelay: "0.5s" }}
+                      />
+                      {/* Center to left */}
+                      <path
+                        d="M 50,50 L 20,50"
+                        className="flow-path"
+                        stroke="#FB7185"
+                        strokeWidth="2"
+                        fill="none"
+                        style={{ animationDelay: "1s" }}
+                      />
+                      {/* Center to right */}
+                      <path
+                        d="M 50,50 L 80,50"
+                        className="flow-path"
+                        stroke="#FB7185"
+                        strokeWidth="2"
+                        fill="none"
+                        style={{ animationDelay: "1.5s" }}
+                      />
+                    </svg>
                   </div>
                 </div>
-                {/* Remove overlay text */}
-                {/* <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
-                  <div className="text-xs sm:text-sm text-rose-600 font-medium bg-white/80 px-2 py-1 rounded">
-                    Lines create network connections
-                  </div>
-                </div> */}
               </div>
             </div>
           }
-          fontFamily="share-tech"
-          descriptionClassName="font-share-tech"
-          titleClassName="font-share-tech"
-          background="bg-gradient-to-br from-rose-50/50 to-pink-50/50"
         />
         <DesignSection
           title="Spatial Reasoning"
-          description="Understanding and manipulating objects in 3D space, visualizing transformations, and comprehending spatial relationships."
-          designPrinciple="Spatial Awareness"
-          exampleLink="https://www.123test.com/spatial-reasoning-test/"
+          description="Spatial Reasoning involves understanding and manipulating objects in three-dimensional space. It's crucial for creating intuitive interfaces and visualizing complex relationships between elements."
+          designPrinciple="Spatial Awareness – Understanding and manipulating objects in three-dimensional space."
+          exampleLink="https://www.toptal.com/designers/visual/principles-of-design"
           isListLayout={isListLayout}
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
-              <div className="w-full max-w-[600px] h-[300px] bg-gradient-to-br from-indigo-50 to-purple-50 p-4 relative group">
+              <div className="w-full max-w-[600px] h-[300px] bg-white p-4 relative group">
+                <style>
+                  {`
+                    @keyframes rotate3D {
+                      0% { transform: perspective(1000px) rotateY(0deg) rotateX(0deg); }
+                      50% { transform: perspective(1000px) rotateY(180deg) rotateX(20deg); }
+                      100% { transform: perspective(1000px) rotateY(360deg) rotateX(0deg); }
+                    }
+                    @keyframes floatElement {
+                      0%, 100% { transform: translateY(0) translateZ(0); }
+                      50% { transform: translateY(-20px) translateZ(20px); }
+                    }
+                    .spatial-container {
+                      animation: rotate3D 8s linear infinite;
+                    }
+                    .floating-element {
+                      animation: floatElement 4s ease-in-out infinite;
+                    }
+                  `}
+                </style>
                 <div className="absolute inset-0 flex items-center justify-center">
-                  {/* Origami shape */}
-                  <div className="relative w-32 h-32 transform transition-all duration-1000">
-                    {/* Base square - folded state */}
-                    <div className="absolute inset-0 bg-indigo-400/80 transform transition-all duration-1000 group-hover:opacity-0">
-                      {/* Folded flaps */}
-                      <div className="absolute top-0 left-0 w-1/2 h-1/2 bg-indigo-300/60 transform -rotate-45 origin-bottom-right" />
-                      <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-indigo-500/60 transform rotate-45 origin-bottom-left" />
-                      <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-indigo-300/60 transform rotate-45 origin-top-right" />
-                      <div className="absolute bottom-0 right-0 w-1/2 h-1/2 bg-indigo-500/60 transform -rotate-45 origin-top-left" />
+                  {/* Main container */}
+                  <div className="relative w-64 h-64">
+                    {/* 3D space container */}
+                    <div className="absolute inset-0 spatial-container">
+                      {/* Base plane */}
+                      <div className="absolute inset-0 bg-slate-100 rounded-lg transform-gpu rotate-x-45" />
 
-                      {/* Center fold */}
-                      <div className="absolute inset-0 border-2 border-indigo-600/20" />
-                    </div>
+                      {/* Floating elements */}
+                      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                        {/* Center cube */}
+                        <div className="w-16 h-16 bg-slate-600/80 rounded-lg transform-gpu rotate-x-20 rotate-y-20" />
 
-                    {/* Unfolded state */}
-                    <div className="absolute inset-0 opacity-0 transform transition-all duration-1000 group-hover:opacity-100">
-                      {/* Main square */}
-                      <div className="absolute inset-0 bg-indigo-400/80" />
-
-                      {/* Fold lines */}
-                      <div className="absolute inset-0">
-                        {/* Vertical center */}
-                        <div className="absolute left-1/2 top-0 bottom-0 w-px bg-indigo-600/20 transform -translate-x-1/2" />
-                        {/* Horizontal center */}
-                        <div className="absolute top-1/2 left-0 right-0 h-px bg-indigo-600/20 transform -translate-y-1/2" />
-                        {/* Diagonals */}
-                        <div className="absolute inset-0">
-                          <div className="absolute inset-0 border border-indigo-600/20 transform rotate-45" />
-                          <div className="absolute inset-0 border border-indigo-600/20 transform -rotate-45" />
-                        </div>
-                      </div>
-
-                      {/* Corner indicators */}
-                      {[...Array(4)].map((_, i) => (
+                        {/* Orbiting elements */}
                         <div
-                          key={i}
-                          className="absolute w-2 h-2 bg-indigo-400/40 rounded-full"
-                          style={{
-                            left: `${i % 2 === 0 ? "25%" : "75%"}`,
-                            top: `${i < 2 ? "25%" : "75%"}`,
-                            transform: "translate(-50%, -50%)",
-                          }}
+                          className="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-slate-500/60 rounded-lg floating-element"
+                          style={{ animationDelay: "0s" }}
                         />
-                      ))}
+                        <div
+                          className="absolute top-0 right-0 translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-slate-500/60 rounded-lg floating-element"
+                          style={{ animationDelay: "1s" }}
+                        />
+                        <div
+                          className="absolute bottom-0 left-0 -translate-x-1/2 translate-y-1/2 w-8 h-8 bg-slate-500/60 rounded-lg floating-element"
+                          style={{ animationDelay: "2s" }}
+                        />
+                        <div
+                          className="absolute bottom-0 right-0 translate-x-1/2 translate-y-1/2 w-8 h-8 bg-slate-500/60 rounded-lg floating-element"
+                          style={{ animationDelay: "3s" }}
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>
-                {/* Remove overlay text */}
-                {/* <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
-                  <div className="text-xs sm:text-sm text-indigo-600 font-medium bg-white/80 px-3 py-2 backdrop-blur-sm font-suwannaphum">
-                    Unfolded pattern
-                  </div>
-                </div> */}
               </div>
             </div>
           }
-          background="bg-gradient-to-br from-indigo-50/50 to-purple-50/50"
         />
+      </div>
+
+      {/* Section Break */}
+      <div id="designs" className="col-span-full py-24 bg-black text-white">
+        <div className="flex items-center justify-center gap-2 group">
+          <h2 className="text-2xl font-bold text-white font-dm-sans leading-none">
+            Designs
+          </h2>
+          <button
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            className="transition-opacity duration-200"
+          >
+            <ArrowUp className="w-6 h-6 text-white" />
+          </button>
+        </div>
+        <p className="text-white text-center mt-2 font-avenir">
+          Explore the fundamental principles that shape effective design
+        </p>
+      </div>
+
+      <div
+        className={`${
+          isListLayout
+            ? "grid grid-cols-1 gap-6 max-w-4xl mx-auto px-4 py-8"
+            : "col-span-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-8 gap-12"
+        }`}
+      >
         <DesignSection
-          title="Typography Hierarchy"
-          description="Creating clear visual hierarchy through type size, weight, and spacing to guide readers through content."
-          designPrinciple="Visual Hierarchy"
-          exampleLink="https://www.nngroup.com/articles/typography-terms-ux/"
+          title="Boston Globe Redesign"
+          description="The Boston Globe's 2011 responsive redesign, led by Ethan Marcotte and Filament Group, marked a pivotal moment in web design. As the first major news site to implement responsive design, it demonstrated how content could adapt seamlessly across devices while maintaining readability and hierarchy."
+          designPrinciple="Responsive Design - Creating fluid layouts that adapt to any screen size while maintaining content integrity"
+          exampleLink="https://zeldman.com/2011/09/15/boston-globes-responsive-redesign-discuss/"
           isListLayout={isListLayout}
           visualComponent={
-            <div className="flex items-center justify-center w-full h-full">
-              <style>
-                {`
-                  @keyframes scrollText {
-                    0% { transform: translateY(0); }
-                    100% { transform: translateY(-100%); }
-                  }
-                  .scroll-text {
-                    animation: scrollText 4s linear infinite;
-                  }
-                `}
-              </style>
-              <div className="w-full max-w-[600px] h-[300px] bg-gradient-to-br from-slate-50 to-gray-50 p-4 relative group">
-                <div className="absolute inset-0 flex items-center justify-center overflow-hidden">
-                  {/* Scrolling text container */}
-                  <div className="relative w-full h-[120px] overflow-hidden">
-                    {/* First set of text */}
-                    <div className="absolute left-0 right-0 flex flex-col items-center gap-2 group-hover:animate-[scrollText_4s_linear_infinite]">
-                      <div className="text-2xl font-bold text-slate-800 font-poppins">
-                        Heading 1
-                      </div>
-                      <div className="text-xl font-semibold text-slate-700 font-poppins">
-                        Heading 2
-                      </div>
-                      <div className="text-lg font-medium text-slate-600 font-poppins">
-                        Heading 3
-                      </div>
-                      <div className="text-base font-normal text-slate-500 font-poppins">
-                        Body text with regular weight
-                      </div>
-                      <div className="text-sm font-light text-slate-400 font-poppins">
-                        Caption text
-                      </div>
-                    </div>
-                    {/* Duplicate set for seamless looping */}
-                    <div className="absolute left-0 right-0 flex flex-col items-center gap-2 group-hover:animate-[scrollText_4s_linear_infinite]">
-                      <div className="text-2xl font-bold text-slate-800 font-poppins">
-                        Heading 1
-                      </div>
-                      <div className="text-xl font-semibold text-slate-700 font-poppins">
-                        Heading 2
-                      </div>
-                      <div className="text-lg font-medium text-slate-600 font-poppins">
-                        Heading 3
-                      </div>
-                      <div className="text-base font-normal text-slate-500 font-poppins">
-                        Body text with regular weight
-                      </div>
-                      <div className="text-sm font-light text-slate-400 font-poppins">
-                        Caption text
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                {/* Remove overlay text */}
-                {/* <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
-                  <div className="text-xs sm:text-sm text-slate-600 font-medium bg-white/80 px-3 py-2 backdrop-blur-sm font-poppins">
-                    Visual hierarchy through type
-                  </div>
-                </div> */}
+            <div className="flex items-center justify-center h-full p-4">
+              <div className="w-[600px] h-[400px]">
+                <img
+                  src="https://scholarlykitchen.sspnet.org/wp-content/uploads/2012/09/boston_globe_responsive_website.jpg"
+                  alt="The Boston Globe responsive website design"
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                />
               </div>
             </div>
           }
-          background=""
+          fontFamily="source-sans"
+          descriptionClassName="text-gray-700 font-source-sans"
+          titleClassName="text-2xl font-bold text-gray-900 font-source-sans"
+          background="bg-gradient-to-br from-blue-50/50 to-indigo-50/50"
         />
         <DesignSection
-          title="Microinteractions"
-          description="Microinteractions are small, purposeful animations that provide feedback, guide users, and make interfaces feel more responsive and engaging. They enhance usability by making digital interactions feel more natural and satisfying."
-          designPrinciple="Feedback & Engagement – Using subtle animations to create responsive and intuitive interfaces."
-          exampleLink="https://www.nngroup.com/articles/microinteractions/"
-          fontFamily="encode-sans-sc"
+          title="960 Grid System"
+          description="The 960 Grid System, created by Nathan Smith, revolutionized web layout design in the late 2000s. This CSS framework provided a standardized 12-column grid that worked perfectly for 1024x768 displays, making it the de facto standard for web layouts during the fixed-width era. Its influence can still be seen in modern CSS frameworks."
+          designPrinciple="Grid-Based Design - Creating consistent, balanced layouts through systematic column-based structures"
+          exampleLink="https://ux.stackexchange.com/questions/5128/do-you-consider-the-960-grid-system-one-of-the-holy-grails-of-user-experienc"
           isListLayout={isListLayout}
           visualComponent={
-            <div className="flex items-center justify-center w-full h-full">
-              <div className="w-full max-w-[600px] h-[300px] bg-gradient-to-br from-emerald-50 to-teal-50 p-4 relative group">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <img
-                    src="https://www.nngroup.com/articles/microinteractions/microinteractions-hero.jpg"
-                    alt="Microinteractions"
-                    className="w-full h-full object-contain transform transition-all duration-500 group-hover:scale-105 animate-[float_3s_ease-in-out_infinite] group-hover:animate-none"
-                  />
-                </div>
+            <div className="flex items-center justify-center h-full p-4">
+              <div className="w-[600px] h-[400px]">
+                <img
+                  src="/960grid.png"
+                  alt="960 Grid System layout example"
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300 animate-[float_3s_ease-in-out_infinite] group-hover:animate-none"
+                />
+              </div>
+            </div>
+          }
+          fontFamily="dm-sans"
+          descriptionClassName="text-gray-700 font-dm-sans"
+          titleClassName="text-2xl font-bold text-gray-900 font-dm-sans"
+          background="bg-gradient-to-br from-amber-50/50 to-orange-50/50"
+        />
+        <DesignSection
+          title="FedEx Logo"
+          description="The FedEx logo, designed by Lindon Leader in 1994, is a masterclass in negative space design. The hidden arrow between the 'E' and 'x' represents forward movement and precision, perfectly aligning with FedEx's brand values. This subtle yet powerful design element has made it one of the most recognized and awarded logos in history."
+          designPrinciple="Negative Space - Using the space between elements to create hidden meaning and visual interest"
+          exampleLink="https://logo.com/blog/fedex-logo"
+          isListLayout={isListLayout}
+          visualComponent={
+            <div className="flex items-center justify-center h-full p-4">
+              <div className="w-[600px] h-[400px]">
+                <img
+                  src="https://logo.com/image-cdn/images/kts928pd/production/545de9c62376e6a69379aae1703674d4b66e6962-1600x894.png?w=1080&q=72&fm=webp"
+                  alt="FedEx logo with hidden arrow"
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+            </div>
+          }
+          fontFamily="helvetica"
+          descriptionClassName="text-gray-700 font-helvetica"
+          titleClassName="text-2xl font-bold text-gray-900 font-helvetica tracking-tight"
+          background="bg-gradient-to-br from-purple-50/50 to-indigo-50/50"
+        />
+        <DesignSection
+          title="Don't Make Me Think"
+          description="Steve Krug's 'Don't Make Me Think' revolutionized web usability with its simple, practical approach. The book emphasizes that good design should be intuitive and self-explanatory, requiring minimal cognitive effort from users. Its principles of usability testing and clear navigation have become fundamental to modern web design."
+          designPrinciple="Usability First - Creating interfaces that are intuitive and require minimal cognitive effort"
+          exampleLink="https://www.sensible.com/dmmt.html"
+          isListLayout={isListLayout}
+          visualComponent={
+            <div className="flex items-center justify-center h-full p-4">
+              <div className="w-[600px] h-[400px]">
+                <img
+                  src="https://media.licdn.com/dms/image/v2/C4D34AQFcBa3aJAHZCw/ugc-proxy-shrink_800/ugc-proxy-shrink_800/0/1594646636338?e=2147483647&v=beta&t=IFoQ7PyP6METIpbPTWMVbNQTcGxFx7ax5jmr2StTdhc"
+                  alt="Don't Make Me Think book cover"
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300 animate-[float_3s_ease-in-out_infinite] group-hover:animate-none"
+                />
+              </div>
+            </div>
+          }
+          fontFamily="mitr"
+          descriptionClassName="text-gray-700 font-mitr"
+          titleClassName="text-2xl font-bold text-gray-900 font-mitr"
+          background="bg-gradient-to-br from-emerald-50/50 to-teal-50/50"
+        />
+        <DesignSection
+          title="European Heraldry"
+          description="The world's first form of logo design, dating back to the 12th century. Heraldic symbols were used to identify knights in battle and evolved into sophisticated systems of visual identity for families, institutions, and nations. These designs established fundamental principles of visual communication that influence modern logo design."
+          designPrinciple="Symbolism & Identity – Creating distinctive visual marks that communicate status, heritage, and values through carefully designed symbols and colors"
+          exampleLink="https://www.heraldica.org/topics/design.htm"
+          isListLayout={isListLayout}
+          visualComponent={
+            <div className="w-full h-full flex items-center justify-center">
+              <div className="w-[800px] h-[400px] bg-white overflow-hidden group relative">
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Wapenboek_Beyeren_%28armorial%29_-_KB79K21_-_folios_001v_%28left%29_and_002r_%28right%29.jpg/640px-Wapenboek_Beyeren_%28armorial%29_-_KB79K21_-_folios_001v_%28left%29_and_002r_%28right%29.jpg"
+                  alt="European Heraldry - Hyghalmen Roll"
+                  className="w-full h-full object-contain transform transition-all duration-500 group-hover:scale-110 animate-[float_3s_ease-in-out_infinite] group-hover:animate-none"
+                />
                 <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
             </div>
           }
-          background="bg-gradient-to-br from-emerald-50/50 to-teal-50/50"
-        />
-        <DesignSection
-          title="Laws of Perceptual Organization"
-          description="The Gestalt principles explain how humans naturally organize visual elements into groups and unified wholes. These laws help designers create more intuitive and meaningful visual compositions."
-          designPrinciple="Visual Organization – Understanding how the human brain naturally groups and organizes visual elements."
-          exampleLink="https://study.com/academy/lesson/perceptual-organization-definition-examples.html"
-          isListLayout={isListLayout}
-          visualComponent={
-            <div className="flex items-center justify-center w-full h-full">
-              <style>
-                {`
-                  @keyframes slowPulse {
-                    0%, 100% { transform: scale(1); }
-                    50% { transform: scale(1.1); }
-                  }
-                  @keyframes slowBounce {
-                    0%, 100% { transform: translateY(0); }
-                    50% { transform: translateY(-10px); }
-                  }
-                  @keyframes slowSpin {
-                    from { transform: rotate(0deg); }
-                    to { transform: rotate(360deg); }
-                  }
-                  @keyframes slowPing {
-                    0% { transform: scale(1); opacity: 1; }
-                    50% { transform: scale(1.5); opacity: 0.5; }
-                    100% { transform: scale(1); opacity: 1; }
-                  }
-                `}
-              </style>
-              <div className="w-full max-w-[600px] h-[300px] bg-gradient-to-br from-rose-50 to-pink-50 p-4 relative group">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  {/* Main container */}
-                  <div className="relative w-72 h-48">
-                    {/* Proximity - Two groups of circles */}
-                    <div className="absolute left-8 top-1/2 -translate-y-1/2 flex gap-8">
-                      <div className="flex flex-col gap-3">
-                        {[...Array(3)].map((_, i) => (
-                          <div
-                            key={`prox-${i}`}
-                            className="w-6 h-6 bg-rose-600 rounded-full group-hover:animate-[slowPulse_3s_ease-in-out_infinite]"
-                          />
-                        ))}
-                      </div>
-                      <div className="flex flex-col gap-3">
-                        {[...Array(3)].map((_, i) => (
-                          <div
-                            key={`prox2-${i}`}
-                            className="w-6 h-6 bg-pink-600 rounded-full group-hover:animate-[slowPulse_3s_ease-in-out_infinite]"
-                          />
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Similarity - Alternating shapes */}
-                    <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex gap-3">
-                      {[...Array(6)].map((_, i) => (
-                        <div
-                          key={`sim-${i}`}
-                          className={`w-4 h-4 ${
-                            i % 2 === 0
-                              ? "bg-rose-600 rounded-full"
-                              : "bg-pink-600 rounded-sm"
-                          } group-hover:animate-[slowBounce_2s_ease-in-out_infinite]`}
-                          style={{ animationDelay: `${i * 0.2}s` }}
-                        />
-                      ))}
-                    </div>
-
-                    {/* Closure - Incomplete shapes */}
-                    <div className="absolute right-6 top-1/2 -translate-y-1/2">
-                      <div className="relative w-16 h-16 group-hover:animate-[slowSpin_8s_linear_infinite]">
-                        {/* Incomplete square */}
-                        <div className="absolute inset-0 border-2 border-rose-600 border-r-transparent border-b-transparent transform rotate-45" />
-                        {/* Missing corner */}
-                        <div className="absolute top-0 right-0 w-3 h-3 bg-rose-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                      </div>
-                    </div>
-
-                    {/* Continuity - Curved lines */}
-                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <div className="absolute left-1/4 top-1/2 -translate-y-1/2 w-20 h-px bg-gradient-to-r from-rose-600 to-pink-600 transform rotate-12 group-hover:animate-[slowPulse_4s_ease-in-out_infinite]" />
-                      <div className="absolute right-1/4 top-1/2 -translate-y-1/2 w-20 h-px bg-gradient-to-r from-pink-600 to-rose-600 transform -rotate-12 group-hover:animate-[slowPulse_4s_ease-in-out_infinite]" />
-                    </div>
-
-                    {/* Figure/Ground - Overlapping elements */}
-                    <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <div className="relative w-12 h-12">
-                        <div className="absolute inset-0 bg-rose-600 rounded-full transform group-hover:animate-[slowPing_3s_ease-in-out_infinite]" />
-                        <div
-                          className="absolute inset-0 bg-pink-600 rounded-full transform -translate-x-1 -translate-y-1 group-hover:animate-[slowPing_3s_ease-in-out_infinite]"
-                          style={{ animationDelay: "1.5s" }}
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                {/* Remove overlay text */}
-                {/* <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
-                  <div className="text-xs sm:text-sm text-rose-600 font-medium bg-white/80 px-3 py-2 backdrop-blur-sm font-lexend">
-                    Gestalt Principles in Action
-                  </div>
-                </div> */}
-              </div>
-            </div>
-          }
-          background="bg-gradient-to-br from-rose-50/50 to-pink-50/50"
-        />
-        <DesignSection
-          title="Continuity"
-          description="The Law of Continuity states that the human eye naturally follows continuous lines and patterns. Elements arranged in a continuous line or curve are perceived as more related than elements not on the line or curve."
-          designPrinciple="Visual Flow – Using continuous lines and patterns to guide the viewer's eye through a design."
-          exampleLink="https://www.merriam-webster.com/dictionary/law%20of%20continuity"
-          isListLayout={isListLayout}
-          visualComponent={
-            <div className="flex items-center justify-center w-full h-full">
-              <style>
-                {`
-                  @keyframes flowWave {
-                    0% { transform: translateX(-100%) translateY(0); }
-                    25% { transform: translateX(-50%) translateY(-20px); }
-                    50% { transform: translateX(0) translateY(0); }
-                    75% { transform: translateX(50%) translateY(20px); }
-                    100% { transform: translateX(100%) translateY(0); }
-                  }
-                  @keyframes glow {
-                    0%, 100% { opacity: 0.3; }
-                    50% { opacity: 0.8; }
-                  }
-                `}
-              </style>
-              <div className="w-full max-w-[600px] h-[300px] bg-gradient-to-br from-sky-50 to-blue-50 p-4 relative group">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  {/* Main container */}
-                  <div className="relative w-full h-32">
-                    {/* Curved background lines */}
-                    <div className="absolute inset-0">
-                      {/* Primary curve */}
-                      <div className="absolute w-full h-32">
-                        <div className="absolute w-full h-px bg-sky-600/20 transform -rotate-6 origin-center group-hover:bg-sky-600/40 transition-colors duration-300" />
-                        <div className="absolute w-full h-px bg-sky-600/20 transform rotate-6 origin-center group-hover:bg-sky-600/40 transition-colors duration-300" />
-                      </div>
-                      {/* Secondary curves */}
-                      <div className="absolute w-full h-32 top-8">
-                        <div className="absolute w-full h-px bg-sky-600/10 transform -rotate-12 origin-center group-hover:bg-sky-600/20 transition-colors duration-300" />
-                        <div className="absolute w-full h-px bg-sky-600/10 transform rotate-12 origin-center group-hover:bg-sky-600/20 transition-colors duration-300" />
-                      </div>
-                    </div>
-
-                    {/* Single file flowing elements */}
-                    <div className="absolute inset-0 overflow-hidden">
-                      {[...Array(5)].map((_, i) => (
-                        <div
-                          key={`ball-${i}`}
-                          className="absolute w-4 h-4 bg-sky-600 rounded-full group-hover:animate-[flowWave_3s_linear_infinite]"
-                          style={{
-                            top: "50%",
-                            left: "0%",
-                            transform: "translate(-50%, -50%)",
-                            animationDelay: `${i * 0.6}s`,
-                          }}
-                        >
-                          <div className="absolute inset-0 rounded-full bg-gradient-to-br from-sky-400 to-sky-600" />
-                        </div>
-                      ))}
-                    </div>
-
-                    {/* Connection points */}
-                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      {[...Array(5)].map((_, i) => (
-                        <div
-                          key={`point-${i}`}
-                          className="absolute w-3 h-3 bg-sky-600 rounded-full group-hover:animate-[glow_1.5s_ease-in-out_infinite]"
-                          style={{
-                            left: `${20 + i * 20}%`,
-                            top: "50%",
-                            transform: "translate(-50%, -50%)",
-                            animationDelay: `${i * 0.2}s`,
-                          }}
-                        >
-                          <div className="absolute inset-0 rounded-full bg-gradient-to-br from-sky-400 to-sky-600" />
-                        </div>
-                      ))}
-                    </div>
-
-                    {/* Flow direction indicators */}
-                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <div className="absolute left-1/4 top-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 border-t-2 border-r-2 border-sky-600 transform rotate-45 group-hover:animate-[bounce_1s_ease-in-out_infinite]" />
-                      <div className="absolute right-1/4 top-1/2 translate-x-1/2 -translate-y-1/2 w-4 h-4 border-t-2 border-r-2 border-sky-600 transform rotate-225 group-hover:animate-[bounce_1s_ease-in-out_infinite]" />
-                    </div>
-                  </div>
-                </div>
-                {/* Remove overlay text */}
-                {/* <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
-                  <div className="text-xs sm:text-sm text-sky-600 font-medium bg-white/80 px-3 py-2 backdrop-blur-sm font-dm-serif-display">
-                    Curves create natural flow
-                  </div>
-                </div> */}
-              </div>
-            </div>
-          }
-          background="bg-gradient-to-br from-sky-50/50 to-blue-50/50"
-        />
-        <DesignSection
-          title="Emergence"
-          description="Emergence describes how we perceive complex patterns as a whole before recognizing their individual parts. The whole is perceived before the individual elements that make it up, creating a unified and meaningful perception."
-          designPrinciple="Holistic Perception – Understanding how the mind perceives complete patterns before analyzing their components."
-          exampleLink="https://medium.com/@uxdesigncc/emergence-in-design-why-the-whole-is-greater-than-the-sum-of-its-parts-5a1b0c0c0c0c"
-          isListLayout={isListLayout}
-          visualComponent={
-            <div className="relative w-48 h-48 group">
-              <style>
-                {`
-                  @keyframes assemble {
-                    0% { transform: scale(0.5) rotate(0deg); opacity: 0; }
-                    50% { transform: scale(1.2) rotate(180deg); opacity: 1; }
-                    100% { transform: scale(1) rotate(360deg); opacity: 1; }
-                  }
-                  @keyframes pulseGlow {
-                    0%, 100% { opacity: 0.3; }
-                    50% { opacity: 0.8; }
-                  }
-                  @keyframes reveal {
-                    0% { clip-path: circle(0% at 50% 50%); }
-                    100% { clip-path: circle(100% at 50% 50%); }
-                  }
-                `}
-              </style>
-              {/* Background elements */}
-              <div className="absolute w-48 h-48 opacity-20">
-                {[...Array(16)].map((_, i) => (
-                  <div
-                    key={`bg-${i}`}
-                    className="absolute w-4 h-4 bg-gray-400/30 transform transition-all duration-700"
-                    style={{
-                      left: `${(i % 4) * 16}px`,
-                      top: `${Math.floor(i / 4) * 16}px`,
-                    }}
-                  />
-                ))}
-              </div>
-
-              {/* Scattered parts */}
-              <div className="absolute inset-0">
-                {[...Array(8)].map((_, i) => (
-                  <div
-                    key={`part-${i}`}
-                    className="absolute w-8 h-8 bg-gray-400/60 transform transition-all duration-700 group-hover:animate-[assemble_1.5s_ease-in-out_forwards]"
-                    style={{
-                      left: `${Math.cos((i * Math.PI * 2) / 8) * 40 + 48}px`,
-                      top: `${Math.sin((i * Math.PI * 2) / 8) * 40 + 48}px`,
-                      transform: `translate(-50%, -50%) rotate(${i * 45}deg)`,
-                      animationDelay: `${i * 0.1}s`,
-                    }}
-                  />
-                ))}
-              </div>
-
-              {/* Central whole */}
-              <div className="absolute w-32 h-32 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
-                <div className="absolute inset-0 bg-gray-600 transform transition-all duration-700 group-hover:scale-110">
-                  <div className="absolute inset-0 bg-gray-600" />
-                </div>
-                {/* Reveal animation */}
-                <div className="absolute inset-0 bg-gray-600 animate-[reveal_1.5s_ease-in-out_forwards]" />
-              </div>
-
-              {/* Connection lines */}
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                {[...Array(8)].map((_, i) => (
-                  <div
-                    key={`line-${i}`}
-                    className="absolute w-24 h-px bg-gray-600/20 transform transition-all duration-700"
-                    style={{
-                      left: "50%",
-                      top: "50%",
-                      transform: `rotate(${i * 45}deg) translate(-50%, -50%)`,
-                      animationDelay: `${i * 0.15}s`,
-                    }}
-                  />
-                ))}
-              </div>
-
-              {/* Hover caption */}
-              {/* <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
-                <div className="text-xs sm:text-sm text-gray-600 font-medium bg-white/80 px-3 py-2 backdrop-blur-sm font-domine whitespace-nowrap">
-                  Parts assemble into a meaningful whole
-                </div>
-              </div> */}
-            </div>
-          }
-        />
-        <DesignSection
-          title="Hick's Law"
-          description="Hick's Law states that the time it takes to make a decision increases with the number and complexity of choices. This principle helps designers create interfaces that minimize cognitive load and improve decision-making efficiency."
-          designPrinciple="Decision Time – The relationship between the number of choices and the time it takes to make a decision."
-          exampleLink="https://www.ted.com/talks/barry_schwartz_the-paradox-of-choice"
-          isListLayout={isListLayout}
-          visualComponent={
-            <div className="flex items-center justify-center w-full h-full">
-              <style>
-                {`
-                  @keyframes highlight {
-                    0% { transform: scale(1); opacity: 0.3; }
-                    50% { transform: scale(1.1); opacity: 0.6; }
-                    100% { transform: scale(1); opacity: 0.3; }
-                  }
-                  @keyframes pulseDecision {
-                    0% { transform: scale(1); }
-                    50% { transform: scale(1.2); }
-                    100% { transform: scale(1); }
-                  }
-                `}
-              </style>
-              <div className="w-full max-w-[600px] h-[300px] bg-gradient-to-br from-amber-50 to-orange-50 p-4 relative group">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  {/* Main container */}
-                  <div className="relative w-64 h-40">
-                    {/* Initial state - many options */}
-                    <div className="absolute inset-0 opacity-100 group-hover:opacity-0 transition-all duration-700 ease-in-out">
-                      <div className="grid grid-cols-4 gap-2">
-                        {[...Array(16)].map((_, i) => (
-                          <div
-                            key={`option-${i}`}
-                            className="w-6 h-6 bg-amber-400/30 group-hover:animate-[highlight_1s_ease-in-out_infinite]"
-                            style={{
-                              animationDelay: `${i * 0.1}s`,
-                              transition: "all 0.5s ease-in-out",
-                            }}
-                          />
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Hover state - focused decision */}
-                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-700 ease-in-out">
-                      {/* Decision point */}
-                      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-amber-500 rounded-full animate-[pulseDecision_2s_ease-in-out_infinite]">
-                        <div className="absolute inset-0 bg-amber-500 rounded-full" />
-                      </div>
-
-                      {/* Decision time indicator */}
-                      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 border-2 border-amber-400/30 rounded-full group-hover:animate-[spin_4s_linear_infinite]" />
-                    </div>
-
-                    {/* Overlay text */}
-                    {/* <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-700 ease-in-out pointer-events-none z-10">
-                      <div className="text-xs sm:text-sm text-amber-600 font-medium bg-white/80 px-3 py-2 backdrop-blur-sm font-dm-sans">
-                        More choices = Longer decisions
-                      </div>
-                    </div> */}
-                  </div>
-                </div>
-              </div>
-            </div>
-          }
+          fontFamily="germania-one"
+          descriptionClassName="text-gray-700 font-germania-one"
+          titleClassName="text-2xl font-bold text-gray-900 font-germania-one"
           background="bg-gradient-to-br from-amber-50/50 to-orange-50/50"
         />
         <DesignSection
-          title="VIMM Model"
-          description="The VIMM model breaks down user interaction into four key components: Visual (what users see), Interactive (how users engage), Mental (cognitive processing), and Motor (physical actions). This framework helps designers create more intuitive and efficient user experiences."
-          designPrinciple="Interaction Framework – Understanding the four key components of user interaction."
-          exampleLink="https://www.interaction-design.org/literature/topics/vimm-model"
+          title="Fallingwater"
+          description="Fallingwater, designed by Frank Lloyd Wright in 1935, is a masterpiece of organic architecture that harmoniously integrates with its natural surroundings. The house appears to float above a waterfall, creating a seamless connection between built and natural environments."
+          designPrinciple="Organic Architecture – Creating harmony between human habitation and the natural world."
+          exampleLink="https://www.fallingwater.org/"
           isListLayout={isListLayout}
           visualComponent={
-            <div className="flex items-center justify-center w-full h-full">
-              <style>
-                {`
-                  @keyframes vimmPulse {
-                    0%, 100% { transform: scale(1); opacity: 0.7; }
-                    50% { transform: scale(1.1); opacity: 1; }
-                  }
-                  @keyframes vimmRotate {
-                    from { transform: rotate(0deg); }
-                    to { transform: rotate(360deg); }
-                  }
-                `}
-              </style>
-              <div className="w-full max-w-[600px] h-[300px] bg-gradient-to-br from-violet-50 to-purple-50 p-4 relative group">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  {/* Main container */}
-                  <div className="relative w-72 h-48">
-                    {/* Central circle */}
-                    <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 bg-violet-400/20 rounded-full group-hover:animate-[vimmRotate_4s_linear_infinite]" />
-
-                    {/* VIMM components */}
-                    <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-                      {/* Visual */}
-                      <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-16 h-16 bg-violet-500/30 group-hover:animate-[vimmPulse_2s_ease-in-out_infinite]">
-                        <div className="absolute inset-0 flex items-center justify-center text-violet-600">
-                          <Info className="w-8 h-8" />
-                        </div>
-                      </div>
-
-                      {/* Interactive */}
-                      <div
-                        className="absolute top-1/2 -right-20 -translate-y-1/2 w-16 h-16 bg-violet-500/30 group-hover:animate-[vimmPulse_2s_ease-in-out_infinite]"
-                        style={{ animationDelay: "0.5s" }}
-                      >
-                        <div className="absolute inset-0 flex items-center justify-center text-violet-600">
-                          <Settings className="w-8 h-8" />
-                        </div>
-                      </div>
-
-                      {/* Mental */}
-                      <div
-                        className="absolute -bottom-20 left-1/2 -translate-x-1/2 w-16 h-16 bg-violet-500/30 group-hover:animate-[vimmPulse_2s_ease-in-out_infinite]"
-                        style={{ animationDelay: "1s" }}
-                      >
-                        <div className="absolute inset-0 flex items-center justify-center text-violet-600">
-                          <Brain className="w-8 h-8" />
-                        </div>
-                      </div>
-
-                      {/* Motor */}
-                      <div
-                        className="absolute top-1/2 -left-20 -translate-y-1/2 w-16 h-16 bg-violet-500/30 group-hover:animate-[vimmPulse_2s_ease-in-out_infinite]"
-                        style={{ animationDelay: "1.5s" }}
-                      >
-                        <div className="absolute inset-0 flex items-center justify-center text-violet-600">
-                          <Hand className="w-8 h-8" />
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Connection lines */}
-                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 border-2 border-violet-400/20 rounded-full" />
-                      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-56 h-56 border-2 border-violet-400/10 rounded-full" />
-                    </div>
-                  </div>
-                </div>
-                {/* Remove overlay text */}
-                {/* <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
-                  <div className="text-xs sm:text-sm text-violet-600 font-medium bg-white/80 px-3 py-2 backdrop-blur-sm font-dm-sans whitespace-nowrap">
-                    Visual Interactive Mental Motor
-                  </div>
-                </div> */}
+            <div className="flex items-center justify-center h-full p-4">
+              <div className="w-[600px] h-[400px]">
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/b/bc/Fallingwater3.jpg"
+                  alt="Fallingwater by Frank Lloyd Wright"
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300 animate-[float_3s_ease-in-out_infinite] group-hover:animate-none"
+                />
               </div>
             </div>
           }
-          background="bg-gradient-to-br from-violet-50/50 to-purple-50/50"
+          fontFamily="dm-sans"
+          descriptionClassName="text-gray-700 font-dm-sans"
+          titleClassName="text-2xl font-bold text-gray-900 font-dm-sans"
+          background="bg-gradient-to-br from-stone-50/50 to-slate-50/50"
         />
         <DesignSection
-          title="Progressive Disclosure"
-          description="Progressive Disclosure is a design pattern that reveals information gradually, showing only what's necessary at each step. This approach reduces cognitive load, prevents overwhelming users, and helps maintain focus on the current task."
-          designPrinciple="Information Hierarchy – Revealing information progressively to maintain focus and reduce cognitive load."
-          exampleLink="https://www.nngroup.com/articles/progressive-disclosure/"
+          title="The Dot Matrix Printer"
+          description="The dot matrix printer revolutionized computer output in the 1970s and 1980s. Its design principle of using a matrix of pins to create characters through impact printing demonstrated how mechanical precision could create digital output. The distinctive sound and visual pattern of its printing process became iconic, showing how functional design can create memorable user experiences."
+          designPrinciple="Functionality Meets Innovation"
+          exampleLink="https://en.wikipedia.org/wiki/Dot_matrix_printing"
           isListLayout={isListLayout}
           visualComponent={
-            <div className="flex items-center justify-center w-full h-full">
-              <div className="w-full max-w-[600px] h-[300px] bg-gradient-to-br from-emerald-50 to-teal-50 p-4 relative group">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  {/* Initial state - minimal information */}
-                  <div className="relative w-32 h-32">
-                    <div className="absolute inset-0 bg-emerald-400/20" />
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="w-8 h-8 bg-emerald-500 rounded-full group-hover:animate-[pulse_2s_ease-in-out_infinite]" />
-                    </div>
-                  </div>
-
-                  {/* First level of disclosure */}
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="relative w-48 h-32">
-                      <div className="absolute inset-0 bg-emerald-400/30" />
-                      <div className="absolute inset-0 flex items-center justify-center gap-2">
-                        <div className="w-6 h-6 bg-emerald-500 rounded-full group-hover:animate-[bounce_1s_ease-in-out_infinite]" />
-                        <div
-                          className="w-6 h-6 bg-emerald-500 rounded-full group-hover:animate-[bounce_1s_ease-in-out_infinite]"
-                          style={{ animationDelay: "0.2s" }}
-                        />
-                        <div
-                          className="w-6 h-6 bg-emerald-500 rounded-full group-hover:animate-[bounce_1s_ease-in-out_infinite]"
-                          style={{ animationDelay: "0.4s" }}
-                        />
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Second level of disclosure */}
-                  <div
-                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                    style={{ transitionDelay: "0.1s" }}
-                  >
-                    <div className="relative w-64 h-40">
-                      <div className="absolute inset-0 bg-emerald-400/40" />
-                      <div className="absolute inset-0 flex flex-col gap-2 p-4">
-                        <div className="h-4 bg-emerald-500/50 rounded-full group-hover:animate-[pulse_2s_ease-in-out_infinite]" />
-                        <div
-                          className="h-4 bg-emerald-500/50 rounded-full group-hover:animate-[pulse_2s_ease-in-out_infinite]"
-                          style={{ animationDelay: "0.2s" }}
-                        />
-                        <div
-                          className="h-4 bg-emerald-500/50 rounded-full group-hover:animate-[pulse_2s_ease-in-out_infinite]"
-                          style={{ animationDelay: "0.4s" }}
-                        />
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Final level of disclosure */}
-                  <div
-                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                    style={{ transitionDelay: "0.2s" }}
-                  >
-                    <div className="relative w-72 h-48">
-                      <div className="absolute inset-0 bg-emerald-400/50" />
-                      <div className="absolute inset-0 flex flex-col gap-4 p-4">
-                        <div className="h-6 bg-emerald-500/60 group-hover:animate-[pulse_2s_ease-in-out_infinite]" />
-                        <div className="flex-1 grid grid-cols-2 gap-2">
-                          <div className="h-4 bg-emerald-500/40 rounded-full group-hover:animate-[pulse_2s_ease-in-out_infinite]" />
-                          <div
-                            className="h-4 bg-emerald-500/40 rounded-full group-hover:animate-[pulse_2s_ease-in-out_infinite]"
-                            style={{ animationDelay: "0.2s" }}
-                          />
-                          <div
-                            className="h-4 bg-emerald-500/40 rounded-full group-hover:animate-[pulse_2s_ease-in-out_infinite]"
-                            style={{ animationDelay: "0.4s" }}
-                          />
-                          <div
-                            className="h-4 bg-emerald-500/40 rounded-full group-hover:animate-[pulse_2s_ease-in-out_infinite]"
-                            style={{ animationDelay: "0.6s" }}
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                {/* Remove overlay text */}
-                {/* <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
-                  <div className="text-xs sm:text-sm text-emerald-600 font-medium bg-white/80 px-3 py-2 backdrop-blur-sm font-dm-sans">
-                    Information reveals progressively
-                  </div>
-                </div> */}
+            <div className="flex items-center justify-center h-full p-4">
+              <div className="w-[600px] h-[400px]">
+                <img
+                  src="https://i.ytimg.com/vi/MikoF6KZjm0/maxresdefault.jpg"
+                  alt="Dot Matrix Printer"
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300 animate-[float_3s_ease-in-out_infinite] group-hover:animate-none"
+                />
               </div>
             </div>
           }
-          background="bg-gradient-to-br from-emerald-50/50 to-teal-50/50"
+          fontFamily="doto"
+          descriptionClassName="text-gray-700 font-doto tracking-[2px]"
+          titleClassName="text-2xl font-bold text-gray-900 font-doto tracking-[2px]"
+          background="bg-gradient-to-br from-stone-50/50 to-slate-50/50"
         />
         <DesignSection
-          title="3D Illustration"
-          description="3D Illustration brings designs to life through movement, depth, and spatial relationships. By carefully controlling timing, easing, and perspective, we can create engaging and dynamic visual experiences that guide user attention and enhance understanding."
-          designPrinciple="Motion & Depth – Using three-dimensional space and movement to create engaging visual experiences."
-          exampleLink="https://www.blender.org/"
+          title="Scarfolk"
+          description="Scarfolk is a fictional northwestern English town created by writer and designer Richard Littler. Through its distinctive visual language of public information posters and official documents, it creates a satirical critique of bureaucracy and social control. The design style draws from British public information campaigns of the 1970s, using stark typography and unsettling imagery to create a world that is both familiar and deeply unsettling."
+          designPrinciple="Retro Design & Social Commentary"
+          exampleLink="https://scarfolk.blogspot.com/"
           isListLayout={isListLayout}
           visualComponent={
-            <div className="flex items-center justify-center w-full h-full">
-              <div className="w-full max-w-[600px] h-[300px] bg-gradient-to-br from-blue-50 to-indigo-50 p-4 relative group">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  {/* 3D Cube */}
-                  <div className="relative w-48 h-48 transform transition-all duration-500 group-hover:rotate-12 group-hover:scale-110 animate-[spin_8s_linear_infinite] group-hover:animate-none">
-                    {/* Front face */}
-                    <div className="absolute inset-0 bg-blue-600/80 transform transition-all duration-500 group-hover:bg-blue-700" />
-
-                    {/* Top face */}
-                    <div
-                      className="absolute inset-0 bg-blue-500/60 transform transition-all duration-500 group-hover:bg-blue-600"
-                      style={{
-                        transform: "skewX(-30deg) translateY(-50%)",
-                        transformOrigin: "bottom left",
-                      }}
-                    />
-
-                    {/* Right face */}
-                    <div
-                      className="absolute inset-0 bg-blue-700/60 transform transition-all duration-500 group-hover:bg-blue-800"
-                      style={{
-                        transform: "skewY(30deg) translateX(50%)",
-                        transformOrigin: "top left",
-                      }}
-                    />
-
-                    {/* Edge highlights */}
-                    <div className="absolute inset-0 border-2 border-blue-800/20" />
-                    <div
-                      className="absolute inset-0 border-2 border-blue-800/20"
-                      style={{
-                        transform: "skewX(-30deg) translateY(-50%)",
-                        transformOrigin: "bottom left",
-                      }}
-                    />
-                    <div
-                      className="absolute inset-0 border-2 border-blue-800/20"
-                      style={{
-                        transform: "skewY(30deg) translateX(50%)",
-                        transformOrigin: "top left",
-                      }}
-                    />
-                  </div>
-                </div>
+            <div className="w-full h-full flex items-center justify-center">
+              <div className="w-[800px] h-[400px] bg-white overflow-hidden group relative">
+                <img
+                  src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj86aEo7IxOTRss8qUMbprKclM9xQP77nKWKCG0ScSlzTarKrrSDpq5eDK6H_lWU1plS0KhxTNUkdc8DmuSzoQcOQjRL5uUfd9Yi-TMvQ1bWn8QXGYilvZSlqAdxOgysCWrsH923h4Hlatd/s1400/Scarfolk_map_cover.jpg"
+                  alt="Scarfolk Map Cover"
+                  className="w-full h-full object-contain transform transition-all duration-500 group-hover:scale-110 animate-[float_3s_ease-in-out_infinite] group-hover:animate-none"
+                />
+                <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
             </div>
           }
-          background="bg-gradient-to-br from-blue-50/50 to-indigo-50/50"
+          fontFamily="helvetica"
+          descriptionClassName="text-gray-700 font-helvetica"
+          titleClassName="text-2xl font-bold text-gray-900 font-helvetica"
+          background="bg-gradient-to-br from-stone-50/50 to-slate-50/50"
         />
         <DesignSection
-          title="Affordance"
-          description="Affordance refers to the perceived and actual properties of an object that determine how it can be used. In design, affordances help users understand how to interact with elements by making their functionality obvious through visual cues and physical properties."
-          designPrinciple="Perception – Making the function of elements clear through their appearance and behavior."
-          exampleLink="https://www.nngroup.com/articles/affordances/"
+          title="Negativland: U2"
+          description="Negativland's controversial 1991 album 'U2' became a landmark case in copyright law and artistic freedom. The album cover, featuring a large 'U2' logo with a small 'Negativland' credit, was designed to critique media manipulation and corporate branding. The resulting legal battle with Island Records and U2's label became a seminal moment in discussions about fair use, artistic appropriation, and the boundaries of copyright law. Learn more about the case in their book Fair Use: The Story of the Letter U and the Numeral 2."
+          designPrinciple="Media Critique & Copyright"
+          exampleLink="https://negativland.com/products/013-negativland-fair-use-book"
           isListLayout={isListLayout}
-          fontFamily="roboto-slab"
-          descriptionClassName="text-gray-700 font-roboto-slab"
-          titleClassName="text-2xl font-bold text-gray-900 font-roboto-slab"
-          background="bg-gradient-to-br from-cyan-50/50 to-blue-50/50"
           visualComponent={
-            <div className="flex items-center justify-center w-full h-full">
-              <div className="w-full max-w-[600px] h-[300px] p-4 relative group">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  {/* Interactive elements demonstrating affordance */}
-                  <div className="flex flex-col gap-4 items-center">
-                    {/* Button with clear affordance */}
-                    <button className="px-4 py-2 bg-blue-500 text-white rounded-lg shadow-md hover:bg-blue-600 transition-colors duration-200">
-                      Click Me
-                    </button>
-
-                    {/* Slider with clear affordance */}
-                    <div className="w-48 h-2 bg-gray-200 rounded-full relative">
-                      <div className="absolute left-0 top-0 h-full w-1/3 bg-blue-500 rounded-full"></div>
-                      <div className="absolute left-1/3 top-0 w-4 h-4 bg-white rounded-full shadow-md"></div>
-                    </div>
-
-                    {/* Text input with clear affordance */}
-                    <input
-                      type="text"
-                      placeholder="Type here..."
-                      className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    />
-                  </div>
-                </div>
+            <div className="w-full h-full flex items-center justify-center">
+              <div className="w-[800px] h-[400px] bg-white overflow-hidden group relative">
+                <img
+                  src="https://images.squarespace-cdn.com/content/v1/5d33a1f97b99b80001812595/1564508368509-Q353DG1VKMVVKZIKYP7N/negativland_1991+by+Negativland_5.jpg"
+                  alt="Negativland U2 Album Cover"
+                  className="w-full h-full object-contain transform transition-all duration-500 group-hover:scale-110 animate-[float_3s_ease-in-out_infinite] group-hover:animate-none"
+                />
+                <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
             </div>
           }
+          fontFamily="helvetica"
+          descriptionClassName="text-gray-700 font-helvetica uppercase tracking-wider text-xs"
+          titleClassName="text-2xl font-bold text-gray-900 font-helvetica uppercase tracking-[-1px]"
+          background="bg-gray-100"
         />
-        <DesignSection
-          title="Negative Space"
-          description="Negative space, also known as white space, is the empty area between and around design elements. It's not just empty space—it's a powerful design element that helps create balance, hierarchy, and focus. Effective use of negative space can enhance readability and create visual harmony."
-          designPrinciple="Balance – Using empty space to create visual equilibrium and guide attention."
-          exampleLink="https://www.toptal.com/designers/visual/negative-space-design"
-          isListLayout={isListLayout}
-          fontFamily="lexend"
-          descriptionClassName="text-gray-700 font-lexend"
-          titleClassName="text-2xl font-bold text-gray-900 font-lexend"
-          background="bg-gradient-to-br from-purple-50/50 to-pink-50/50"
-          visualComponent={
-            <div className="flex items-center justify-center w-full h-full">
-              <div className="w-full max-w-[600px] h-[300px] p-4 relative group">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  {/* Negative space demonstration */}
-                  <div className="w-full h-full flex flex-col items-center justify-center gap-4">
-                    {/* Minimalist composition with negative space */}
-                    <div className="w-32 h-32 relative">
-                      {/* Positive space elements */}
-                      <div className="absolute top-0 left-0 w-16 h-16 bg-blue-500 rounded-lg"></div>
-                      <div className="absolute bottom-0 right-0 w-16 h-16 bg-blue-500 rounded-lg"></div>
-                      {/* Negative space creates an implied circle */}
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="w-24 h-24 border-2 border-dashed border-gray-300 rounded-full"></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          }
-        />
+      </div>
 
-        {/* Section Break */}
-        <div id="designs" className="col-span-full py-24 bg-black text-white">
-          <div className="flex items-center justify-center gap-2 group">
-            <h2 className="text-2xl font-bold text-white font-dm-sans leading-none">
-              Designs
-            </h2>
-            <button
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              className="transition-opacity duration-200"
-            >
-              <ArrowUp className="w-6 h-6 text-white" />
-            </button>
-          </div>
-          <p className="text-white text-center mt-2 font-avenir">
-            Explore the fundamental principles that shape effective design
-          </p>
+      {/* Section Break */}
+      <div id="designers" className="col-span-full py-24 bg-black text-white">
+        <div className="flex items-center justify-center gap-2 group">
+          <h2 className="text-2xl font-bold text-white font-dm-sans leading-none">
+            Designers
+          </h2>
+          <button
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            className="transition-opacity duration-200"
+          >
+            <ArrowUp className="w-6 h-6 text-white" />
+          </button>
         </div>
+        <p className="text-white text-center mt-2 font-avenir">
+          Meet the visionaries who have shaped the world of design
+        </p>
+      </div>
 
-        <div
-          className={`${
-            isListLayout
-              ? "grid grid-cols-1 gap-6 max-w-4xl mx-auto px-4 py-8"
-              : "col-span-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-8 gap-12"
-          }`}
-        >
-          <DesignSection
-            title="Boston Globe Redesign"
-            description="The Boston Globe's 2011 responsive redesign, led by Ethan Marcotte and Filament Group, marked a pivotal moment in web design. As the first major news site to implement responsive design, it demonstrated how content could adapt seamlessly across devices while maintaining readability and hierarchy."
-            designPrinciple="Responsive Design - Creating fluid layouts that adapt to any screen size while maintaining content integrity"
-            exampleLink="https://zeldman.com/2011/09/15/boston-globes-responsive-redesign-discuss/"
-            isListLayout={isListLayout}
-            visualComponent={
-              <div className="flex items-center justify-center h-full p-4">
-                <div className="w-[600px] h-[400px]">
-                  <img
-                    src="https://scholarlykitchen.sspnet.org/wp-content/uploads/2012/09/boston_globe_responsive_website.jpg"
-                    alt="The Boston Globe responsive website design"
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-              </div>
-            }
-            fontFamily="source-sans"
-            descriptionClassName="text-gray-700 font-source-sans"
-            titleClassName="text-2xl font-bold text-gray-900 font-source-sans"
-            background="bg-gradient-to-br from-blue-50/50 to-indigo-50/50"
-          />
-          <DesignSection
-            title="960 Grid System"
-            description="The 960 Grid System, created by Nathan Smith, revolutionized web layout design in the late 2000s. This CSS framework provided a standardized 12-column grid that worked perfectly for 1024x768 displays, making it the de facto standard for web layouts during the fixed-width era. Its influence can still be seen in modern CSS frameworks."
-            designPrinciple="Grid-Based Design - Creating consistent, balanced layouts through systematic column-based structures"
-            exampleLink="https://ux.stackexchange.com/questions/5128/do-you-consider-the-960-grid-system-one-of-the-holy-grails-of-user-experienc"
-            isListLayout={isListLayout}
-            visualComponent={
-              <div className="flex items-center justify-center h-full p-4">
-                <div className="w-[600px] h-[400px]">
-                  <img
-                    src="/960grid.png"
-                    alt="960 Grid System layout example"
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300 animate-[float_3s_ease-in-out_infinite] group-hover:animate-none"
-                  />
-                </div>
-              </div>
-            }
-            fontFamily="dm-sans"
-            descriptionClassName="text-gray-700 font-dm-sans"
-            titleClassName="text-2xl font-bold text-gray-900 font-dm-sans"
-            background="bg-gradient-to-br from-amber-50/50 to-orange-50/50"
-          />
-          <DesignSection
-            title="FedEx Logo"
-            description="The FedEx logo, designed by Lindon Leader in 1994, is a masterclass in negative space design. The hidden arrow between the 'E' and 'x' represents forward movement and precision, perfectly aligning with FedEx's brand values. This subtle yet powerful design element has made it one of the most recognized and awarded logos in history."
-            designPrinciple="Negative Space - Using the space between elements to create hidden meaning and visual interest"
-            exampleLink="https://logo.com/blog/fedex-logo"
-            isListLayout={isListLayout}
-            visualComponent={
-              <div className="flex items-center justify-center h-full p-4">
-                <div className="w-[600px] h-[400px]">
-                  <img
-                    src="https://logo.com/image-cdn/images/kts928pd/production/545de9c62376e6a69379aae1703674d4b66e6962-1600x894.png?w=1080&q=72&fm=webp"
-                    alt="FedEx logo with hidden arrow"
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-              </div>
-            }
-            fontFamily="helvetica"
-            descriptionClassName="text-gray-700 font-helvetica"
-            titleClassName="text-2xl font-bold text-gray-900 font-helvetica tracking-tight"
-            background="bg-gradient-to-br from-purple-50/50 to-indigo-50/50"
-          />
-          <DesignSection
-            title="Don't Make Me Think"
-            description="Steve Krug's 'Don't Make Me Think' revolutionized web usability with its simple, practical approach. The book emphasizes that good design should be intuitive and self-explanatory, requiring minimal cognitive effort from users. Its principles of usability testing and clear navigation have become fundamental to modern web design."
-            designPrinciple="Usability First - Creating interfaces that are intuitive and require minimal cognitive effort"
-            exampleLink="https://www.sensible.com/dmmt.html"
-            isListLayout={isListLayout}
-            visualComponent={
-              <div className="flex items-center justify-center h-full p-4">
-                <div className="w-[600px] h-[400px]">
-                  <img
-                    src="https://media.licdn.com/dms/image/v2/C4D34AQFcBa3aJAHZCw/ugc-proxy-shrink_800/ugc-proxy-shrink_800/0/1594646636338?e=2147483647&v=beta&t=IFoQ7PyP6METIpbPTWMVbNQTcGxFx7ax5jmr2StTdhc"
-                    alt="Don't Make Me Think book cover"
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300 animate-[float_3s_ease-in-out_infinite] group-hover:animate-none"
-                  />
-                </div>
-              </div>
-            }
-            fontFamily="mitr"
-            descriptionClassName="text-gray-700 font-mitr"
-            titleClassName="text-2xl font-bold text-gray-900 font-mitr"
-            background="bg-gradient-to-br from-emerald-50/50 to-teal-50/50"
-          />
-          <DesignSection
-            title="European Heraldry"
-            description="The world's first form of logo design, dating back to the 12th century. Heraldic symbols were used to identify knights in battle and evolved into sophisticated systems of visual identity for families, institutions, and nations. These designs established fundamental principles of visual communication that influence modern logo design."
-            designPrinciple="Symbolism & Identity – Creating distinctive visual marks that communicate status, heritage, and values through carefully designed symbols and colors"
-            exampleLink="https://www.heraldica.org/topics/design.htm"
-            isListLayout={isListLayout}
-            visualComponent={
-              <div className="w-full h-full flex items-center justify-center">
-                <div className="w-[800px] h-[400px] bg-white overflow-hidden group relative">
-                  <img
-                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Wapenboek_Beyeren_%28armorial%29_-_KB79K21_-_folios_001v_%28left%29_and_002r_%28right%29.jpg/640px-Wapenboek_Beyeren_%28armorial%29_-_KB79K21_-_folios_001v_%28left%29_and_002r_%28right%29.jpg"
-                    alt="European Heraldry - Hyghalmen Roll"
-                    className="w-full h-full object-contain transform transition-all duration-500 group-hover:scale-110 animate-[float_3s_ease-in-out_infinite] group-hover:animate-none"
-                  />
-                  <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                </div>
-              </div>
-            }
-            fontFamily="germania-one"
-            descriptionClassName="text-gray-700 font-germania-one"
-            titleClassName="text-2xl font-bold text-gray-900 font-germania-one"
-            background="bg-gradient-to-br from-amber-50/50 to-orange-50/50"
-          />
-          <DesignSection
-            title="Fallingwater"
-            description="Fallingwater, designed by Frank Lloyd Wright in 1935, is a masterpiece of organic architecture that harmoniously integrates with its natural surroundings. The house appears to float above a waterfall, creating a seamless connection between built and natural environments."
-            designPrinciple="Organic Architecture – Creating harmony between human habitation and the natural world."
-            exampleLink="https://www.fallingwater.org/"
-            isListLayout={isListLayout}
-            visualComponent={
-              <div className="flex items-center justify-center h-full p-4">
-                <div className="w-[600px] h-[400px]">
-                  <img
-                    src="https://upload.wikimedia.org/wikipedia/commons/b/bc/Fallingwater3.jpg"
-                    alt="Fallingwater by Frank Lloyd Wright"
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300 animate-[float_3s_ease-in-out_infinite] group-hover:animate-none"
-                  />
-                </div>
-              </div>
-            }
-            fontFamily="dm-sans"
-            descriptionClassName="text-gray-700 font-dm-sans"
-            titleClassName="text-2xl font-bold text-gray-900 font-dm-sans"
-            background="bg-gradient-to-br from-stone-50/50 to-slate-50/50"
-          />
-          <DesignSection
-            title="The Dot Matrix Printer"
-            description="The dot matrix printer revolutionized computer output in the 1970s and 1980s. Its design principle of using a matrix of pins to create characters through impact printing demonstrated how mechanical precision could create digital output. The distinctive sound and visual pattern of its printing process became iconic, showing how functional design can create memorable user experiences."
-            designPrinciple="Functionality Meets Innovation"
-            exampleLink="https://en.wikipedia.org/wiki/Dot_matrix_printing"
-            isListLayout={isListLayout}
-            visualComponent={
-              <div className="flex items-center justify-center h-full p-4">
-                <div className="w-[600px] h-[400px]">
-                  <img
-                    src="https://i.ytimg.com/vi/MikoF6KZjm0/maxresdefault.jpg"
-                    alt="Dot Matrix Printer"
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300 animate-[float_3s_ease-in-out_infinite] group-hover:animate-none"
-                  />
-                </div>
-              </div>
-            }
-            fontFamily="doto"
-            descriptionClassName="text-gray-700 font-doto tracking-[2px]"
-            titleClassName="text-2xl font-bold text-gray-900 font-doto tracking-[2px]"
-            background="bg-gradient-to-br from-stone-50/50 to-slate-50/50"
-          />
-          <DesignSection
-            title="Scarfolk"
-            description="Scarfolk is a fictional northwestern English town created by writer and designer Richard Littler. Through its distinctive visual language of public information posters and official documents, it creates a satirical critique of bureaucracy and social control. The design style draws from British public information campaigns of the 1970s, using stark typography and unsettling imagery to create a world that is both familiar and deeply unsettling."
-            designPrinciple="Retro Design & Social Commentary"
-            exampleLink="https://scarfolk.blogspot.com/"
-            isListLayout={isListLayout}
-            visualComponent={
-              <div className="w-full h-full flex items-center justify-center">
-                <div className="w-[800px] h-[400px] bg-white overflow-hidden group relative">
-                  <img
-                    src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj86aEo7IxOTRss8qUMbprKclM9xQP77nKWKCG0ScSlzTarKrrSDpq5eDK6H_lWU1plS0KhxTNUkdc8DmuSzoQcOQjRL5uUfd9Yi-TMvQ1bWn8QXGYilvZSlqAdxOgysCWrsH923h4Hlatd/s1400/Scarfolk_map_cover.jpg"
-                    alt="Scarfolk Map Cover"
-                    className="w-full h-full object-contain transform transition-all duration-500 group-hover:scale-110 animate-[float_3s_ease-in-out_infinite] group-hover:animate-none"
-                  />
-                  <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                </div>
-              </div>
-            }
-            fontFamily="helvetica"
-            descriptionClassName="text-gray-700 font-helvetica"
-            titleClassName="text-2xl font-bold text-gray-900 font-helvetica"
-            background="bg-gradient-to-br from-stone-50/50 to-slate-50/50"
-          />
-          <DesignSection
-            title="Negativland: U2"
-            description="Negativland's controversial 1991 album 'U2' became a landmark case in copyright law and artistic freedom. The album cover, featuring a large 'U2' logo with a small 'Negativland' credit, was designed to critique media manipulation and corporate branding. The resulting legal battle with Island Records and U2's label became a seminal moment in discussions about fair use, artistic appropriation, and the boundaries of copyright law. Learn more about the case in their book Fair Use: The Story of the Letter U and the Numeral 2."
-            designPrinciple="Media Critique & Copyright"
-            exampleLink="https://negativland.com/products/013-negativland-fair-use-book"
-            isListLayout={isListLayout}
-            visualComponent={
-              <div className="w-full h-full flex items-center justify-center">
-                <div className="w-[800px] h-[400px] bg-white overflow-hidden group relative">
-                  <img
-                    src="https://images.squarespace-cdn.com/content/v1/5d33a1f97b99b80001812595/1564508368509-Q353DG1VKMVVKZIKYP7N/negativland_1991+by+Negativland_5.jpg"
-                    alt="Negativland U2 Album Cover"
-                    className="w-full h-full object-contain transform transition-all duration-500 group-hover:scale-110 animate-[float_3s_ease-in-out_infinite] group-hover:animate-none"
-                  />
-                  <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                </div>
-              </div>
-            }
-            fontFamily="helvetica"
-            descriptionClassName="text-gray-700 font-helvetica uppercase tracking-wider text-xs"
-            titleClassName="text-2xl font-bold text-gray-900 font-helvetica uppercase tracking-[-1px]"
-            background="bg-gray-100"
-          />
-        </div>
-
-        {/* Section Break */}
-        <div id="designers" className="col-span-full py-24 bg-black text-white">
-          <div className="flex items-center justify-center gap-2 group">
-            <h2 className="text-2xl font-bold text-white font-dm-sans leading-none">
-              Designers
-            </h2>
-            <button
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              className="transition-opacity duration-200"
-            >
-              <ArrowUp className="w-6 h-6 text-white" />
-            </button>
-          </div>
-          <p className="text-white text-center mt-2 font-avenir">
-            Meet the visionaries who have shaped the world of design
-          </p>
-        </div>
-
+      <div
+        className={`${
+          isListLayout
+            ? "grid grid-cols-1 gap-6 max-w-4xl mx-auto px-4 py-8"
+            : "col-span-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-8 gap-12"
+        }`}
+      >
         <DesignSection
           title="Massimo Vignelli"
           description="Massimo Vignelli was an Italian designer who profoundly influenced American design through his modernist approach. His work in corporate identity, public signage, and typography established new standards for clarity and functionality in design."
