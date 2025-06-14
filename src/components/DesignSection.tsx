@@ -93,7 +93,7 @@ const DesignSection: React.FC<DesignSectionProps> = ({
 
   return (
     <div className="border border-gray-200 overflow-hidden shadow hover:shadow-lg transition-shadow duration-300">
-      <div className="relative h-[800px]">
+      <div className="relative h-[650px]">
         <div
           className="absolute inset-0 flex flex-col"
           style={{

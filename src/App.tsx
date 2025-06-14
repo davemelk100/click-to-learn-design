@@ -61,10 +61,11 @@ function App() {
                     {[...Array(16)].map((_, i) => (
                       <div
                         key={`grid-${i}`}
-                        className="absolute w-96 h-px bg-amber-400 transform transition-all duration-500 group-hover:bg-amber-500"
+                        className="absolute w-96 h-px bg-amber-400 transform transition-all duration-500 group-hover:bg-amber-500 animate-[pulse_2s_ease-in-out_infinite] group-hover:animate-none"
                         style={{
                           top: `${i * 16}px`,
                           transform: `rotate(${i * 11.25}deg)`,
+                          animationDelay: `${i * 0.1}s`,
                         }}
                       />
                     ))}
@@ -75,7 +76,7 @@ function App() {
                     {[...Array(6)].map((_, i) => (
                       <div
                         key={`float-${i}`}
-                        className="absolute w-12 h-12 bg-amber-500/60 shadow-lg transform transition-all duration-500 group-hover:translate-y-[-8px] group-hover:shadow-xl float-animation"
+                        className="absolute w-12 h-12 bg-amber-500/60 shadow-lg transform transition-all duration-500 group-hover:translate-y-[-8px] group-hover:shadow-xl animate-[float_3s_ease-in-out_infinite] group-hover:animate-none"
                         style={{
                           left: `${
                             Math.cos((i * Math.PI * 2) / 6) * 60 + 96
@@ -96,7 +97,7 @@ function App() {
                   {/* Foreground layer - prominent element */}
                   <div className="absolute w-96 h-96">
                     <div
-                      className="absolute w-24 h-24 bg-amber-600/80 shadow-xl transform transition-all duration-500 group-hover:translate-y-[-16px] group-hover:shadow-2xl group-hover:scale-110 float-animation"
+                      className="absolute w-24 h-24 bg-amber-600/80 shadow-xl transform transition-all duration-500 group-hover:translate-y-[-16px] group-hover:shadow-2xl group-hover:scale-110 animate-[float_3s_ease-in-out_infinite] group-hover:animate-none"
                       style={{
                         left: "50%",
                         top: "50%",
@@ -123,59 +124,53 @@ function App() {
           isListLayout={isListLayout}
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
-              <div className="w-full max-w-[600px] h-[300px] bg-gradient-to-br from-rose-50 to-pink-50 p-4 relative group">
+              <div className="w-full max-w-[600px] h-[300px] bg-white p-4 relative group">
+                <style>
+                  {`
+                    @keyframes floatSquare {
+                      0% { transform: translate(0, 0) rotate(0deg); }
+                      25% { transform: translate(10px, -10px) rotate(5deg); }
+                      50% { transform: translate(0, -15px) rotate(0deg); }
+                      75% { transform: translate(-10px, -10px) rotate(-5deg); }
+                      100% { transform: translate(0, 0) rotate(0deg); }
+                    }
+                    .square-animation {
+                      animation: floatSquare 6s ease-in-out infinite;
+                    }
+                    .square-1 { animation-delay: 0s; }
+                    .square-2 { animation-delay: 2s; }
+                    .square-3 { animation-delay: 4s; }
+                  `}
+                </style>
                 <div className="absolute inset-0 flex items-center justify-center">
-                  {/* 3D cube with overlapping faces */}
-                  <div className="absolute w-32 h-32 transform transition-all duration-500 group-hover:rotate-12 group-hover:scale-110">
-                    {/* Front face */}
-                    <div className="absolute inset-0 bg-stone-600/80 transform transition-all duration-500 group-hover:bg-stone-700" />
-
-                    {/* Top face */}
+                  {/* Three overlapping squares */}
+                  <div className="relative w-48 h-48">
+                    {/* Square 1 - Rose */}
                     <div
-                      className="absolute inset-0 bg-stone-500/60 transform transition-all duration-500 group-hover:bg-stone-600"
+                      className="absolute w-32 h-32 bg-rose-400/60 square-animation square-1"
                       style={{
-                        transform: "skewX(-30deg) translateY(-50%)",
-                        transformOrigin: "bottom left",
+                        transform: "translate(-20px, -20px) rotate(-15deg)",
+                        transformOrigin: "center",
                       }}
                     />
 
-                    {/* Right face */}
+                    {/* Square 2 - Pink */}
                     <div
-                      className="absolute inset-0 bg-stone-700/60 transform transition-all duration-500 group-hover:bg-stone-800"
+                      className="absolute w-32 h-32 bg-pink-400/60 square-animation square-2"
                       style={{
-                        transform: "skewY(30deg) translateX(50%)",
-                        transformOrigin: "top left",
+                        transform: "translate(20px, -20px) rotate(15deg)",
+                        transformOrigin: "center",
                       }}
                     />
 
-                    {/* Edge highlights */}
-                    <div className="absolute inset-0 border-2 border-stone-800/20" />
+                    {/* Square 3 - Fuchsia */}
                     <div
-                      className="absolute inset-0 border-2 border-stone-800/20"
+                      className="absolute w-32 h-32 bg-fuchsia-400/60 square-animation square-3"
                       style={{
-                        transform: "skewX(-30deg) translateY(-50%)",
-                        transformOrigin: "bottom left",
+                        transform: "translate(0, 20px) rotate(0deg)",
+                        transformOrigin: "center",
                       }}
                     />
-                    <div
-                      className="absolute inset-0 border-2 border-stone-800/20"
-                      style={{
-                        transform: "skewY(30deg) translateX(50%)",
-                        transformOrigin: "top left",
-                      }}
-                    />
-                  </div>
-
-                  {/* Dimension lines */}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-32 h-32 relative">
-                      {/* Horizontal dimension line */}
-                      <div className="absolute left-0 right-0 h-px bg-stone-400/40 transform -translate-y-6 group-hover:bg-stone-500/60 transition-colors duration-300" />
-                      <div className="absolute left-0 right-0 h-px bg-stone-400/40 transform translate-y-6 group-hover:bg-stone-500/60 transition-colors duration-300" />
-                      {/* Vertical dimension line */}
-                      <div className="absolute top-0 bottom-0 w-px bg-stone-400/40 transform -translate-x-6 group-hover:bg-stone-500/60 transition-colors duration-300" />
-                      <div className="absolute top-0 bottom-0 w-px bg-stone-400/40 transform translate-x-6 group-hover:bg-stone-500/60 transition-colors duration-300" />
-                    </div>
                   </div>
                 </div>
               </div>
@@ -193,32 +188,80 @@ function App() {
           isListLayout={isListLayout}
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
-              <div className="w-full max-w-[600px] h-[300px] bg-gradient-to-br from-emerald-50 to-teal-50 p-4 relative group">
-                <div className="absolute inset-0 grid grid-cols-3 grid-rows-3">
-                  {/* Vertical lines */}
-                  <div className="absolute left-1/3 top-0 bottom-0 w-px bg-emerald-600/30 group-hover:bg-emerald-600/60 transition-colors duration-300" />
-                  <div className="absolute right-1/3 top-0 bottom-0 w-px bg-emerald-600/30 group-hover:bg-emerald-600/60 transition-colors duration-300" />
-                  {/* Horizontal lines */}
-                  <div className="absolute top-1/3 left-0 right-0 h-px bg-emerald-600/30 group-hover:bg-emerald-600/60 transition-colors duration-300" />
-                  <div className="absolute bottom-1/3 left-0 right-0 h-px bg-emerald-600/30 group-hover:bg-emerald-600/60 transition-colors duration-300" />
-                  {/* Intersection points */}
-                  {[...Array(4)].map((_, i) => (
+              <div className="w-full max-w-[600px] h-[300px] bg-white p-4 relative group">
+                <style>
+                  {`
+                    @keyframes highlightGrid {
+                      0%, 100% { opacity: 0.2; }
+                      50% { opacity: 0.4; }
+                    }
+                    @keyframes highlightPoint {
+                      0%, 100% { transform: scale(1); opacity: 0.4; }
+                      50% { transform: scale(1.5); opacity: 0.8; }
+                    }
+                    @keyframes moveElement {
+                      0% { transform: translate(0, 0); }
+                      25% { transform: translate(20px, -20px); }
+                      50% { transform: translate(0, -30px); }
+                      75% { transform: translate(-20px, -20px); }
+                      100% { transform: translate(0, 0); }
+                    }
+                    .grid-line {
+                      animation: highlightGrid 4s ease-in-out infinite;
+                    }
+                    .intersection-point {
+                      animation: highlightPoint 4s ease-in-out infinite;
+                    }
+                    .example-element {
+                      animation: moveElement 6s ease-in-out infinite;
+                    }
+                  `}
+                </style>
+                <div className="absolute inset-0 flex items-center justify-center">
+                  {/* Main container */}
+                  <div className="relative w-64 h-64">
+                    {/* Grid lines */}
+                    <div className="absolute inset-0">
+                      {/* Vertical lines */}
+                      <div className="absolute left-1/3 top-0 bottom-0 w-0.5 bg-gray-400 grid-line" />
+                      <div className="absolute right-1/3 top-0 bottom-0 w-0.5 bg-gray-400 grid-line" />
+                      {/* Horizontal lines */}
+                      <div className="absolute top-1/3 left-0 right-0 h-0.5 bg-gray-400 grid-line" />
+                      <div className="absolute bottom-1/3 left-0 right-0 h-0.5 bg-gray-400 grid-line" />
+                    </div>
+
+                    {/* Intersection points */}
+                    {[...Array(4)].map((_, i) => (
+                      <div
+                        key={i}
+                        className="absolute w-3 h-3 bg-gray-600 rounded-full intersection-point"
+                        style={{
+                          left: `${i % 2 === 0 ? "33.33%" : "66.66%"}`,
+                          top: `${i < 2 ? "33.33%" : "66.66%"}`,
+                          animationDelay: `${i * 1}s`,
+                        }}
+                      />
+                    ))}
+
+                    {/* Example elements at intersection points */}
                     <div
-                      key={i}
-                      className="absolute w-4 h-4 bg-emerald-600 rounded-full group-hover:scale-150 group-hover:bg-emerald-500 transition-all duration-300"
-                      style={{
-                        left: `${i % 2 === 0 ? "33.33%" : "66.66%"}`,
-                        top: `${i < 2 ? "33.33%" : "66.66%"}`,
-                        transform: "translate(-50%, -50%)",
-                      }}
-                    />
-                  ))}
-                  {/* Example composition elements */}
-                  <div className="absolute right-1/3 top-1/3 transform translate-x-8 -translate-y-8 group-hover:translate-x-12 group-hover:-translate-y-12 transition-transform duration-300">
-                    <div className="w-32 h-32 bg-emerald-600/20 transform -rotate-12 group-hover:rotate-0 group-hover:bg-emerald-600/30 transition-all duration-300" />
-                  </div>
-                  <div className="absolute left-1/3 bottom-1/3 transform -translate-x-16 translate-y-16 group-hover:-translate-x-20 group-hover:translate-y-20 transition-transform duration-300">
-                    <div className="w-24 h-24 bg-teal-600/20 rounded-full group-hover:bg-teal-600/30 transition-all duration-300" />
+                      className="absolute left-1/3 top-1/3 -translate-x-1/2 -translate-y-1/2 example-element"
+                      style={{ animationDelay: "0s" }}
+                    >
+                      <div className="w-8 h-8 bg-blue-500/60 rounded-lg" />
+                    </div>
+                    <div
+                      className="absolute right-1/3 top-1/3 translate-x-1/2 -translate-y-1/2 example-element"
+                      style={{ animationDelay: "2s" }}
+                    >
+                      <div className="w-8 h-8 bg-green-500/60 rounded-lg" />
+                    </div>
+                    <div
+                      className="absolute left-1/3 bottom-1/3 -translate-x-1/2 translate-y-1/2 example-element"
+                      style={{ animationDelay: "4s" }}
+                    >
+                      <div className="w-8 h-8 bg-purple-500/60 rounded-lg" />
+                    </div>
                   </div>
                 </div>
               </div>
@@ -239,50 +282,46 @@ function App() {
           titleClassName="text-2xl font-bold text-gray-900 font-tektur"
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
-              <div className="w-full max-w-[360px] h-[180px] p-4 relative group">
+              <div className="w-full max-w-[600px] h-[300px] bg-white p-4 relative group">
                 <style>
                   {`
-                    @keyframes float {
+                    @keyframes floatLayer {
                       0% { transform: translateY(0) rotate(0deg); }
-                      50% { transform: translateY(-10px) rotate(5deg); }
+                      25% { transform: translateY(-15px) rotate(2deg); }
+                      50% { transform: translateY(-25px) rotate(0deg); }
+                      75% { transform: translateY(-15px) rotate(-2deg); }
                       100% { transform: translateY(0) rotate(0deg); }
                     }
-                    .group:hover .layer-float {
-                      animation: float 3s ease-in-out infinite;
-                    }
+                    .layer-1 { animation: floatLayer 6s ease-in-out infinite; }
+                    .layer-2 { animation: floatLayer 6s ease-in-out infinite; animation-delay: 2s; }
+                    .layer-3 { animation: floatLayer 6s ease-in-out infinite; animation-delay: 4s; }
                   `}
                 </style>
                 <div className="absolute inset-0 flex items-center justify-center">
-                  {/* Spatial layers demonstration */}
+                  {/* Base container */}
                   <div className="relative w-48 h-48">
-                    {/* Base layer - static */}
-                    <div className="absolute inset-0 bg-gray-100 rounded-lg shadow-sm transform -rotate-3"></div>
-
-                    {/* Middle layer - subtle movement */}
+                    {/* Layer 3 - Back */}
                     <div
-                      className="absolute inset-4 bg-white rounded-lg shadow-md layer-float"
-                      style={{ animationDelay: "0.2s" }}
-                    ></div>
+                      className="absolute inset-0 bg-slate-200 rounded-lg shadow-sm layer-3"
+                      style={{ transform: "translateY(20px) rotate(-3deg)" }}
+                    />
 
-                    {/* Top layer - more movement */}
+                    {/* Layer 2 - Middle */}
                     <div
-                      className="absolute inset-8 bg-blue-500 rounded-lg shadow-lg layer-float"
-                      style={{ animationDelay: "0.4s" }}
-                    >
-                      {/* Inner decorative elements */}
-                      <div className="absolute inset-2 border-2 border-white/20 rounded"></div>
-                      <div className="absolute inset-4 border border-white/10 rounded"></div>
+                      className="absolute inset-0 bg-slate-300 rounded-lg shadow-sm layer-2"
+                      style={{ transform: "translateY(10px) rotate(-1deg)" }}
+                    />
+
+                    {/* Layer 1 - Front */}
+                    <div className="absolute inset-0 bg-slate-400 rounded-lg shadow-sm layer-1" />
+
+                    {/* Decorative elements */}
+                    <div className="absolute inset-4 flex items-center justify-center">
+                      <div className="w-16 h-16 border-2 border-slate-500/20 rounded-lg" />
                     </div>
-
-                    {/* Floating accent elements */}
-                    <div
-                      className="absolute -top-2 -right-2 w-4 h-4 bg-blue-400 rounded-full shadow-md layer-float"
-                      style={{ animationDelay: "0.6s" }}
-                    ></div>
-                    <div
-                      className="absolute -bottom-2 -left-2 w-4 h-4 bg-blue-400 rounded-full shadow-md layer-float"
-                      style={{ animationDelay: "0.8s" }}
-                    ></div>
+                    <div className="absolute inset-8 flex items-center justify-center">
+                      <div className="w-8 h-8 border-2 border-slate-500/20 rounded-lg" />
+                    </div>
                   </div>
                 </div>
               </div>
@@ -296,33 +335,45 @@ function App() {
           exampleLink="https://www.interaction-design.org/literature/topics/color-theory"
           isListLayout={isListLayout}
           visualComponent={
-            <div className="flex items-center justify-center w-full h-full gap-6 flex-wrap">
-              <div className="w-[180px] h-[180px] grid grid-cols-8 gap-0.5 bg-orange-100 p-2 group transition-all duration-500 hover:bg-orange-200">
-                {[...Array(64)].map((_, i) => (
+            <div className="flex items-center justify-center w-full h-full">
+              <div className="w-full max-w-[600px] h-[300px] bg-white p-4 relative group">
+                <style>
+                  {`
+                    @keyframes pulseColor {
+                      0%, 100% { opacity: 0.7; }
+                      50% { opacity: 1; }
+                    }
+                    @keyframes shiftBackground {
+                      0% { background-color: rgb(254 240 138); }
+                      33% { background-color: rgb(254 226 226); }
+                      66% { background-color: rgb(224 242 254); }
+                      100% { background-color: rgb(254 240 138); }
+                    }
+                    .color-shift {
+                      animation: shiftBackground 8s ease-in-out infinite;
+                    }
+                    .color-pulse {
+                      animation: pulseColor 4s ease-in-out infinite;
+                    }
+                  `}
+                </style>
+                <div className="absolute inset-0 flex items-center justify-center gap-8">
+                  {/* Left panel - Warm background */}
+                  <div className="w-48 h-48 color-shift rounded-lg p-4 flex items-center justify-center">
+                    <div className="w-32 h-32 bg-red-500/80 color-pulse rounded-lg" />
+                  </div>
+
+                  {/* Right panel - Cool background */}
                   <div
-                    key={i}
-                    className={`${
-                      i % 2 === 0 ? "bg-red-600" : "bg-orange-50"
-                    } aspect-square transition-all duration-500 group-hover:bg-red-500`}
-                  />
-                ))}
-              </div>
-              <div className="w-[180px] h-[180px] grid grid-cols-8 gap-0.5 bg-slate-700 p-2 group transition-all duration-500 hover:bg-slate-800">
-                {[...Array(64)].map((_, i) => (
-                  <div
-                    key={i}
-                    className={`${
-                      i % 2 === 0 ? "bg-red-600" : "bg-slate-900"
-                    } aspect-square transition-all duration-500 group-hover:bg-red-700`}
-                  />
-                ))}
-              </div>
-              {/* Overlay text */}
-              {/* <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                <div className="text-xs sm:text-sm text-white font-medium bg-black/60 px-3 py-2 backdrop-blur-sm font-avenir">
-                  Same red squares appear different due to their backgrounds
+                    className="w-48 h-48 color-shift rounded-lg p-4 flex items-center justify-center"
+                    style={{ animationDelay: "4s" }}
+                  >
+                    <div className="w-32 h-32 bg-red-500/80 color-pulse rounded-lg" />
+                  </div>
+
+                  {/* Center text */}
                 </div>
-              </div> */}
+              </div>
             </div>
           }
           fontFamily="avenir"
@@ -337,47 +388,51 @@ function App() {
           isListLayout={isListLayout}
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
-              <div className="w-full max-w-[600px] h-[300px] bg-gradient-to-r from-purple-100 to-indigo-50 p-4 relative group">
-                {/* Central circle */}
-                <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 rounded-full bg-indigo-600/80 group-hover:scale-110 transition-transform duration-500">
-                  <div className="absolute inset-0 rounded-full bg-gradient-to-br from-indigo-400 to-indigo-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="w-full max-w-[600px] h-[300px] bg-white p-4 relative group">
+                <style>
+                  {`
+                    @keyframes flowRight {
+                      0% { transform: translateX(-100%); }
+                      100% { transform: translateX(100%); }
+                    }
+                    @keyframes pulse {
+                      0%, 100% { transform: scale(1); opacity: 0.7; }
+                      50% { transform: scale(1.1); opacity: 1; }
+                    }
+                    .flow-element {
+                      animation: flowRight 8s linear infinite;
+                    }
+                    .pulse-element {
+                      animation: pulse 2s ease-in-out infinite;
+                    }
+                  `}
+                </style>
+                <div className="absolute inset-0 flex items-center justify-center">
+                  {/* Main rhythm container */}
+                  <div className="w-full h-48 relative overflow-hidden">
+                    {/* Flowing elements */}
+                    <div className="absolute inset-0 flex items-center gap-8">
+                      {[...Array(5)].map((_, i) => (
+                        <div
+                          key={i}
+                          className="flow-element w-16 h-16 bg-blue-500/80 rounded-lg"
+                          style={{ animationDelay: `${i * 1.6}s` }}
+                        />
+                      ))}
+                    </div>
+
+                    {/* Pulsing rhythm markers */}
+                    <div className="absolute inset-0 flex items-center justify-between px-8">
+                      {[...Array(3)].map((_, i) => (
+                        <div
+                          key={i}
+                          className="pulse-element w-8 h-8 bg-rose-500/80 rounded-full"
+                          style={{ animationDelay: `${i * 0.7}s` }}
+                        />
+                      ))}
+                    </div>
+                  </div>
                 </div>
-
-                {/* Concentric circles */}
-                {[...Array(4)].map((_, i) => (
-                  <div
-                    key={`circle-${i}`}
-                    className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 border-2 border-indigo-400/30 rounded-full transition-all duration-500 group-hover:scale-125 group-hover:border-indigo-400/60 group-hover:animate-pulse"
-                    style={{
-                      width: `${80 + i * 40}px`,
-                      height: `${80 + i * 40}px`,
-                      animationDelay: `${i * 0.2}s`,
-                    }}
-                  />
-                ))}
-
-                {/* Floating dots */}
-                {[...Array(12)].map((_, i) => (
-                  <div
-                    key={`dot-${i}`}
-                    className="absolute w-3 h-3 bg-indigo-500 rounded-full transition-all duration-500 group-hover:scale-150 group-hover:bg-indigo-400"
-                    style={{
-                      left: `${50 + Math.cos((i * Math.PI * 2) / 12) * 40}%`,
-                      top: `${50 + Math.sin((i * Math.PI * 2) / 12) * 40}%`,
-                      transform: `translate(-50%, -50%)`,
-                      animationDelay: `${i * 0.1}s`,
-                    }}
-                  >
-                    <div className="absolute inset-0 rounded-full bg-gradient-to-br from-indigo-300 to-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  </div>
-                ))}
-
-                {/* Overlay text */}
-                {/* <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
-                  <div className="text-xs sm:text-sm text-indigo-600 font-medium bg-white/80 px-3 py-2 backdrop-blur-sm font-roboto">
-                    Circular patterns create visual rhythm
-                  </div>
-                </div> */}
               </div>
             </div>
           }
@@ -392,84 +447,40 @@ function App() {
           isListLayout={isListLayout}
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
-              <div className="w-full max-w-[600px] h-[300px] bg-gradient-to-br from-zinc-50 to-neutral-50 p-4 relative overflow-hidden group">
+              <div className="w-full max-w-[600px] h-[300px] bg-white p-4 relative group">
                 <style>
                   {`
-                    @keyframes pulse {
-                      0% { transform: scale(1); }
-                      50% { transform: scale(1.1); }
-                      100% { transform: scale(1); }
+                    @keyframes scaleShift {
+                      0% { transform: scale(0.8) translateY(20px); }
+                      50% { transform: scale(1.2) translateY(-20px); }
+                      100% { transform: scale(0.8) translateY(20px); }
                     }
-                    .group:hover .pulse-animation {
-                      animation: pulse 2s ease-in-out infinite;
+                    @keyframes rotatePerspective {
+                      0% { transform: perspective(1000px) rotateY(0deg) rotateX(0deg); }
+                      50% { transform: perspective(1000px) rotateY(15deg) rotateX(10deg); }
+                      100% { transform: perspective(1000px) rotateY(0deg) rotateX(0deg); }
+                    }
+                    .scale-element {
+                      animation: scaleShift 6s ease-in-out infinite;
+                    }
+                    .perspective-container {
+                      animation: rotatePerspective 8s ease-in-out infinite;
                     }
                   `}
                 </style>
                 <div className="absolute inset-0 flex items-center justify-center">
-                  {/* Main geometric shapes with ambiguous depth */}
-                  <div className="relative w-48 h-48 group">
-                    {/* Background shapes */}
-                    {[...Array(3)].map((_, i) => (
-                      <div
-                        key={i}
-                        className="absolute left-1/2 top-1/2 border-2 border-zinc-300 pulse-animation"
-                        style={{
-                          width: `${120 + i * 40}px`,
-                          height: `${120 + i * 40}px`,
-                          transform: `translate(-50%, -50%) rotate(${
-                            i * 15
-                          }deg)`,
-                          opacity: 0.5 - i * 0.1,
-                        }}
-                      >
-                        <div className="absolute inset-4 border border-zinc-300/50" />
-                        <div className="absolute inset-8 bg-zinc-50/30" />
-                      </div>
-                    ))}
-
-                    {/* Floating cubes */}
-                    {[...Array(5)].map((_, i) => (
-                      <div
-                        key={`cube-${i}`}
-                        className="absolute transform-gpu pulse-animation"
-                        style={{
-                          left: `${
-                            Math.cos((i * Math.PI * 2) / 5) * 80 + 96
-                          }px`,
-                          top: `${Math.sin((i * Math.PI * 2) / 5) * 80 + 96}px`,
-                          perspective: "1000px",
-                          animation: "none",
-                        }}
-                      >
-                        <div
-                          className="w-8 h-8 relative transform-gpu"
-                          style={{
-                            transform: `rotateX(45deg) rotateZ(${
-                              45 + i * 30
-                            }deg)`,
-                            animation: "none",
-                          }}
-                        >
-                          <div className="absolute inset-0 bg-zinc-200 transform-gpu -translate-z-4 rotate-x-60" />
-                          <div className="absolute inset-0 bg-zinc-300 transform-gpu translate-y-4 -skew-x-45" />
-                          <div className="absolute inset-0 bg-zinc-400 transform-gpu translate-x-4 skew-y-45" />
-                        </div>
-                      </div>
-                    ))}
-
-                    {/* Perspective lines */}
-                    <div className="absolute inset-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      {[...Array(8)].map((_, i) => (
-                        <div
-                          key={`line-${i}`}
-                          className="absolute left-0 right-0 h-px bg-zinc-400 pulse-animation"
-                          style={{
-                            top: `${(i + 1) * 12.5}%`,
-                            transform: `rotate(${i * 22.5}deg)`,
-                            animation: "none",
-                          }}
-                        />
+                  {/* Main container with perspective */}
+                  <div className="perspective-container w-64 h-64 relative">
+                    {/* Reference squares */}
+                    <div className="absolute inset-0 grid grid-cols-2 gap-2">
+                      {[...Array(4)].map((_, i) => (
+                        <div key={i} className="bg-gray-200/50 rounded-lg" />
                       ))}
+                    </div>
+
+                    {/* Ambiguous element */}
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="scale-element w-24 h-24 bg-blue-500/80 rounded-lg shadow-lg" />
                     </div>
                   </div>
                 </div>
@@ -663,7 +674,8 @@ function App() {
                       {[...Array(16)].map((_, i) => (
                         <div
                           key={`grid-${i}`}
-                          className="bg-stone-300/30 transform transition-all duration-1000 animate-infinite pulse-animation"
+                          className="bg-stone-300/30 transform transition-all duration-1000 animate-[pulse_2s_ease-in-out_infinite] group-hover:animate-none"
+                          style={{ animationDelay: `${i * 0.1}s` }}
                         />
                       ))}
                     </div>
@@ -672,13 +684,14 @@ function App() {
                     {[...Array(8)].map((_, i) => (
                       <div
                         key={`circle-${i}`}
-                        className="absolute w-24 h-24 border-2 border-stone-400/40 rounded-full transform transition-all duration-1000 animate-infinite pulse-animation"
+                        className="absolute w-24 h-24 border-2 border-stone-400/40 rounded-full transform transition-all duration-1000 animate-[spin_8s_linear_infinite] group-hover:animate-none"
                         style={{
                           left: `${25 + Math.cos((i * Math.PI * 2) / 8) * 20}%`,
                           top: `${25 + Math.sin((i * Math.PI * 2) / 8) * 20}%`,
                           transform: `translate(-50%, -50%) rotate(${
                             i * 45
                           }deg)`,
+                          animationDelay: `${i * 0.2}s`,
                         }}
                       />
                     ))}
@@ -687,7 +700,7 @@ function App() {
                   {/* Final state - single focused element */}
                   <div className="absolute w-48 h-48 opacity-0 group-hover:opacity-100 transition-all duration-1000 animate-infinite">
                     {/* Central focus element */}
-                    <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-stone-800 transform transition-all duration-1000 group-hover:scale-110 group-hover:rotate-6 animate-infinite pulse-animation">
+                    <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-stone-800 transform transition-all duration-1000 group-hover:scale-110 group-hover:rotate-6 animate-[pulse_2s_ease-in-out_infinite] group-hover:animate-none">
                       <div className="absolute inset-1" />
                       {/* Subtle shadow */}
                       <div className="absolute inset-0 shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 animate-infinite" />
@@ -961,10 +974,10 @@ function App() {
                       50% { opacity: 1; }
                       100% { opacity: 0.3; }
                     }
-                    .group:hover .emphasis-pulse {
+                    .emphasis-pulse {
                       animation: pulse-emphasis 2s ease-in-out infinite;
                     }
-                    .group:hover .emphasis-fade {
+                    .emphasis-fade {
                       animation: fade-emphasis 3s ease-in-out infinite;
                     }
                   `}
@@ -1024,7 +1037,7 @@ function App() {
                   <img
                     src="https://www.elegantthemes.com/blog/wp-content/uploads/2019/06/Ratio-1024x648.png"
                     alt="Golden Ratio visualization"
-                    className="w-full h-full object-contain transform transition-all duration-500 group-hover:scale-105"
+                    className="w-full h-full object-contain transform transition-all duration-500 group-hover:scale-105 animate-[float_3s_ease-in-out_infinite] group-hover:animate-none"
                   />
                 </div>
                 <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -1045,64 +1058,13 @@ function App() {
             <div className="flex items-center justify-center w-full h-full">
               <div className="w-full max-w-[600px] h-[300px] bg-gradient-to-br from-blue-50 to-purple-50 p-4 relative group">
                 <div className="absolute inset-0 flex items-center justify-center">
-                  {/* Main container with focus ring */}
-                  <div className="relative w-48 h-48 border-2 border-blue-400/50 group-hover:ring-4 group-hover:ring-purple-300/50 transition-all duration-300">
-                    {/* Color contrast example */}
-                    <div className="absolute top-4 left-4 flex gap-2">
-                      <div className="w-8 h-8 bg-blue-700 flex items-center justify-center text-white text-xs font-bold">
-                        AAA
-                      </div>
-                      <div className="w-8 h-8 bg-blue-200 flex items-center justify-center text-blue-900 text-xs font-bold">
-                        AA
-                      </div>
-                    </div>
-
-                    {/* Keyboard focus indicators */}
-                    <div className="absolute top-4 right-4 w-8 h-8 border-2 border-purple-400 group-hover:ring-2 group-hover:ring-purple-300 transition-all duration-300 flex items-center justify-center">
-                      <span className="text-purple-600 text-sm">⌨️</span>
-                    </div>
-
-                    {/* Screen reader wave animation */}
-                    <div className="absolute bottom-4 left-4 w-32 h-12">
-                      {[...Array(3)].map((_, i) => (
-                        <div
-                          key={i}
-                          className="absolute bottom-0 left-0 w-full h-1 bg-blue-400/30 group-hover:animate-pulse"
-                          style={{
-                            transform: `translateY(-${i * 8}px)`,
-                            opacity: 1 - i * 0.2,
-                          }}
-                        />
-                      ))}
-                      <div className="absolute bottom-0 left-0 text-sm text-blue-600">
-                        🔊
-                      </div>
-                    </div>
-
-                    {/* ARIA label example */}
-                    <div className="absolute bottom-4 right-4 flex items-center gap-2">
-                      <div className="text-xs text-purple-600 font-medium">
-                        aria-label
-                      </div>
-                      <div className="w-6 h-6 rounded-full border-2 border-purple-400/50 flex items-center justify-center">
-                        <span className="text-xs">🏷️</span>
-                      </div>
-                    </div>
-
-                    {/* Central focus point */}
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="w-16 h-16 rounded-full bg-gradient-to-br from-blue-100 to-purple-100 group-hover:scale-110 transition-transform duration-300 flex items-center justify-center">
-                        <span className="text-2xl">👥</span>
-                      </div>
-                    </div>
-                  </div>
+                  <img
+                    src="https://www.w3.org/WAI/fundamentals/accessibility-principles/images/accessibility-principles.svg"
+                    alt="Accessibility principles"
+                    className="w-full h-full object-contain transform transition-all duration-500 group-hover:scale-105 animate-[float_3s_ease-in-out_infinite] group-hover:animate-none"
+                  />
                 </div>
-                {/* Remove overlay text */}
-                {/* <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
-                  <div className="text-xs sm:text-sm text-blue-700 font-medium bg-white/80 px-3 py-2 backdrop-blur-sm font-helvetica">
-                    Design for everyone
-                  </div>
-                </div> */}
+                <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
             </div>
           }
@@ -1128,8 +1090,8 @@ function App() {
                       0% { transform: translate(var(--start-x), var(--start-y)) rotate(var(--start-rot)); }
                       100% { transform: translate(var(--end-x), var(--end-y)) rotate(0deg); }
                     }
-                    .group:hover .snap-animation {
-                      animation: snap-to-grid 1s ease-out forwards;
+                    .snap-animation {
+                      animation: snap-to-grid 1s ease-out infinite;
                     }
                   `}
                 </style>
@@ -1422,6 +1384,9 @@ function App() {
                     0% { transform: translateY(0); }
                     100% { transform: translateY(-100%); }
                   }
+                  .scroll-text {
+                    animation: scrollText 4s linear infinite;
+                  }
                 `}
               </style>
               <div className="w-full max-w-[600px] h-[300px] bg-gradient-to-br from-slate-50 to-gray-50 p-4 relative group">
@@ -1488,29 +1453,13 @@ function App() {
             <div className="flex items-center justify-center w-full h-full">
               <div className="w-full max-w-[600px] h-[300px] bg-gradient-to-br from-emerald-50 to-teal-50 p-4 relative group">
                 <div className="absolute inset-0 flex items-center justify-center">
-                  {/* Interactive elements container */}
-                  <div className="relative w-48 h-24">
-                    {/* Simple tooltip */}
-                    <div className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-emerald-400/20 group-hover:bg-emerald-400/40 transition-colors duration-300 cursor-pointer flex items-center justify-center">
-                      <Info className="w-6 h-6 text-emerald-600" />
-                      <div className="absolute -top-8 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all duration-300 bg-white/90 text-emerald-800 text-xs px-2 py-1 shadow-lg">
-                        Information tooltip
-                      </div>
-                    </div>
-
-                    {/* Rich tooltip */}
-                    <div className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-emerald-400/20 group-hover:bg-emerald-400/40 transition-colors duration-300 cursor-pointer flex items-center justify-center">
-                      <Settings className="w-6 h-6 text-emerald-600" />
-                      <div className="absolute -top-20 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all duration-300 bg-white/90 text-emerald-800 text-xs p-2 shadow-lg w-32">
-                        <div className="font-bold mb-1">Settings</div>
-                        <div className="text-emerald-600/80">
-                          Customize your preferences
-                        </div>
-                        <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-white/90 transform rotate-45" />
-                      </div>
-                    </div>
-                  </div>
+                  <img
+                    src="https://www.nngroup.com/articles/microinteractions/microinteractions-hero.jpg"
+                    alt="Microinteractions"
+                    className="w-full h-full object-contain transform transition-all duration-500 group-hover:scale-105 animate-[float_3s_ease-in-out_infinite] group-hover:animate-none"
+                  />
                 </div>
+                <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
             </div>
           }
@@ -2064,11 +2013,46 @@ function App() {
             <div className="flex items-center justify-center w-full h-full">
               <div className="w-full max-w-[600px] h-[300px] bg-gradient-to-br from-blue-50 to-indigo-50 p-4 relative group">
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <img
-                    src="https://media.istockphoto.com/id/1353209101/vector/abstract-texture-from-3d-cubes-rectangular-background-from-geometric-shapes-vector.jpg?s=612x612&w=0&k=20&c=ZzXC6iE6KbxocW-1dxHDgkgA1UVqt7K5oHsag2T5FVw="
-                    alt="3D cubes and geometric shapes"
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                  />
+                  {/* 3D Cube */}
+                  <div className="relative w-48 h-48 transform transition-all duration-500 group-hover:rotate-12 group-hover:scale-110 animate-[spin_8s_linear_infinite] group-hover:animate-none">
+                    {/* Front face */}
+                    <div className="absolute inset-0 bg-blue-600/80 transform transition-all duration-500 group-hover:bg-blue-700" />
+
+                    {/* Top face */}
+                    <div
+                      className="absolute inset-0 bg-blue-500/60 transform transition-all duration-500 group-hover:bg-blue-600"
+                      style={{
+                        transform: "skewX(-30deg) translateY(-50%)",
+                        transformOrigin: "bottom left",
+                      }}
+                    />
+
+                    {/* Right face */}
+                    <div
+                      className="absolute inset-0 bg-blue-700/60 transform transition-all duration-500 group-hover:bg-blue-800"
+                      style={{
+                        transform: "skewY(30deg) translateX(50%)",
+                        transformOrigin: "top left",
+                      }}
+                    />
+
+                    {/* Edge highlights */}
+                    <div className="absolute inset-0 border-2 border-blue-800/20" />
+                    <div
+                      className="absolute inset-0 border-2 border-blue-800/20"
+                      style={{
+                        transform: "skewX(-30deg) translateY(-50%)",
+                        transformOrigin: "bottom left",
+                      }}
+                    />
+                    <div
+                      className="absolute inset-0 border-2 border-blue-800/20"
+                      style={{
+                        transform: "skewY(30deg) translateX(50%)",
+                        transformOrigin: "top left",
+                      }}
+                    />
+                  </div>
                 </div>
               </div>
             </div>
@@ -2206,7 +2190,7 @@ function App() {
                   <img
                     src="/960grid.png"
                     alt="960 Grid System layout example"
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300 animate-[float_3s_ease-in-out_infinite] group-hover:animate-none"
                   />
                 </div>
               </div>
@@ -2250,7 +2234,7 @@ function App() {
                   <img
                     src="https://media.licdn.com/dms/image/v2/C4D34AQFcBa3aJAHZCw/ugc-proxy-shrink_800/ugc-proxy-shrink_800/0/1594646636338?e=2147483647&v=beta&t=IFoQ7PyP6METIpbPTWMVbNQTcGxFx7ax5jmr2StTdhc"
                     alt="Don't Make Me Think book cover"
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300 animate-[float_3s_ease-in-out_infinite] group-hover:animate-none"
                   />
                 </div>
               </div>
@@ -2272,7 +2256,7 @@ function App() {
                   <img
                     src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Wapenboek_Beyeren_%28armorial%29_-_KB79K21_-_folios_001v_%28left%29_and_002r_%28right%29.jpg/640px-Wapenboek_Beyeren_%28armorial%29_-_KB79K21_-_folios_001v_%28left%29_and_002r_%28right%29.jpg"
                     alt="European Heraldry - Hyghalmen Roll"
-                    className="w-full h-full object-contain transform transition-all duration-500 group-hover:scale-110"
+                    className="w-full h-full object-contain transform transition-all duration-500 group-hover:scale-110 animate-[float_3s_ease-in-out_infinite] group-hover:animate-none"
                   />
                   <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
@@ -2295,7 +2279,7 @@ function App() {
                   <img
                     src="https://upload.wikimedia.org/wikipedia/commons/b/bc/Fallingwater3.jpg"
                     alt="Fallingwater by Frank Lloyd Wright"
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300 animate-[float_3s_ease-in-out_infinite] group-hover:animate-none"
                   />
                 </div>
               </div>
@@ -2317,7 +2301,7 @@ function App() {
                   <img
                     src="https://i.ytimg.com/vi/MikoF6KZjm0/maxresdefault.jpg"
                     alt="Dot Matrix Printer"
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300 animate-[float_3s_ease-in-out_infinite] group-hover:animate-none"
                   />
                 </div>
               </div>
@@ -2339,7 +2323,7 @@ function App() {
                   <img
                     src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj86aEo7IxOTRss8qUMbprKclM9xQP77nKWKCG0ScSlzTarKrrSDpq5eDK6H_lWU1plS0KhxTNUkdc8DmuSzoQcOQjRL5uUfd9Yi-TMvQ1bWn8QXGYilvZSlqAdxOgysCWrsH923h4Hlatd/s1400/Scarfolk_map_cover.jpg"
                     alt="Scarfolk Map Cover"
-                    className="w-full h-full object-contain transform transition-all duration-500 group-hover:scale-110"
+                    className="w-full h-full object-contain transform transition-all duration-500 group-hover:scale-110 animate-[float_3s_ease-in-out_infinite] group-hover:animate-none"
                   />
                   <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
@@ -2362,7 +2346,7 @@ function App() {
                   <img
                     src="https://images.squarespace-cdn.com/content/v1/5d33a1f97b99b80001812595/1564508368509-Q353DG1VKMVVKZIKYP7N/negativland_1991+by+Negativland_5.jpg"
                     alt="Negativland U2 Album Cover"
-                    className="w-full h-full object-contain transform transition-all duration-500 group-hover:scale-110"
+                    className="w-full h-full object-contain transform transition-all duration-500 group-hover:scale-110 animate-[float_3s_ease-in-out_infinite] group-hover:animate-none"
                   />
                   <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
@@ -2425,7 +2409,7 @@ function App() {
                 <img
                   src="https://blog.weditt.com/wp-content/uploads/2024/08/Saul-Bass-The-Master-of-Motion-Graphics-1024x576.jpg"
                   alt="Saul Bass"
-                  className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110"
+                  className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110 animate-[float_3s_ease-in-out_infinite] group-hover:animate-none"
                 />
                 <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
@@ -2445,7 +2429,7 @@ function App() {
                 <img
                   src="https://www.vice.com/wp-content/uploads/sites/2/2017/02/1486652390153-IMG_4484.jpeg?resize=1024,683"
                   alt="Raymond Pettibon"
-                  className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110"
+                  className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110 animate-[float_3s_ease-in-out_infinite] group-hover:animate-none"
                 />
                 <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
@@ -2465,7 +2449,7 @@ function App() {
                 <img
                   src="https://media.nngroup.com/media/videos/thumbnails/Jakobs_Law_of_Internet_User_Experience_Thumbnail.jpg"
                   alt="Jakob Nielsen"
-                  className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110"
+                  className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110 animate-[float_3s_ease-in-out_infinite] group-hover:animate-none"
                 />
                 <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
@@ -2485,7 +2469,7 @@ function App() {
                 <img
                   src="https://static.lukew.com/lukew_highres.jpg"
                   alt="Luke Wroblewski"
-                  className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110"
+                  className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110 animate-[float_3s_ease-in-out_infinite] group-hover:animate-none"
                 />
                 <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
@@ -2505,7 +2489,7 @@ function App() {
                 <img
                   src="https://theygotacquired.com/wp-content/uploads/2022/06/Chris-Coyier-founder-of-CSS-Tricks-copy-scaled.jpg"
                   alt="Chris Coyier"
-                  className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110"
+                  className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110 animate-[float_3s_ease-in-out_infinite] group-hover:animate-none"
                 />
                 <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
@@ -2525,7 +2509,7 @@ function App() {
                 <img
                   src="https://kingscliffgraphicdesign2017.wordpress.com/wp-content/uploads/2017/03/f94.png"
                   alt="Max Miedinger"
-                  className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110"
+                  className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110 animate-[float_3s_ease-in-out_infinite] group-hover:animate-none"
                 />
                 <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
@@ -2545,7 +2529,27 @@ function App() {
                 <img
                   src="https://www.ucreative.com/wp-content/uploads/2014/11/51.jpg"
                   alt="Paula Scher"
-                  className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110"
+                  className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110 animate-[float_3s_ease-in-out_infinite] group-hover:animate-none"
+                />
+                <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </div>
+            </div>
+          }
+          background="bg-gradient-to-br from-stone-50/50 to-slate-50/50"
+        />
+        <DesignSection
+          title="Carolyn Davidson"
+          description="Carolyn Davidson is the graphic designer who created the iconic Nike Swoosh logo in 1971. Her simple yet powerful design has become one of the most recognizable brand symbols in the world, demonstrating how effective design can transcend its original purpose and become a cultural icon."
+          designPrinciple="Simplicity and memorability through minimal design"
+          exampleLink="https://www.nike.com"
+          isListLayout={isListLayout}
+          visualComponent={
+            <div className="w-full h-full flex items-center justify-center p-4">
+              <div className="w-[500px] h-[300px] bg-white overflow-hidden group relative">
+                <img
+                  src="https://www.nicekicks.com/files/2017/03/Carolyn-Davidson-.jpg"
+                  alt="Carolyn Davidson"
+                  className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110 animate-[float_3s_ease-in-out_infinite] group-hover:animate-none"
                 />
                 <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
