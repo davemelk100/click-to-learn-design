@@ -42,16 +42,28 @@ function App() {
           isListLayout={isListLayout}
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
-              <div className="w-full max-w-[360px] h-[180px] p-4 relative group">
+              <div className="w-full max-w-[600px] h-[300px] p-4 relative group">
+                <style>
+                  {`
+                    @keyframes float {
+                      0% { transform: translateY(0) rotate(0deg); }
+                      50% { transform: translateY(-10px) rotate(5deg); }
+                      100% { transform: translateY(0) rotate(0deg); }
+                    }
+                    .group:hover .float-animation {
+                      animation: float 3s ease-in-out infinite;
+                    }
+                  `}
+                </style>
                 <div className="absolute inset-0 flex items-center justify-center">
                   {/* Background layer - subtle grid */}
-                  <div className="absolute w-48 h-48 opacity-20">
+                  <div className="absolute w-96 h-96 opacity-20">
                     {[...Array(16)].map((_, i) => (
                       <div
                         key={`grid-${i}`}
-                        className="absolute w-48 h-px bg-amber-400 transform transition-all duration-500"
+                        className="absolute w-96 h-px bg-amber-400 transform transition-all duration-500 group-hover:bg-amber-500"
                         style={{
-                          top: `${i * 8}px`,
+                          top: `${i * 16}px`,
                           transform: `rotate(${i * 11.25}deg)`,
                         }}
                       />
@@ -59,58 +71,43 @@ function App() {
                   </div>
 
                   {/* Middle layer - floating elements */}
-                  <div className="absolute w-48 h-48">
+                  <div className="absolute w-96 h-96">
                     {[...Array(6)].map((_, i) => (
                       <div
                         key={`float-${i}`}
-                        className="absolute w-6 h-6 bg-amber-500/60 shadow-lg transform transition-all duration-500 group-hover:translate-y-[-4px] group-hover:shadow-xl"
+                        className="absolute w-12 h-12 bg-amber-500/60 shadow-lg transform transition-all duration-500 group-hover:translate-y-[-8px] group-hover:shadow-xl float-animation"
                         style={{
                           left: `${
-                            Math.cos((i * Math.PI * 2) / 6) * 30 + 48
+                            Math.cos((i * Math.PI * 2) / 6) * 60 + 96
                           }px`,
-                          top: `${Math.sin((i * Math.PI * 2) / 6) * 30 + 48}px`,
+                          top: `${Math.sin((i * Math.PI * 2) / 6) * 60 + 96}px`,
                           transform: `rotate(${i * 30}deg) translateZ(${
-                            i * 4
+                            i * 8
                           }px)`,
                           zIndex: i,
+                          animationDelay: `${i * 0.2}s`,
                         }}
                       >
-                        <div className="absolute inset-0.5" />
+                        <div className="absolute inset-1" />
                       </div>
                     ))}
                   </div>
 
                   {/* Foreground layer - prominent element */}
-                  <div className="absolute w-12 h-12 bg-amber-700 shadow-2xl transform transition-all duration-500 group-hover:translate-y-[-8px] group-hover:shadow-3xl">
-                    <div className="absolute inset-0.5" />
-                    {/* Inner shadow */}
-                    <div className="absolute inset-0 shadow-inner" />
-                  </div>
-
-                  {/* Accent elements - depth indicators */}
-                  <div className="absolute w-48 h-48">
-                    {[...Array(4)].map((_, i) => (
-                      <div
-                        key={`depth-${i}`}
-                        className="absolute w-2 h-2 bg-amber-800/40 rounded-full transform transition-all duration-500"
-                        style={{
-                          left: `${
-                            Math.cos((i * Math.PI * 2) / 4) * 40 + 48
-                          }px`,
-                          top: `${Math.sin((i * Math.PI * 2) / 4) * 40 + 48}px`,
-                          transform: `translateZ(${i * -8}px)`,
-                          opacity: 0.3 + i * 0.1,
-                        }}
-                      />
-                    ))}
+                  <div className="absolute w-96 h-96">
+                    <div
+                      className="absolute w-24 h-24 bg-amber-600/80 shadow-xl transform transition-all duration-500 group-hover:translate-y-[-16px] group-hover:shadow-2xl group-hover:scale-110 float-animation"
+                      style={{
+                        left: "50%",
+                        top: "50%",
+                        transform: "translate(-50%, -50%) translateZ(32px)",
+                        zIndex: 10,
+                      }}
+                    >
+                      <div className="absolute inset-2" />
+                    </div>
                   </div>
                 </div>
-                {/* Remove overlay text */}
-                {/* <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
-                  <div className="text-xs sm:text-sm text-amber-600 font-medium bg-white/80 px-3 py-2 backdrop-blur-sm font-dm-sans">
-                    Depth creates visual importance
-                  </div> 
-                </div> */}
               </div>
             </div>
           }
@@ -126,34 +123,10 @@ function App() {
           isListLayout={isListLayout}
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
-              <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-rose-50 to-pink-50 p-4 relative group">
+              <div className="w-full max-w-[600px] h-[300px] bg-gradient-to-br from-rose-50 to-pink-50 p-4 relative group">
                 <div className="absolute inset-0 flex items-center justify-center">
-                  {/* Base layer - subtle grid */}
-                  <div className="absolute w-48 h-48 opacity-20">
-                    {[...Array(8)].map((_, i) => (
-                      <div
-                        key={`grid-${i}`}
-                        className="absolute w-24 h-px bg-stone-400 transform transition-all duration-500"
-                        style={{
-                          top: `${i * 6}px`,
-                          transform: `rotate(30deg)`,
-                        }}
-                      />
-                    ))}
-                    {[...Array(8)].map((_, i) => (
-                      <div
-                        key={`grid-${i + 8}`}
-                        className="absolute w-24 h-px bg-stone-400 transform transition-all duration-500"
-                        style={{
-                          top: `${i * 6}px`,
-                          transform: `rotate(-30deg)`,
-                        }}
-                      />
-                    ))}
-                  </div>
-
-                  {/* 3D cube */}
-                  <div className="absolute w-16 h-16 transform transition-all duration-500 group-hover:rotate-12 group-hover:scale-110">
+                  {/* 3D cube with overlapping faces */}
+                  <div className="absolute w-32 h-32 transform transition-all duration-500 group-hover:rotate-12 group-hover:scale-110">
                     {/* Front face */}
                     <div className="absolute inset-0 bg-stone-600/80 transform transition-all duration-500 group-hover:bg-stone-700" />
 
@@ -194,16 +167,15 @@ function App() {
                   </div>
 
                   {/* Dimension lines */}
-                  <div className="absolute w-48 h-48 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    {/* Horizontal */}
-                    <div className="absolute w-32 h-px bg-stone-600 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
-                    <div className="absolute w-2 h-2 border-2 border-stone-600 rounded-full top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2" />
-                    <div className="absolute w-2 h-2 border-2 border-stone-600 rounded-full top-1/2 right-1/4 translate-x-1/2 -translate-y-1/2" />
-
-                    {/* Vertical */}
-                    <div className="absolute w-px h-32 bg-stone-600 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
-                    <div className="absolute w-2 h-2 border-2 border-stone-600 rounded-full top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2" />
-                    <div className="absolute w-2 h-2 border-2 border-stone-600 rounded-full bottom-1/4 left-1/2 -translate-x-1/2 translate-y-1/2" />
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-32 h-32 relative">
+                      {/* Horizontal dimension line */}
+                      <div className="absolute left-0 right-0 h-px bg-stone-400/40 transform -translate-y-6 group-hover:bg-stone-500/60 transition-colors duration-300" />
+                      <div className="absolute left-0 right-0 h-px bg-stone-400/40 transform translate-y-6 group-hover:bg-stone-500/60 transition-colors duration-300" />
+                      {/* Vertical dimension line */}
+                      <div className="absolute top-0 bottom-0 w-px bg-stone-400/40 transform -translate-x-6 group-hover:bg-stone-500/60 transition-colors duration-300" />
+                      <div className="absolute top-0 bottom-0 w-px bg-stone-400/40 transform translate-x-6 group-hover:bg-stone-500/60 transition-colors duration-300" />
+                    </div>
                   </div>
                 </div>
               </div>
@@ -221,7 +193,7 @@ function App() {
           isListLayout={isListLayout}
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
-              <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-emerald-50 to-teal-50 p-4 relative group">
+              <div className="w-full max-w-[600px] h-[300px] bg-gradient-to-br from-emerald-50 to-teal-50 p-4 relative group">
                 <div className="absolute inset-0 grid grid-cols-3 grid-rows-3">
                   {/* Vertical lines */}
                   <div className="absolute left-1/3 top-0 bottom-0 w-px bg-emerald-600/30 group-hover:bg-emerald-600/60 transition-colors duration-300" />
@@ -233,7 +205,7 @@ function App() {
                   {[...Array(4)].map((_, i) => (
                     <div
                       key={i}
-                      className="absolute w-3 h-3 bg-emerald-600 rounded-full group-hover:scale-150 group-hover:bg-emerald-500 transition-all duration-300"
+                      className="absolute w-4 h-4 bg-emerald-600 rounded-full group-hover:scale-150 group-hover:bg-emerald-500 transition-all duration-300"
                       style={{
                         left: `${i % 2 === 0 ? "33.33%" : "66.66%"}`,
                         top: `${i < 2 ? "33.33%" : "66.66%"}`,
@@ -242,18 +214,12 @@ function App() {
                     />
                   ))}
                   {/* Example composition elements */}
-                  <div className="absolute right-1/3 top-1/3 transform translate-x-4 -translate-y-4 group-hover:translate-x-6 group-hover:-translate-y-6 transition-transform duration-300">
-                    <div className="w-24 h-24 bg-emerald-600/20 transform -rotate-12 group-hover:rotate-0 group-hover:bg-emerald-600/30 transition-all duration-300" />
+                  <div className="absolute right-1/3 top-1/3 transform translate-x-8 -translate-y-8 group-hover:translate-x-12 group-hover:-translate-y-12 transition-transform duration-300">
+                    <div className="w-32 h-32 bg-emerald-600/20 transform -rotate-12 group-hover:rotate-0 group-hover:bg-emerald-600/30 transition-all duration-300" />
                   </div>
-                  <div className="absolute left-1/3 bottom-1/3 transform -translate-x-8 translate-y-8 group-hover:-translate-x-10 group-hover:translate-y-10 transition-transform duration-300">
-                    <div className="w-16 h-16 bg-teal-600/20 rounded-full group-hover:bg-teal-600/30 transition-all duration-300" />
+                  <div className="absolute left-1/3 bottom-1/3 transform -translate-x-16 translate-y-16 group-hover:-translate-x-20 group-hover:translate-y-20 transition-transform duration-300">
+                    <div className="w-24 h-24 bg-teal-600/20 rounded-full group-hover:bg-teal-600/30 transition-all duration-300" />
                   </div>
-                </div>
-                {/* Hover overlay text */}
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  {/* <div className="text-xs sm:text-sm text-emerald-600 font-medium bg-white/80 px-2 py-1 font-habibi">
-                    Key elements at intersections
-                  </div> */}
                 </div>
               </div>
             </div>
@@ -371,7 +337,7 @@ function App() {
           isListLayout={isListLayout}
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
-              <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-r from-purple-100 to-indigo-50 p-4 relative group">
+              <div className="w-full max-w-[600px] h-[300px] bg-gradient-to-r from-purple-100 to-indigo-50 p-4 relative group">
                 {/* Central circle */}
                 <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 rounded-full bg-indigo-600/80 group-hover:scale-110 transition-transform duration-500">
                   <div className="absolute inset-0 rounded-full bg-gradient-to-br from-indigo-400 to-indigo-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -426,7 +392,7 @@ function App() {
           isListLayout={isListLayout}
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
-              <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-zinc-50 to-neutral-50 p-4 relative overflow-hidden group">
+              <div className="w-full max-w-[600px] h-[300px] bg-gradient-to-br from-zinc-50 to-neutral-50 p-4 relative overflow-hidden group">
                 <style>
                   {`
                     @keyframes pulse {
@@ -525,7 +491,7 @@ function App() {
           isListLayout={isListLayout}
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
-              <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-amber-50 to-orange-50 p-4 relative group">
+              <div className="w-full max-w-[600px] h-[300px] bg-gradient-to-br from-amber-50 to-orange-50 p-4 relative group">
                 <style>
                   {`
                     @keyframes pulse {
@@ -588,7 +554,7 @@ function App() {
           isListLayout={isListLayout}
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
-              <div className="w-full max-w-[360px] h-[180px] p-4 relative group">
+              <div className="w-full max-w-[600px] h-[300px] p-4 relative group">
                 <style>
                   {`
                     @keyframes pulse {
@@ -665,7 +631,7 @@ function App() {
           isListLayout={isListLayout}
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
-              <div className="w-full max-w-[360px] h-[180px] p-4 relative group">
+              <div className="w-full max-w-[600px] h-[300px] p-4 relative group">
                 <style>
                   {`
                     @keyframes pulse {
@@ -766,7 +732,7 @@ function App() {
                   }
                 `}
               </style>
-              <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-violet-50 to-indigo-50 p-4 relative group">
+              <div className="w-full max-w-[600px] h-[300px] bg-gradient-to-br from-violet-50 to-indigo-50 p-4 relative group">
                 <div className="absolute inset-0 flex items-center justify-center">
                   {/* Binary grid background */}
                   <div className="absolute w-48 h-48 grid grid-cols-6 grid-rows-6 gap-2 opacity-20">
@@ -849,7 +815,7 @@ function App() {
           exampleLink="https://www.canva.com/learn/color-theory/"
           isListLayout={isListLayout}
           visualComponent={
-            <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-sky-50 to-blue-50 p-4 relative group">
+            <div className="w-full max-w-[600px] h-[300px] bg-gradient-to-br from-sky-50 to-blue-50 p-4 relative group">
               <style>
                 {`
                   @keyframes rotate-circle {
@@ -913,7 +879,7 @@ function App() {
           isListLayout={isListLayout}
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
-              <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-stone-50 to-slate-50 p-4 relative group">
+              <div className="w-full max-w-[600px] h-[300px] bg-gradient-to-br from-stone-50 to-slate-50 p-4 relative group">
                 <div className="absolute inset-0 flex items-center justify-center">
                   {/* Base grid */}
                   <div className="absolute w-24 h-24 opacity-20">
@@ -982,7 +948,7 @@ function App() {
           titleClassName="text-2xl font-bold text-gray-900 font-dm-sans"
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
-              <div className="w-full max-w-[360px] h-[180px] p-4 relative group">
+              <div className="w-full max-w-[600px] h-[300px] p-4 relative group">
                 <style>
                   {`
                     @keyframes pulse-emphasis {
@@ -1053,7 +1019,7 @@ function App() {
           isListLayout={isListLayout}
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
-              <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-amber-50 to-yellow-50 p-4 relative group">
+              <div className="w-full max-w-[600px] h-[300px] bg-gradient-to-br from-amber-50 to-yellow-50 p-4 relative group">
                 <div className="absolute inset-0 flex items-center justify-center">
                   <img
                     src="https://www.elegantthemes.com/blog/wp-content/uploads/2019/06/Ratio-1024x648.png"
@@ -1077,7 +1043,7 @@ function App() {
           isListLayout={isListLayout}
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
-              <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-blue-50 to-purple-50 p-4 relative group">
+              <div className="w-full max-w-[600px] h-[300px] bg-gradient-to-br from-blue-50 to-purple-50 p-4 relative group">
                 <div className="absolute inset-0 flex items-center justify-center">
                   {/* Main container with focus ring */}
                   <div className="relative w-48 h-48 border-2 border-blue-400/50 group-hover:ring-4 group-hover:ring-purple-300/50 transition-all duration-300">
@@ -1155,7 +1121,7 @@ function App() {
           titleClassName="text-2xl font-bold text-gray-900 font-roboto"
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
-              <div className="w-full max-w-[360px] h-[180px] p-4 relative group">
+              <div className="w-full max-w-[600px] h-[300px] p-4 relative group">
                 <style>
                   {`
                     @keyframes snap-to-grid {
@@ -1315,7 +1281,7 @@ function App() {
           isListLayout={isListLayout}
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
-              <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-rose-50 to-pink-50 p-4 relative group">
+              <div className="w-full max-w-[600px] h-[300px] bg-gradient-to-br from-rose-50 to-pink-50 p-4 relative group">
                 <div className="absolute inset-0 flex items-center justify-center">
                   {/* Network nodes */}
                   <div className="relative w-48 h-48">
@@ -1382,7 +1348,7 @@ function App() {
           isListLayout={isListLayout}
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
-              <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-indigo-50 to-purple-50 p-4 relative group">
+              <div className="w-full max-w-[600px] h-[300px] bg-gradient-to-br from-indigo-50 to-purple-50 p-4 relative group">
                 <div className="absolute inset-0 flex items-center justify-center">
                   {/* Origami shape */}
                   <div className="relative w-32 h-32 transform transition-all duration-1000">
@@ -1458,7 +1424,7 @@ function App() {
                   }
                 `}
               </style>
-              <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-slate-50 to-gray-50 p-4 relative group">
+              <div className="w-full max-w-[600px] h-[300px] bg-gradient-to-br from-slate-50 to-gray-50 p-4 relative group">
                 <div className="absolute inset-0 flex items-center justify-center overflow-hidden">
                   {/* Scrolling text container */}
                   <div className="relative w-full h-[120px] overflow-hidden">
@@ -1520,7 +1486,7 @@ function App() {
           isListLayout={isListLayout}
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
-              <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-emerald-50 to-teal-50 p-4 relative group">
+              <div className="w-full max-w-[600px] h-[300px] bg-gradient-to-br from-emerald-50 to-teal-50 p-4 relative group">
                 <div className="absolute inset-0 flex items-center justify-center">
                   {/* Interactive elements container */}
                   <div className="relative w-48 h-24">
@@ -1579,7 +1545,7 @@ function App() {
                   }
                 `}
               </style>
-              <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-rose-50 to-pink-50 p-4 relative group">
+              <div className="w-full max-w-[600px] h-[300px] bg-gradient-to-br from-rose-50 to-pink-50 p-4 relative group">
                 <div className="absolute inset-0 flex items-center justify-center">
                   {/* Main container */}
                   <div className="relative w-72 h-48">
@@ -1680,7 +1646,7 @@ function App() {
                   }
                 `}
               </style>
-              <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-sky-50 to-blue-50 p-4 relative group">
+              <div className="w-full max-w-[600px] h-[300px] bg-gradient-to-br from-sky-50 to-blue-50 p-4 relative group">
                 <div className="absolute inset-0 flex items-center justify-center">
                   {/* Main container */}
                   <div className="relative w-full h-32">
@@ -1863,7 +1829,7 @@ function App() {
                   }
                 `}
               </style>
-              <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-amber-50 to-orange-50 p-4 relative group">
+              <div className="w-full max-w-[600px] h-[300px] bg-gradient-to-br from-amber-50 to-orange-50 p-4 relative group">
                 <div className="absolute inset-0 flex items-center justify-center">
                   {/* Main container */}
                   <div className="relative w-64 h-40">
@@ -1927,7 +1893,7 @@ function App() {
                   }
                 `}
               </style>
-              <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-violet-50 to-purple-50 p-4 relative group">
+              <div className="w-full max-w-[600px] h-[300px] bg-gradient-to-br from-violet-50 to-purple-50 p-4 relative group">
                 <div className="absolute inset-0 flex items-center justify-center">
                   {/* Main container */}
                   <div className="relative w-72 h-48">
@@ -2000,7 +1966,7 @@ function App() {
           isListLayout={isListLayout}
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
-              <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-emerald-50 to-teal-50 p-4 relative group">
+              <div className="w-full max-w-[600px] h-[300px] bg-gradient-to-br from-emerald-50 to-teal-50 p-4 relative group">
                 <div className="absolute inset-0 flex items-center justify-center">
                   {/* Initial state - minimal information */}
                   <div className="relative w-32 h-32">
@@ -2096,7 +2062,7 @@ function App() {
           isListLayout={isListLayout}
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
-              <div className="w-full max-w-[360px] h-[180px] bg-gradient-to-br from-blue-50 to-indigo-50 p-4 relative group">
+              <div className="w-full max-w-[600px] h-[300px] bg-gradient-to-br from-blue-50 to-indigo-50 p-4 relative group">
                 <div className="absolute inset-0 flex items-center justify-center">
                   <img
                     src="https://media.istockphoto.com/id/1353209101/vector/abstract-texture-from-3d-cubes-rectangular-background-from-geometric-shapes-vector.jpg?s=612x612&w=0&k=20&c=ZzXC6iE6KbxocW-1dxHDgkgA1UVqt7K5oHsag2T5FVw="
@@ -2121,7 +2087,7 @@ function App() {
           background="bg-gradient-to-br from-cyan-50/50 to-blue-50/50"
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
-              <div className="w-full max-w-[360px] h-[180px] p-4 relative group">
+              <div className="w-full max-w-[600px] h-[300px] p-4 relative group">
                 <div className="absolute inset-0 flex items-center justify-center">
                   {/* Interactive elements demonstrating affordance */}
                   <div className="flex flex-col gap-4 items-center">
@@ -2160,7 +2126,7 @@ function App() {
           background="bg-gradient-to-br from-purple-50/50 to-pink-50/50"
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
-              <div className="w-full max-w-[360px] h-[180px] p-4 relative group">
+              <div className="w-full max-w-[600px] h-[300px] p-4 relative group">
                 <div className="absolute inset-0 flex items-center justify-center">
                   {/* Negative space demonstration */}
                   <div className="w-full h-full flex flex-col items-center justify-center gap-4">

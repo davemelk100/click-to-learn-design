@@ -92,13 +92,13 @@ const DesignSection: React.FC<DesignSectionProps> = ({
     title === "Basic Color Theory";
 
   return (
-    <div className="relative">
+    <div className="relative h-[800px]">
       <div
-        className={`relative p-8 bg-white border border-gray-300 ${
+        className={`relative p-8 bg-white border border-gray-300 h-full flex flex-col ${
           isListLayout ? "" : ""
         }`}
       >
-        <div className="relative z-10">
+        <div className="relative z-10 flex-1">
           <h3 className="text-2xl font-bold text-black leading-none">
             {title}
           </h3>
@@ -116,8 +116,8 @@ const DesignSection: React.FC<DesignSectionProps> = ({
             Learn more <ArrowUpRight className="w-4 h-4 ml-1" />
           </a>
         </div>
-        <div className="mt-8 bg-white">
-          <div className="bg-white">{visualComponent}</div>
+        <div className="mt-8 bg-white flex-1">
+          <div className="bg-white h-full">{visualComponent}</div>
         </div>
         <button
           onClick={() => setIsAiOpen(!isAiOpen)}
