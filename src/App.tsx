@@ -1451,7 +1451,7 @@ function App() {
                 <img
                   src="/960grid.png"
                   alt="960 Grid System layout example"
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300 animate-[float_3s_ease-in-out_infinite] group-hover:animate-none"
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                 />
               </div>
             </div>
@@ -1495,7 +1495,7 @@ function App() {
                 <img
                   src="https://media.licdn.com/dms/image/v2/C4D34AQFcBa3aJAHZCw/ugc-proxy-shrink_800/ugc-proxy-shrink_800/0/1594646636338?e=2147483647&v=beta&t=IFoQ7PyP6METIpbPTWMVbNQTcGxFx7ax5jmr2StTdhc"
                   alt="Don't Make Me Think book cover"
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300 animate-[float_3s_ease-in-out_infinite] group-hover:animate-none"
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                 />
               </div>
             </div>
@@ -1517,7 +1517,7 @@ function App() {
                 <img
                   src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Wapenboek_Beyeren_%28armorial%29_-_KB79K21_-_folios_001v_%28left%29_and_002r_%28right%29.jpg/640px-Wapenboek_Beyeren_%28armorial%29_-_KB79K21_-_folios_001v_%28left%29_and_002r_%28right%29.jpg"
                   alt="European Heraldry - Hyghalmen Roll"
-                  className="w-full h-full object-contain transform transition-all duration-500 group-hover:scale-110 animate-[float_3s_ease-in-out_infinite] group-hover:animate-none"
+                  className="w-full h-full object-contain transform transition-all duration-500 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
@@ -1540,7 +1540,7 @@ function App() {
                 <img
                   src="https://upload.wikimedia.org/wikipedia/commons/b/bc/Fallingwater3.jpg"
                   alt="Fallingwater by Frank Lloyd Wright"
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300 animate-[float_3s_ease-in-out_infinite] group-hover:animate-none"
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                 />
               </div>
             </div>
@@ -1562,7 +1562,7 @@ function App() {
                 <img
                   src="https://i.ytimg.com/vi/MikoF6KZjm0/maxresdefault.jpg"
                   alt="Dot Matrix Printer"
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300 animate-[float_3s_ease-in-out_infinite] group-hover:animate-none"
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                 />
               </div>
             </div>
@@ -1584,7 +1584,7 @@ function App() {
                 <img
                   src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj86aEo7IxOTRss8qUMbprKclM9xQP77nKWKCG0ScSlzTarKrrSDpq5eDK6H_lWU1plS0KhxTNUkdc8DmuSzoQcOQjRL5uUfd9Yi-TMvQ1bWn8QXGYilvZSlqAdxOgysCWrsH923h4Hlatd/s1400/Scarfolk_map_cover.jpg"
                   alt="Scarfolk Map Cover"
-                  className="w-full h-full object-contain transform transition-all duration-500 group-hover:scale-110 animate-[float_3s_ease-in-out_infinite] group-hover:animate-none"
+                  className="w-full h-full object-contain transform transition-all duration-500 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
@@ -1607,7 +1607,7 @@ function App() {
                 <img
                   src="https://images.squarespace-cdn.com/content/v1/5d33a1f97b99b80001812595/1564508368509-Q353DG1VKMVVKZIKYP7N/negativland_1991+by+Negativland_5.jpg"
                   alt="Negativland U2 Album Cover"
-                  className="w-full h-full object-contain transform transition-all duration-500 group-hover:scale-110 animate-[float_3s_ease-in-out_infinite] group-hover:animate-none"
+                  className="w-full h-full object-contain transform transition-all duration-500 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
@@ -1677,7 +1677,7 @@ function App() {
                 <img
                   src="https://blog.weditt.com/wp-content/uploads/2024/08/Saul-Bass-The-Master-of-Motion-Graphics-1024x576.jpg"
                   alt="Saul Bass"
-                  className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110 animate-[float_3s_ease-in-out_infinite] group-hover:animate-none"
+                  className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
@@ -1697,7 +1697,7 @@ function App() {
                 <img
                   src="https://www.vice.com/wp-content/uploads/sites/2/2017/02/1486652390153-IMG_4484.jpeg?resize=1024,683"
                   alt="Raymond Pettibon"
-                  className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110 animate-[float_3s_ease-in-out_infinite] group-hover:animate-none"
+                  className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
@@ -1717,7 +1717,7 @@ function App() {
                 <img
                   src="https://media.nngroup.com/media/videos/thumbnails/Jakobs_Law_of_Internet_User_Experience_Thumbnail.jpg"
                   alt="Jakob Nielsen"
-                  className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110 animate-[float_3s_ease-in-out_infinite] group-hover:animate-none"
+                  className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
@@ -1737,7 +1737,7 @@ function App() {
                 <img
                   src="https://static.lukew.com/lukew_highres.jpg"
                   alt="Luke Wroblewski"
-                  className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110 animate-[float_3s_ease-in-out_infinite] group-hover:animate-none"
+                  className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
@@ -1757,7 +1757,7 @@ function App() {
                 <img
                   src="https://theygotacquired.com/wp-content/uploads/2022/06/Chris-Coyier-founder-of-CSS-Tricks-copy-scaled.jpg"
                   alt="Chris Coyier"
-                  className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110 animate-[float_3s_ease-in-out_infinite] group-hover:animate-none"
+                  className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
@@ -1777,7 +1777,7 @@ function App() {
                 <img
                   src="https://kingscliffgraphicdesign2017.wordpress.com/wp-content/uploads/2017/03/f94.png"
                   alt="Max Miedinger"
-                  className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110 animate-[float_3s_ease-in-out_infinite] group-hover:animate-none"
+                  className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
@@ -1797,7 +1797,7 @@ function App() {
                 <img
                   src="https://www.ucreative.com/wp-content/uploads/2014/11/51.jpg"
                   alt="Paula Scher"
-                  className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110 animate-[float_3s_ease-in-out_infinite] group-hover:animate-none"
+                  className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
@@ -1817,7 +1817,7 @@ function App() {
                 <img
                   src="https://www.nicekicks.com/files/2017/03/Carolyn-Davidson-.jpg"
                   alt="Carolyn Davidson"
-                  className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110 animate-[float_3s_ease-in-out_infinite] group-hover:animate-none"
+                  className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
