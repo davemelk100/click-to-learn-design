@@ -719,112 +719,206 @@ function App() {
         />
         <DesignSection
           title="Law of Proximity"
-          description="The Law of Proximity states that objects that are close to one another are perceived as being related or grouped together. This principle helps create visual organization and relationships between elements in a design."
-          designPrinciple="Proximity – Grouping related items together to show their connection."
-          exampleLink="https://lawsofux.com/law-of-proximity/"
+          description="The Law of Proximity demonstrates how elements that are close to each other are perceived as related. This principle uses spatial relationships to create visual groups and organize information effectively."
+          designPrinciple="Grouping & Organization – Elements that are close together are perceived as related."
           isListLayout={isListLayout}
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
-              <div className="w-full max-w-[600px] h-[300px] bg-white p-4 relative group">
+              <div className="w-full max-w-[600px] h-[300px] bg-white p-4 relative">
                 <style>
                   {`
-                    @keyframes groupMove {
-                      0% { transform: translate(0, 0) scale(1); }
-                      25% { transform: translate(10px, -10px) scale(1.1); }
-                      50% { transform: translate(0, 0) scale(1); }
-                      75% { transform: translate(-10px, 10px) scale(0.9); }
-                      100% { transform: translate(0, 0) scale(1); }
+                    @keyframes groupFloat {
+                      0%, 100% { transform: translateY(0) scale(1); }
+                      50% { transform: translateY(-15px) scale(1.05); }
                     }
-                    @keyframes separateMove {
-                      0% { transform: translate(0, 0) scale(1); }
-                      25% { transform: translate(-15px, -15px) scale(0.9); }
-                      50% { transform: translate(0, 0) scale(1); }
-                      75% { transform: translate(15px, 15px) scale(1.1); }
-                      100% { transform: translate(0, 0) scale(1); }
+                    @keyframes pulse {
+                      0%, 100% { transform: scale(1); opacity: 0.7; }
+                      50% { transform: scale(1.1); opacity: 1; }
                     }
-                    @keyframes pulseGroup {
-                      0%, 100% { opacity: 0.7; }
-                      50% { opacity: 1; }
-                    }
-                    @keyframes connectLine {
+                    @keyframes connect {
                       0% { stroke-dashoffset: 100; }
                       100% { stroke-dashoffset: 0; }
                     }
-                    .group-animation {
-                      animation: groupMove 4s ease-in-out infinite;
+                    .group-float {
+                      animation: groupFloat 4s ease-in-out infinite;
                     }
-                    .separate-animation {
-                      animation: separateMove 4s ease-in-out infinite;
-                    }
-                    .pulse-group {
-                      animation: pulseGroup 3s ease-in-out infinite;
+                    .pulse-element {
+                      animation: pulse 2s ease-in-out infinite;
                     }
                     .connect-line {
-                      stroke-dasharray: 10;
-                      animation: connectLine 2s linear infinite;
-                    }
-                    .group:hover .group-animation {
-                      animation-duration: 2s;
-                    }
-                    .group:hover .separate-animation {
-                      animation-duration: 2s;
+                      stroke-dasharray: 100;
+                      stroke-dashoffset: 100;
+                      animation: connect 2s ease-in-out forwards;
                     }
                   `}
                 </style>
                 <div className="absolute inset-0 flex items-center justify-center">
-                  {/* Main container */}
-                  <div className="w-64 h-64 relative">
-                    {/* Grouped elements - top left quadrant */}
-                    <div className="absolute top-8 left-8 group-animation">
-                      <div className="grid grid-cols-2 gap-2">
-                        {[...Array(4)].map((_, i) => (
-                          <div
-                            key={i}
-                            className="w-8 h-8 bg-blue-500/80 rounded-lg pulse-group"
-                            style={{ animationDelay: `${i * 0.15}s` }}
-                          />
-                        ))}
+                  <div className="relative w-96 h-96">
+                    {/* Group 1 - Top Left */}
+                    <div
+                      className="absolute top-1/4 left-1/4 group-float"
+                      style={{ animationDelay: "0s" }}
+                    >
+                      <div className="relative">
+                        <div className="w-16 h-16 bg-blue-500/40 rounded-lg pulse-element" />
+                        <div
+                          className="absolute -top-2 -left-2 w-12 h-12 bg-blue-400/40 rounded-lg pulse-element"
+                          style={{ animationDelay: "0.2s" }}
+                        />
+                        <div
+                          className="absolute -bottom-2 -right-2 w-12 h-12 bg-blue-300/40 rounded-lg pulse-element"
+                          style={{ animationDelay: "0.4s" }}
+                        />
                       </div>
                     </div>
 
-                    {/* Separated elements - bottom right quadrant */}
-                    <div className="absolute bottom-8 right-8 separate-animation">
-                      <div className="grid grid-cols-2 gap-8">
-                        {[...Array(4)].map((_, i) => (
-                          <div
-                            key={i}
-                            className="w-8 h-8 bg-rose-500/80 rounded-lg pulse-group"
-                            style={{ animationDelay: `${i * 0.15}s` }}
-                          />
-                        ))}
+                    {/* Group 2 - Top Right */}
+                    <div
+                      className="absolute top-1/4 right-1/4 group-float"
+                      style={{ animationDelay: "0.5s" }}
+                    >
+                      <div className="relative">
+                        <div className="w-16 h-16 bg-purple-500/40 rounded-lg pulse-element" />
+                        <div
+                          className="absolute -top-2 -right-2 w-12 h-12 bg-purple-400/40 rounded-lg pulse-element"
+                          style={{ animationDelay: "0.7s" }}
+                        />
+                        <div
+                          className="absolute -bottom-2 -left-2 w-12 h-12 bg-purple-300/40 rounded-lg pulse-element"
+                          style={{ animationDelay: "0.9s" }}
+                        />
                       </div>
                     </div>
 
-                    {/* Connection lines */}
-                    <svg className="absolute inset-0" viewBox="0 0 100 100">
-                      {/* Lines connecting grouped elements */}
-                      <path
-                        d="M 20,20 L 20,40 L 40,40 L 40,20 Z"
+                    {/* Group 3 - Bottom Left */}
+                    <div
+                      className="absolute bottom-1/4 left-1/4 group-float"
+                      style={{ animationDelay: "1s" }}
+                    >
+                      <div className="relative">
+                        <div className="w-16 h-16 bg-rose-500/40 rounded-lg pulse-element" />
+                        <div
+                          className="absolute -top-2 -left-2 w-12 h-12 bg-rose-400/40 rounded-lg pulse-element"
+                          style={{ animationDelay: "1.2s" }}
+                        />
+                        <div
+                          className="absolute -bottom-2 -right-2 w-12 h-12 bg-rose-300/40 rounded-lg pulse-element"
+                          style={{ animationDelay: "1.4s" }}
+                        />
+                      </div>
+                    </div>
+
+                    {/* Group 4 - Bottom Right */}
+                    <div
+                      className="absolute bottom-1/4 right-1/4 group-float"
+                      style={{ animationDelay: "1.5s" }}
+                    >
+                      <div className="relative">
+                        <div className="w-16 h-16 bg-emerald-500/40 rounded-lg pulse-element" />
+                        <div
+                          className="absolute -top-2 -right-2 w-12 h-12 bg-emerald-400/40 rounded-lg pulse-element"
+                          style={{ animationDelay: "1.7s" }}
+                        />
+                        <div
+                          className="absolute -bottom-2 -left-2 w-12 h-12 bg-emerald-300/40 rounded-lg pulse-element"
+                          style={{ animationDelay: "1.9s" }}
+                        />
+                      </div>
+                    </div>
+
+                    {/* Connecting Lines */}
+                    <svg
+                      className="absolute inset-0 w-full h-full"
+                      style={{ pointerEvents: "none" }}
+                    >
+                      {/* Group 1 connections */}
+                      <line
+                        x1="25%"
+                        y1="25%"
+                        x2="35%"
+                        y2="15%"
                         className="connect-line"
-                        stroke="#3B82F6"
-                        strokeWidth="1"
-                        fill="none"
+                        stroke="rgba(59, 130, 246, 0.3)"
+                        strokeWidth="2"
+                        style={{ animationDelay: "0.1s" }}
                       />
-                      {/* Lines connecting separated elements */}
-                      <path
-                        d="M 60,60 L 60,80 L 80,80 L 80,60 Z"
+                      <line
+                        x1="25%"
+                        y1="25%"
+                        x2="15%"
+                        y2="35%"
                         className="connect-line"
-                        stroke="#FB7185"
-                        strokeWidth="1"
-                        fill="none"
-                        style={{ animationDelay: "1s" }}
+                        stroke="rgba(59, 130, 246, 0.3)"
+                        strokeWidth="2"
+                        style={{ animationDelay: "0.3s" }}
+                      />
+
+                      {/* Group 2 connections */}
+                      <line
+                        x1="75%"
+                        y1="25%"
+                        x2="85%"
+                        y2="15%"
+                        className="connect-line"
+                        stroke="rgba(168, 85, 247, 0.3)"
+                        strokeWidth="2"
+                        style={{ animationDelay: "0.6s" }}
+                      />
+                      <line
+                        x1="75%"
+                        y1="25%"
+                        x2="65%"
+                        y2="35%"
+                        className="connect-line"
+                        stroke="rgba(168, 85, 247, 0.3)"
+                        strokeWidth="2"
+                        style={{ animationDelay: "0.8s" }}
+                      />
+
+                      {/* Group 3 connections */}
+                      <line
+                        x1="25%"
+                        y1="75%"
+                        x2="35%"
+                        y2="65%"
+                        className="connect-line"
+                        stroke="rgba(244, 63, 94, 0.3)"
+                        strokeWidth="2"
+                        style={{ animationDelay: "1.1s" }}
+                      />
+                      <line
+                        x1="25%"
+                        y1="75%"
+                        x2="15%"
+                        y2="85%"
+                        className="connect-line"
+                        stroke="rgba(244, 63, 94, 0.3)"
+                        strokeWidth="2"
+                        style={{ animationDelay: "1.3s" }}
+                      />
+
+                      {/* Group 4 connections */}
+                      <line
+                        x1="75%"
+                        y1="75%"
+                        x2="85%"
+                        y2="65%"
+                        className="connect-line"
+                        stroke="rgba(16, 185, 129, 0.3)"
+                        strokeWidth="2"
+                        style={{ animationDelay: "1.6s" }}
+                      />
+                      <line
+                        x1="75%"
+                        y1="75%"
+                        x2="65%"
+                        y2="85%"
+                        className="connect-line"
+                        stroke="rgba(16, 185, 129, 0.3)"
+                        strokeWidth="2"
+                        style={{ animationDelay: "1.8s" }}
                       />
                     </svg>
-
-                    {/* Center connecting element */}
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                      <div className="w-4 h-4 bg-gray-400/60 rounded-full pulse-group" />
-                    </div>
                   </div>
                 </div>
               </div>
