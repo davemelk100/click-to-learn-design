@@ -6,6 +6,7 @@ interface DesignSectionProps {
   description: string;
   designPrinciple: string;
   exampleLink?: string;
+  exampleLabel?: string;
   visualComponent: React.ReactNode;
   isListLayout?: boolean;
   fontFamily?: string;
@@ -19,6 +20,7 @@ const DesignSection: React.FC<DesignSectionProps> = ({
   description,
   designPrinciple,
   exampleLink,
+  exampleLabel,
   visualComponent,
   isListLayout = false,
   fontFamily = "avenir",
@@ -93,11 +95,26 @@ const DesignSection: React.FC<DesignSectionProps> = ({
           <div className="p-6 flex-none">
             <h3 className="text-xl font-semibold mb-2">{title}</h3>
             <p className="text-gray-600 mb-4">{description}</p>
-            <div className="bg-gray-50 p-4 mb-4">
+            <div className="bg-gray-50 p-4 mb-2">
               <p className="text-sm text-gray-700 italic">{designPrinciple}</p>
             </div>
           </div>
-          <div className="flex-1 bg-white">{visualComponent}</div>
+          <div className="flex-1 bg-white relative">
+            {visualComponent}
+            {exampleLink && (
+              <div className="absolute bottom-4 right-4">
+                <a
+                  href={exampleLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center text-sm text-blue-600 hover:text-blue-800 transition-colors bg-white/80 px-3 py-1.5 rounded-full shadow-sm hover:shadow-md"
+                >
+                  <span>{exampleLabel || `See ${title} in action`}</span>
+                  <ArrowUpRight className="w-4 h-4 ml-1" />
+                </a>
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </div>

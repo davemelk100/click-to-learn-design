@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { ArrowUp, Info, Settings, Brain, Hand, Grid, List } from "lucide-react";
-import DesignSection from "./components/DesignSection";
 import Header from "./components/Header";
+import DesignSection from "./components/DesignSection";
+import { ArrowUp, Info, Settings, Brain, Hand, Grid, List } from "lucide-react";
 
 function App() {
   const [isListLayout, setIsListLayout] = useState(false);
@@ -9,25 +9,14 @@ function App() {
   return (
     <div className="min-h-screen w-full">
       <Header isListLayout={isListLayout} setIsListLayout={setIsListLayout} />
-      {/* Section Break */}
-      <div
-        id="design"
-        className="col-span-full py-12 bg-black text-white shadow-[0_4px_20px_rgba(0,0,0,0.3)]"
-      >
-        <div className="flex items-center justify-center gap-2">
-          <h2 className="text-2xl font-bold text-white font-dm-sans leading-none">
-            DESIGN
-          </h2>
-          <button
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="transition-opacity duration-200"
-          >
-            <ArrowUp className="w-6 h-6 text-white" />
-          </button>
+      {/* Section Break: Design */}
+      <div className="w-full py-12 mt-16 bg-[#414141] shadow-[0_4px_20px_rgba(0,0,0,0.3)]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl font-bold text-white">DESIGN</h2>
+          <p className="mt-1 text-sm text-gray-200">
+            Fundamental principles that shape our visual world.
+          </p>
         </div>
-        <p className="text-white text-center mt-1 font-avenir text-sm">
-          Explore the fundamental principles that shape effective design
-        </p>
       </div>
 
       <div
@@ -39,9 +28,10 @@ function App() {
       >
         <DesignSection
           title="Axonometric Projection"
-          description="Axonometric Projection creates a 3D effect while maintaining parallel lines. This technique provides a clear view of an object's three dimensions without the distortion of perspective, making it ideal for technical and architectural visualization."
-          designPrinciple="Dimension & Clarity – Representing 3D space while maintaining parallel lines."
-          exampleLink="https://www.archdaily.com/897029/how-to-understand-axonometric-projection"
+          description="Axonometric Projection creates a 3D space on a 2D surface using parallel lines and consistent angles. This technique maintains object proportions while providing depth and dimension."
+          designPrinciple="Depth & Dimension – Creating 3D space through consistent angles and parallel lines."
+          exampleLink="https://architizer.com/blog/inspiration/collections/axonometric/"
+          exampleLabel="Architectural Drawings: 8 Masterful Parallel Projections"
           isListLayout={isListLayout}
           visualComponent={
             <div className="flex items-center justify-center w-full">
@@ -184,8 +174,10 @@ function App() {
         />
         <DesignSection
           title="Interwoven Space"
-          description="Interwoven Space explores how elements can overlap and interact in three-dimensional space. This technique creates depth and complexity through the strategic layering of elements, allowing for rich visual relationships and spatial storytelling."
-          designPrinciple="Depth & Interaction – Creating visual interest through overlapping elements."
+          description="Interwoven Space explores how elements can overlap and interact in 3D space, creating depth through layering and transparency. This technique adds complexity and visual interest while maintaining clarity."
+          designPrinciple="Depth & Interaction – Creating visual interest through overlapping elements and transparency."
+          exampleLink="https://www.metmuseum.org/essays/geometric-patterns-in-islamic-art"
+          exampleLabel="Geometric Patterns in Islamic Art"
           isListLayout={isListLayout}
           visualComponent={
             <div className="flex items-center justify-center w-full">
@@ -249,10 +241,11 @@ function App() {
           title="Basic Color Theory"
           description="Basic Color Theory explores how colors interact and affect each other. Understanding these relationships helps create harmonious color schemes and effective visual communication."
           designPrinciple="Color Harmony – Using color relationships to create balanced and pleasing compositions."
-          exampleLink="https://www.smashingmagazine.com/2010/01/color-theory-for-designers-part-1-the-meaning-of-color/"
+          exampleLink="https://99designs.com/blog/tips/the-7-step-guide-to-understanding-color-theory/"
+          exampleLabel="The 7 Step Guide to Understanding Color Theory"
           isListLayout={isListLayout}
           visualComponent={
-            <div className="flex items-center justify-center w-full">
+            <div className="flex items-center justify-center w-full -mt-4">
               <div className="w-full max-w-[600px] h-[400px] bg-white p-4 relative">
                 <style>
                   {`
@@ -337,9 +330,10 @@ function App() {
         />
         <DesignSection
           title="Rule of Thirds"
-          description="The Rule of Thirds divides the design space into a 3x3 grid, creating nine equal parts. This technique helps create balanced and visually appealing compositions by placing important elements along the grid lines or at their intersections."
-          designPrinciple="Balance & Harmony – Creating visual interest through strategic placement."
+          description="The Rule of Thirds divides the canvas into a 3x3 grid, creating natural focal points where the lines intersect. This technique helps create balanced, dynamic compositions that guide the viewer's eye."
+          designPrinciple="Balance & Focus – Using grid intersections to create natural focal points."
           exampleLink="https://www.photographymad.com/pages/view/rule-of-thirds"
+          exampleLabel="Photography Mad's guide to using the Rule of Thirds in photography"
           isListLayout={isListLayout}
           visualComponent={
             <div className="flex items-center justify-center w-full">
@@ -428,121 +422,14 @@ function App() {
         />
 
         <DesignSection
-          title="Spatial Layers"
-          description="Spatial Layers explores how elements can be arranged in three-dimensional space to create depth and hierarchy. This technique uses overlapping, transparency, and movement to create a sense of space and dimension."
-          designPrinciple="Depth & Dimension – Creating visual hierarchy through layered elements in space."
-          isListLayout={isListLayout}
-          visualComponent={
-            <div className="flex items-center justify-center w-full">
-              <div className="w-full max-w-[600px] h-[400px] bg-white p-4 relative">
-                <style>
-                  {`
-                    @keyframes rotate3D {
-                      0% { transform: rotateX(20deg) rotateY(0deg) rotateZ(0deg); }
-                      100% { transform: rotateX(20deg) rotateY(360deg) rotateZ(0deg); }
-                    }
-                    @keyframes float {
-                      0%, 100% { transform: translateY(0) translateZ(0); }
-                      50% { transform: translateY(-20px) translateZ(50px); }
-                    }
-                    @keyframes pulse {
-                      0%, 100% { transform: scale(1); opacity: 0.6; }
-                      50% { transform: scale(1.1); opacity: 1; }
-                    }
-                    @keyframes morph {
-                      0% { border-radius: 60% 40% 30% 70%/60% 30% 70% 40%; }
-                      50% { border-radius: 30% 60% 70% 40%/50% 60% 30% 60%; }
-                      100% { border-radius: 60% 40% 30% 70%/60% 30% 70% 40%; }
-                    }
-                    .layer-container {
-                      animation: rotate3D 20s linear infinite;
-                      transform-style: preserve-3d;
-                      perspective: 1000px;
-                    }
-                    .layer {
-                      transform-style: preserve-3d;
-                      transition: all 0.3s ease;
-                    }
-                    .float-element {
-                      animation: float 6s ease-in-out infinite;
-                    }
-                    .morph-element {
-                      animation: morph 8s ease-in-out infinite;
-                    }
-                    .pulse-element {
-                      animation: pulse 4s ease-in-out infinite;
-                    }
-                  `}
-                </style>
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="relative w-64 h-64">
-                    {/* Main container with 3D rotation */}
-                    <div className="layer-container absolute inset-0">
-                      {/* Background layer */}
-                      <div className="layer absolute inset-0">
-                        <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-violet-500/20 rounded-lg morph-element" />
-                        <div
-                          className="absolute bottom-1/4 right-1/4 w-32 h-32 bg-violet-500/20 rounded-lg morph-element"
-                          style={{ animationDelay: "1s" }}
-                        />
-                      </div>
-
-                      {/* Middle layer */}
-                      <div
-                        className="layer absolute inset-0"
-                        style={{ transform: "translateZ(30px)" }}
-                      >
-                        <div className="absolute top-1/3 left-1/3 w-24 h-24 bg-violet-400/40 rounded-lg float-element" />
-                        <div
-                          className="absolute bottom-1/3 right-1/3 w-24 h-24 bg-violet-400/40 rounded-lg float-element"
-                          style={{ animationDelay: "2s" }}
-                        />
-                      </div>
-
-                      {/* Foreground layer */}
-                      <div
-                        className="layer absolute inset-0"
-                        style={{ transform: "translateZ(60px)" }}
-                      >
-                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-violet-300/60 rounded-lg pulse-element" />
-                      </div>
-
-                      {/* Floating elements */}
-                      <div
-                        className="layer absolute inset-0"
-                        style={{ transform: "translateZ(45px)" }}
-                      >
-                        <div
-                          className="absolute top-1/4 right-1/4 w-8 h-8 bg-violet-200/80 rounded-full float-element"
-                          style={{ animationDelay: "1s" }}
-                        />
-                        <div
-                          className="absolute bottom-1/4 left-1/4 w-8 h-8 bg-violet-200/80 rounded-full float-element"
-                          style={{ animationDelay: "2s" }}
-                        />
-                        <div
-                          className="absolute top-3/4 left-1/4 w-8 h-8 bg-violet-200/80 rounded-full float-element"
-                          style={{ animationDelay: "3s" }}
-                        />
-                        <div
-                          className="absolute top-1/4 left-3/4 w-8 h-8 bg-violet-200/80 rounded-full float-element"
-                          style={{ animationDelay: "4s" }}
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          }
-        />
-        <DesignSection
           title="Observed Rhythm"
-          description="Observed Rhythm explores how visual elements can create a sense of movement and flow through repeated patterns and synchronized animations. This technique uses timing, spacing, and coordinated motion to create a harmonious visual experience."
-          designPrinciple="Flow & Harmony – Creating visual rhythm through coordinated movement and patterns."
+          description="Observed Rhythm creates visual patterns through repeated elements and coordinated movement. This technique uses timing, spacing, and variation to create a sense of flow and harmony."
+          designPrinciple="Pattern & Flow – Creating visual harmony through coordinated movement and repetition."
+          exampleLink="https://www.interaction-design.org/literature/article/repetition-pattern-and-rhythm"
+          exampleLabel="Repetition, Pattern, and Rhythm - Interaction Design Foundation"
           isListLayout={isListLayout}
           visualComponent={
-            <div className="flex items-center justify-center w-full">
+            <div className="flex items-center justify-center w-full -mt-4">
               <div className="w-full max-w-[600px] h-[400px] bg-white p-4 relative">
                 <style>
                   {`
@@ -596,12 +483,13 @@ function App() {
         />
         <DesignSection
           title="Ambiguous Scale"
-          description="Ambiguous Scale plays with our perception of size and proportion. This technique creates visual interest by making it unclear whether elements are large or small, near or far, challenging viewers to question their assumptions about scale and space."
-          designPrinciple="Perception & Context – Creating uncertainty about true size and scale."
+          description="Ambiguous Scale plays with our perception of size and proportion, creating visual interest through uncertainty about true dimensions. This technique uses relative scale and context to create dynamic compositions."
+          designPrinciple="Perception & Context – Using relative scale to create visual interest and uncertainty."
           exampleLink="https://www.microsoft.com/en-us/microsoft-365-life-hacks/presentations/scale-in-graphic-design"
+          exampleLabel="Microsoft's guide to using scale and proportion in presentations"
           isListLayout={isListLayout}
           visualComponent={
-            <div className="flex items-center justify-center w-full">
+            <div className="flex items-center justify-center w-full -mt-4">
               <div className="w-full max-w-[600px] h-[400px] bg-white p-4 relative">
                 <style>
                   {`
@@ -668,115 +556,16 @@ function App() {
             </div>
           }
         />
-        <DesignSection
-          title="Negative Space"
-          description="Negative Space explores how the empty areas between and around elements can be as important as the elements themselves. This technique uses breathing room and strategic emptiness to create balance, focus, and visual harmony."
-          designPrinciple="Balance & Focus – Using empty space to create visual hierarchy and emphasis."
-          isListLayout={isListLayout}
-          visualComponent={
-            <div className="flex items-center justify-center w-full">
-              <div className="w-full max-w-[600px] h-[400px] bg-white p-4 relative">
-                <style>
-                  {`
-                    @keyframes expand {
-                      0% { transform: scale(0.6); opacity: 0; }
-                      100% { transform: scale(1); opacity: 1; }
-                    }
-                    @keyframes breathe {
-                      0%, 100% { transform: scale(1); }
-                      50% { transform: scale(1.15); }
-                    }
-                    @keyframes fade {
-                      0%, 100% { opacity: 0.1; }
-                      50% { opacity: 0.5; }
-                    }
-                    .expand-element {
-                      animation: expand 1.2s ease-out forwards;
-                    }
-                    .breathe-element {
-                      animation: breathe 3s ease-in-out infinite;
-                    }
-                    .fade-element {
-                      animation: fade 2.5s ease-in-out infinite;
-                    }
-                  `}
-                </style>
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="relative w-96 h-96">
-                    {/* Background space indicators */}
-                    <div className="absolute inset-0">
-                      <div className="absolute top-0 left-0 w-full h-1/3 bg-slate-100 fade-element" />
-                      <div
-                        className="absolute top-1/3 left-0 w-full h-1/3 bg-slate-100 fade-element"
-                        style={{ animationDelay: "0.5s" }}
-                      />
-                      <div
-                        className="absolute top-2/3 left-0 w-full h-1/3 bg-slate-100 fade-element"
-                        style={{ animationDelay: "1s" }}
-                      />
-                    </div>
-
-                    {/* Main content area */}
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      {/* Left element */}
-                      <div
-                        className="absolute left-0 top-1/2 -translate-y-1/2 expand-element"
-                        style={{ animationDelay: "0.2s" }}
-                      >
-                        <div className="w-24 h-24 bg-slate-800 rounded-lg breathe-element" />
-                      </div>
-
-                      {/* Center element */}
-                      <div
-                        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 expand-element"
-                        style={{ animationDelay: "0.4s" }}
-                      >
-                        <div className="w-36 h-36 bg-slate-800 rounded-lg breathe-element" />
-                      </div>
-
-                      {/* Right element */}
-                      <div
-                        className="absolute right-0 top-1/2 -translate-y-1/2 expand-element"
-                        style={{ animationDelay: "0.6s" }}
-                      >
-                        <div className="w-24 h-24 bg-slate-800 rounded-lg breathe-element" />
-                      </div>
-                    </div>
-
-                    {/* Space markers */}
-                    <div className="absolute inset-0 pointer-events-none">
-                      <div className="absolute top-1/2 left-1/4 w-2 h-2 bg-slate-400 rounded-full" />
-                      <div className="absolute top-1/2 right-1/4 w-2 h-2 bg-slate-400 rounded-full" />
-                      <div className="absolute top-1/4 left-1/2 w-2 h-2 bg-slate-400 rounded-full" />
-                      <div className="absolute bottom-1/4 left-1/2 w-2 h-2 bg-slate-400 rounded-full" />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          }
-        />
       </div>
 
-      {/* Section Break */}
-      <div
-        id="designs"
-        className="col-span-full py-12 bg-black text-white shadow-[0_4px_20px_rgba(0,0,0,0.3)]"
-      >
-        <div className="flex items-center justify-center gap-2">
-          <h2 className="text-2xl font-bold text-white font-dm-sans leading-none">
-            DESIGNS
-          </h2>
-          <button
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="transition-opacity duration-200"
-          >
-            <ArrowUp className="w-6 h-6 text-white" />
-          </button>
+      {/* Section Break: Designs */}
+      <div className="w-full py-12 mt-16 bg-[#414141] shadow-[0_4px_20px_rgba(0,0,0,0.3)]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl font-bold text-white">DESIGNS</h2>
+          <p className="mt-1 text-sm text-gray-200">
+            Explore how these principles come together in complete designs.
+          </p>
         </div>
-        <p className="text-white text-center mt-1 font-avenir text-sm">
-          Landmark achievements that changed the landscape of design.
-        </p>
       </div>
 
       <div
@@ -953,25 +742,14 @@ function App() {
         />
       </div>
 
-      {/* Section Break */}
-      <div
-        id="designers"
-        className="col-span-full py-12 bg-black text-white shadow-[0_4px_20px_rgba(0,0,0,0.3)]"
-      >
-        <div className="flex items-center justify-center gap-2">
-          <h2 className="text-2xl font-bold text-white font-dm-sans leading-none">
-            DESIGNERS
-          </h2>
-          <button
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="transition-opacity duration-200"
-          >
-            <ArrowUp className="w-6 h-6 text-white" />
-          </button>
+      {/* Section Break: Designers */}
+      <div className="w-full py-12 mt-16 bg-[#414141] shadow-[0_4px_20px_rgba(0,0,0,0.3)]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl font-bold text-white">DESIGNERS</h2>
+          <p className="mt-1 text-sm text-gray-200">
+            Meet the designers who bring these principles to life.
+          </p>
         </div>
-        <p className="text-white text-center mt-1 font-avenir text-sm">
-          Meet the visionaries who have shaped the world of design
-        </p>
       </div>
 
       <div
@@ -1096,56 +874,6 @@ function App() {
           }
         />
       </div>
-      <footer className="sticky bottom-0 py-2 bg-black z-50">
-        <div className="flex items-center pl-4">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 relative group">
-              <div className="absolute w-8 h-8">
-                {[...Array(8)].map((_, i) => (
-                  <div
-                    key={i}
-                    className="absolute w-6 h-px border-t border-dashed border-white/80 transform transition-all duration-500 group-hover:border-white group-hover:animate-pulse"
-                    style={{
-                      left: "50%",
-                      top: "50%",
-                      transform: `translate(-50%, -50%) rotate(${
-                        i * 45
-                      }deg) translate(3px)`,
-                      animationDelay: `${i * 0.1}s`,
-                    }}
-                  >
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  </div>
-                ))}
-              </div>
-              <div
-                className="absolute w-2 h-2 bg-white rounded-full transform transition-all duration-500 group-hover:scale-150 group-hover:animate-bounce"
-                style={{
-                  left: "50%",
-                  top: "50%",
-                  transform: "translate(-50%, -50%)",
-                }}
-              />
-            </div>
-            <a
-              href="https://davemelk.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-xl font-medium text-white hover:text-white/80 transition-colors duration-300"
-            >
-              davemelk.com
-            </a>
-          </div>
-          <a
-            href="https://davemelk.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="ml-auto mr-4 px-2 py-1 bg-white text-black text-sm font-medium hover:bg-white/90 transition-colors duration-300"
-          >
-            DM
-          </a>
-        </div>
-      </footer>
     </div>
   );
 }
