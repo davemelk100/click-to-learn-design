@@ -85,8 +85,6 @@ const DesignSection: React.FC<DesignSectionProps> = ({
     title === "Rule of Thirds" ||
     title === "Interwoven Space" ||
     title === "Dimensional Hierarchy" ||
-    title === "Subjective Emphasis" ||
-    title === "Bezold Effect" ||
     title === "Ambiguous Scale" ||
     title === "Artful Reduction" ||
     title === "Basic Color Theory";

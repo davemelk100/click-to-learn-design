@@ -34,130 +34,83 @@ function App() {
             : "col-span-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-8 gap-12"
         }`}
       >
+        
         <DesignSection
-          title="Dimensional Hierarchy"
-          description="Dimensional Hierarchy creates visual importance through varying levels of depth and dimensionality. By using shadows, perspective, and strategic layering, elements can appear to float at different levels, creating a clear visual hierarchy."
-          designPrinciple="Depth – Using three-dimensional space to establish visual importance and relationships."
-          exampleLink="https://www.toptal.com/designers/visual/principles-of-design"
+          title="Interwoven Space"
+          description="Interwoven Space creates complex visual relationships by carefully layering and connecting elements. This technique uses overlapping forms, transparency, and strategic placement to create a sense of depth and interconnectedness."
+          designPrinciple="Depth – Creating the illusion of three-dimensional space through layering and perspective."
+          exampleLink="https://www.behance.net/gallery/101333357/Interwoven-Space"
           isListLayout={isListLayout}
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
               <div className="w-full max-w-[600px] h-[300px] p-4 relative group">
                 <style>
                   {`
+                    @keyframes weave {
+                      0% { transform: translateX(-20px) translateY(0) rotate(0deg); }
+                      25% { transform: translateX(0) translateY(-20px) rotate(90deg); }
+                      50% { transform: translateX(20px) translateY(0) rotate(180deg); }
+                      75% { transform: translateX(0) translateY(20px) rotate(270deg); }
+                      100% { transform: translateX(-20px) translateY(0) rotate(360deg); }
+                    }
                     @keyframes float {
-                      0% { transform: translateY(0) rotate(0deg); }
-                      50% { transform: translateY(-10px) rotate(5deg); }
-                      100% { transform: translateY(0) rotate(0deg); }
+                      0%, 100% { transform: translateY(0); }
+                      50% { transform: translateY(-15px); }
                     }
-                    .group:hover .float-animation {
-                      animation: float 3s ease-in-out infinite;
+                    .weave-element {
+                      animation: weave 12s ease-in-out infinite;
                     }
-                  `}
-                </style>
-                <div className="absolute inset-0 flex items-center justify-center">
-                  {/* Background layer - subtle grid */}
-                  <div className="absolute w-96 h-96 opacity-20">
-                    {[...Array(16)].map((_, i) => (
-                      <div
-                        key={`grid-${i}`}
-                        className="absolute w-96 h-px bg-amber-400 transform transition-all duration-500 group-hover:bg-amber-500 animate-[pulse_2s_ease-in-out_infinite] group-hover:animate-none"
-                        style={{
-                          top: `${i * 16}px`,
-                          transform: `rotate(${i * 11.25}deg)`,
-                          animationDelay: `${i * 0.1}s`,
-                        }}
-                      />
-                    ))}
-                  </div>
-
-                  {/* Middle layer - floating elements */}
-                  <div className="absolute w-96 h-96">
-                    {[...Array(6)].map((_, i) => (
-                      <div
-                        key={`float-${i}`}
-                        className="absolute w-12 h-12 bg-amber-500/60 shadow-lg transform transition-all duration-500 group-hover:translate-y-[-8px] group-hover:shadow-xl animate-[float_3s_ease-in-out_infinite] group-hover:animate-none"
-                        style={{
-                          left: `${
-                            Math.cos((i * Math.PI * 2) / 6) * 60 + 96
-                          }px`,
-                          top: `${Math.sin((i * Math.PI * 2) / 6) * 60 + 96}px`,
-                          transform: `rotate(${i * 30}deg) translateZ(${
-                            i * 8
-                          }px)`,
-                          zIndex: i,
-                          animationDelay: `${i * 0.2}s`,
-                        }}
-                      >
-                        <div className="absolute inset-1" />
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* Foreground layer - prominent element */}
-                  <div className="absolute w-96 h-96">
-                    <div
-                      className="absolute w-24 h-24 bg-amber-600/80 shadow-xl transform transition-all duration-500 group-hover:translate-y-[-16px] group-hover:shadow-2xl group-hover:scale-110 animate-[float_3s_ease-in-out_infinite] group-hover:animate-none"
-                      style={{
-                        left: "50%",
-                        top: "50%",
-                        transform: "translate(-50%, -50%) translateZ(32px)",
-                        zIndex: 10,
-                      }}
-                    >
-                      <div className="absolute inset-2" />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          }
-          fontFamily="dm-sans"
-          descriptionClassName="font-dm-sans"
-          background="bg-gradient-to-br from-amber-50/50 to-orange-50/50"
-        />
-        <DesignSection
-          title="Overlapping Relationships"
-          description="Overlapping Relationships demonstrate how elements can create visual connections and depth through strategic layering. By carefully controlling transparency, shadows, and positioning, we can create a sense of depth and establish visual relationships between elements."
-          designPrinciple="Depth & Connection – Using overlapping elements to create visual hierarchy and relationships."
-          exampleLink="https://www.behance.net/gallery/101333357/Overlapping-Relationships"
-          isListLayout={isListLayout}
-          visualComponent={
-            <div className="flex items-center justify-center w-full h-full">
-              <div className="w-full max-w-[600px] h-[300px] bg-white p-4 relative group">
-                <style>
-                  {`
-                    @keyframes floatSquare {
-                      0% { transform: translateY(0) rotate(0deg); }
-                      50% { transform: translateY(-20px) rotate(5deg); }
-                      100% { transform: translateY(0) rotate(0deg); }
+                    .float-element {
+                      animation: float 6s ease-in-out infinite;
                     }
-                    .square-animation {
-                      animation: floatSquare 6s ease-in-out infinite;
-                    }
-                    .square-1 { animation-delay: 0s; }
-                    .square-2 { animation-delay: 2s; }
-                    .square-3 { animation-delay: 4s; }
                   `}
                 </style>
                 <div className="absolute inset-0 flex items-center justify-center">
                   {/* Main container */}
-                  <div className="w-80 h-80 relative">
-                    {/* Three overlapping squares */}
-                    <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-                      <div className="w-20 h-20 bg-rose-500/60 rounded-lg transform rotate-12 square-animation square-1" />
-                      <div className="w-20 h-20 bg-pink-500/60 rounded-lg transform -rotate-12 square-animation square-2" />
-                      <div className="w-20 h-20 bg-fuchsia-500/60 rounded-lg transform rotate-0 square-animation square-3" />
+                  <div className="w-64 h-64 relative">
+                    {/* Base layer */}
+                    <div className="absolute inset-0 grid grid-cols-3 gap-2">
+                      {[...Array(9)].map((_, i) => (
+                        <div key={i} className="bg-gray-200/30 rounded-lg" />
+                      ))}
+                    </div>
+
+                    {/* Interwoven elements */}
+                    <div className="absolute inset-0">
+                      {/* Horizontal strips */}
+                      {[...Array(3)].map((_, i) => (
+                        <div
+                          key={`h-${i}`}
+                          className="absolute left-0 right-0 h-8 bg-blue-500/60 rounded-lg weave-element"
+                          style={{
+                            top: `${i * 33.33}%`,
+                            animationDelay: `${i * 2}s`,
+                          }}
+                        />
+                      ))}
+
+                      {/* Vertical strips */}
+                      {[...Array(3)].map((_, i) => (
+                        <div
+                          key={`v-${i}`}
+                          className="absolute top-0 bottom-0 w-8 bg-rose-500/60 rounded-lg weave-element"
+                          style={{
+                            left: `${i * 33.33}%`,
+                            animationDelay: `${i * 2 + 1}s`,
+                          }}
+                        />
+                      ))}
+
+                      {/* Floating center element */}
+                      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-emerald-500/80 rounded-lg float-element" />
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           }
-          fontFamily="josefin-sans"
-          descriptionClassName="font-josefin-sans"
-          background="bg-gradient-to-br from-rose-50/50 to-pink-50/50"
         />
+
         <DesignSection
           title="Rule of Thirds"
           description="The Rule of Thirds divides a composition into nine equal parts using two horizontal and two vertical lines. Key elements placed along these lines or at their intersections create more engaging and balanced designs."
@@ -245,9 +198,6 @@ function App() {
               </div>
             </div>
           }
-          fontFamily="habibi"
-          descriptionClassName="font-habibi"
-          background="bg-gradient-to-br from-emerald-50/50 to-teal-50/50"
         />
         <DesignSection
           title="Spatial Layers"
@@ -307,58 +257,6 @@ function App() {
           }
         />
         <DesignSection
-          title="Bezold Effect"
-          description="The Bezold Effect occurs when the appearance of a color is altered by the colors adjacent to it. This optical illusion demonstrates how our perception of color can be dramatically influenced by its surrounding colors."
-          designPrinciple="Contrast – Using differences in color, size, or shape to create visual interest and hierarchy."
-          exampleLink="https://www.interaction-design.org/literature/topics/color-theory"
-          isListLayout={isListLayout}
-          visualComponent={
-            <div className="flex items-center justify-center w-full h-full">
-              <div className="w-full max-w-[600px] h-[300px] bg-white p-4 relative group">
-                <style>
-                  {`
-                    @keyframes pulseColor {
-                      0%, 100% { opacity: 0.7; }
-                      50% { opacity: 1; }
-                    }
-                    @keyframes shiftBackground {
-                      0% { background-color: rgb(254 240 138); }
-                      33% { background-color: rgb(254 226 226); }
-                      66% { background-color: rgb(224 242 254); }
-                      100% { background-color: rgb(254 240 138); }
-                    }
-                    .color-shift {
-                      animation: shiftBackground 8s ease-in-out infinite;
-                    }
-                    .color-pulse {
-                      animation: pulseColor 4s ease-in-out infinite;
-                    }
-                  `}
-                </style>
-                <div className="absolute inset-0 flex items-center justify-center gap-8">
-                  {/* Left panel - Warm background */}
-                  <div className="w-48 h-48 color-shift rounded-lg p-4 flex items-center justify-center">
-                    <div className="w-32 h-32 bg-red-500/80 color-pulse rounded-lg" />
-                  </div>
-
-                  {/* Right panel - Cool background */}
-                  <div
-                    className="w-48 h-48 color-shift rounded-lg p-4 flex items-center justify-center"
-                    style={{ animationDelay: "4s" }}
-                  >
-                    <div className="w-32 h-32 bg-red-500/80 color-pulse rounded-lg" />
-                  </div>
-
-                  {/* Center text */}
-                </div>
-              </div>
-            </div>
-          }
-          fontFamily="avenir"
-          descriptionClassName="font-avenir"
-          background="bg-gradient-to-br from-orange-50/50 to-red-50/50"
-        />
-        <DesignSection
           title="Observed Rhythm"
           description="Observed Rhythm creates visual flow through repeating elements. This dynamic pattern uses varying sizes and spacing to guide the viewer's eye naturally through the design."
           designPrinciple="Repetition – Reusing visual elements to create consistency."
@@ -415,7 +313,6 @@ function App() {
             </div>
           }
           fontFamily="roboto"
-          background="bg-[radial-gradient(circle_at_top_right,theme(colors.indigo.50/30),theme(colors.purple.50/30))]"
         />
         <DesignSection
           title="Ambiguous Scale"
@@ -465,18 +362,12 @@ function App() {
               </div>
             </div>
           }
-          fontFamily="anek-gurmukhi"
-          descriptionClassName="font-anek-gurmukhi"
-          background="bg-gradient-to-br from-zinc-50/50 to-neutral-50/50"
         />
         <DesignSection
           title="Law of Proximity"
           description="The Law of Proximity states that objects that are close to one another are perceived as being related or grouped together. This principle helps create visual organization and relationships between elements in a design."
           designPrinciple="Proximity – Grouping related items together to show their connection."
           exampleLink="https://lawsofux.com/law-of-proximity/"
-          fontFamily="dm-sans"
-          descriptionClassName="font-dm-sans"
-          background="bg-gradient-to-br from-amber-50/50 to-orange-50/50"
           isListLayout={isListLayout}
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
@@ -485,49 +376,72 @@ function App() {
                   {`
                     @keyframes groupMove {
                       0% { transform: translate(0, 0); }
-                      25% { transform: translate(20px, -20px); }
+                      25% { transform: translate(10px, -10px); }
                       50% { transform: translate(0, 0); }
-                      75% { transform: translate(-20px, 20px); }
+                      75% { transform: translate(-10px, 10px); }
                       100% { transform: translate(0, 0); }
                     }
                     @keyframes separateMove {
                       0% { transform: translate(0, 0); }
-                      25% { transform: translate(-20px, -20px); }
+                      25% { transform: translate(-10px, -10px); }
                       50% { transform: translate(0, 0); }
-                      75% { transform: translate(20px, 20px); }
+                      75% { transform: translate(10px, 10px); }
                       100% { transform: translate(0, 0); }
                     }
+                    @keyframes diagonalMove {
+                      0% { transform: translate(0, 0) rotate(0deg); }
+                      25% { transform: translate(8px, 8px) rotate(3deg); }
+                      50% { transform: translate(0, 0) rotate(0deg); }
+                      75% { transform: translate(-8px, -8px) rotate(-3deg); }
+                      100% { transform: translate(0, 0) rotate(0deg); }
+                    }
                     .group-animation {
-                      animation: groupMove 6s ease-in-out infinite;
+                      animation: groupMove 4s ease-in-out infinite;
                     }
                     .separate-animation {
-                      animation: separateMove 6s ease-in-out infinite;
+                      animation: separateMove 4s ease-in-out infinite;
+                    }
+                    .diagonal-animation {
+                      animation: diagonalMove 5s ease-in-out infinite;
                     }
                   `}
                 </style>
                 <div className="absolute inset-0 flex items-center justify-center">
                   {/* Main container */}
                   <div className="w-64 h-64 relative">
-                    {/* Grouped elements */}
-                    <div className="absolute top-0 left-0 group-animation">
+                    {/* Grouped elements - top left quadrant */}
+                    <div className="absolute top-8 left-8 group-animation">
                       <div className="grid grid-cols-2 gap-2">
                         {[...Array(4)].map((_, i) => (
                           <div
                             key={i}
                             className="w-8 h-8 bg-blue-500/80 rounded-lg"
-                            style={{ animationDelay: `${i * 0.2}s` }}
+                            style={{ animationDelay: `${i * 0.15}s` }}
                           />
                         ))}
                       </div>
                     </div>
 
-                    {/* Separated elements */}
-                    <div className="absolute bottom-0 right-0 separate-animation">
+                    {/* Separated elements - bottom right quadrant */}
+                    <div className="absolute bottom-8 right-8 separate-animation">
                       <div className="grid grid-cols-2 gap-8">
                         {[...Array(4)].map((_, i) => (
                           <div
                             key={i}
                             className="w-8 h-8 bg-rose-500/80 rounded-lg"
+                            style={{ animationDelay: `${i * 0.15}s` }}
+                          />
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Diagonal group - center area */}
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 diagonal-animation">
+                      <div className="grid grid-cols-2 gap-4">
+                        {[...Array(4)].map((_, i) => (
+                          <div
+                            key={i}
+                            className="w-8 h-8 bg-emerald-500/80 rounded-lg"
                             style={{ animationDelay: `${i * 0.2}s` }}
                           />
                         ))}
@@ -538,86 +452,8 @@ function App() {
               </div>
             </div>
           }
-          background="bg-gradient-to-br from-amber-50/50 to-orange-50/50"
         />
-        <DesignSection
-          title="Interwoven Space"
-          description="Interwoven Space creates complex visual relationships by carefully layering and connecting elements. This technique uses overlapping forms, transparency, and strategic placement to create a sense of depth and interconnectedness."
-          designPrinciple="Depth – Creating the illusion of three-dimensional space through layering and perspective."
-          exampleLink="https://www.behance.net/gallery/101333357/Interwoven-Space"
-          isListLayout={isListLayout}
-          visualComponent={
-            <div className="flex items-center justify-center w-full h-full">
-              <div className="w-full max-w-[600px] h-[300px] p-4 relative group">
-                <style>
-                  {`
-                    @keyframes weave {
-                      0% { transform: translateX(-20px) translateY(0) rotate(0deg); }
-                      25% { transform: translateX(0) translateY(-20px) rotate(90deg); }
-                      50% { transform: translateX(20px) translateY(0) rotate(180deg); }
-                      75% { transform: translateX(0) translateY(20px) rotate(270deg); }
-                      100% { transform: translateX(-20px) translateY(0) rotate(360deg); }
-                    }
-                    @keyframes float {
-                      0%, 100% { transform: translateY(0); }
-                      50% { transform: translateY(-15px); }
-                    }
-                    .weave-element {
-                      animation: weave 12s ease-in-out infinite;
-                    }
-                    .float-element {
-                      animation: float 6s ease-in-out infinite;
-                    }
-                  `}
-                </style>
-                <div className="absolute inset-0 flex items-center justify-center">
-                  {/* Main container */}
-                  <div className="w-64 h-64 relative">
-                    {/* Base layer */}
-                    <div className="absolute inset-0 grid grid-cols-3 gap-2">
-                      {[...Array(9)].map((_, i) => (
-                        <div key={i} className="bg-gray-200/30 rounded-lg" />
-                      ))}
-                    </div>
-
-                    {/* Interwoven elements */}
-                    <div className="absolute inset-0">
-                      {/* Horizontal strips */}
-                      {[...Array(3)].map((_, i) => (
-                        <div
-                          key={`h-${i}`}
-                          className="absolute left-0 right-0 h-8 bg-blue-500/60 rounded-lg weave-element"
-                          style={{
-                            top: `${i * 33.33}%`,
-                            animationDelay: `${i * 2}s`,
-                          }}
-                        />
-                      ))}
-
-                      {/* Vertical strips */}
-                      {[...Array(3)].map((_, i) => (
-                        <div
-                          key={`v-${i}`}
-                          className="absolute top-0 bottom-0 w-8 bg-rose-500/60 rounded-lg weave-element"
-                          style={{
-                            left: `${i * 33.33}%`,
-                            animationDelay: `${i * 2 + 1}s`,
-                          }}
-                        />
-                      ))}
-
-                      {/* Floating center element */}
-                      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-emerald-500/80 rounded-lg float-element" />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          }
-          fontFamily="eb-garamond"
-          descriptionClassName="font-eb-garamond"
-          background="bg-gradient-to-br from-rose-50/50 to-pink-50/50"
-        />
+        
         <DesignSection
           title="Artful Reduction"
           description="Artful Reduction demonstrates how removing elements can strengthen a design. By carefully eliminating unnecessary components, the remaining elements gain more impact and clarity, creating a more focused and powerful visual statement."
@@ -694,9 +530,6 @@ function App() {
               </div>
             </div>
           }
-          fontFamily="helvetica"
-          descriptionClassName="font-helvetica"
-          background="bg-gradient-to-br from-stone-50/50 to-slate-50/50"
         />
         <DesignSection
           title="Basic Color Theory"
@@ -840,7 +673,6 @@ function App() {
               </div>
             </div>
           }
-          background="bg-gradient-to-br from-amber-50/50 to-yellow-50/50"
         />
         <DesignSection
           title="Axonometric Projection"
@@ -900,81 +732,6 @@ function App() {
                         style={{ animationDelay: "2s" }}
                       />
                     </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          }
-          background="bg-gradient-to-br from-stone-50/50 to-slate-50/50"
-        />
-        <DesignSection
-          title="Subjective Emphasis"
-          description="Subjective emphasis uses visual hierarchy to guide attention and create focal points. By manipulating size, color, and movement, designers can control what viewers notice first and how they navigate through content."
-          designPrinciple="Focus – Directing attention through visual hierarchy and movement."
-          exampleLink="https://www.toptal.com/designers/visual/principles-of-design"
-          isListLayout={isListLayout}
-          fontFamily="dm-sans"
-          descriptionClassName="text-gray-700 font-dm-sans"
-          titleClassName="text-2xl font-bold text-gray-900 font-dm-sans"
-          visualComponent={
-            <div className="flex items-center justify-center w-full h-full">
-              <div className="w-full max-w-[600px] h-[300px] p-4 relative group">
-                <style>
-                  {`
-                    @keyframes pulse-emphasis {
-                      0% { transform: scale(1); }
-                      50% { transform: scale(1.2); }
-                      100% { transform: scale(1); }
-                    }
-                    @keyframes fade-emphasis {
-                      0% { opacity: 0.3; }
-                      50% { opacity: 1; }
-                      100% { opacity: 0.3; }
-                    }
-                    .emphasis-pulse {
-                      animation: pulse-emphasis 2s ease-in-out infinite;
-                    }
-                    .emphasis-fade {
-                      animation: fade-emphasis 3s ease-in-out infinite;
-                    }
-                  `}
-                </style>
-                <div className="absolute inset-0 flex items-center justify-center">
-                  {/* Emphasis demonstration */}
-                  <div className="relative w-48 h-48">
-                    {/* Background elements */}
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      {[...Array(4)].map((_, i) => (
-                        <div
-                          key={`bg-${i}`}
-                          className="absolute w-8 h-8 bg-gray-300 rounded-full emphasis-fade"
-                          style={{
-                            left: `${25 + (i % 2) * 50}%`,
-                            top: `${25 + Math.floor(i / 2) * 50}%`,
-                            animationDelay: `${i * 0.5}s`,
-                          }}
-                        />
-                      ))}
-                    </div>
-
-                    {/* Central emphasized element */}
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="w-16 h-16 bg-blue-500 rounded-lg shadow-lg emphasis-pulse transform transition-all duration-300 group-hover:rotate-12">
-                        {/* Inner decorative elements */}
-                        <div className="absolute inset-2 border-2 border-white/20 rounded"></div>
-                        <div className="absolute inset-4 border border-white/10 rounded"></div>
-                      </div>
-                    </div>
-
-                    {/* Floating accent elements */}
-                    <div
-                      className="absolute -top-2 -right-2 w-4 h-4 bg-blue-400 rounded-full shadow-md emphasis-pulse"
-                      style={{ animationDelay: "0.2s" }}
-                    ></div>
-                    <div
-                      className="absolute -bottom-2 -left-2 w-4 h-4 bg-blue-400 rounded-full shadow-md emphasis-pulse"
-                      style={{ animationDelay: "0.4s" }}
-                    ></div>
                   </div>
                 </div>
               </div>
@@ -1157,72 +914,6 @@ function App() {
             </div>
           }
         />
-        <DesignSection
-          title="Spatial Reasoning"
-          description="Spatial Reasoning involves understanding and manipulating objects in three-dimensional space. It's crucial for creating intuitive interfaces and visualizing complex relationships between elements."
-          designPrinciple="Spatial Awareness – Understanding and manipulating objects in three-dimensional space."
-          exampleLink="https://www.toptal.com/designers/visual/principles-of-design"
-          isListLayout={isListLayout}
-          visualComponent={
-            <div className="flex items-center justify-center w-full h-full">
-              <div className="w-full max-w-[600px] h-[300px] bg-white p-4 relative group">
-                <style>
-                  {`
-                    @keyframes rotate3D {
-                      0% { transform: perspective(1000px) rotateY(0deg) rotateX(0deg); }
-                      50% { transform: perspective(1000px) rotateY(180deg) rotateX(20deg); }
-                      100% { transform: perspective(1000px) rotateY(360deg) rotateX(0deg); }
-                    }
-                    @keyframes floatElement {
-                      0%, 100% { transform: translateY(0) translateZ(0); }
-                      50% { transform: translateY(-20px) translateZ(20px); }
-                    }
-                    .spatial-container {
-                      animation: rotate3D 8s linear infinite;
-                    }
-                    .floating-element {
-                      animation: floatElement 4s ease-in-out infinite;
-                    }
-                  `}
-                </style>
-                <div className="absolute inset-0 flex items-center justify-center">
-                  {/* Main container */}
-                  <div className="relative w-64 h-64">
-                    {/* 3D space container */}
-                    <div className="absolute inset-0 spatial-container">
-                      {/* Base plane */}
-                      <div className="absolute inset-0 bg-slate-100 rounded-lg transform-gpu rotate-x-45" />
-
-                      {/* Floating elements */}
-                      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                        {/* Center cube */}
-                        <div className="w-16 h-16 bg-slate-600/80 rounded-lg transform-gpu rotate-x-20 rotate-y-20" />
-
-                        {/* Orbiting elements */}
-                        <div
-                          className="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-slate-500/60 rounded-lg floating-element"
-                          style={{ animationDelay: "0s" }}
-                        />
-                        <div
-                          className="absolute top-0 right-0 translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-slate-500/60 rounded-lg floating-element"
-                          style={{ animationDelay: "1s" }}
-                        />
-                        <div
-                          className="absolute bottom-0 left-0 -translate-x-1/2 translate-y-1/2 w-8 h-8 bg-slate-500/60 rounded-lg floating-element"
-                          style={{ animationDelay: "2s" }}
-                        />
-                        <div
-                          className="absolute bottom-0 right-0 translate-x-1/2 translate-y-1/2 w-8 h-8 bg-slate-500/60 rounded-lg floating-element"
-                          style={{ animationDelay: "3s" }}
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          }
-        />
       </div>
 
       {/* Section Break */}
@@ -1267,10 +958,6 @@ function App() {
               </div>
             </div>
           }
-          fontFamily="source-sans"
-          descriptionClassName="text-gray-700 font-source-sans"
-          titleClassName="text-2xl font-bold text-gray-900 font-source-sans"
-          background="bg-gradient-to-br from-blue-50/50 to-indigo-50/50"
         />
         <DesignSection
           title="960 Grid System"
@@ -1289,10 +976,6 @@ function App() {
               </div>
             </div>
           }
-          fontFamily="dm-sans"
-          descriptionClassName="text-gray-700 font-dm-sans"
-          titleClassName="text-2xl font-bold text-gray-900 font-dm-sans"
-          background="bg-gradient-to-br from-amber-50/50 to-orange-50/50"
         />
         <DesignSection
           title="FedEx Logo"
@@ -1311,10 +994,6 @@ function App() {
               </div>
             </div>
           }
-          fontFamily="helvetica"
-          descriptionClassName="text-gray-700 font-helvetica"
-          titleClassName="text-2xl font-bold text-gray-900 font-helvetica tracking-tight"
-          background="bg-gradient-to-br from-purple-50/50 to-indigo-50/50"
         />
         <DesignSection
           title="Don't Make Me Think"
@@ -1333,10 +1012,6 @@ function App() {
               </div>
             </div>
           }
-          fontFamily="mitr"
-          descriptionClassName="text-gray-700 font-mitr"
-          titleClassName="text-2xl font-bold text-gray-900 font-mitr"
-          background="bg-gradient-to-br from-emerald-50/50 to-teal-50/50"
         />
         <DesignSection
           title="European Heraldry"
@@ -1356,10 +1031,6 @@ function App() {
               </div>
             </div>
           }
-          fontFamily="germania-one"
-          descriptionClassName="text-gray-700 font-germania-one"
-          titleClassName="text-2xl font-bold text-gray-900 font-germania-one"
-          background="bg-gradient-to-br from-amber-50/50 to-orange-50/50"
         />
         <DesignSection
           title="Fallingwater"
@@ -1378,10 +1049,6 @@ function App() {
               </div>
             </div>
           }
-          fontFamily="dm-sans"
-          descriptionClassName="text-gray-700 font-dm-sans"
-          titleClassName="text-2xl font-bold text-gray-900 font-dm-sans"
-          background="bg-gradient-to-br from-stone-50/50 to-slate-50/50"
         />
         <DesignSection
           title="The Dot Matrix Printer"
@@ -1400,10 +1067,6 @@ function App() {
               </div>
             </div>
           }
-          fontFamily="doto"
-          descriptionClassName="text-gray-700 font-doto tracking-[2px]"
-          titleClassName="text-2xl font-bold text-gray-900 font-doto tracking-[2px]"
-          background="bg-gradient-to-br from-stone-50/50 to-slate-50/50"
         />
         <DesignSection
           title="Scarfolk"
@@ -1423,10 +1086,6 @@ function App() {
               </div>
             </div>
           }
-          fontFamily="helvetica"
-          descriptionClassName="text-gray-700 font-helvetica"
-          titleClassName="text-2xl font-bold text-gray-900 font-helvetica"
-          background="bg-gradient-to-br from-stone-50/50 to-slate-50/50"
         />
         <DesignSection
           title="Negativland: U2"
@@ -1446,10 +1105,6 @@ function App() {
               </div>
             </div>
           }
-          fontFamily="helvetica"
-          descriptionClassName="text-gray-700 font-helvetica uppercase tracking-wider text-xs"
-          titleClassName="text-2xl font-bold text-gray-900 font-helvetica uppercase tracking-[-1px]"
-          background="bg-gray-100"
         />
       </div>
 
@@ -1496,7 +1151,25 @@ function App() {
               </div>
             </div>
           }
-          background="bg-gradient-to-br from-stone-50/50 to-slate-50/50"
+        />
+                <DesignSection
+          title="Carolyn Davidson"
+          description="Carolyn Davidson is the graphic designer who created the iconic Nike Swoosh logo in 1971. Her simple yet powerful design has become one of the most recognizable brand symbols in the world, demonstrating how effective design can transcend its original purpose and become a cultural icon."
+          designPrinciple="Simplicity and memorability through minimal design"
+          exampleLink="https://www.nike.com"
+          isListLayout={isListLayout}
+          visualComponent={
+            <div className="w-full h-full flex items-center justify-center p-4">
+              <div className="w-[500px] h-[300px] bg-white overflow-hidden group relative">
+                <img
+                  src="https://www.nicekicks.com/files/2017/03/Carolyn-Davidson-.jpg"
+                  alt="Carolyn Davidson"
+                  className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </div>
+            </div>
+          }
         />
         <DesignSection
           title="Saul Bass"
@@ -1516,7 +1189,6 @@ function App() {
               </div>
             </div>
           }
-          background="bg-gradient-to-br from-stone-50/50 to-slate-50/50"
         />
         <DesignSection
           title="Raymond Pettibon"
@@ -1536,27 +1208,6 @@ function App() {
               </div>
             </div>
           }
-          background="bg-gradient-to-br from-stone-50/50 to-slate-50/50"
-        />
-        <DesignSection
-          title="Jakob Nielsen"
-          description="Jakob Nielsen is a renowned usability expert and principal of the Nielsen Norman Group. Known as the 'King of Usability,' he has pioneered many of the fundamental principles of web usability and user experience design. His research and methodologies have shaped how we think about and implement user-centered design in digital products."
-          designPrinciple="User-centered design through empirical research and usability testing"
-          exampleLink="https://www.nngroup.com/articles/author/jakob-nielsen/"
-          isListLayout={isListLayout}
-          visualComponent={
-            <div className="w-full h-full flex items-center justify-center p-4">
-              <div className="w-[500px] h-[300px] bg-white overflow-hidden group relative">
-                <img
-                  src="https://media.nngroup.com/media/videos/thumbnails/Jakobs_Law_of_Internet_User_Experience_Thumbnail.jpg"
-                  alt="Jakob Nielsen"
-                  className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              </div>
-            </div>
-          }
-          background="bg-gradient-to-br from-stone-50/50 to-slate-50/50"
         />
         <DesignSection
           title="Max Miedinger"
@@ -1576,7 +1227,6 @@ function App() {
               </div>
             </div>
           }
-          background="bg-gradient-to-br from-stone-50/50 to-slate-50/50"
         />
         <DesignSection
           title="Paula Scher"
@@ -1596,27 +1246,6 @@ function App() {
               </div>
             </div>
           }
-          background="bg-gradient-to-br from-stone-50/50 to-slate-50/50"
-        />
-        <DesignSection
-          title="Carolyn Davidson"
-          description="Carolyn Davidson is the graphic designer who created the iconic Nike Swoosh logo in 1971. Her simple yet powerful design has become one of the most recognizable brand symbols in the world, demonstrating how effective design can transcend its original purpose and become a cultural icon."
-          designPrinciple="Simplicity and memorability through minimal design"
-          exampleLink="https://www.nike.com"
-          isListLayout={isListLayout}
-          visualComponent={
-            <div className="w-full h-full flex items-center justify-center p-4">
-              <div className="w-[500px] h-[300px] bg-white overflow-hidden group relative">
-                <img
-                  src="https://www.nicekicks.com/files/2017/03/Carolyn-Davidson-.jpg"
-                  alt="Carolyn Davidson"
-                  className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              </div>
-            </div>
-          }
-          background="bg-gradient-to-br from-stone-50/50 to-slate-50/50"
         />
       </div>
       <footer className="sticky bottom-0 py-2 bg-black z-50">

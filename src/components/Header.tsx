@@ -2,29 +2,29 @@ import React from "react";
 
 const Header: React.FC = () => {
   return (
-    <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-sm">
+    <header className="sticky top-0 z-50 bg-black backdrop-blur-sm">
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-        <h2 className="text-2xl font-bold text-black font-dm-sans leading-none">
+        <h2 className="text-2xl font-bold text-white font-dm-sans leading-none">
           DESIGN PANES
         </h2>
         <nav className="flex items-center space-x-8">
           <a
             href="#design"
-            className="text-black hover:text-black font-avenir"
+            className="text-white hover:text-white/80 font-avenir"
             style={{ cursor: "pointer" }}
           >
             Design
           </a>
           <a
             href="#designs"
-            className="text-black hover:text-black font-avenir"
+            className="text-white hover:text-white/80 font-avenir"
             style={{ cursor: "pointer" }}
           >
             Designs
           </a>
           <a
             href="#designers"
-            className="text-black hover:text-black font-avenir"
+            className="text-white hover:text-white/80 font-avenir"
             style={{ cursor: "pointer" }}
           >
             Designers
@@ -33,7 +33,7 @@ const Header: React.FC = () => {
             href="https://davemelk.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-black hover:text-black font-avenir"
+            className="text-white hover:text-white/80 font-avenir"
             style={{ cursor: "pointer" }}
           >
             DM
