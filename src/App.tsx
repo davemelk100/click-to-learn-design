@@ -846,8 +846,8 @@ function App() {
         />
         <DesignSection
           title="Don't Make Me Think"
-          description="Steve Krug's 'Don't Make Me Think' revolutionized web usability with its simple, practical approach. The book emphasizes that good design should be intuitive and self-explanatory, requiring minimal cognitive effort from users. Its principles of usability testing and clear navigation have become fundamental to modern web design."
-          designPrinciple="Usability First - Creating interfaces that are intuitive and require minimal cognitive effort"
+          description="Steve Krug's 'Don't Make Me Think' transformed web design by advocating for intuitive, self-explanatory interfaces. Its core principles of usability testing and clear navigation remain essential to modern web design."
+          designPrinciple="Intuitive Design – Creating interfaces that users can understand without conscious thought."
           exampleLink="https://www.sensible.com/dmmt.html"
           visualComponent={
             <div className="flex items-center justify-center h-full p-4">
