@@ -433,49 +433,159 @@ function App() {
               <div className="w-full max-w-[600px] h-[400px] bg-white p-4 relative">
                 <style>
                   {`
-                    @keyframes wave {
-                      0%, 100% { transform: translateY(0) scale(1); }
-                      50% { transform: translateY(-15px) scale(1.05); }
-                    }
                     @keyframes pulse {
                       0%, 100% { transform: scale(1); opacity: 0.7; }
-                      50% { transform: scale(1.1); opacity: 1; }
+                      50% { transform: scale(1.2); opacity: 1; }
                     }
-                    .wave-element {
-                      animation: wave 3s ease-in-out infinite;
+                    @keyframes rotate {
+                      from { transform: rotate(0deg); }
+                      to { transform: rotate(360deg); }
+                    }
+                    @keyframes wave {
+                      0%, 100% { transform: translateY(0); }
+                      50% { transform: translateY(-20px); }
+                    }
+                    @keyframes slide {
+                      0% { transform: translateX(-100%); }
+                      100% { transform: translateX(100%); }
                     }
                     .pulse-element {
                       animation: pulse 2s ease-in-out infinite;
                     }
+                    .rotate-element {
+                      animation: rotate 8s linear infinite;
+                    }
+                    .wave-element {
+                      animation: wave 3s ease-in-out infinite;
+                    }
+                    .slide-element {
+                      animation: slide 4s linear infinite;
+                    }
                   `}
                 </style>
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="relative w-64 h-64">
-                    {/* Central element */}
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                      <div className="w-16 h-16 bg-indigo-500/40 rounded-full pulse-element">
-                        <div className="absolute inset-2 bg-indigo-400/60 rounded-full" />
-                      </div>
+                  {/* Central rotating element */}
+                  <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rotate-element">
+                    <div className="w-32 h-32 rounded-full border-4 border-indigo-500/30">
+                      <div className="absolute inset-4 rounded-full border-4 border-purple-500/30" />
+                      <div className="absolute inset-8 rounded-full border-4 border-pink-500/30" />
                     </div>
-
-                    {/* Orbiting elements */}
-                    <div className="absolute inset-0">
-                      {[...Array(4)].map((_, i) => (
-                        <div
-                          key={i}
-                          className="absolute w-8 h-8 bg-indigo-300/40 rounded-full wave-element"
-                          style={{
-                            left: `${50 + 35 * Math.cos((i * Math.PI) / 2)}%`,
-                            top: `${50 + 35 * Math.sin((i * Math.PI) / 2)}%`,
-                            animationDelay: `${i * 0.5}s`,
-                          }}
-                        />
-                      ))}
-                    </div>
-
-                    {/* Pulsing border */}
-                    <div className="absolute inset-0 border-2 border-indigo-500/20 rounded-full pulse-element" />
                   </div>
+
+                  {/* Orbiting elements */}
+                  <div
+                    className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rotate-element"
+                    style={{ animationDuration: "12s" }}
+                  >
+                    <div className="absolute -top-8 left-1/2 -translate-x-1/2">
+                      <div
+                        className="w-8 h-8 bg-blue-500/40 rounded-lg pulse-element"
+                        style={{ animationDelay: "0s" }}
+                      />
+                    </div>
+                    <div className="absolute top-1/2 -right-8 -translate-y-1/2">
+                      <div
+                        className="w-8 h-8 bg-green-500/40 rounded-lg pulse-element"
+                        style={{ animationDelay: "0.5s" }}
+                      />
+                    </div>
+                    <div className="absolute -bottom-8 left-1/2 -translate-x-1/2">
+                      <div
+                        className="w-8 h-8 bg-yellow-500/40 rounded-lg pulse-element"
+                        style={{ animationDelay: "1s" }}
+                      />
+                    </div>
+                    <div className="absolute top-1/2 -left-8 -translate-y-1/2">
+                      <div
+                        className="w-8 h-8 bg-red-500/40 rounded-lg pulse-element"
+                        style={{ animationDelay: "1.5s" }}
+                      />
+                    </div>
+                  </div>
+
+                  {/* Floating elements */}
+                  <div className="absolute inset-0">
+                    <div
+                      className="absolute top-1/4 left-1/4 wave-element"
+                      style={{ animationDelay: "0.2s" }}
+                    >
+                      <div className="w-6 h-6 bg-cyan-500/40 rounded-full" />
+                    </div>
+                    <div
+                      className="absolute top-1/4 right-1/4 wave-element"
+                      style={{ animationDelay: "0.4s" }}
+                    >
+                      <div className="w-6 h-6 bg-orange-500/40 rounded-full" />
+                    </div>
+                    <div
+                      className="absolute bottom-1/4 left-1/4 wave-element"
+                      style={{ animationDelay: "0.6s" }}
+                    >
+                      <div className="w-6 h-6 bg-emerald-500/40 rounded-full" />
+                    </div>
+                    <div
+                      className="absolute bottom-1/4 right-1/4 wave-element"
+                      style={{ animationDelay: "0.8s" }}
+                    >
+                      <div className="w-6 h-6 bg-violet-500/40 rounded-full" />
+                    </div>
+                  </div>
+
+                  {/* Sliding elements */}
+                  <div className="absolute inset-0 overflow-hidden">
+                    <div className="absolute top-1/3 left-0 slide-element">
+                      <div className="w-4 h-4 bg-rose-500/30 rounded-full" />
+                    </div>
+                    <div
+                      className="absolute top-2/3 left-0 slide-element"
+                      style={{ animationDelay: "1s" }}
+                    >
+                      <div className="w-4 h-4 bg-indigo-500/30 rounded-full" />
+                    </div>
+                  </div>
+
+                  {/* Connecting lines */}
+                  <svg
+                    className="absolute inset-0 w-full h-full"
+                    style={{ pointerEvents: "none" }}
+                  >
+                    <line
+                      x1="25%"
+                      y1="25%"
+                      x2="75%"
+                      y2="25%"
+                      className="stroke-indigo-200"
+                      strokeWidth="1"
+                      strokeDasharray="4"
+                    />
+                    <line
+                      x1="25%"
+                      y1="75%"
+                      x2="75%"
+                      y2="75%"
+                      className="stroke-indigo-200"
+                      strokeWidth="1"
+                      strokeDasharray="4"
+                    />
+                    <line
+                      x1="25%"
+                      y1="25%"
+                      x2="25%"
+                      y2="75%"
+                      className="stroke-indigo-200"
+                      strokeWidth="1"
+                      strokeDasharray="4"
+                    />
+                    <line
+                      x1="75%"
+                      y1="25%"
+                      x2="75%"
+                      y2="75%"
+                      className="stroke-indigo-200"
+                      strokeWidth="1"
+                      strokeDasharray="4"
+                    />
+                  </svg>
                 </div>
               </div>
             </div>
