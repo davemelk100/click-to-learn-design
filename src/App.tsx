@@ -709,55 +709,131 @@ function App() {
               <div className="w-full max-w-[600px] h-[300px] bg-white p-4 relative group">
                 <style>
                   {`
-                    @keyframes colorShift {
-                      0% { background-color: rgb(239, 68, 68); }
-                      33% { background-color: rgb(34, 197, 94); }
-                      66% { background-color: rgb(59, 130, 246); }
-                      100% { background-color: rgb(239, 68, 68); }
+                    @keyframes floatBall {
+                      0%, 100% { transform: translate(0, 0); }
+                      25% { transform: translate(20px, -20px); }
+                      50% { transform: translate(0, 0); }
+                      75% { transform: translate(-20px, 20px); }
                     }
-                    @keyframes complementaryShift {
-                      0% { background-color: rgb(14, 165, 233); }
-                      33% { background-color: rgb(249, 115, 22); }
-                      66% { background-color: rgb(168, 85, 247); }
-                      100% { background-color: rgb(14, 165, 233); }
+                    @keyframes pulseBall {
+                      0%, 100% { transform: scale(1); }
+                      50% { transform: scale(1.1); }
                     }
-                    @keyframes float {
-                      0%, 100% { transform: translateY(0); }
-                      50% { transform: translateY(-15px); }
+                    @keyframes mergeColors {
+                      0%, 100% { filter: blur(0px); }
+                      50% { filter: blur(2px); }
                     }
-                    .color-shift {
-                      animation: colorShift 8s ease-in-out infinite;
+                    .float-ball {
+                      animation: floatBall 6s ease-in-out infinite;
                     }
-                    .complementary-shift {
-                      animation: complementaryShift 8s ease-in-out infinite;
+                    .pulse-ball {
+                      animation: pulseBall 3s ease-in-out infinite;
                     }
-                    .float-animation {
-                      animation: float 4s ease-in-out infinite;
+                    .merge-colors {
+                      animation: mergeColors 4s ease-in-out infinite;
                     }
                   `}
                 </style>
                 <div className="absolute inset-0 flex items-center justify-center">
                   {/* Main container */}
                   <div className="w-64 h-64 relative">
-                    {/* Primary colors */}
-                    <div className="absolute inset-0 flex items-center justify-center gap-4">
+                    {/* Background grid */}
+                    <div className="absolute inset-0 grid grid-cols-4 gap-1">
+                      {[...Array(16)].map((_, i) => (
+                        <div key={i} className="bg-gray-100/50 rounded" />
+                      ))}
+                    </div>
+
+                    {/* Primary color balls */}
+                    <div className="absolute inset-0">
                       <div
-                        className="w-16 h-16 rounded-lg color-shift float-animation"
-                        style={{ animationDelay: "0s" }}
+                        className="float-ball absolute w-12 h-12 rounded-full bg-red-500 shadow-lg"
+                        style={{
+                          left: "20%",
+                          top: "30%",
+                          animationDelay: "0s",
+                        }}
                       />
                       <div
-                        className="w-16 h-16 rounded-lg color-shift float-animation"
-                        style={{ animationDelay: "2s" }}
+                        className="float-ball absolute w-12 h-12 rounded-full bg-yellow-500 shadow-lg"
+                        style={{
+                          left: "50%",
+                          top: "20%",
+                          animationDelay: "2s",
+                        }}
                       />
                       <div
-                        className="w-16 h-16 rounded-lg color-shift float-animation"
-                        style={{ animationDelay: "4s" }}
+                        className="float-ball absolute w-12 h-12 rounded-full bg-blue-500 shadow-lg"
+                        style={{
+                          left: "80%",
+                          top: "30%",
+                          animationDelay: "4s",
+                        }}
                       />
                     </div>
 
-                    {/* Complementary colors */}
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="w-24 h-24 rounded-full complementary-shift opacity-50" />
+                    {/* Secondary color balls */}
+                    <div className="absolute inset-0">
+                      <div
+                        className="float-ball absolute w-10 h-10 rounded-full bg-orange-500 shadow-lg"
+                        style={{
+                          left: "35%",
+                          top: "25%",
+                          animationDelay: "1s",
+                        }}
+                      />
+                      <div
+                        className="float-ball absolute w-10 h-10 rounded-full bg-green-500 shadow-lg"
+                        style={{
+                          left: "65%",
+                          top: "25%",
+                          animationDelay: "3s",
+                        }}
+                      />
+                      <div
+                        className="float-ball absolute w-10 h-10 rounded-full bg-purple-500 shadow-lg"
+                        style={{
+                          left: "50%",
+                          top: "50%",
+                          animationDelay: "5s",
+                        }}
+                      />
+                    </div>
+
+                    {/* Color mixing effects */}
+                    <div className="absolute inset-0">
+                      <div
+                        className="merge-colors absolute w-16 h-16 rounded-full bg-gradient-to-br from-red-500 to-yellow-500 opacity-50"
+                        style={{ left: "35%", top: "25%" }}
+                      />
+                      <div
+                        className="merge-colors absolute w-16 h-16 rounded-full bg-gradient-to-br from-yellow-500 to-blue-500 opacity-50"
+                        style={{ left: "65%", top: "25%" }}
+                      />
+                      <div
+                        className="merge-colors absolute w-16 h-16 rounded-full bg-gradient-to-br from-blue-500 to-red-500 opacity-50"
+                        style={{ left: "50%", top: "50%" }}
+                      />
+                    </div>
+
+                    {/* Complementary pairs */}
+                    <div className="absolute inset-0">
+                      <div
+                        className="pulse-ball absolute w-8 h-8 rounded-full bg-red-500 shadow-lg"
+                        style={{
+                          left: "30%",
+                          top: "60%",
+                          animationDelay: "0s",
+                        }}
+                      />
+                      <div
+                        className="pulse-ball absolute w-8 h-8 rounded-full bg-green-500 shadow-lg"
+                        style={{
+                          left: "70%",
+                          top: "60%",
+                          animationDelay: "0s",
+                        }}
+                      />
                     </div>
                   </div>
                 </div>
