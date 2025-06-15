@@ -1,16 +1,57 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "./components/Header";
 import DesignSection from "./components/DesignSection";
-import { ArrowUp, Info, Settings, Brain, Hand, Grid, List } from "lucide-react";
+import {
+  ArrowUp,
+  Info,
+  Settings,
+  Brain,
+  Hand,
+  Grid,
+  List,
+  ArrowDown,
+  ChevronUp,
+  ChevronDown,
+} from "lucide-react";
 
 function App() {
   const [isListLayout, setIsListLayout] = useState(false);
+  const [showScrollTop, setShowScrollTop] = useState(false);
+  const [showScrollBottom, setShowScrollBottom] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      const scrollHeight = document.documentElement.scrollHeight;
+      const clientHeight = document.documentElement.clientHeight;
+
+      setShowScrollTop(scrollTop > 100);
+      setShowScrollBottom(scrollTop + clientHeight < scrollHeight - 100);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const scrollToBottom = () => {
+    window.scrollTo({
+      top: document.documentElement.scrollHeight,
+      behavior: "smooth",
+    });
+  };
 
   return (
     <div className="min-h-screen w-full">
       <Header isListLayout={isListLayout} setIsListLayout={setIsListLayout} />
       {/* Section Break: Design */}
-      <div className="w-full py-12 mt-16 bg-[#414141] shadow-[0_4px_20px_rgba(0,0,0,0.3)]">
+      <div
+        id="design"
+        className="w-full py-12 mt-16 bg-[#414141] shadow-[0_4px_20px_rgba(0,0,0,0.3)]"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl font-bold text-white">DESIGN</h2>
           <p className="mt-1 text-sm text-gray-200">
@@ -32,7 +73,6 @@ function App() {
           designPrinciple="Depth & Dimension – Creating 3D space through consistent angles and parallel lines."
           exampleLink="https://architizer.com/blog/inspiration/collections/axonometric/"
           exampleLabel="Architectural Drawings: 8 Masterful Parallel Projections"
-          isListLayout={isListLayout}
           visualComponent={
             <div className="flex items-center justify-center w-full">
               <div className="w-full max-w-[600px] h-[400px] bg-white p-4 relative">
@@ -178,7 +218,6 @@ function App() {
           designPrinciple="Depth & Interaction – Creating visual interest through overlapping elements and transparency."
           exampleLink="https://www.metmuseum.org/essays/geometric-patterns-in-islamic-art"
           exampleLabel="Geometric Patterns in Islamic Art"
-          isListLayout={isListLayout}
           visualComponent={
             <div className="flex items-center justify-center w-full">
               <div className="w-full max-w-[600px] h-[400px] bg-white p-4 relative">
@@ -239,90 +278,143 @@ function App() {
         />
         <DesignSection
           title="Basic Color Theory"
-          description="Basic Color Theory explores how colors interact and affect each other. Understanding these relationships helps create harmonious color schemes and effective visual communication."
-          designPrinciple="Color Harmony – Using color relationships to create balanced and pleasing compositions."
-          exampleLink="https://99designs.com/blog/tips/the-7-step-guide-to-understanding-color-theory/"
-          exampleLabel="The 7 Step Guide to Understanding Color Theory"
-          isListLayout={isListLayout}
+          description="Basic Color Theory explores the fundamental relationships between colors. This technique uses primary colors and their interactions to create visual harmony and meaning."
+          designPrinciple="Harmony & Contrast – Creating visual interest through color relationships and interactions."
+          exampleLink="https://www.interaction-design.org/literature/topics/color-theory"
+          exampleLabel="Color Theory - Interaction Design Foundation"
           visualComponent={
             <div className="flex items-center justify-center w-full -mt-4">
               <div className="w-full max-w-[600px] h-[400px] bg-white p-4 relative">
                 <style>
                   {`
-                    @keyframes blend {
-                      0% { mix-blend-mode: normal; transform: scale(1) rotate(0deg); }
-                      25% { mix-blend-mode: multiply; transform: scale(1.1) rotate(90deg); }
-                      50% { mix-blend-mode: screen; transform: scale(1) rotate(180deg); }
-                      75% { mix-blend-mode: overlay; transform: scale(1.1) rotate(270deg); }
-                      100% { mix-blend-mode: normal; transform: scale(1) rotate(360deg); }
-                    }
-                    @keyframes float {
-                      0%, 100% { transform: translate(0, 0) scale(1); }
-                      25% { transform: translate(10px, -10px) scale(1.1); }
-                      50% { transform: translate(0, -15px) scale(1); }
-                      75% { transform: translate(-10px, -10px) scale(1.1); }
+                    @keyframes orbit {
+                      0% { transform: rotate(0deg) translateX(60px) rotate(0deg); }
+                      100% { transform: rotate(360deg) translateX(60px) rotate(-360deg); }
                     }
                     @keyframes pulse {
-                      0% { transform: scale(1); opacity: 0.7; filter: blur(0px); }
-                      50% { transform: scale(1.3); opacity: 1; filter: blur(1px); }
-                      100% { transform: scale(1); opacity: 0.7; filter: blur(0px); }
+                      0%, 100% { transform: scale(1); opacity: 0.7; }
+                      50% { transform: scale(1.2); opacity: 1; }
                     }
-                    @keyframes morph {
-                      0% { border-radius: 60% 40% 30% 70%/60% 30% 70% 40%; }
-                      50% { border-radius: 30% 60% 70% 40%/50% 60% 30% 60%; }
-                      100% { border-radius: 60% 40% 30% 70%/60% 30% 70% 40%; }
+                    @keyframes float {
+                      0%, 100% { transform: translateY(0) rotate(0deg); }
+                      50% { transform: translateY(-20px) rotate(180deg); }
                     }
-                    .color-circle {
-                      animation: blend 12s ease-in-out infinite, morph 8s ease-in-out infinite;
-                      transition: all 0.3s ease;
+                    @keyframes blend {
+                      0% { background-color: rgba(255, 0, 0, 0.4); }
+                      33% { background-color: rgba(0, 0, 255, 0.4); }
+                      66% { background-color: rgba(255, 255, 0, 0.4); }
+                      100% { background-color: rgba(255, 0, 0, 0.4); }
                     }
-                    .color-dot {
-                      animation: float 6s ease-in-out infinite, pulse 4s ease-in-out infinite;
+                    .orbit-element {
+                      animation: orbit 8s linear infinite;
                     }
-                    .center-blend {
-                      animation: pulse 3s ease-in-out infinite, morph 6s ease-in-out infinite;
+                    .pulse-element {
+                      animation: pulse 2s ease-in-out infinite;
+                    }
+                    .float-element {
+                      animation: float 4s ease-in-out infinite;
+                    }
+                    .blend-element {
+                      animation: blend 6s linear infinite;
                     }
                   `}
                 </style>
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="relative w-64 h-64">
-                    {/* Cyan circle */}
-                    <div className="absolute inset-0 color-circle bg-cyan-500/70" />
-
-                    {/* Magenta circle */}
-                    <div
-                      className="absolute inset-0 color-circle bg-fuchsia-500/70"
-                      style={{ animationDelay: "-6s" }}
-                    />
-
-                    {/* Color interaction points */}
-                    <div className="absolute top-1/4 left-1/4 color-dot">
-                      <div className="w-8 h-8 bg-cyan-400 rounded-full shadow-lg" />
-                    </div>
-                    <div
-                      className="absolute top-1/4 right-1/4 color-dot"
-                      style={{ animationDelay: "1s" }}
-                    >
-                      <div className="w-8 h-8 bg-fuchsia-400 rounded-full shadow-lg" />
-                    </div>
-                    <div
-                      className="absolute bottom-1/4 left-1/4 color-dot"
-                      style={{ animationDelay: "2s" }}
-                    >
-                      <div className="w-8 h-8 bg-cyan-300 rounded-full shadow-lg" />
-                    </div>
-                    <div
-                      className="absolute bottom-1/4 right-1/4 color-dot"
-                      style={{ animationDelay: "3s" }}
-                    >
-                      <div className="w-8 h-8 bg-fuchsia-300 rounded-full shadow-lg" />
-                    </div>
-
-                    {/* Center blend point */}
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                      <div className="w-12 h-12 bg-gradient-to-br from-cyan-400 to-fuchsia-400 rounded-full center-blend shadow-lg" />
+                  {/* Central blending element */}
+                  <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+                    <div className="w-32 h-32 rounded-full blend-element">
+                      <div className="absolute inset-4 rounded-full bg-white/50" />
                     </div>
                   </div>
+
+                  {/* Orbiting primary colors */}
+                  <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+                    <div
+                      className="orbit-element"
+                      style={{ animationDuration: "8s" }}
+                    >
+                      <div className="w-16 h-16 bg-red-500/40 rounded-full pulse-element" />
+                    </div>
+                    <div
+                      className="orbit-element"
+                      style={{
+                        animationDuration: "8s",
+                        animationDelay: "-2.67s",
+                      }}
+                    >
+                      <div className="w-16 h-16 bg-blue-500/40 rounded-full pulse-element" />
+                    </div>
+                    <div
+                      className="orbit-element"
+                      style={{
+                        animationDuration: "8s",
+                        animationDelay: "-5.33s",
+                      }}
+                    >
+                      <div className="w-16 h-16 bg-yellow-500/40 rounded-full pulse-element" />
+                    </div>
+                  </div>
+
+                  {/* Floating secondary colors */}
+                  <div className="absolute inset-0">
+                    <div
+                      className="absolute top-1/4 left-1/4 float-element"
+                      style={{ animationDelay: "0s" }}
+                    >
+                      <div className="w-12 h-12 bg-purple-500/40 rounded-full" />
+                    </div>
+                    <div
+                      className="absolute top-1/4 right-1/4 float-element"
+                      style={{ animationDelay: "1s" }}
+                    >
+                      <div className="w-12 h-12 bg-green-500/40 rounded-full" />
+                    </div>
+                    <div
+                      className="absolute bottom-1/4 left-1/4 float-element"
+                      style={{ animationDelay: "2s" }}
+                    >
+                      <div className="w-12 h-12 bg-orange-500/40 rounded-full" />
+                    </div>
+                  </div>
+
+                  {/* Connecting lines */}
+                  <svg
+                    className="absolute inset-0 w-full h-full"
+                    style={{ pointerEvents: "none" }}
+                  >
+                    <circle
+                      cx="50%"
+                      cy="50%"
+                      r="60"
+                      className="stroke-gray-200"
+                      strokeWidth="1"
+                      fill="none"
+                    />
+                    <circle
+                      cx="50%"
+                      cy="50%"
+                      r="120"
+                      className="stroke-gray-200"
+                      strokeWidth="1"
+                      fill="none"
+                    />
+                    <line
+                      x1="25%"
+                      y1="25%"
+                      x2="75%"
+                      y2="75%"
+                      className="stroke-gray-200"
+                      strokeWidth="1"
+                    />
+                    <line
+                      x1="25%"
+                      y1="75%"
+                      x2="75%"
+                      y2="25%"
+                      className="stroke-gray-200"
+                      strokeWidth="1"
+                    />
+                  </svg>
                 </div>
               </div>
             </div>
@@ -334,7 +426,6 @@ function App() {
           designPrinciple="Balance & Focus – Using grid intersections to create natural focal points."
           exampleLink="https://www.photographymad.com/pages/view/rule-of-thirds"
           exampleLabel="Photography Mad's guide to using the Rule of Thirds in photography"
-          isListLayout={isListLayout}
           visualComponent={
             <div className="flex items-center justify-center w-full">
               <div className="w-full max-w-[600px] h-[400px] bg-white p-4 relative group">
@@ -427,7 +518,6 @@ function App() {
           designPrinciple="Pattern & Flow – Creating visual harmony through coordinated movement and repetition."
           exampleLink="https://www.interaction-design.org/literature/article/repetition-pattern-and-rhythm"
           exampleLabel="Repetition, Pattern, and Rhythm - Interaction Design Foundation"
-          isListLayout={isListLayout}
           visualComponent={
             <div className="flex items-center justify-center w-full -mt-4">
               <div className="w-full max-w-[600px] h-[400px] bg-white p-4 relative">
@@ -597,7 +687,6 @@ function App() {
           designPrinciple="Perception & Context – Using relative scale to create visual interest and uncertainty."
           exampleLink="https://www.microsoft.com/en-us/microsoft-365-life-hacks/presentations/scale-in-graphic-design"
           exampleLabel="Microsoft's guide to using scale and proportion in presentations"
-          isListLayout={isListLayout}
           visualComponent={
             <div className="flex items-center justify-center w-full -mt-4">
               <div className="w-full max-w-[600px] h-[400px] bg-white p-4 relative">
@@ -669,7 +758,10 @@ function App() {
       </div>
 
       {/* Section Break: Designs */}
-      <div className="w-full py-12 mt-16 bg-[#414141] shadow-[0_4px_20px_rgba(0,0,0,0.3)]">
+      <div
+        id="designs"
+        className="w-full py-12 mt-16 bg-[#414141] shadow-[0_4px_20px_rgba(0,0,0,0.3)]"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl font-bold text-white">DESIGNS</h2>
           <p className="mt-1 text-sm text-gray-200">
@@ -690,7 +782,6 @@ function App() {
           description="The Boston Globe's 2011 responsive redesign, led by Ethan Marcotte and Filament Group, marked a pivotal moment in web design. As the first major news site to implement responsive design, it demonstrated how content could adapt seamlessly across devices while maintaining readability and hierarchy."
           designPrinciple="Responsive Design - Creating fluid layouts that adapt to any screen size while maintaining content integrity"
           exampleLink="https://zeldman.com/2011/09/15/boston-globes-responsive-redesign-discuss/"
-          isListLayout={isListLayout}
           visualComponent={
             <div className="flex items-center justify-center h-full p-4">
               <div className="w-[600px] h-[400px]">
@@ -704,19 +795,52 @@ function App() {
           }
         />
         <DesignSection
-          title="960 Grid System"
-          description="The 960 Grid System, created by Nathan Smith, revolutionized web layout design in the late 2000s. This CSS framework provided a standardized 12-column grid that worked perfectly for 1024x768 displays, making it the de facto standard for web layouts during the fixed-width era. Its influence can still be seen in modern CSS frameworks."
-          designPrinciple="Grid-Based Design - Creating consistent, balanced layouts through systematic column-based structures"
-          exampleLink="https://ux.stackexchange.com/questions/5128/do-you-consider-the-960-grid-system-one-of-the-holy-grails-of-user-experienc"
-          isListLayout={isListLayout}
+          title="Helvetica"
+          description="Helvetica is one of the most widely used typefaces in the world. Designed by Max Miedinger in 1957, it represents the perfect balance of clarity and neutrality in typography. Its clean, modern design has made it a favorite for corporate identities, signage, and digital interfaces."
+          designPrinciple="Typography & Clarity – Creating universal communication through type."
+          exampleLink="https://www.designandpaper.com/the-story-of-the-worlds-most-famous-font-helvetica/"
           visualComponent={
             <div className="flex items-center justify-center h-full p-4">
-              <div className="w-[600px] h-[400px]">
-                <img
-                  src="/960grid.png"
-                  alt="960 Grid System layout example"
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                />
+              <div className="w-[600px] h-[400px] bg-white relative overflow-hidden">
+                <style>
+                  {`
+                    @keyframes slide {
+                      0% { transform: translateX(-100%); }
+                      100% { transform: translateX(100%); }
+                    }
+                    @keyframes fade {
+                      0%, 100% { opacity: 0.3; }
+                      50% { opacity: 1; }
+                    }
+                    .slide-text {
+                      animation: slide 20s linear infinite;
+                    }
+                    .fade-text {
+                      animation: fade 4s ease-in-out infinite;
+                    }
+                  `}
+                </style>
+                <div className="absolute inset-0 flex items-center justify-center">
+                  {/* Large Helvetica text */}
+                  <div className="text-[120px] font-bold text-gray-900/10 fade-text">
+                    Helvetica
+                  </div>
+
+                  {/* Sliding text */}
+                  <div className="absolute inset-0 flex items-center">
+                    <div className="slide-text whitespace-nowrap text-4xl font-bold text-gray-900">
+                      ABCDEFGHIJKLMNOPQRSTUVWXYZ
+                    </div>
+                  </div>
+
+                  {/* Grid lines */}
+                  <div className="absolute inset-0">
+                    <div className="absolute left-1/3 top-0 bottom-0 w-px bg-gray-200" />
+                    <div className="absolute left-2/3 top-0 bottom-0 w-px bg-gray-200" />
+                    <div className="absolute top-1/3 left-0 right-0 h-px bg-gray-200" />
+                    <div className="absolute top-2/3 left-0 right-0 h-px bg-gray-200" />
+                  </div>
+                </div>
               </div>
             </div>
           }
@@ -726,7 +850,6 @@ function App() {
           description="The FedEx logo, designed by Lindon Leader in 1994, is a masterclass in negative space design. The hidden arrow between the 'E' and 'x' represents forward movement and precision, perfectly aligning with FedEx's brand values. This subtle yet powerful design element has made it one of the most recognized and awarded logos in history."
           designPrinciple="Negative Space - Using the space between elements to create hidden meaning and visual interest"
           exampleLink="https://logo.com/blog/fedex-logo"
-          isListLayout={isListLayout}
           visualComponent={
             <div className="flex items-center justify-center h-full p-4">
               <div className="w-[600px] h-[400px]">
@@ -744,7 +867,6 @@ function App() {
           description="Steve Krug's 'Don't Make Me Think' revolutionized web usability with its simple, practical approach. The book emphasizes that good design should be intuitive and self-explanatory, requiring minimal cognitive effort from users. Its principles of usability testing and clear navigation have become fundamental to modern web design."
           designPrinciple="Usability First - Creating interfaces that are intuitive and require minimal cognitive effort"
           exampleLink="https://www.sensible.com/dmmt.html"
-          isListLayout={isListLayout}
           visualComponent={
             <div className="flex items-center justify-center h-full p-4">
               <div className="w-[600px] h-[400px]">
@@ -758,85 +880,9 @@ function App() {
           }
         />
         <DesignSection
-          title="European Heraldry"
-          description="The world's first form of logo design, dating back to the 12th century. Heraldic symbols were used to identify knights in battle and evolved into sophisticated systems of visual identity for families, institutions, and nations. These designs established fundamental principles of visual communication that influence modern logo design."
-          designPrinciple="Symbolism & Identity – Creating distinctive visual marks that communicate status, heritage, and values through carefully designed symbols and colors"
-          exampleLink="https://www.heraldica.org/topics/design.htm"
-          isListLayout={isListLayout}
-          visualComponent={
-            <div className="w-full h-full flex items-center justify-center">
-              <div className="w-[800px] h-[400px] bg-white overflow-hidden group relative">
-                <img
-                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Wapenboek_Beyeren_%28armorial%29_-_KB79K21_-_folios_001v_%28left%29_and_002r_%28right%29.jpg/640px-Wapenboek_Beyeren_%28armorial%29_-_KB79K21_-_folios_001v_%28left%29_and_002r_%28right%29.jpg"
-                  alt="European Heraldry - Hyghalmen Roll"
-                  className="w-full h-full object-contain transform transition-all duration-500 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              </div>
-            </div>
-          }
-        />
-        <DesignSection
-          title="Fallingwater"
-          description="Fallingwater, designed by Frank Lloyd Wright in 1935, is a masterpiece of organic architecture that harmoniously integrates with its natural surroundings. The house appears to float above a waterfall, creating a seamless connection between built and natural environments."
-          designPrinciple="Organic Architecture – Creating harmony between human habitation and the natural world."
-          exampleLink="https://www.fallingwater.org/"
-          isListLayout={isListLayout}
-          visualComponent={
-            <div className="flex items-center justify-center h-full p-4">
-              <div className="w-[600px] h-[400px]">
-                <img
-                  src="https://upload.wikimedia.org/wikipedia/commons/b/bc/Fallingwater3.jpg"
-                  alt="Fallingwater by Frank Lloyd Wright"
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-            </div>
-          }
-        />
-        <DesignSection
-          title="The Dot Matrix Printer"
-          description="The dot matrix printer revolutionized computer output in the 1970s and 1980s. Its design principle of using a matrix of pins to create characters through impact printing demonstrated how mechanical precision could create digital output. The distinctive sound and visual pattern of its printing process became iconic, showing how functional design can create memorable user experiences."
-          designPrinciple="Functionality Meets Innovation"
-          exampleLink="https://en.wikipedia.org/wiki/Dot_matrix_printing"
-          isListLayout={isListLayout}
-          visualComponent={
-            <div className="flex items-center justify-center h-full p-4">
-              <div className="w-[600px] h-[400px]">
-                <img
-                  src="https://i.ytimg.com/vi/MikoF6KZjm0/maxresdefault.jpg"
-                  alt="Dot Matrix Printer"
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-            </div>
-          }
-        />
-        <DesignSection
-          title="Scarfolk"
-          description="Scarfolk is a fictional northwestern English town created by writer and designer Richard Littler. Through its distinctive visual language of public information posters and official documents, it creates a satirical critique of bureaucracy and social control. The design style draws from British public information campaigns of the 1970s, using stark typography and unsettling imagery to create a world that is both familiar and deeply unsettling."
-          designPrinciple="Retro Design & Social Commentary"
-          exampleLink="https://scarfolk.blogspot.com/"
-          isListLayout={isListLayout}
-          visualComponent={
-            <div className="w-full h-full flex items-center justify-center">
-              <div className="w-[800px] h-[400px] bg-white overflow-hidden group relative">
-                <img
-                  src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj86aEo7IxOTRss8qUMbprKclM9xQP77nKWKCG0ScSlzTarKrrSDpq5eDK6H_lWU1plS0KhxTNUkdc8DmuSzoQcOQjRL5uUfd9Yi-TMvQ1bWn8QXGYilvZSlqAdxOgysCWrsH923h4Hlatd/s1400/Scarfolk_map_cover.jpg"
-                  alt="Scarfolk Map Cover"
-                  className="w-full h-full object-contain transform transition-all duration-500 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              </div>
-            </div>
-          }
-        />
-        <DesignSection
-          title="Negativland: U2"
-          description="Negativland's controversial 1991 album 'U2' became a landmark case in copyright law and artistic freedom. The album cover, featuring a large 'U2' logo with a small 'Negativland' credit, was designed to critique media manipulation and corporate branding. The resulting legal battle with Island Records and U2's label became a seminal moment in discussions about fair use, artistic appropriation, and the boundaries of copyright law. Learn more about the case in their book Fair Use: The Story of the Letter U and the Numeral 2."
+          title="Negativland"
+          description="Negativland is a sound collage band that uses found audio and media to create new works. Their approach to copyright and fair use has influenced how we think about creative reuse and media ownership."
           designPrinciple="Media Critique & Copyright"
-          exampleLink="https://negativland.com/products/013-negativland-fair-use-book"
-          isListLayout={isListLayout}
           visualComponent={
             <div className="w-full h-full flex items-center justify-center">
               <div className="w-[800px] h-[400px] bg-white overflow-hidden group relative">
@@ -853,7 +899,10 @@ function App() {
       </div>
 
       {/* Section Break: Designers */}
-      <div className="w-full py-12 mt-16 bg-[#414141] shadow-[0_4px_20px_rgba(0,0,0,0.3)]">
+      <div
+        id="designers"
+        className="w-full py-12 mt-16 bg-[#414141] shadow-[0_4px_20px_rgba(0,0,0,0.3)]"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl font-bold text-white">DESIGNERS</h2>
           <p className="mt-1 text-sm text-gray-200">
@@ -871,10 +920,8 @@ function App() {
       >
         <DesignSection
           title="Massimo Vignelli"
-          description="Massimo Vignelli was an Italian designer who profoundly influenced American design through his modernist approach. His work in corporate identity, public signage, and typography established new standards for clarity and functionality in design."
-          designPrinciple="Modernist Clarity through grid systems and typography"
-          exampleLink="https://vignelli.com"
-          isListLayout={isListLayout}
+          description="Massimo Vignelli was an Italian designer who brought modernist principles to graphic design. His work for clients like American Airlines and the New York Subway system demonstrated the power of systematic design."
+          designPrinciple="Systematic Design – Creating coherent visual systems that serve their purpose."
           visualComponent={
             <div className="w-full h-full flex items-center justify-center p-4">
               <div className="w-[500px] h-[300px] bg-white overflow-hidden group relative">
@@ -889,11 +936,9 @@ function App() {
           }
         />
         <DesignSection
-          title="Carolyn Davidson"
-          description="Carolyn Davidson is the graphic designer who created the iconic Nike Swoosh logo in 1971. Her simple yet powerful design has become one of the most recognizable brand symbols in the world, demonstrating how effective design can transcend its original purpose and become a cultural icon."
-          designPrinciple="Simplicity and memorability through minimal design"
-          exampleLink="https://www.nike.com"
-          isListLayout={isListLayout}
+          title="Nike Swoosh"
+          description="The Nike Swoosh is one of the most recognizable logos in the world. Designed by Carolyn Davidson in 1971, it represents movement and speed through a simple, fluid shape."
+          designPrinciple="Simplicity & Memorability – Creating iconic design through minimal elements."
           visualComponent={
             <div className="w-full h-full flex items-center justify-center p-4">
               <div className="w-[500px] h-[300px] bg-white overflow-hidden group relative">
@@ -908,11 +953,9 @@ function App() {
           }
         />
         <DesignSection
-          title="Saul Bass"
-          description="Saul Bass was a legendary graphic designer and filmmaker known for his iconic movie title sequences and corporate logos. His work revolutionized the way we think about visual storytelling and brand identity, combining bold simplicity with powerful symbolism."
-          designPrinciple="Visual storytelling through minimal, symbolic design"
-          exampleLink="https://www.saulbassposterarchive.com"
-          isListLayout={isListLayout}
+          title="Saul Bass Posters"
+          description="Saul Bass was a master of poster design, creating iconic movie posters that captured the essence of films through bold, symbolic imagery. His work for directors like Hitchcock and Kubrick set new standards for film marketing."
+          designPrinciple="Symbolic Storytelling – Communicating complex ideas through simple visuals."
           visualComponent={
             <div className="w-full h-full flex items-center justify-center p-4">
               <div className="w-[500px] h-[300px] bg-white overflow-hidden group relative">
@@ -928,10 +971,8 @@ function App() {
         />
         <DesignSection
           title="Raymond Pettibon"
-          description="Raymond Pettibon is an influential artist known for his distinctive pen-and-ink drawings that blend punk aesthetics with literary and cultural references. His work, which began with album covers for Black Flag and other punk bands, has evolved into a complex visual language that challenges conventional narratives and explores themes of American culture, politics, and society."
-          designPrinciple="Raw, expressive line work combined with subversive cultural commentary"
-          exampleLink="https://www.davidzwirner.com/artists/raymond-pettibon"
-          isListLayout={isListLayout}
+          description="Raymond Pettibon's work combines raw, expressive drawing with subversive cultural commentary. His posters and album covers for bands like Black Flag helped define the visual language of punk rock."
+          designPrinciple="Raw Expression – Using art to challenge and provoke."
           visualComponent={
             <div className="w-full h-full flex items-center justify-center p-4">
               <div className="w-[500px] h-[300px] bg-white overflow-hidden group relative">
@@ -949,8 +990,6 @@ function App() {
           title="Max Miedinger"
           description="Max Miedinger was a Swiss typeface designer best known for creating Helvetica in 1957. His work revolutionized typography and became one of the most widely used typefaces in the world. His design philosophy emphasized clarity, neutrality, and timelessness, principles that continue to influence modern typography."
           designPrinciple="Clarity and neutrality through precise typographic design"
-          exampleLink="https://www.designandpaper.com/the-story-of-the-worlds-most-famous-font-helvetica/"
-          isListLayout={isListLayout}
           visualComponent={
             <div className="w-full h-full flex items-center justify-center p-4">
               <div className="w-[500px] h-[300px] bg-white overflow-hidden group relative">
@@ -966,10 +1005,8 @@ function App() {
         />
         <DesignSection
           title="Paula Scher"
-          description="Paula Scher is a renowned graphic designer known for her bold, expressive typography and innovative approach to branding. As a partner at Pentagram, she has created iconic identities for major institutions and brands, demonstrating how typography can be both functional and emotionally resonant."
-          designPrinciple="Expressive typography that balances form and function"
-          exampleLink="https://www.pentagram.com/about/paula-scher"
-          isListLayout={isListLayout}
+          description="Paula Scher is a graphic designer known for her bold, typographic work. Her designs for clients like The Public Theater and Citibank demonstrate the power of expressive typography in branding."
+          designPrinciple="Expressive Typography – Using type as a primary design element."
           visualComponent={
             <div className="w-full h-full flex items-center justify-center p-4">
               <div className="w-[500px] h-[300px] bg-white overflow-hidden group relative">
@@ -984,6 +1021,28 @@ function App() {
           }
         />
       </div>
+
+      {/* Scroll to top button */}
+      {showScrollTop && (
+        <button
+          onClick={scrollToTop}
+          className="fixed bottom-4 right-4 p-2 bg-white rounded-full shadow-lg hover:bg-gray-100 transition-colors z-50"
+          aria-label="Scroll to top"
+        >
+          <ChevronUp className="w-6 h-6 text-gray-600" />
+        </button>
+      )}
+
+      {/* Scroll to bottom button */}
+      {showScrollBottom && (
+        <button
+          onClick={scrollToBottom}
+          className="fixed bottom-4 right-4 p-2 bg-white rounded-full shadow-lg hover:bg-gray-100 transition-colors z-50"
+          aria-label="Scroll to bottom"
+        >
+          <ChevronDown className="w-6 h-6 text-gray-600" />
+        </button>
+      )}
     </div>
   );
 }
