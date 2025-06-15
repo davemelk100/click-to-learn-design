@@ -264,11 +264,11 @@ function App() {
                 <style>
                   {`
                     @keyframes floatLayer {
-                      0% { transform: translateY(0) rotate(0deg); }
-                      25% { transform: translateY(-15px) rotate(2deg); }
-                      50% { transform: translateY(-25px) rotate(0deg); }
-                      75% { transform: translateY(-15px) rotate(-2deg); }
-                      100% { transform: translateY(0) rotate(0deg); }
+                      0% { transform: translateY(0) rotate(0deg) scale(1); }
+                      25% { transform: translateY(-30px) rotate(5deg) scale(1.1); }
+                      50% { transform: translateY(-50px) rotate(0deg) scale(1.2); }
+                      75% { transform: translateY(-30px) rotate(-5deg) scale(1.1); }
+                      100% { transform: translateY(0) rotate(0deg) scale(1); }
                     }
                     .layer-1 { animation: floatLayer 6s ease-in-out infinite; }
                     .layer-2 { animation: floatLayer 6s ease-in-out infinite; animation-delay: 2s; }
