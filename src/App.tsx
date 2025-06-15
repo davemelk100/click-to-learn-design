@@ -795,52 +795,34 @@ function App() {
           }
         />
         <DesignSection
-          title="Helvetica"
-          description="Helvetica is one of the most widely used typefaces in the world. Designed by Max Miedinger in 1957, it represents the perfect balance of clarity and neutrality in typography. Its clean, modern design has made it a favorite for corporate identities, signage, and digital interfaces."
-          designPrinciple="Typography & Clarity – Creating universal communication through type."
-          exampleLink="https://www.designandpaper.com/the-story-of-the-worlds-most-famous-font-helvetica/"
+          title="Typesetting"
+          description="The origins of typesetting trace back to Johannes Gutenberg's invention of movable type in the 1440s. This revolutionary technology transformed how information was shared, making books more accessible and standardized. The mechanical precision of metal type and the careful arrangement of letters laid the foundation for modern typography and design principles."
+          designPrinciple="Precision & Standardization – Creating consistent, reproducible text layouts through systematic arrangement."
           visualComponent={
             <div className="flex items-center justify-center h-full p-4">
-              <div className="w-[600px] h-[400px] bg-white relative overflow-hidden">
-                <style>
-                  {`
-                    @keyframes slide {
-                      0% { transform: translateX(-100%); }
-                      100% { transform: translateX(100%); }
-                    }
-                    @keyframes fade {
-                      0%, 100% { opacity: 0.3; }
-                      50% { opacity: 1; }
-                    }
-                    .slide-text {
-                      animation: slide 20s linear infinite;
-                    }
-                    .fade-text {
-                      animation: fade 4s ease-in-out infinite;
-                    }
-                  `}
-                </style>
-                <div className="absolute inset-0 flex items-center justify-center">
-                  {/* Large Helvetica text */}
-                  <div className="text-[120px] font-bold text-gray-900/10 fade-text">
-                    Helvetica
-                  </div>
-
-                  {/* Sliding text */}
-                  <div className="absolute inset-0 flex items-center">
-                    <div className="slide-text whitespace-nowrap text-4xl font-bold text-gray-900">
-                      ABCDEFGHIJKLMNOPQRSTUVWXYZ
-                    </div>
-                  </div>
-
-                  {/* Grid lines */}
-                  <div className="absolute inset-0">
-                    <div className="absolute left-1/3 top-0 bottom-0 w-px bg-gray-200" />
-                    <div className="absolute left-2/3 top-0 bottom-0 w-px bg-gray-200" />
-                    <div className="absolute top-1/3 left-0 right-0 h-px bg-gray-200" />
-                    <div className="absolute top-2/3 left-0 right-0 h-px bg-gray-200" />
-                  </div>
-                </div>
+              <div className="w-[600px] h-[400px]">
+                <img
+                  src="https://static.euronews.com/articles/stories/07/42/08/38/1440x810_cmsv2_1b02e2a8-750a-54d8-9aee-59445f762fbc-7420838.jpg"
+                  alt="Gutenberg Bible - Early example of typesetting"
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+            </div>
+          }
+        />
+        <DesignSection
+          title="Helvetica"
+          description="Helvetica, designed by Max Miedinger in 1957, is one of the most influential typefaces in history. Its clean, neutral design made it the go-to choice for corporate and institutional communication. The font's versatility and readability have made it a cornerstone of modern typography, appearing everywhere from corporate logos to public signage."
+          designPrinciple="Clarity & Universality – Creating a typeface that works everywhere while maintaining perfect legibility."
+          exampleLink="https://www.moma.org/collection/works/139296"
+          visualComponent={
+            <div className="flex items-center justify-center h-full p-4">
+              <div className="w-[600px] h-[400px]">
+                <img
+                  src="https://www.graphicpear.com/wp-content/uploads/2017/10/Helvetica-Brand-Logos.jpg"
+                  alt="Helvetica typeface specimen"
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                />
               </div>
             </div>
           }
