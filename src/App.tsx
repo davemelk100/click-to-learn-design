@@ -34,75 +34,144 @@ function App() {
             : "col-span-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-8 gap-12"
         }`}
       >
-        
         <DesignSection
-          title="Interwoven Space"
-          description="Interwoven Space creates complex visual relationships by carefully layering and connecting elements. This technique uses overlapping forms, transparency, and strategic placement to create a sense of depth and interconnectedness."
-          designPrinciple="Depth – Creating the illusion of three-dimensional space through layering and perspective."
-          exampleLink="https://www.behance.net/gallery/101333357/Interwoven-Space"
+          title="Axonometric Projection"
+          description="Axonometric Projection creates a 3D effect while maintaining parallel lines. This technique is commonly used in technical drawings and architectural visualizations to show depth without perspective distortion."
+          designPrinciple="Parallel Projection – Maintaining consistent scale and parallel lines while creating depth."
+          exampleLink="https://www.archdaily.com/897029/how-to-understand-axonometric-projection"
           isListLayout={isListLayout}
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
-              <div className="w-full max-w-[600px] h-[300px] p-4 relative group">
+              <div className="w-full max-w-[600px] h-[300px] bg-white p-4 relative">
                 <style>
                   {`
-                    @keyframes weave {
-                      0% { transform: translateX(-20px) translateY(0) rotate(0deg); }
-                      25% { transform: translateX(0) translateY(-20px) rotate(90deg); }
-                      50% { transform: translateX(20px) translateY(0) rotate(180deg); }
-                      75% { transform: translateX(0) translateY(20px) rotate(270deg); }
-                      100% { transform: translateX(-20px) translateY(0) rotate(360deg); }
+                    @keyframes rotate3D {
+                      0% { transform: rotateX(20deg) rotateY(0deg) rotateZ(0deg); }
+                      25% { transform: rotateX(20deg) rotateY(90deg) rotateZ(0deg); }
+                      50% { transform: rotateX(20deg) rotateY(180deg) rotateZ(0deg); }
+                      75% { transform: rotateX(20deg) rotateY(270deg) rotateZ(0deg); }
+                      100% { transform: rotateX(20deg) rotateY(360deg) rotateZ(0deg); }
                     }
                     @keyframes float {
-                      0%, 100% { transform: translateY(0); }
-                      50% { transform: translateY(-15px); }
+                      0%, 100% { transform: translateY(0) scale(1); }
+                      50% { transform: translateY(-10px) scale(1.05); }
                     }
-                    .weave-element {
-                      animation: weave 12s ease-in-out infinite;
+                    @keyframes pulse {
+                      0%, 100% { opacity: 0.6; }
+                      50% { opacity: 1; }
                     }
-                    .float-element {
-                      animation: float 6s ease-in-out infinite;
+                    .cube-container {
+                      animation: rotate3D 20s linear infinite;
+                      transform-style: preserve-3d;
+                      perspective: 1000px;
+                    }
+                    .cube {
+                      transform-style: preserve-3d;
+                      transition: all 0.3s ease;
+                    }
+                    .cube-face {
+                      position: absolute;
+                      width: 100%;
+                      height: 100%;
+                      backface-visibility: visible;
+                    }
+                    .floating-element {
+                      animation: float 4s ease-in-out infinite;
+                    }
+                    .pulse-element {
+                      animation: pulse 3s ease-in-out infinite;
                     }
                   `}
                 </style>
                 <div className="absolute inset-0 flex items-center justify-center">
-                  {/* Main container */}
-                  <div className="w-64 h-64 relative">
-                    {/* Base layer */}
-                    <div className="absolute inset-0 grid grid-cols-3 gap-2">
-                      {[...Array(9)].map((_, i) => (
-                        <div key={i} className="bg-gray-200/30 rounded-lg" />
-                      ))}
+                  <div className="relative w-64 h-64">
+                    {/* Main cube */}
+                    <div className="cube-container absolute inset-0">
+                      <div className="cube w-32 h-32">
+                        {/* Front face */}
+                        <div
+                          className="cube-face bg-blue-500/40"
+                          style={{ transform: "translateZ(32px)" }}
+                        />
+                        {/* Back face */}
+                        <div
+                          className="cube-face bg-blue-500/40"
+                          style={{
+                            transform: "rotateY(180deg) translateZ(32px)",
+                          }}
+                        />
+                        {/* Right face */}
+                        <div
+                          className="cube-face bg-blue-600/40"
+                          style={{
+                            transform: "rotateY(90deg) translateZ(32px)",
+                          }}
+                        />
+                        {/* Left face */}
+                        <div
+                          className="cube-face bg-blue-600/40"
+                          style={{
+                            transform: "rotateY(-90deg) translateZ(32px)",
+                          }}
+                        />
+                        {/* Top face */}
+                        <div
+                          className="cube-face bg-blue-700/40"
+                          style={{
+                            transform: "rotateX(90deg) translateZ(32px)",
+                          }}
+                        />
+                        {/* Bottom face */}
+                        <div
+                          className="cube-face bg-blue-700/40"
+                          style={{
+                            transform: "rotateX(-90deg) translateZ(32px)",
+                          }}
+                        />
+                      </div>
                     </div>
 
-                    {/* Interwoven elements */}
+                    {/* Floating elements */}
+                    <div className="absolute top-1/4 left-1/4 floating-element">
+                      <div className="w-8 h-8 bg-blue-400/60 rounded-lg pulse-element" />
+                    </div>
+                    <div
+                      className="absolute top-1/4 right-1/4 floating-element"
+                      style={{ animationDelay: "1s" }}
+                    >
+                      <div className="w-8 h-8 bg-blue-400/60 rounded-lg pulse-element" />
+                    </div>
+                    <div
+                      className="absolute bottom-1/4 left-1/4 floating-element"
+                      style={{ animationDelay: "2s" }}
+                    >
+                      <div className="w-8 h-8 bg-blue-400/60 rounded-lg pulse-element" />
+                    </div>
+                    <div
+                      className="absolute bottom-1/4 right-1/4 floating-element"
+                      style={{ animationDelay: "3s" }}
+                    >
+                      <div className="w-8 h-8 bg-blue-400/60 rounded-lg pulse-element" />
+                    </div>
+
+                    {/* Grid lines */}
                     <div className="absolute inset-0">
-                      {/* Horizontal strips */}
-                      {[...Array(3)].map((_, i) => (
-                        <div
-                          key={`h-${i}`}
-                          className="absolute left-0 right-0 h-8 bg-blue-500/60 rounded-lg weave-element"
-                          style={{
-                            top: `${i * 33.33}%`,
-                            animationDelay: `${i * 2}s`,
-                          }}
-                        />
-                      ))}
-
-                      {/* Vertical strips */}
-                      {[...Array(3)].map((_, i) => (
-                        <div
-                          key={`v-${i}`}
-                          className="absolute top-0 bottom-0 w-8 bg-rose-500/60 rounded-lg weave-element"
-                          style={{
-                            left: `${i * 33.33}%`,
-                            animationDelay: `${i * 2 + 1}s`,
-                          }}
-                        />
-                      ))}
-
-                      {/* Floating center element */}
-                      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-emerald-500/80 rounded-lg float-element" />
+                      <div
+                        className="absolute left-1/3 top-0 bottom-0 w-px bg-gray-300/30"
+                        style={{ transform: "rotateX(20deg)" }}
+                      />
+                      <div
+                        className="absolute left-2/3 top-0 bottom-0 w-px bg-gray-300/30"
+                        style={{ transform: "rotateX(20deg)" }}
+                      />
+                      <div
+                        className="absolute top-1/3 left-0 right-0 h-px bg-gray-300/30"
+                        style={{ transform: "rotateY(20deg)" }}
+                      />
+                      <div
+                        className="absolute top-2/3 left-0 right-0 h-px bg-gray-300/30"
+                        style={{ transform: "rotateY(20deg)" }}
+                      />
                     </div>
                   </div>
                 </div>
@@ -110,7 +179,159 @@ function App() {
             </div>
           }
         />
+        <DesignSection
+          title="Interwoven Space"
+          description="Interwoven Space explores how elements can overlap and interact in three-dimensional space, creating depth and visual interest through layering and transparency."
+          designPrinciple="Spatial Layering – Creating depth through overlapping elements and transparency."
+          isListLayout={isListLayout}
+          visualComponent={
+            <div className="flex items-center justify-center w-full h-full">
+              <div className="w-full max-w-[600px] h-[300px] bg-white p-4 relative">
+                <style>
+                  {`
+                    @keyframes rotate3D {
+                      0% { transform: rotateX(20deg) rotateY(0deg); }
+                      100% { transform: rotateX(20deg) rotateY(360deg); }
+                    }
+                    @keyframes float {
+                      0%, 100% { transform: translateY(0); }
+                      50% { transform: translateY(-10px); }
+                    }
+                    .interwoven-container {
+                      animation: rotate3D 20s linear infinite;
+                      transform-style: preserve-3d;
+                      perspective: 1000px;
+                    }
+                    .interwoven-element {
+                      transform-style: preserve-3d;
+                      transition: all 0.3s ease;
+                    }
+                    .floating-element {
+                      animation: float 4s ease-in-out infinite;
+                    }
+                  `}
+                </style>
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="relative w-64 h-64">
+                    {/* Main interwoven structure */}
+                    <div className="interwoven-container absolute inset-0">
+                      {/* First element */}
+                      <div className="interwoven-element w-40 h-40 bg-purple-500/40 rounded-lg" />
+                      {/* Second element (offset and rotated) */}
+                      <div
+                        className="interwoven-element w-40 h-40 bg-rose-500/40 rounded-lg absolute top-0 left-0"
+                        style={{
+                          transform: "translateX(20px) translateY(-20px)",
+                        }}
+                      />
+                    </div>
 
+                    {/* Floating elements */}
+                    <div className="absolute top-1/4 left-1/4 floating-element">
+                      <div className="w-8 h-8 bg-purple-400/60 rounded-lg" />
+                    </div>
+                    <div
+                      className="absolute top-1/4 right-1/4 floating-element"
+                      style={{ animationDelay: "2s" }}
+                    >
+                      <div className="w-8 h-8 bg-rose-400/60 rounded-lg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          }
+        />
+        <DesignSection
+          title="Basic Color Theory"
+          description="Basic Color Theory explores how colors interact and affect each other. Understanding these relationships helps create harmonious color schemes and effective visual communication."
+          designPrinciple="Color Harmony – Using color relationships to create balanced and pleasing compositions."
+          exampleLink="https://www.smashingmagazine.com/2010/01/color-theory-for-designers-part-1-the-meaning-of-color/"
+          isListLayout={isListLayout}
+          visualComponent={
+            <div className="flex items-center justify-center w-full h-full">
+              <div className="w-full max-w-[600px] h-[300px] bg-white p-4 relative">
+                <style>
+                  {`
+                    @keyframes blend {
+                      0% { mix-blend-mode: normal; transform: scale(1) rotate(0deg); }
+                      25% { mix-blend-mode: multiply; transform: scale(1.1) rotate(90deg); }
+                      50% { mix-blend-mode: screen; transform: scale(1) rotate(180deg); }
+                      75% { mix-blend-mode: overlay; transform: scale(1.1) rotate(270deg); }
+                      100% { mix-blend-mode: normal; transform: scale(1) rotate(360deg); }
+                    }
+                    @keyframes float {
+                      0%, 100% { transform: translate(0, 0) scale(1); }
+                      25% { transform: translate(10px, -10px) scale(1.1); }
+                      50% { transform: translate(0, -15px) scale(1); }
+                      75% { transform: translate(-10px, -10px) scale(1.1); }
+                    }
+                    @keyframes pulse {
+                      0% { transform: scale(1); opacity: 0.7; filter: blur(0px); }
+                      50% { transform: scale(1.3); opacity: 1; filter: blur(1px); }
+                      100% { transform: scale(1); opacity: 0.7; filter: blur(0px); }
+                    }
+                    @keyframes morph {
+                      0% { border-radius: 60% 40% 30% 70%/60% 30% 70% 40%; }
+                      50% { border-radius: 30% 60% 70% 40%/50% 60% 30% 60%; }
+                      100% { border-radius: 60% 40% 30% 70%/60% 30% 70% 40%; }
+                    }
+                    .color-circle {
+                      animation: blend 12s ease-in-out infinite, morph 8s ease-in-out infinite;
+                      transition: all 0.3s ease;
+                    }
+                    .color-dot {
+                      animation: float 6s ease-in-out infinite, pulse 4s ease-in-out infinite;
+                    }
+                    .center-blend {
+                      animation: pulse 3s ease-in-out infinite, morph 6s ease-in-out infinite;
+                    }
+                  `}
+                </style>
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="relative w-64 h-64">
+                    {/* Cyan circle */}
+                    <div className="absolute inset-0 color-circle bg-cyan-500/70" />
+
+                    {/* Magenta circle */}
+                    <div
+                      className="absolute inset-0 color-circle bg-fuchsia-500/70"
+                      style={{ animationDelay: "-6s" }}
+                    />
+
+                    {/* Color interaction points */}
+                    <div className="absolute top-1/4 left-1/4 color-dot">
+                      <div className="w-8 h-8 bg-cyan-400 rounded-full shadow-lg" />
+                    </div>
+                    <div
+                      className="absolute top-1/4 right-1/4 color-dot"
+                      style={{ animationDelay: "1s" }}
+                    >
+                      <div className="w-8 h-8 bg-fuchsia-400 rounded-full shadow-lg" />
+                    </div>
+                    <div
+                      className="absolute bottom-1/4 left-1/4 color-dot"
+                      style={{ animationDelay: "2s" }}
+                    >
+                      <div className="w-8 h-8 bg-cyan-300 rounded-full shadow-lg" />
+                    </div>
+                    <div
+                      className="absolute bottom-1/4 right-1/4 color-dot"
+                      style={{ animationDelay: "3s" }}
+                    >
+                      <div className="w-8 h-8 bg-fuchsia-300 rounded-full shadow-lg" />
+                    </div>
+
+                    {/* Center blend point */}
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                      <div className="w-12 h-12 bg-gradient-to-br from-cyan-400 to-fuchsia-400 rounded-full center-blend shadow-lg" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          }
+        />
         <DesignSection
           title="Rule of Thirds"
           description="The Rule of Thirds divides a composition into nine equal parts using two horizontal and two vertical lines. Key elements placed along these lines or at their intersections create more engaging and balanced designs."
@@ -123,19 +344,23 @@ function App() {
                 <style>
                   {`
                     @keyframes highlightGrid {
-                      0%, 100% { opacity: 0.2; }
-                      50% { opacity: 0.4; }
+                      0%, 100% { opacity: 0.2; transform: scale(1); }
+                      50% { opacity: 0.4; transform: scale(1.02); }
                     }
                     @keyframes highlightPoint {
-                      0%, 100% { transform: scale(1); opacity: 0.4; }
-                      50% { transform: scale(1.5); opacity: 0.8; }
+                      0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.4; }
+                      50% { transform: scale(1.5) rotate(180deg); opacity: 0.8; }
                     }
                     @keyframes moveElement {
-                      0% { transform: translate(0, 0); }
-                      25% { transform: translate(20px, -20px); }
-                      50% { transform: translate(0, -30px); }
-                      75% { transform: translate(-20px, -20px); }
-                      100% { transform: translate(0, 0); }
+                      0% { transform: translate(0, 0) rotate(0deg); }
+                      25% { transform: translate(20px, -20px) rotate(90deg); }
+                      50% { transform: translate(0, -30px) rotate(180deg); }
+                      75% { transform: translate(-20px, -20px) rotate(270deg); }
+                      100% { transform: translate(0, 0) rotate(360deg); }
+                    }
+                    @keyframes pulseElement {
+                      0%, 100% { transform: scale(1); filter: brightness(1); }
+                      50% { transform: scale(1.1); filter: brightness(1.2); }
                     }
                     .grid-line {
                       animation: highlightGrid 4s ease-in-out infinite;
@@ -146,52 +371,51 @@ function App() {
                     .example-element {
                       animation: moveElement 6s ease-in-out infinite;
                     }
+                    .pulse-element {
+                      animation: pulseElement 3s ease-in-out infinite;
+                    }
+                    .group:hover .grid-line {
+                      animation-duration: 2s;
+                    }
+                    .group:hover .intersection-point {
+                      animation-duration: 2s;
+                    }
+                    .group:hover .example-element {
+                      animation-duration: 4s;
+                    }
                   `}
                 </style>
                 <div className="absolute inset-0 flex items-center justify-center">
-                  {/* Main container */}
-                  <div className="relative w-64 h-64">
-                    {/* Grid lines */}
-                    <div className="absolute inset-0">
-                      {/* Vertical lines */}
-                      <div className="absolute left-1/3 top-0 bottom-0 w-0.5 bg-gray-400 grid-line" />
-                      <div className="absolute right-1/3 top-0 bottom-0 w-0.5 bg-gray-400 grid-line" />
-                      {/* Horizontal lines */}
-                      <div className="absolute top-1/3 left-0 right-0 h-0.5 bg-gray-400 grid-line" />
-                      <div className="absolute bottom-1/3 left-0 right-0 h-0.5 bg-gray-400 grid-line" />
-                    </div>
+                  {/* Grid lines */}
+                  <div className="w-full h-full relative">
+                    {/* Vertical lines */}
+                    <div className="absolute left-1/3 top-0 bottom-0 w-px bg-gray-300 grid-line" />
+                    <div className="absolute right-1/3 top-0 bottom-0 w-px bg-gray-300 grid-line" />
+                    {/* Horizontal lines */}
+                    <div className="absolute top-1/3 left-0 right-0 h-px bg-gray-300 grid-line" />
+                    <div className="absolute bottom-1/3 left-0 right-0 h-px bg-gray-300 grid-line" />
 
                     {/* Intersection points */}
-                    {[...Array(4)].map((_, i) => (
-                      <div
-                        key={i}
-                        className="absolute w-3 h-3 bg-gray-600 rounded-full intersection-point"
-                        style={{
-                          left: `${i % 2 === 0 ? "33.33%" : "66.66%"}`,
-                          top: `${i < 2 ? "33.33%" : "66.66%"}`,
-                          animationDelay: `${i * 1}s`,
-                        }}
-                      />
-                    ))}
+                    <div className="absolute left-1/3 top-1/3 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-blue-500/40 rounded-full intersection-point" />
+                    <div className="absolute right-1/3 top-1/3 translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-blue-500/40 rounded-full intersection-point" />
+                    <div className="absolute left-1/3 bottom-1/3 -translate-x-1/2 translate-y-1/2 w-4 h-4 bg-blue-500/40 rounded-full intersection-point" />
+                    <div className="absolute right-1/3 bottom-1/3 translate-x-1/2 translate-y-1/2 w-4 h-4 bg-blue-500/40 rounded-full intersection-point" />
 
-                    {/* Example elements at intersection points */}
-                    <div
-                      className="absolute left-1/3 top-1/3 -translate-x-1/2 -translate-y-1/2 example-element"
-                      style={{ animationDelay: "0s" }}
-                    >
-                      <div className="w-8 h-8 bg-blue-500/60 rounded-lg" />
+                    {/* Example elements */}
+                    <div className="absolute left-1/3 top-1/3 -translate-x-1/2 -translate-y-1/2 example-element">
+                      <div className="w-8 h-8 bg-red-500/60 rounded-lg pulse-element" />
                     </div>
                     <div
                       className="absolute right-1/3 top-1/3 translate-x-1/2 -translate-y-1/2 example-element"
                       style={{ animationDelay: "2s" }}
                     >
-                      <div className="w-8 h-8 bg-green-500/60 rounded-lg" />
+                      <div className="w-8 h-8 bg-green-500/60 rounded-lg pulse-element" />
                     </div>
                     <div
                       className="absolute left-1/3 bottom-1/3 -translate-x-1/2 translate-y-1/2 example-element"
                       style={{ animationDelay: "4s" }}
                     >
-                      <div className="w-8 h-8 bg-purple-500/60 rounded-lg" />
+                      <div className="w-8 h-8 bg-purple-500/60 rounded-lg pulse-element" />
                     </div>
                   </div>
                 </div>
@@ -199,6 +423,7 @@ function App() {
             </div>
           }
         />
+
         <DesignSection
           title="Spatial Layers"
           description="Spatial layering creates depth and hierarchy by organizing elements into distinct planes. This technique uses shadows, transparency, and positioning to create a sense of three-dimensional space, making designs more dynamic and engaging."
@@ -375,25 +600,26 @@ function App() {
                 <style>
                   {`
                     @keyframes groupMove {
-                      0% { transform: translate(0, 0); }
-                      25% { transform: translate(10px, -10px); }
-                      50% { transform: translate(0, 0); }
-                      75% { transform: translate(-10px, 10px); }
-                      100% { transform: translate(0, 0); }
+                      0% { transform: translate(0, 0) scale(1); }
+                      25% { transform: translate(10px, -10px) scale(1.1); }
+                      50% { transform: translate(0, 0) scale(1); }
+                      75% { transform: translate(-10px, 10px) scale(0.9); }
+                      100% { transform: translate(0, 0) scale(1); }
                     }
                     @keyframes separateMove {
-                      0% { transform: translate(0, 0); }
-                      25% { transform: translate(-10px, -10px); }
-                      50% { transform: translate(0, 0); }
-                      75% { transform: translate(10px, 10px); }
-                      100% { transform: translate(0, 0); }
+                      0% { transform: translate(0, 0) scale(1); }
+                      25% { transform: translate(-15px, -15px) scale(0.9); }
+                      50% { transform: translate(0, 0) scale(1); }
+                      75% { transform: translate(15px, 15px) scale(1.1); }
+                      100% { transform: translate(0, 0) scale(1); }
                     }
-                    @keyframes diagonalMove {
-                      0% { transform: translate(0, 0) rotate(0deg); }
-                      25% { transform: translate(8px, 8px) rotate(3deg); }
-                      50% { transform: translate(0, 0) rotate(0deg); }
-                      75% { transform: translate(-8px, -8px) rotate(-3deg); }
-                      100% { transform: translate(0, 0) rotate(0deg); }
+                    @keyframes pulseGroup {
+                      0%, 100% { opacity: 0.7; }
+                      50% { opacity: 1; }
+                    }
+                    @keyframes connectLine {
+                      0% { stroke-dashoffset: 100; }
+                      100% { stroke-dashoffset: 0; }
                     }
                     .group-animation {
                       animation: groupMove 4s ease-in-out infinite;
@@ -401,8 +627,18 @@ function App() {
                     .separate-animation {
                       animation: separateMove 4s ease-in-out infinite;
                     }
-                    .diagonal-animation {
-                      animation: diagonalMove 5s ease-in-out infinite;
+                    .pulse-group {
+                      animation: pulseGroup 3s ease-in-out infinite;
+                    }
+                    .connect-line {
+                      stroke-dasharray: 10;
+                      animation: connectLine 2s linear infinite;
+                    }
+                    .group:hover .group-animation {
+                      animation-duration: 2s;
+                    }
+                    .group:hover .separate-animation {
+                      animation-duration: 2s;
                     }
                   `}
                 </style>
@@ -415,7 +651,7 @@ function App() {
                         {[...Array(4)].map((_, i) => (
                           <div
                             key={i}
-                            className="w-8 h-8 bg-blue-500/80 rounded-lg"
+                            className="w-8 h-8 bg-blue-500/80 rounded-lg pulse-group"
                             style={{ animationDelay: `${i * 0.15}s` }}
                           />
                         ))}
@@ -428,385 +664,37 @@ function App() {
                         {[...Array(4)].map((_, i) => (
                           <div
                             key={i}
-                            className="w-8 h-8 bg-rose-500/80 rounded-lg"
+                            className="w-8 h-8 bg-rose-500/80 rounded-lg pulse-group"
                             style={{ animationDelay: `${i * 0.15}s` }}
                           />
                         ))}
                       </div>
                     </div>
 
-                    {/* Diagonal group - center area */}
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 diagonal-animation">
-                      <div className="grid grid-cols-2 gap-4">
-                        {[...Array(4)].map((_, i) => (
-                          <div
-                            key={i}
-                            className="w-8 h-8 bg-emerald-500/80 rounded-lg"
-                            style={{ animationDelay: `${i * 0.2}s` }}
-                          />
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          }
-        />
-        
-        <DesignSection
-          title="Artful Reduction"
-          description="Artful Reduction demonstrates how removing elements can strengthen a design. By carefully eliminating unnecessary components, the remaining elements gain more impact and clarity, creating a more focused and powerful visual statement."
-          designPrinciple="Minimalism – Using the fewest elements necessary to create maximum impact."
-          exampleLink="https://www.nngroup.com/articles/characteristics-minimalism/"
-          isListLayout={isListLayout}
-          visualComponent={
-            <div className="flex items-center justify-center w-full h-full">
-              <div className="w-full max-w-[600px] h-[300px] p-4 relative group">
-                <style>
-                  {`
-                    @keyframes pulse {
-                      0% { transform: scale(1); opacity: 0.1; }
-                      50% { transform: scale(1.5); opacity: 1; }
-                      100% { transform: scale(1); opacity: 0.1; }
-                    }
-                    @keyframes rotate {
-                      from { transform: rotate(0deg); }
-                      to { transform: rotate(360deg); }
-                    }
-                    @keyframes float {
-                      0% { transform: translate(0, 0); }
-                      25% { transform: translate(15px, -15px); }
-                      50% { transform: translate(0, -30px); }
-                      75% { transform: translate(-15px, -15px); }
-                      100% { transform: translate(0, 0); }
-                    }
-                    .group:hover .number-pulse {
-                      animation: pulse 1s ease-in-out infinite;
-                    }
-                  `}
-                </style>
-                <div className="absolute inset-0 flex items-center justify-center">
-                  {/* Initial state - complex overlapping shapes */}
-                  <div className="absolute w-48 h-48 opacity-100 group-hover:opacity-0 transition-all duration-1000 animate-infinite">
-                    {/* Background grid */}
-                    <div className="absolute inset-0 grid grid-cols-4 grid-rows-4 gap-2">
-                      {[...Array(16)].map((_, i) => (
-                        <div
-                          key={`grid-${i}`}
-                          className="bg-stone-300/30 transform transition-all duration-1000 animate-[pulse_2s_ease-in-out_infinite] group-hover:animate-none"
-                          style={{ animationDelay: `${i * 0.1}s` }}
-                        />
-                      ))}
-                    </div>
-
-                    {/* Overlapping circles */}
-                    {[...Array(8)].map((_, i) => (
-                      <div
-                        key={`circle-${i}`}
-                        className="absolute w-24 h-24 border-2 border-stone-400/40 rounded-full transform transition-all duration-1000 animate-[spin_8s_linear_infinite] group-hover:animate-none"
-                        style={{
-                          left: `${25 + Math.cos((i * Math.PI * 2) / 8) * 20}%`,
-                          top: `${25 + Math.sin((i * Math.PI * 2) / 8) * 20}%`,
-                          transform: `translate(-50%, -50%) rotate(${
-                            i * 45
-                          }deg)`,
-                          animationDelay: `${i * 0.2}s`,
-                        }}
-                      />
-                    ))}
-                  </div>
-
-                  {/* Final state - single focused element */}
-                  <div className="absolute w-48 h-48 opacity-0 group-hover:opacity-100 transition-all duration-1000 animate-infinite">
-                    {/* Central focus element */}
-                    <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-stone-800 transform transition-all duration-1000 group-hover:scale-110 group-hover:rotate-6 animate-[pulse_2s_ease-in-out_infinite] group-hover:animate-none">
-                      <div className="absolute inset-1" />
-                      {/* Subtle shadow */}
-                      <div className="absolute inset-0 shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 animate-infinite" />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          }
-        />
-        <DesignSection
-          title="Basic Color Theory"
-          description="Basic Color Theory explores the fundamental relationships between colors. By understanding primary colors, color harmony, and the color wheel, we can create visually appealing and meaningful color combinations."
-          designPrinciple="Color Relationships – Understanding how colors interact and complement each other."
-          exampleLink="https://www.canva.com/learn/color-theory/"
-          isListLayout={isListLayout}
-          visualComponent={
-            <div className="flex items-center justify-center w-full h-full">
-              <div className="w-full max-w-[600px] h-[300px] bg-white p-4 relative group">
-                <style>
-                  {`
-                    @keyframes floatBall {
-                      0%, 100% { transform: translate(0, 0); }
-                      25% { transform: translate(20px, -20px); }
-                      50% { transform: translate(0, 0); }
-                      75% { transform: translate(-20px, 20px); }
-                    }
-                    @keyframes pulseBall {
-                      0%, 100% { transform: scale(1); }
-                      50% { transform: scale(1.1); }
-                    }
-                    @keyframes mergeColors {
-                      0%, 100% { filter: blur(0px); }
-                      50% { filter: blur(2px); }
-                    }
-                    .float-ball {
-                      animation: floatBall 6s ease-in-out infinite;
-                    }
-                    .pulse-ball {
-                      animation: pulseBall 3s ease-in-out infinite;
-                    }
-                    .merge-colors {
-                      animation: mergeColors 4s ease-in-out infinite;
-                    }
-                  `}
-                </style>
-                <div className="absolute inset-0 flex items-center justify-center">
-                  {/* Main container */}
-                  <div className="w-64 h-64 relative">
-                    {/* Background grid */}
-                    <div className="absolute inset-0 grid grid-cols-4 gap-1">
-                      {[...Array(16)].map((_, i) => (
-                        <div key={i} className="bg-gray-100/50 rounded" />
-                      ))}
-                    </div>
-
-                    {/* Primary color balls */}
-                    <div className="absolute inset-0">
-                      <div
-                        className="float-ball absolute w-12 h-12 rounded-full bg-red-500 shadow-lg"
-                        style={{
-                          left: "20%",
-                          top: "30%",
-                          animationDelay: "0s",
-                        }}
-                      />
-                      <div
-                        className="float-ball absolute w-12 h-12 rounded-full bg-yellow-500 shadow-lg"
-                        style={{
-                          left: "50%",
-                          top: "20%",
-                          animationDelay: "2s",
-                        }}
-                      />
-                      <div
-                        className="float-ball absolute w-12 h-12 rounded-full bg-blue-500 shadow-lg"
-                        style={{
-                          left: "80%",
-                          top: "30%",
-                          animationDelay: "4s",
-                        }}
-                      />
-                    </div>
-
-                    {/* Secondary color balls */}
-                    <div className="absolute inset-0">
-                      <div
-                        className="float-ball absolute w-10 h-10 rounded-full bg-orange-500 shadow-lg"
-                        style={{
-                          left: "35%",
-                          top: "25%",
-                          animationDelay: "1s",
-                        }}
-                      />
-                      <div
-                        className="float-ball absolute w-10 h-10 rounded-full bg-green-500 shadow-lg"
-                        style={{
-                          left: "65%",
-                          top: "25%",
-                          animationDelay: "3s",
-                        }}
-                      />
-                      <div
-                        className="float-ball absolute w-10 h-10 rounded-full bg-purple-500 shadow-lg"
-                        style={{
-                          left: "50%",
-                          top: "50%",
-                          animationDelay: "5s",
-                        }}
-                      />
-                    </div>
-
-                    {/* Color mixing effects */}
-                    <div className="absolute inset-0">
-                      <div
-                        className="merge-colors absolute w-16 h-16 rounded-full bg-gradient-to-br from-red-500 to-yellow-500 opacity-50"
-                        style={{ left: "35%", top: "25%" }}
-                      />
-                      <div
-                        className="merge-colors absolute w-16 h-16 rounded-full bg-gradient-to-br from-yellow-500 to-blue-500 opacity-50"
-                        style={{ left: "65%", top: "25%" }}
-                      />
-                      <div
-                        className="merge-colors absolute w-16 h-16 rounded-full bg-gradient-to-br from-blue-500 to-red-500 opacity-50"
-                        style={{ left: "50%", top: "50%" }}
-                      />
-                    </div>
-
-                    {/* Complementary pairs */}
-                    <div className="absolute inset-0">
-                      <div
-                        className="pulse-ball absolute w-8 h-8 rounded-full bg-red-500 shadow-lg"
-                        style={{
-                          left: "30%",
-                          top: "60%",
-                          animationDelay: "0s",
-                        }}
-                      />
-                      <div
-                        className="pulse-ball absolute w-8 h-8 rounded-full bg-green-500 shadow-lg"
-                        style={{
-                          left: "70%",
-                          top: "60%",
-                          animationDelay: "0s",
-                        }}
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          }
-        />
-        <DesignSection
-          title="Axonometric Projection"
-          description="Axonometric Projection is a method of representing 3D objects in 2D space using parallel projection. Unlike perspective projection, it maintains consistent scale and angles, making it ideal for technical drawings and architectural visualization."
-          designPrinciple="Parallel Projection – Representing 3D space in 2D while maintaining consistent measurements."
-          exampleLink="https://en.wikipedia.org/wiki/Axonometric_projection"
-          isListLayout={isListLayout}
-          visualComponent={
-            <div className="flex items-center justify-center w-full h-full">
-              <div className="w-full max-w-[600px] h-[300px] bg-white p-4 relative group">
-                <style>
-                  {`
-                    @keyframes rotate3D {
-                      0% { transform: perspective(1000px) rotateX(20deg) rotateY(0deg); }
-                      50% { transform: perspective(1000px) rotateX(20deg) rotateY(180deg); }
-                      100% { transform: perspective(1000px) rotateX(20deg) rotateY(360deg); }
-                    }
-                    @keyframes float {
-                      0%, 100% { transform: translateY(0); }
-                      50% { transform: translateY(-10px); }
-                    }
-                    .cube-container {
-                      animation: rotate3D 12s linear infinite;
-                    }
-                    .float-element {
-                      animation: float 4s ease-in-out infinite;
-                    }
-                  `}
-                </style>
-                <div className="absolute inset-0 flex items-center justify-center">
-                  {/* Main container */}
-                  <div className="w-64 h-64 relative">
-                    {/* 3D Cube */}
-                    <div className="cube-container absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32">
-                      {/* Front face */}
-                      <div className="absolute inset-0 bg-blue-500/60 transform-gpu translate-z-16" />
-                      {/* Back face */}
-                      <div className="absolute inset-0 bg-blue-500/60 transform-gpu -translate-z-16" />
-                      {/* Top face */}
-                      <div className="absolute inset-0 bg-blue-400/60 transform-gpu rotate-x-90 translate-y-[-50%] translate-z-16" />
-                      {/* Bottom face */}
-                      <div className="absolute inset-0 bg-blue-400/60 transform-gpu rotate-x-90 translate-y-[50%] translate-z-16" />
-                      {/* Left face */}
-                      <div className="absolute inset-0 bg-blue-600/60 transform-gpu rotate-y-90 translate-x-[-50%] translate-z-16" />
-                      {/* Right face */}
-                      <div className="absolute inset-0 bg-blue-600/60 transform-gpu rotate-y-90 translate-x-[50%] translate-z-16" />
-                    </div>
-
-                    {/* Floating elements */}
-                    <div className="absolute inset-0">
-                      <div
-                        className="absolute top-4 left-4 w-8 h-8 bg-rose-500/60 rounded-lg float-element"
-                        style={{ animationDelay: "0s" }}
-                      />
-                      <div
-                        className="absolute bottom-4 right-4 w-8 h-8 bg-rose-500/60 rounded-lg float-element"
-                        style={{ animationDelay: "2s" }}
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          }
-        />
-        <DesignSection
-          title="Golden Ratio"
-          description="The Golden Ratio, approximately 1:1.618, is a mathematical proportion found in nature that creates aesthetically pleasing compositions. When used in design, it helps create balanced and harmonious layouts that feel naturally beautiful."
-          designPrinciple="Proportion – Using mathematical relationships to create visually pleasing compositions."
-          exampleLink="https://www.canva.com/learn/what-is-the-golden-ratio/"
-          isListLayout={isListLayout}
-          visualComponent={
-            <div className="flex items-center justify-center w-full h-full">
-              <div className="w-full max-w-[600px] h-[300px] bg-white p-4 relative group">
-                <style>
-                  {`
-                    @keyframes drawSpiral {
-                      0% { stroke-dashoffset: 1000; }
-                      100% { stroke-dashoffset: 0; }
-                    }
-                    @keyframes pulseRect {
-                      0%, 100% { opacity: 0.3; }
-                      50% { opacity: 0.8; }
-                    }
-                    .spiral-path {
-                      stroke-dasharray: 1000;
-                      stroke-dashoffset: 1000;
-                      animation: drawSpiral 8s linear infinite;
-                    }
-                    .golden-rect {
-                      animation: pulseRect 4s ease-in-out infinite;
-                    }
-                  `}
-                </style>
-                <div className="absolute inset-0 flex items-center justify-center">
-                  {/* Main container */}
-                  <div className="w-64 h-64 relative">
-                    {/* Golden rectangles */}
-                    <div className="absolute inset-0">
-                      <div
-                        className="absolute top-0 left-0 w-40 h-64 bg-amber-500/20 golden-rect"
-                        style={{ animationDelay: "0s" }}
-                      />
-                      <div
-                        className="absolute top-0 left-0 w-24 h-40 bg-amber-500/30 golden-rect"
-                        style={{ animationDelay: "1s" }}
-                      />
-                      <div
-                        className="absolute top-0 left-0 w-16 h-24 bg-amber-500/40 golden-rect"
-                        style={{ animationDelay: "2s" }}
-                      />
-                      <div
-                        className="absolute top-0 left-0 w-10 h-16 bg-amber-500/50 golden-rect"
-                        style={{ animationDelay: "3s" }}
-                      />
-                    </div>
-
-                    {/* Golden spiral */}
+                    {/* Connection lines */}
                     <svg className="absolute inset-0" viewBox="0 0 100 100">
+                      {/* Lines connecting grouped elements */}
                       <path
-                        d="M 0,0 Q 25,0 25,25 Q 25,50 50,50 Q 75,50 75,75 Q 75,100 100,100"
-                        className="spiral-path"
-                        stroke="#B45309"
-                        strokeWidth="2"
+                        d="M 20,20 L 20,40 L 40,40 L 40,20 Z"
+                        className="connect-line"
+                        stroke="#3B82F6"
+                        strokeWidth="1"
                         fill="none"
+                      />
+                      {/* Lines connecting separated elements */}
+                      <path
+                        d="M 60,60 L 60,80 L 80,80 L 80,60 Z"
+                        className="connect-line"
+                        stroke="#FB7185"
+                        strokeWidth="1"
+                        fill="none"
+                        style={{ animationDelay: "1s" }}
                       />
                     </svg>
 
-                    {/* Ratio markers */}
-                    <div className="absolute top-2 left-2 text-xs text-amber-700 font-mono">
-                      1
-                    </div>
-                    <div className="absolute top-2 left-[42px] text-xs text-amber-700 font-mono">
-                      1.618
+                    {/* Center connecting element */}
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                      <div className="w-4 h-4 bg-gray-400/60 rounded-full pulse-group" />
                     </div>
                   </div>
                 </div>
@@ -814,6 +702,7 @@ function App() {
             </div>
           }
         />
+
         <DesignSection
           title="Designing Networks"
           description="Designing Networks explores how to create visual representations of connected systems and relationships. By using nodes, connections, and strategic layout, we can create clear and intuitive visualizations of complex networks and their interactions."
@@ -1152,7 +1041,7 @@ function App() {
             </div>
           }
         />
-                <DesignSection
+        <DesignSection
           title="Carolyn Davidson"
           description="Carolyn Davidson is the graphic designer who created the iconic Nike Swoosh logo in 1971. Her simple yet powerful design has become one of the most recognizable brand symbols in the world, demonstrating how effective design can transcend its original purpose and become a cultural icon."
           designPrinciple="Simplicity and memorability through minimal design"

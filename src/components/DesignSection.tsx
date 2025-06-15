@@ -80,15 +80,6 @@ const DesignSection: React.FC<DesignSectionProps> = ({
     }
   };
 
-  const shouldRemoveRightBorder =
-    title === "Spatial Layers" ||
-    title === "Rule of Thirds" ||
-    title === "Interwoven Space" ||
-    title === "Dimensional Hierarchy" ||
-    title === "Ambiguous Scale" ||
-    title === "Artful Reduction" ||
-    title === "Basic Color Theory";
-
   return (
     <div className="border border-gray-200 overflow-hidden shadow hover:shadow-lg transition-shadow duration-300">
       <div className="relative h-[650px]">
