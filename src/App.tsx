@@ -1406,7 +1406,7 @@ function App() {
           </button>
         </div>
         <p className="text-white text-center mt-2 font-avenir">
-          Explore the fundamental principles that shape effective design
+          Landmark achievements that changed the landscape of design.
         </p>
       </div>
 

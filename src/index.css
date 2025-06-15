@@ -34,7 +34,12 @@
   }
 
   body {
-    /* font-family: 'Source Sans 3', sans-serif; */
+    font-family: 'Avenir', sans-serif;
+    font-style: normal !important;
+  }
+
+  * {
+    font-style: normal !important;
   }
 
   h1,
