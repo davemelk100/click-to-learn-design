@@ -429,54 +429,106 @@ function App() {
 
         <DesignSection
           title="Spatial Layers"
-          description="Spatial layering creates depth and hierarchy by organizing elements into distinct planes. This technique uses shadows, transparency, and positioning to create a sense of three-dimensional space, making designs more dynamic and engaging."
-          designPrinciple="Depth – Creating visual hierarchy through layered elements."
-          exampleLink="https://www.toptal.com/designers/visual/principles-of-design"
+          description="Spatial Layers explores how elements can be arranged in three-dimensional space to create depth and hierarchy. This technique uses overlapping, transparency, and movement to create a sense of space and dimension."
+          designPrinciple="Depth & Dimension – Creating visual hierarchy through layered elements in space."
           isListLayout={isListLayout}
-          fontFamily="tektur"
-          descriptionClassName="text-gray-700 font-tektur"
-          titleClassName="text-2xl font-bold text-gray-900 font-tektur"
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
-              <div className="w-full max-w-[600px] h-[300px] bg-white p-4 relative group">
+              <div className="w-full max-w-[600px] h-[300px] bg-white p-4 relative">
                 <style>
                   {`
-                    @keyframes floatLayer {
-                      0% { transform: translateY(0) rotate(0deg) scale(1); }
-                      25% { transform: translateY(-30px) rotate(5deg) scale(1.1); }
-                      50% { transform: translateY(-50px) rotate(0deg) scale(1.2); }
-                      75% { transform: translateY(-30px) rotate(-5deg) scale(1.1); }
-                      100% { transform: translateY(0) rotate(0deg) scale(1); }
+                    @keyframes rotate3D {
+                      0% { transform: rotateX(20deg) rotateY(0deg) rotateZ(0deg); }
+                      100% { transform: rotateX(20deg) rotateY(360deg) rotateZ(0deg); }
                     }
-                    .layer-1 { animation: floatLayer 6s ease-in-out infinite; }
-                    .layer-2 { animation: floatLayer 6s ease-in-out infinite; animation-delay: 2s; }
-                    .layer-3 { animation: floatLayer 6s ease-in-out infinite; animation-delay: 4s; }
+                    @keyframes float {
+                      0%, 100% { transform: translateY(0) translateZ(0); }
+                      50% { transform: translateY(-20px) translateZ(50px); }
+                    }
+                    @keyframes pulse {
+                      0%, 100% { transform: scale(1); opacity: 0.6; }
+                      50% { transform: scale(1.1); opacity: 1; }
+                    }
+                    @keyframes morph {
+                      0% { border-radius: 60% 40% 30% 70%/60% 30% 70% 40%; }
+                      50% { border-radius: 30% 60% 70% 40%/50% 60% 30% 60%; }
+                      100% { border-radius: 60% 40% 30% 70%/60% 30% 70% 40%; }
+                    }
+                    .layer-container {
+                      animation: rotate3D 20s linear infinite;
+                      transform-style: preserve-3d;
+                      perspective: 1000px;
+                    }
+                    .layer {
+                      transform-style: preserve-3d;
+                      transition: all 0.3s ease;
+                    }
+                    .float-element {
+                      animation: float 6s ease-in-out infinite;
+                    }
+                    .morph-element {
+                      animation: morph 8s ease-in-out infinite;
+                    }
+                    .pulse-element {
+                      animation: pulse 4s ease-in-out infinite;
+                    }
                   `}
                 </style>
                 <div className="absolute inset-0 flex items-center justify-center">
-                  {/* Base container */}
-                  <div className="relative w-48 h-48">
-                    {/* Layer 3 - Back */}
-                    <div
-                      className="absolute inset-0 bg-slate-200 rounded-lg shadow-sm layer-3"
-                      style={{ transform: "translateY(20px) rotate(-3deg)" }}
-                    />
+                  <div className="relative w-64 h-64">
+                    {/* Main container with 3D rotation */}
+                    <div className="layer-container absolute inset-0">
+                      {/* Background layer */}
+                      <div className="layer absolute inset-0">
+                        <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-violet-500/20 rounded-lg morph-element" />
+                        <div
+                          className="absolute bottom-1/4 right-1/4 w-32 h-32 bg-violet-500/20 rounded-lg morph-element"
+                          style={{ animationDelay: "1s" }}
+                        />
+                      </div>
 
-                    {/* Layer 2 - Middle */}
-                    <div
-                      className="absolute inset-0 bg-slate-300 rounded-lg shadow-sm layer-2"
-                      style={{ transform: "translateY(10px) rotate(-1deg)" }}
-                    />
+                      {/* Middle layer */}
+                      <div
+                        className="layer absolute inset-0"
+                        style={{ transform: "translateZ(30px)" }}
+                      >
+                        <div className="absolute top-1/3 left-1/3 w-24 h-24 bg-violet-400/40 rounded-lg float-element" />
+                        <div
+                          className="absolute bottom-1/3 right-1/3 w-24 h-24 bg-violet-400/40 rounded-lg float-element"
+                          style={{ animationDelay: "2s" }}
+                        />
+                      </div>
 
-                    {/* Layer 1 - Front */}
-                    <div className="absolute inset-0 bg-slate-400 rounded-lg shadow-sm layer-1" />
+                      {/* Foreground layer */}
+                      <div
+                        className="layer absolute inset-0"
+                        style={{ transform: "translateZ(60px)" }}
+                      >
+                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-violet-300/60 rounded-lg pulse-element" />
+                      </div>
 
-                    {/* Decorative elements */}
-                    <div className="absolute inset-4 flex items-center justify-center">
-                      <div className="w-16 h-16 border-2 border-slate-500/20 rounded-lg" />
-                    </div>
-                    <div className="absolute inset-8 flex items-center justify-center">
-                      <div className="w-8 h-8 border-2 border-slate-500/20 rounded-lg" />
+                      {/* Floating elements */}
+                      <div
+                        className="layer absolute inset-0"
+                        style={{ transform: "translateZ(45px)" }}
+                      >
+                        <div
+                          className="absolute top-1/4 right-1/4 w-8 h-8 bg-violet-200/80 rounded-full float-element"
+                          style={{ animationDelay: "1s" }}
+                        />
+                        <div
+                          className="absolute bottom-1/4 left-1/4 w-8 h-8 bg-violet-200/80 rounded-full float-element"
+                          style={{ animationDelay: "2s" }}
+                        />
+                        <div
+                          className="absolute top-3/4 left-1/4 w-8 h-8 bg-violet-200/80 rounded-full float-element"
+                          style={{ animationDelay: "3s" }}
+                        />
+                        <div
+                          className="absolute top-1/4 left-3/4 w-8 h-8 bg-violet-200/80 rounded-full float-element"
+                          style={{ animationDelay: "4s" }}
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -486,61 +538,110 @@ function App() {
         />
         <DesignSection
           title="Observed Rhythm"
-          description="Observed Rhythm creates visual flow through repeating elements. This dynamic pattern uses varying sizes and spacing to guide the viewer's eye naturally through the design."
-          designPrinciple="Repetition – Reusing visual elements to create consistency."
-          exampleLink="https://www.nngroup.com/articles/rhythm/"
+          description="Observed Rhythm explores how visual elements can create a sense of movement and flow through repeated patterns and synchronized animations. This technique uses timing, spacing, and coordinated motion to create a harmonious visual experience."
+          designPrinciple="Flow & Harmony – Creating visual rhythm through coordinated movement and patterns."
           isListLayout={isListLayout}
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
-              <div className="w-full max-w-[600px] h-[300px] bg-white p-4 relative group">
+              <div className="w-full max-w-[600px] h-[300px] bg-white p-4 relative">
                 <style>
                   {`
-                    @keyframes flowRight {
-                      0% { transform: translateX(-100%); }
-                      100% { transform: translateX(100%); }
+                    @keyframes wave {
+                      0%, 100% { transform: translateY(0) scale(1); }
+                      50% { transform: translateY(-20px) scale(1.1); }
                     }
                     @keyframes pulse {
-                      0%, 100% { transform: scale(1); opacity: 0.7; }
-                      50% { transform: scale(1.1); opacity: 1; }
+                      0%, 100% { transform: scale(1); opacity: 0.6; }
+                      50% { transform: scale(1.2); opacity: 1; }
                     }
-                    .flow-element {
-                      animation: flowRight 8s linear infinite;
+                    @keyframes rotate {
+                      0% { transform: rotate(0deg); }
+                      100% { transform: rotate(360deg); }
+                    }
+                    @keyframes flow {
+                      0% { transform: translateX(-100%) translateY(0); }
+                      50% { transform: translateX(0) translateY(-20px); }
+                      100% { transform: translateX(100%) translateY(0); }
+                    }
+                    @keyframes orbit {
+                      0% { transform: translate(0, 0) rotate(0deg); }
+                      25% { transform: translate(20px, -20px) rotate(-90deg); }
+                      50% { transform: translate(0, -40px) rotate(-180deg); }
+                      75% { transform: translate(-20px, -20px) rotate(-270deg); }
+                      100% { transform: translate(0, 0) rotate(-360deg); }
+                    }
+                    .wave-element {
+                      animation: wave 3s ease-in-out infinite;
                     }
                     .pulse-element {
                       animation: pulse 2s ease-in-out infinite;
                     }
+                    .rotate-element {
+                      animation: rotate 8s linear infinite;
+                    }
+                    .flow-element {
+                      animation: flow 4s ease-in-out infinite;
+                    }
+                    .orbit-element {
+                      animation: orbit 6s ease-in-out infinite;
+                    }
                   `}
                 </style>
                 <div className="absolute inset-0 flex items-center justify-center">
-                  {/* Main rhythm container */}
-                  <div className="w-full h-48 relative overflow-hidden">
-                    {/* Flowing elements */}
-                    <div className="absolute inset-0 flex items-center gap-8">
-                      {[...Array(5)].map((_, i) => (
+                  <div className="relative w-96 h-96">
+                    {/* Central rotating element */}
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="w-32 h-32 bg-indigo-500/40 rounded-full orbit-element">
+                        <div className="absolute inset-3 bg-fuchsia-400/60 rounded-full pulse-element" />
+                      </div>
+                    </div>
+
+                    {/* Orbiting elements */}
+                    <div className="absolute inset-0">
+                      {[...Array(6)].map((_, i) => (
                         <div
                           key={i}
-                          className="flow-element w-16 h-16 bg-blue-500/80 rounded-lg"
-                          style={{ animationDelay: `${i * 1.6}s` }}
+                          className="absolute w-12 h-12 rounded-full wave-element"
+                          style={{
+                            left: `${50 + 45 * Math.cos((i * Math.PI) / 3)}%`,
+                            top: `${50 + 45 * Math.sin((i * Math.PI) / 3)}%`,
+                            animationDelay: `${i * 0.5}s`,
+                            backgroundColor: `rgba(${
+                              i % 2 === 0 ? "99, 102, 241" : "236, 72, 153"
+                            }, 0.4)`,
+                          }}
                         />
                       ))}
                     </div>
 
-                    {/* Pulsing rhythm markers */}
-                    <div className="absolute inset-0 flex items-center justify-between px-8">
+                    {/* Flowing elements */}
+                    <div className="absolute inset-0 overflow-hidden">
                       {[...Array(3)].map((_, i) => (
                         <div
                           key={i}
-                          className="pulse-element w-8 h-8 bg-rose-500/80 rounded-full"
-                          style={{ animationDelay: `${i * 0.7}s` }}
+                          className="absolute w-16 h-16 rounded-lg flow-element"
+                          style={{
+                            top: `${30 + i * 20}%`,
+                            animationDelay: `${i * 1.5}s`,
+                            backgroundColor: `rgba(${
+                              i === 0
+                                ? "234, 179, 8"
+                                : i === 1
+                                ? "34, 197, 94"
+                                : "239, 68, 68"
+                            }, 0.3)`,
+                          }}
                         />
                       ))}
                     </div>
+
+                    {/* Pulsing border */}
+                    <div className="absolute inset-0 border-4 border-indigo-500/20 rounded-full pulse-element" />
                   </div>
                 </div>
               </div>
             </div>
           }
-          fontFamily="roboto"
         />
         <DesignSection
           title="Ambiguous Scale"
@@ -741,23 +842,35 @@ function App() {
               <div className="w-full max-w-[600px] h-[300px] bg-white p-4 relative">
                 <style>
                   {`
+                    @keyframes orbit {
+                      0% { transform: translate(0, 0) rotate(0deg); }
+                      25% { transform: translate(20px, -20px) rotate(-90deg); }
+                      50% { transform: translate(0, -40px) rotate(-180deg); }
+                      75% { transform: translate(-20px, -20px) rotate(-270deg); }
+                      100% { transform: translate(0, 0) rotate(-360deg); }
+                    }
                     @keyframes pulse {
                       0%, 100% { transform: scale(1); opacity: 0.6; }
-                      50% { transform: scale(1.1); opacity: 1; }
+                      50% { transform: scale(1.2); opacity: 1; }
                     }
                     @keyframes drawLine {
                       0% { stroke-dashoffset: 1000; }
                       100% { stroke-dashoffset: 0; }
                     }
-                    @keyframes float {
-                      0%, 100% { transform: translateY(0); }
-                      50% { transform: translateY(-10px); }
+                    .orbit-element {
+                      animation: orbit 20s linear infinite;
                     }
-                    .node {
+                    .orbit-element:nth-child(2) {
+                      animation-delay: -5s;
+                    }
+                    .orbit-element:nth-child(3) {
+                      animation-delay: -10s;
+                    }
+                    .orbit-element:nth-child(4) {
+                      animation-delay: -15s;
+                    }
+                    .pulse-element {
                       animation: pulse 3s ease-in-out infinite;
-                    }
-                    .node-float {
-                      animation: float 4s ease-in-out infinite;
                     }
                     .connection {
                       stroke-dasharray: 1000;
@@ -768,106 +881,76 @@ function App() {
                 </style>
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="relative w-64 h-64">
-                    {/* Network structure */}
+                    {/* Center hub */}
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                      <div className="w-16 h-16 bg-indigo-600/60 rounded-full pulse-element" />
+                    </div>
+
+                    {/* Orbiting elements */}
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                      <div className="orbit-element absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                        <div className="w-8 h-8 bg-indigo-400/60 rounded-full pulse-element" />
+                      </div>
+                      <div className="orbit-element absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                        <div className="w-8 h-8 bg-indigo-400/60 rounded-full pulse-element" />
+                      </div>
+                      <div className="orbit-element absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                        <div className="w-8 h-8 bg-indigo-400/60 rounded-full pulse-element" />
+                      </div>
+                      <div className="orbit-element absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                        <div className="w-8 h-8 bg-indigo-400/60 rounded-full pulse-element" />
+                      </div>
+                    </div>
+
+                    {/* Connection lines */}
                     <svg className="absolute inset-0" viewBox="0 0 200 200">
-                      {/* Connections */}
+                      <circle
+                        cx="100"
+                        cy="100"
+                        r="60"
+                        fill="none"
+                        stroke="#818CF8"
+                        strokeWidth="2"
+                        strokeDasharray="5,5"
+                        className="connection"
+                        style={{ opacity: 0.3 }}
+                      />
                       <line
-                        x1="50"
-                        y1="50"
-                        x2="150"
-                        y2="50"
-                        className="connection stroke-blue-400/40"
+                        x1="100"
+                        y1="100"
+                        x2="160"
+                        y2="100"
+                        className="connection stroke-indigo-400/40"
                         strokeWidth="2"
                       />
                       <line
-                        x1="50"
-                        y1="50"
-                        x2="50"
-                        y2="150"
-                        className="connection stroke-blue-400/40"
+                        x1="100"
+                        y1="100"
+                        x2="40"
+                        y2="100"
+                        className="connection stroke-indigo-400/40"
                         strokeWidth="2"
                         style={{ animationDelay: "0.5s" }}
                       />
                       <line
-                        x1="150"
-                        y1="50"
-                        x2="150"
-                        y2="150"
-                        className="connection stroke-blue-400/40"
+                        x1="100"
+                        y1="100"
+                        x2="100"
+                        y2="40"
+                        className="connection stroke-indigo-400/40"
                         strokeWidth="2"
                         style={{ animationDelay: "1s" }}
                       />
                       <line
-                        x1="50"
-                        y1="150"
-                        x2="150"
-                        y2="150"
-                        className="connection stroke-blue-400/40"
+                        x1="100"
+                        y1="100"
+                        x2="100"
+                        y2="160"
+                        className="connection stroke-indigo-400/40"
                         strokeWidth="2"
                         style={{ animationDelay: "1.5s" }}
-                      />
-                      <line
-                        x1="50"
-                        y1="50"
-                        x2="150"
-                        y2="150"
-                        className="connection stroke-blue-400/40"
-                        strokeWidth="2"
-                        style={{ animationDelay: "2s" }}
-                      />
-                      <line
-                        x1="150"
-                        y1="50"
-                        x2="50"
-                        y2="150"
-                        className="connection stroke-blue-400/40"
-                        strokeWidth="2"
-                        style={{ animationDelay: "2.5s" }}
                       />
                     </svg>
-
-                    {/* Nodes */}
-                    <div className="absolute top-1/4 left-1/4 node">
-                      <div className="w-8 h-8 bg-blue-500/60 rounded-full node-float" />
-                    </div>
-                    <div
-                      className="absolute top-1/4 right-1/4 node"
-                      style={{ animationDelay: "0.5s" }}
-                    >
-                      <div
-                        className="w-8 h-8 bg-blue-500/60 rounded-full node-float"
-                        style={{ animationDelay: "1s" }}
-                      />
-                    </div>
-                    <div
-                      className="absolute bottom-1/4 left-1/4 node"
-                      style={{ animationDelay: "1s" }}
-                    >
-                      <div
-                        className="w-8 h-8 bg-blue-500/60 rounded-full node-float"
-                        style={{ animationDelay: "2s" }}
-                      />
-                    </div>
-                    <div
-                      className="absolute bottom-1/4 right-1/4 node"
-                      style={{ animationDelay: "1.5s" }}
-                    >
-                      <div
-                        className="w-8 h-8 bg-blue-500/60 rounded-full node-float"
-                        style={{ animationDelay: "3s" }}
-                      />
-                    </div>
-
-                    {/* Center node */}
-                    <div
-                      className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 node"
-                      style={{ animationDelay: "2s" }}
-                    >
-                      <div
-                        className="w-12 h-12 bg-blue-600/60 rounded-full node-float"
-                        style={{ animationDelay: "1.5s" }}
-                      />
-                    </div>
                   </div>
                 </div>
               </div>
