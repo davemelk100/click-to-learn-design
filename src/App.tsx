@@ -10,10 +10,13 @@ function App() {
     <div className="min-h-screen w-full">
       <Header isListLayout={isListLayout} setIsListLayout={setIsListLayout} />
       {/* Section Break */}
-      <div id="design" className="col-span-full py-24 bg-black text-white">
-        <div className="flex items-center justify-center gap-2 group">
+      <div
+        id="design"
+        className="col-span-full py-12 bg-black text-white shadow-[0_4px_20px_rgba(0,0,0,0.3)]"
+      >
+        <div className="flex items-center justify-center gap-2">
           <h2 className="text-2xl font-bold text-white font-dm-sans leading-none">
-            Design
+            DESIGN
           </h2>
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
@@ -22,7 +25,7 @@ function App() {
             <ArrowUp className="w-6 h-6 text-white" />
           </button>
         </div>
-        <p className="text-white text-center mt-2 font-avenir">
+        <p className="text-white text-center mt-1 font-avenir text-sm">
           Explore the fundamental principles that shape effective design
         </p>
       </div>
@@ -541,46 +544,71 @@ function App() {
         />
         <DesignSection
           title="Ambiguous Scale"
-          description="Ambiguous Scale challenges perception by presenting elements whose size relationships are intentionally unclear. This creates an engaging visual puzzle that draws viewers in to resolve the spatial ambiguity, demonstrating how scale can be used to create visual hierarchy and guide attention."
-          designPrinciple="Scale & Perception – Using relative size to create visual hierarchy and relationships between elements."
+          description="Ambiguous Scale plays with our perception of size by creating relationships between elements that make their true scale unclear. This technique uses context and relative positioning to create visual interest and challenge our assumptions about size."
+          designPrinciple="Relative Scale – Creating uncertainty about true size through contextual relationships."
           exampleLink="https://www.microsoft.com/en-us/microsoft-365-life-hacks/presentations/scale-in-graphic-design"
           isListLayout={isListLayout}
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
-              <div className="w-full max-w-[600px] h-[300px] bg-white p-4 relative group">
+              <div className="w-full max-w-[600px] h-[300px] bg-white p-4 relative">
                 <style>
                   {`
                     @keyframes scaleShift {
-                      0% { transform: scale(0.8) translateY(20px); }
-                      50% { transform: scale(1.2) translateY(-20px); }
-                      100% { transform: scale(0.8) translateY(20px); }
+                      0% { transform: scale(1) translateY(0); }
+                      25% { transform: scale(1.2) translateY(-10px); }
+                      50% { transform: scale(1) translateY(0); }
+                      75% { transform: scale(0.8) translateY(10px); }
+                      100% { transform: scale(1) translateY(0); }
                     }
-                    @keyframes rotatePerspective {
-                      0% { transform: perspective(1000px) rotateY(0deg) rotateX(0deg); }
-                      50% { transform: perspective(1000px) rotateY(15deg) rotateX(10deg); }
-                      100% { transform: perspective(1000px) rotateY(0deg) rotateX(0deg); }
+                    @keyframes rotate3D {
+                      0% { transform: rotateX(20deg) rotateY(0deg); }
+                      100% { transform: rotateX(20deg) rotateY(360deg); }
+                    }
+                    @keyframes float {
+                      0%, 100% { transform: translateY(0); }
+                      50% { transform: translateY(-10px); }
+                    }
+                    .scale-container {
+                      animation: rotate3D 20s linear infinite;
+                      transform-style: preserve-3d;
+                      perspective: 1000px;
                     }
                     .scale-element {
-                      animation: scaleShift 6s ease-in-out infinite;
+                      transform-style: preserve-3d;
+                      transition: all 0.3s ease;
                     }
-                    .perspective-container {
-                      animation: rotatePerspective 8s ease-in-out infinite;
+                    .floating-element {
+                      animation: float 4s ease-in-out infinite;
+                    }
+                    .scale-shift {
+                      animation: scaleShift 8s ease-in-out infinite;
                     }
                   `}
                 </style>
                 <div className="absolute inset-0 flex items-center justify-center">
-                  {/* Main container with perspective */}
-                  <div className="perspective-container w-64 h-64 relative">
-                    {/* Reference squares */}
-                    <div className="absolute inset-0 grid grid-cols-2 gap-2">
-                      {[...Array(4)].map((_, i) => (
-                        <div key={i} className="bg-gray-200/50 rounded-lg" />
-                      ))}
-                    </div>
+                  <div className="relative w-64 h-64">
+                    {/* Main scale structure */}
+                    <div className="scale-container absolute inset-0">
+                      {/* Large reference square */}
+                      <div className="scale-element w-48 h-48 bg-emerald-500/20 rounded-lg absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
 
-                    {/* Ambiguous element */}
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="scale-element w-24 h-24 bg-blue-500/80 rounded-lg shadow-lg" />
+                      {/* Medium square that appears to change size */}
+                      <div className="scale-element w-32 h-32 bg-emerald-500/40 rounded-lg absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-shift" />
+
+                      {/* Small squares that provide context */}
+                      <div className="scale-element w-16 h-16 bg-emerald-500/60 rounded-lg absolute top-1/4 left-1/4 floating-element" />
+                      <div
+                        className="scale-element w-16 h-16 bg-emerald-500/60 rounded-lg absolute top-1/4 right-1/4 floating-element"
+                        style={{ animationDelay: "2s" }}
+                      />
+                      <div
+                        className="scale-element w-16 h-16 bg-emerald-500/60 rounded-lg absolute bottom-1/4 left-1/4 floating-element"
+                        style={{ animationDelay: "1s" }}
+                      />
+                      <div
+                        className="scale-element w-16 h-16 bg-emerald-500/60 rounded-lg absolute bottom-1/4 right-1/4 floating-element"
+                        style={{ animationDelay: "3s" }}
+                      />
                     </div>
                   </div>
                 </div>
@@ -705,98 +733,141 @@ function App() {
 
         <DesignSection
           title="Designing Networks"
-          description="Designing Networks explores how to create visual representations of connected systems and relationships. By using nodes, connections, and strategic layout, we can create clear and intuitive visualizations of complex networks and their interactions."
-          designPrinciple="Connection & Flow – Using visual elements to represent relationships and interactions in a network."
-          exampleLink="https://www.lucidchart.com/pages/network-diagram"
+          description="Designing Networks explores how elements can be connected to create meaningful relationships and patterns. This technique uses nodes and links to visualize connections, hierarchies, and flows in a system."
+          designPrinciple="Connection & Flow – Creating visual relationships between elements to show structure and interaction."
           isListLayout={isListLayout}
           visualComponent={
             <div className="flex items-center justify-center w-full h-full">
-              <div className="w-full max-w-[600px] h-[300px] bg-white p-4 relative group">
+              <div className="w-full max-w-[600px] h-[300px] bg-white p-4 relative">
                 <style>
                   {`
-                    @keyframes pulseNode {
-                      0%, 100% { transform: scale(1); }
-                      50% { transform: scale(1.2); }
+                    @keyframes pulse {
+                      0%, 100% { transform: scale(1); opacity: 0.6; }
+                      50% { transform: scale(1.1); opacity: 1; }
                     }
-                    @keyframes flowData {
-                      0% { stroke-dashoffset: 100; }
+                    @keyframes drawLine {
+                      0% { stroke-dashoffset: 1000; }
                       100% { stroke-dashoffset: 0; }
                     }
-                    .network-node {
-                      animation: pulseNode 6s ease-in-out infinite;
+                    @keyframes float {
+                      0%, 100% { transform: translateY(0); }
+                      50% { transform: translateY(-10px); }
                     }
-                    .flow-path {
-                      stroke-dasharray: 10;
-                      stroke-dashoffset: 100;
-                      animation: flowData 4s linear infinite;
+                    .node {
+                      animation: pulse 3s ease-in-out infinite;
+                    }
+                    .node-float {
+                      animation: float 4s ease-in-out infinite;
+                    }
+                    .connection {
+                      stroke-dasharray: 1000;
+                      stroke-dashoffset: 1000;
+                      animation: drawLine 3s linear forwards;
                     }
                   `}
                 </style>
                 <div className="absolute inset-0 flex items-center justify-center">
-                  {/* Network visualization */}
                   <div className="relative w-64 h-64">
-                    {/* Nodes */}
-                    <div className="absolute inset-0">
-                      {/* Center node */}
-                      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-rose-500 rounded-full network-node" />
-
-                      {/* Outer nodes */}
-                      <div
-                        className="absolute top-4 left-1/2 -translate-x-1/2 w-6 h-6 bg-rose-400 rounded-full network-node"
+                    {/* Network structure */}
+                    <svg className="absolute inset-0" viewBox="0 0 200 200">
+                      {/* Connections */}
+                      <line
+                        x1="50"
+                        y1="50"
+                        x2="150"
+                        y2="50"
+                        className="connection stroke-blue-400/40"
+                        strokeWidth="2"
+                      />
+                      <line
+                        x1="50"
+                        y1="50"
+                        x2="50"
+                        y2="150"
+                        className="connection stroke-blue-400/40"
+                        strokeWidth="2"
                         style={{ animationDelay: "0.5s" }}
                       />
-                      <div
-                        className="absolute bottom-4 left-1/2 -translate-x-1/2 w-6 h-6 bg-rose-400 rounded-full network-node"
+                      <line
+                        x1="150"
+                        y1="50"
+                        x2="150"
+                        y2="150"
+                        className="connection stroke-blue-400/40"
+                        strokeWidth="2"
                         style={{ animationDelay: "1s" }}
                       />
-                      <div
-                        className="absolute top-1/2 left-4 -translate-y-1/2 w-6 h-6 bg-rose-400 rounded-full network-node"
+                      <line
+                        x1="50"
+                        y1="150"
+                        x2="150"
+                        y2="150"
+                        className="connection stroke-blue-400/40"
+                        strokeWidth="2"
                         style={{ animationDelay: "1.5s" }}
                       />
+                      <line
+                        x1="50"
+                        y1="50"
+                        x2="150"
+                        y2="150"
+                        className="connection stroke-blue-400/40"
+                        strokeWidth="2"
+                        style={{ animationDelay: "2s" }}
+                      />
+                      <line
+                        x1="150"
+                        y1="50"
+                        x2="50"
+                        y2="150"
+                        className="connection stroke-blue-400/40"
+                        strokeWidth="2"
+                        style={{ animationDelay: "2.5s" }}
+                      />
+                    </svg>
+
+                    {/* Nodes */}
+                    <div className="absolute top-1/4 left-1/4 node">
+                      <div className="w-8 h-8 bg-blue-500/60 rounded-full node-float" />
+                    </div>
+                    <div
+                      className="absolute top-1/4 right-1/4 node"
+                      style={{ animationDelay: "0.5s" }}
+                    >
                       <div
-                        className="absolute top-1/2 right-4 -translate-y-1/2 w-6 h-6 bg-rose-400 rounded-full network-node"
+                        className="w-8 h-8 bg-blue-500/60 rounded-full node-float"
+                        style={{ animationDelay: "1s" }}
+                      />
+                    </div>
+                    <div
+                      className="absolute bottom-1/4 left-1/4 node"
+                      style={{ animationDelay: "1s" }}
+                    >
+                      <div
+                        className="w-8 h-8 bg-blue-500/60 rounded-full node-float"
                         style={{ animationDelay: "2s" }}
                       />
                     </div>
+                    <div
+                      className="absolute bottom-1/4 right-1/4 node"
+                      style={{ animationDelay: "1.5s" }}
+                    >
+                      <div
+                        className="w-8 h-8 bg-blue-500/60 rounded-full node-float"
+                        style={{ animationDelay: "3s" }}
+                      />
+                    </div>
 
-                    {/* Connections */}
-                    <svg className="absolute inset-0" viewBox="0 0 100 100">
-                      {/* Center to top */}
-                      <path
-                        d="M 50,50 L 50,20"
-                        className="flow-path"
-                        stroke="#FB7185"
-                        strokeWidth="2"
-                        fill="none"
-                      />
-                      {/* Center to bottom */}
-                      <path
-                        d="M 50,50 L 50,80"
-                        className="flow-path"
-                        stroke="#FB7185"
-                        strokeWidth="2"
-                        fill="none"
-                        style={{ animationDelay: "0.5s" }}
-                      />
-                      {/* Center to left */}
-                      <path
-                        d="M 50,50 L 20,50"
-                        className="flow-path"
-                        stroke="#FB7185"
-                        strokeWidth="2"
-                        fill="none"
-                        style={{ animationDelay: "1s" }}
-                      />
-                      {/* Center to right */}
-                      <path
-                        d="M 50,50 L 80,50"
-                        className="flow-path"
-                        stroke="#FB7185"
-                        strokeWidth="2"
-                        fill="none"
+                    {/* Center node */}
+                    <div
+                      className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 node"
+                      style={{ animationDelay: "2s" }}
+                    >
+                      <div
+                        className="w-12 h-12 bg-blue-600/60 rounded-full node-float"
                         style={{ animationDelay: "1.5s" }}
                       />
-                    </svg>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -806,10 +877,13 @@ function App() {
       </div>
 
       {/* Section Break */}
-      <div id="designs" className="col-span-full py-24 bg-black text-white">
-        <div className="flex items-center justify-center gap-2 group">
+      <div
+        id="designs"
+        className="col-span-full py-12 bg-black text-white shadow-[0_4px_20px_rgba(0,0,0,0.3)]"
+      >
+        <div className="flex items-center justify-center gap-2">
           <h2 className="text-2xl font-bold text-white font-dm-sans leading-none">
-            Designs
+            DESIGNS
           </h2>
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
@@ -818,7 +892,7 @@ function App() {
             <ArrowUp className="w-6 h-6 text-white" />
           </button>
         </div>
-        <p className="text-white text-center mt-2 font-avenir">
+        <p className="text-white text-center mt-1 font-avenir text-sm">
           Landmark achievements that changed the landscape of design.
         </p>
       </div>
@@ -998,10 +1072,13 @@ function App() {
       </div>
 
       {/* Section Break */}
-      <div id="designers" className="col-span-full py-24 bg-black text-white">
-        <div className="flex items-center justify-center gap-2 group">
+      <div
+        id="designers"
+        className="col-span-full py-12 bg-black text-white shadow-[0_4px_20px_rgba(0,0,0,0.3)]"
+      >
+        <div className="flex items-center justify-center gap-2">
           <h2 className="text-2xl font-bold text-white font-dm-sans leading-none">
-            Designers
+            DESIGNERS
           </h2>
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
@@ -1010,7 +1087,7 @@ function App() {
             <ArrowUp className="w-6 h-6 text-white" />
           </button>
         </div>
-        <p className="text-white text-center mt-2 font-avenir">
+        <p className="text-white text-center mt-1 font-avenir text-sm">
           Meet the visionaries who have shaped the world of design
         </p>
       </div>
