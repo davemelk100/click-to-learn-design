@@ -422,7 +422,7 @@ function App() {
         />
         <DesignSection
           title="Rule of Thirds"
-          description="The Rule of Thirds divides the canvas into a 3x3 grid, creating natural focal points where the lines intersect. This technique helps create balanced, dynamic compositions that guide the viewer's eye."
+          description="The Rule of Thirds divides the canvas into a 3x3 grid, creating natural focal points where the lines intersect. This technique creates balanced, dynamic compositions."
           designPrinciple="Balance & Focus – Using grid intersections to create natural focal points."
           exampleLink="https://www.photographymad.com/pages/view/rule-of-thirds"
           exampleLabel="Photography Mad's guide to using the Rule of Thirds in photography"
@@ -683,7 +683,7 @@ function App() {
         />
         <DesignSection
           title="Ambiguous Scale"
-          description="Ambiguous Scale plays with our perception of size and proportion, creating visual interest through uncertainty about true dimensions. This technique uses relative scale and context to create dynamic compositions."
+          description="Ambiguous Scale plays with our perception of size and proportion, creating visual interest through uncertainty about true dimensions. Relative scale and context to creates dynamic compositions."
           designPrinciple="Perception & Context – Using relative scale to create visual interest and uncertainty."
           exampleLink="https://www.microsoft.com/en-us/microsoft-365-life-hacks/presentations/scale-in-graphic-design"
           exampleLabel="Microsoft's guide to using scale and proportion in presentations"
@@ -779,7 +779,7 @@ function App() {
       >
         <DesignSection
           title="Boston Globe Redesign"
-          description="The Boston Globe's 2011 responsive redesign, led by Ethan Marcotte and Filament Group, marked a pivotal moment in web design. As the first major news site to implement responsive design, it demonstrated how content could adapt seamlessly across devices while maintaining readability and hierarchy."
+          description="Ethan Marcotte and Filament Group's 2011 redesign pioneered responsive web design for news sites, showing how content could adapt across devices while preserving readability and hierarchy."
           designPrinciple="Responsive Design - Creating fluid layouts that adapt to any screen size while maintaining content integrity"
           exampleLink="https://zeldman.com/2011/09/15/boston-globes-responsive-redesign-discuss/"
           visualComponent={
@@ -796,7 +796,7 @@ function App() {
         />
         <DesignSection
           title="Typesetting"
-          description="The origins of typesetting trace back to Johannes Gutenberg's invention of movable type in the 1440s. This revolutionary technology transformed how information was shared, making books more accessible and standardized. The mechanical precision of metal type and the careful arrangement of letters laid the foundation for modern typography and design principles."
+          description="Johannes Gutenberg's 1440s invention of movable type revolutionized information sharing. Its mechanical precision and systematic arrangement laid the groundwork for modern typography."
           designPrinciple="Precision & Standardization – Creating consistent, reproducible text layouts through systematic arrangement."
           visualComponent={
             <div className="flex items-center justify-center h-full p-4">
@@ -812,7 +812,7 @@ function App() {
         />
         <DesignSection
           title="Helvetica"
-          description="Helvetica, designed by Max Miedinger in 1957, is one of the most influential typefaces in history. Its clean, neutral design made it the go-to choice for corporate and institutional communication. The font's versatility and readability have made it a cornerstone of modern typography, appearing everywhere from corporate logos to public signage."
+          description="Max Miedinger's 1957 typeface revolutionized typography with its clean, neutral design. Its versatility and readability made it essential for corporate communication and public signage."
           designPrinciple="Clarity & Universality – Creating a typeface that works everywhere while maintaining perfect legibility."
           exampleLink="https://www.moma.org/collection/works/139296"
           visualComponent={
@@ -829,7 +829,7 @@ function App() {
         />
         <DesignSection
           title="FedEx Logo"
-          description="The FedEx logo, designed by Lindon Leader in 1994, is a masterclass in negative space design. The hidden arrow between the 'E' and 'x' represents forward movement and precision, perfectly aligning with FedEx's brand values. This subtle yet powerful design element has made it one of the most recognized and awarded logos in history."
+          description="Lindon Leader's 1994 design uses negative space to create a hidden arrow between 'E' and 'x', symbolizing movement and precision. This subtle innovation made it one of history's most celebrated logos."
           designPrinciple="Negative Space - Using the space between elements to create hidden meaning and visual interest"
           exampleLink="https://logo.com/blog/fedex-logo"
           visualComponent={

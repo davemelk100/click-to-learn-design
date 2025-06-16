@@ -84,7 +84,7 @@ const DesignSection: React.FC<DesignSectionProps> = ({
 
   return (
     <div className="border border-gray-200 overflow-hidden shadow hover:shadow-lg transition-shadow duration-300">
-      <div className="relative h-[650px]">
+      <div className="relative h-[550px]">
         <div
           className="absolute inset-0 flex flex-col"
           style={{
@@ -95,16 +95,10 @@ const DesignSection: React.FC<DesignSectionProps> = ({
           <div className="p-6 flex-none">
             <h3 className="text-xl font-semibold mb-2">{title}</h3>
             <p className="text-gray-600 mb-4">{description}</p>
-            <div className="bg-gray-50 p-4 mb-2">
-              <p className="text-sm text-gray-700 italic">{designPrinciple}</p>
-            </div>
           </div>
           <div className="flex-1 bg-white relative">
             {visualComponent}
-            {exampleLink && (
-              <div className="absolute bottom-4 right-4">
-                </div>
-            )}
+            {exampleLink && <div className="absolute bottom-4 right-4"></div>}
           </div>
         </div>
       </div>
