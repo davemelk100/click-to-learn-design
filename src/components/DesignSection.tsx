@@ -103,16 +103,7 @@ const DesignSection: React.FC<DesignSectionProps> = ({
             {visualComponent}
             {exampleLink && (
               <div className="absolute bottom-4 right-4">
-                <a
-                  href={exampleLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center text-sm text-blue-600 hover:text-blue-800 transition-colors bg-white/80 px-3 py-1.5 rounded-full shadow-sm hover:shadow-md"
-                >
-                  <span>{exampleLabel || `See ${title} in action`}</span>
-                  <ArrowUpRight className="w-4 h-4 ml-1" />
-                </a>
-              </div>
+                </div>
             )}
           </div>
         </div>
