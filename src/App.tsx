@@ -970,7 +970,7 @@ function App() {
         />
         <DesignSection
           title="Max Miedinger"
-          description="Max Miedinger was a Swiss typeface designer best known for creating Helvetica in 1957. His work revolutionized typography and became one of the most widely used typefaces in the world. His design philosophy emphasized clarity, neutrality, and timelessness, principles that continue to influence modern typography."
+          description="Swiss typeface designer who created Helvetica in 1957. His emphasis on clarity and neutrality revolutionized typography, making Helvetica one of the world's most influential typefaces."
           designPrinciple="Clarity and neutrality through precise typographic design"
           visualComponent={
             <div className="w-full h-full flex items-center justify-center p-4">
