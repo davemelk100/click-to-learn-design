@@ -796,6 +796,118 @@ function App() {
             </div>
           }
         />
+        <DesignSection
+          title="Golden Ratio"
+          description="The Golden Ratio (φ ≈ 1.618) is a mathematical proportion found throughout nature and art. When applied to design, it creates harmonious compositions that feel naturally balanced and aesthetically pleasing."
+          designPrinciple="Harmony & Proportion – Using mathematical relationships to create naturally pleasing compositions."
+          exampleLink="https://www.interaction-design.org/literature/article/the-golden-ratio-principles-of-form-and-layout"
+          exampleLabel="Golden Ratio in Design - Interaction Design Foundation"
+          visualComponent={
+            <div className="flex items-center justify-center w-full -mt-8">
+              <div className="w-full max-w-[600px] h-[250px] bg-white px-4 pt-0 relative">
+                <style>
+                  {`
+                    @keyframes rotate {
+                      0% { transform: rotate(0deg); }
+                      100% { transform: rotate(360deg); }
+                    }
+                    @keyframes scale {
+                      0%, 100% { transform: scale(1); }
+                      50% { transform: scale(1.1); }
+                    }
+                    @keyframes fade {
+                      0%, 100% { opacity: 0.3; }
+                      50% { opacity: 0.8; }
+                    }
+                    .rotate-element {
+                      animation: rotate 20s linear infinite;
+                      transform-origin: center;
+                    }
+                    .scale-element {
+                      animation: scale 4s ease-in-out infinite;
+                    }
+                    .fade-element {
+                      animation: fade 3s ease-in-out infinite;
+                    }
+                  `}
+                </style>
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="relative w-[min(90%,_16rem)] h-[min(90%,_16rem)]">
+                    {/* Outer golden rectangle */}
+                    <div className="absolute inset-0 border-2 border-amber-400/40 rounded-lg fade-element" />
+
+                    {/* Rotating golden spiral */}
+                    <div className="absolute inset-0 rotate-element">
+                      <svg className="w-full h-full" viewBox="0 0 100 100">
+                        <path
+                          d="M 50,50 L 50,30 A 20,20 0 0 1 70,50 L 50,50 A 20,20 0 0 1 50,30 A 12,12 0 0 1 62,42 L 50,50 A 12,12 0 0 1 50,38 A 7,7 0 0 1 57,45 L 50,50 A 7,7 0 0 1 50,43 A 4,4 0 0 1 54,47 L 50,50 A 4,4 0 0 1 50,46 A 2,2 0 0 1 52,48 L 50,50"
+                          fill="none"
+                          stroke="#D4AF37"
+                          strokeWidth="1"
+                          className="fade-element"
+                        />
+                      </svg>
+                    </div>
+
+                    {/* Nested golden rectangles */}
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[61.8%] h-[100%] border border-amber-300/40 scale-element" />
+                    <div
+                      className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[38.2%] h-[61.8%] border border-amber-300/40 scale-element"
+                      style={{ animationDelay: "0.5s" }}
+                    />
+                    <div
+                      className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[23.6%] h-[38.2%] border border-amber-300/40 scale-element"
+                      style={{ animationDelay: "1s" }}
+                    />
+
+                    {/* Golden ratio points */}
+                    <div className="absolute top-1/2 left-[38.2%] -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-amber-400/60 rounded-full scale-element" />
+                    <div
+                      className="absolute top-1/2 left-[61.8%] -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-amber-400/60 rounded-full scale-element"
+                      style={{ animationDelay: "0.5s" }}
+                    />
+
+                    {/* Connecting lines */}
+                    <svg
+                      className="absolute inset-0 w-full h-full"
+                      style={{ pointerEvents: "none" }}
+                    >
+                      <line
+                        x1="38.2%"
+                        y1="0"
+                        x2="38.2%"
+                        y2="100%"
+                        className="stroke-amber-200"
+                        strokeWidth="0.5"
+                      />
+                      <line
+                        x1="61.8%"
+                        y1="0"
+                        x2="61.8%"
+                        y2="100%"
+                        className="stroke-amber-200"
+                        strokeWidth="0.5"
+                      />
+                      <circle
+                        cx="50%"
+                        cy="50%"
+                        r="40%"
+                        className="stroke-amber-200"
+                        strokeWidth="0.5"
+                        fill="none"
+                      />
+                    </svg>
+
+                    {/* Phi symbol */}
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-amber-400/80 text-2xl font-serif scale-element">
+                      φ
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          }
+        />
       </div>
 
       {/* Section Break: Designs */}
