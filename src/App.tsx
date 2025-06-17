@@ -64,7 +64,7 @@ function App() {
         className={`${
           isListLayout
             ? "grid grid-cols-1 gap-6 max-w-4xl mx-auto px-4 py-8"
-            : "col-span-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-8 gap-12"
+            : "col-span-full grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 p-8 gap-6"
         }`}
       >
         <DesignSection
@@ -75,7 +75,7 @@ function App() {
           exampleLabel="Architectural Drawings: 8 Masterful Parallel Projections"
           visualComponent={
             <div className="flex items-center justify-center w-full">
-              <div className="w-full max-w-[600px] h-[400px] bg-white p-4 relative">
+              <div className="w-full max-w-[600px] h-[250px] bg-white px-4 pt-4 relative">
                 <style>
                   {`
                     @keyframes rotate3D {
@@ -86,8 +86,11 @@ function App() {
                       100% { transform: rotateX(20deg) rotateY(360deg) rotateZ(0deg); }
                     }
                     @keyframes float {
-                      0%, 100% { transform: translateY(0) scale(1); }
-                      50% { transform: translateY(-10px) scale(1.05); }
+                      0% { transform: translate(0, 0); }
+                      25% { transform: translate(10px, 0); }
+                      50% { transform: translate(10px, -10px); }
+                      75% { transform: translate(0, -10px); }
+                      100% { transform: translate(0, 0); }
                     }
                     @keyframes pulse {
                       0%, 100% { opacity: 0.6; }
@@ -220,7 +223,7 @@ function App() {
           exampleLabel="Geometric Patterns in Islamic Art"
           visualComponent={
             <div className="flex items-center justify-center w-full">
-              <div className="w-full max-w-[600px] h-[400px] bg-white p-4 relative">
+              <div className="w-full max-w-[600px] h-[250px] bg-white px-4 pt-4 relative">
                 <style>
                   {`
                     @keyframes rotate3D {
@@ -228,8 +231,11 @@ function App() {
                       100% { transform: rotateX(20deg) rotateY(360deg); }
                     }
                     @keyframes float {
-                      0%, 100% { transform: translateY(0); }
-                      50% { transform: translateY(-10px); }
+                      0% { transform: translate(0, 0); }
+                      25% { transform: translate(10px, 0); }
+                      50% { transform: translate(10px, -10px); }
+                      75% { transform: translate(0, -10px); }
+                      100% { transform: translate(0, 0); }
                     }
                     .interwoven-container {
                       animation: rotate3D 20s linear infinite;
@@ -284,35 +290,21 @@ function App() {
           exampleLabel="Color Theory - Interaction Design Foundation"
           visualComponent={
             <div className="flex items-center justify-center w-full -mt-4">
-              <div className="w-full max-w-[600px] h-[400px] bg-white p-4 relative">
+              <div className="w-full max-w-[600px] h-[250px] bg-white px-4 pt-4 relative">
                 <style>
                   {`
                     @keyframes orbit {
                       0% { transform: rotate(0deg) translateX(60px) rotate(0deg); }
                       100% { transform: rotate(360deg) translateX(60px) rotate(-360deg); }
                     }
-                    @keyframes pulse {
-                      0%, 100% { transform: scale(1); opacity: 0.7; }
-                      50% { transform: scale(1.2); opacity: 1; }
-                    }
-                    @keyframes float {
-                      0%, 100% { transform: translateY(0) rotate(0deg); }
-                      50% { transform: translateY(-20px) rotate(180deg); }
-                    }
                     @keyframes blend {
-                      0% { background-color: rgba(255, 0, 0, 0.4); }
-                      33% { background-color: rgba(0, 0, 255, 0.4); }
-                      66% { background-color: rgba(255, 255, 0, 0.4); }
-                      100% { background-color: rgba(255, 0, 0, 0.4); }
+                      0% { background-color: rgba(0, 255, 255, 0.4); } /* Cyan */
+                      33% { background-color: rgba(255, 0, 255, 0.4); } /* Magenta */
+                      66% { background-color: rgba(255, 255, 0, 0.4); } /* Yellow */
+                      100% { background-color: rgba(0, 255, 255, 0.4); } /* Cyan */
                     }
                     .orbit-element {
                       animation: orbit 8s linear infinite;
-                    }
-                    .pulse-element {
-                      animation: pulse 2s ease-in-out infinite;
-                    }
-                    .float-element {
-                      animation: float 4s ease-in-out infinite;
                     }
                     .blend-element {
                       animation: blend 6s linear infinite;
@@ -327,13 +319,13 @@ function App() {
                     </div>
                   </div>
 
-                  {/* Orbiting primary colors */}
+                  {/* Orbiting CMYK colors */}
                   <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
                     <div
                       className="orbit-element"
                       style={{ animationDuration: "8s" }}
                     >
-                      <div className="w-16 h-16 bg-red-500/40 rounded-full pulse-element" />
+                      <div className="w-16 h-16 bg-cyan-500/40 rounded-full" />
                     </div>
                     <div
                       className="orbit-element"
@@ -342,7 +334,7 @@ function App() {
                         animationDelay: "-2.67s",
                       }}
                     >
-                      <div className="w-16 h-16 bg-blue-500/40 rounded-full pulse-element" />
+                      <div className="w-16 h-16 bg-fuchsia-500/40 rounded-full" />
                     </div>
                     <div
                       className="orbit-element"
@@ -351,29 +343,7 @@ function App() {
                         animationDelay: "-5.33s",
                       }}
                     >
-                      <div className="w-16 h-16 bg-yellow-500/40 rounded-full pulse-element" />
-                    </div>
-                  </div>
-
-                  {/* Floating secondary colors */}
-                  <div className="absolute inset-0">
-                    <div
-                      className="absolute top-1/4 left-1/4 float-element"
-                      style={{ animationDelay: "0s" }}
-                    >
-                      <div className="w-12 h-12 bg-purple-500/40 rounded-full" />
-                    </div>
-                    <div
-                      className="absolute top-1/4 right-1/4 float-element"
-                      style={{ animationDelay: "1s" }}
-                    >
-                      <div className="w-12 h-12 bg-green-500/40 rounded-full" />
-                    </div>
-                    <div
-                      className="absolute bottom-1/4 left-1/4 float-element"
-                      style={{ animationDelay: "2s" }}
-                    >
-                      <div className="w-12 h-12 bg-orange-500/40 rounded-full" />
+                      <div className="w-16 h-16 bg-yellow-500/40 rounded-full" />
                     </div>
                   </div>
 
@@ -428,7 +398,7 @@ function App() {
           exampleLabel="Photography Mad's guide to using the Rule of Thirds in photography"
           visualComponent={
             <div className="flex items-center justify-center w-full">
-              <div className="w-full max-w-[600px] h-[400px] bg-white p-4 relative group">
+              <div className="w-full max-w-[600px] h-[250px] bg-white px-4 pt-4 relative group">
                 <style>
                   {`
                     @keyframes highlightGrid {
@@ -519,8 +489,8 @@ function App() {
           exampleLink="https://www.interaction-design.org/literature/article/repetition-pattern-and-rhythm"
           exampleLabel="Repetition, Pattern, and Rhythm - Interaction Design Foundation"
           visualComponent={
-            <div className="flex items-center justify-center w-full -mt-4">
-              <div className="w-full max-w-[600px] h-[400px] bg-white p-4 relative">
+            <div className="flex items-center justify-center w-full -mt-8">
+              <div className="w-full max-w-[600px] h-[250px] bg-white px-4 pt-0 relative">
                 <style>
                   {`
                     @keyframes pulse {
@@ -554,14 +524,6 @@ function App() {
                   `}
                 </style>
                 <div className="absolute inset-0 flex items-center justify-center">
-                  {/* Central rotating element */}
-                  <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rotate-element">
-                    <div className="w-32 h-32 rounded-full border-4 border-indigo-500/30">
-                      <div className="absolute inset-4 rounded-full border-4 border-purple-500/30" />
-                      <div className="absolute inset-8 rounded-full border-4 border-pink-500/30" />
-                    </div>
-                  </div>
-
                   {/* Orbiting elements */}
                   <div
                     className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rotate-element"
@@ -688,8 +650,8 @@ function App() {
           exampleLink="https://www.microsoft.com/en-us/microsoft-365-life-hacks/presentations/scale-in-graphic-design"
           exampleLabel="Microsoft's guide to using scale and proportion in presentations"
           visualComponent={
-            <div className="flex items-center justify-center w-full -mt-4">
-              <div className="w-full max-w-[600px] h-[400px] bg-white p-4 relative">
+            <div className="flex items-center justify-center w-full -mt-8">
+              <div className="w-full max-w-[600px] h-[250px] bg-white px-4 pt-0 relative">
                 <style>
                   {`
                     @keyframes scaleShift {
@@ -704,8 +666,11 @@ function App() {
                       100% { transform: rotateX(20deg) rotateY(360deg); }
                     }
                     @keyframes float {
-                      0%, 100% { transform: translateY(0); }
-                      50% { transform: translateY(-10px); }
+                      0% { transform: translate(0, 0); }
+                      25% { transform: translate(10px, 0); }
+                      50% { transform: translate(10px, -10px); }
+                      75% { transform: translate(0, -10px); }
+                      100% { transform: translate(0, 0); }
                     }
                     .scale-container {
                       animation: rotate3D 20s linear infinite;
@@ -725,7 +690,7 @@ function App() {
                   `}
                 </style>
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="relative w-64 h-64">
+                  <div className="relative w-48 h-48">
                     {/* Main scale structure */}
                     <div className="scale-container absolute inset-0">
                       {/* Large reference square */}
@@ -755,6 +720,82 @@ function App() {
             </div>
           }
         />
+        <DesignSection
+          title="Negative Space"
+          description="Negative Space focuses on the areas around and between the main elements in a composition. By deliberately using or omitting detail in these spaces, you can highlight, simplify, or add depth to your composition."
+          designPrinciple="Balance & Focus – Using empty space to define and enhance the main elements."
+          exampleLink="https://www.interaction-design.org/literature/topics/negative-space"
+          exampleLabel="Negative Space in Design - Interaction Design Foundation"
+          visualComponent={
+            <div className="flex items-center justify-center w-full -mt-8">
+              <div className="w-full max-w-[600px] h-[250px] bg-white px-4 pt-0 relative">
+                <style>
+                  {`
+                    @keyframes float {
+                      0% { transform: translate(0, 0); }
+                      25% { transform: translate(10px, 0); }
+                      50% { transform: translate(10px, -10px); }
+                      75% { transform: translate(0, -10px); }
+                      100% { transform: translate(0, 0); }
+                    }
+                    @keyframes reveal {
+                      0% { opacity: 0; transform: scale(0.8); }
+                      50% { opacity: 1; transform: scale(1); }
+                      100% { opacity: 0; transform: scale(0.8); }
+                    }
+                    @keyframes highlight {
+                      0% { background-color: rgba(0, 0, 0, 0.1); transform: scale(1); }
+                      50% { background-color: rgba(0, 0, 0, 0.2); transform: scale(1.1); }
+                      100% { background-color: rgba(0, 0, 0, 0.1); transform: scale(1); }
+                    }
+                    .reveal-element {
+                      animation: reveal 6s ease-in-out infinite;
+                    }
+                    .highlight-space {
+                      animation: highlight 4s ease-in-out infinite;
+                    }
+                    .float-element {
+                      animation: float 8s ease-in-out infinite;
+                    }
+                  `}
+                </style>
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="relative w-[min(80%,_12rem)] h-[min(80%,_12rem)]">
+                    {/* Main composition */}
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      {/* Background shape */}
+                      <div className="w-[min(100%,_10rem)] h-[min(100%,_10rem)] bg-black/5 rounded-lg float-element" />
+
+                      {/* Positive space elements */}
+                      <div
+                        className="absolute top-[10%] left-[10%] w-[min(40%,_4rem)] h-[min(40%,_4rem)] bg-black/20 rounded-lg float-element"
+                        style={{ animationDelay: "1s" }}
+                      />
+                      <div
+                        className="absolute bottom-[10%] right-[10%] w-[min(40%,_4rem)] h-[min(40%,_4rem)] bg-black/20 rounded-lg float-element"
+                        style={{ animationDelay: "2s" }}
+                      />
+
+                      {/* Negative space highlight */}
+                      <div className="absolute inset-0 highlight-space rounded-lg" />
+
+                      {/* Revealing elements */}
+                      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 reveal-element">
+                        <div className="w-[min(60%,_6rem)] h-[min(60%,_6rem)] bg-white rounded-lg" />
+                      </div>
+                      <div
+                        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 reveal-element"
+                        style={{ animationDelay: "3s" }}
+                      >
+                        <div className="w-[min(80%,_8rem)] h-[min(80%,_8rem)] bg-white rounded-lg" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          }
+        />
       </div>
 
       {/* Section Break: Designs */}
@@ -774,7 +815,7 @@ function App() {
         className={`${
           isListLayout
             ? "grid grid-cols-1 gap-6 max-w-4xl mx-auto px-4 py-8"
-            : "col-span-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-8 gap-12"
+            : "col-span-full grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 p-8 gap-6"
         }`}
       >
         <DesignSection
@@ -784,7 +825,7 @@ function App() {
           exampleLink="https://zeldman.com/2011/09/15/boston-globes-responsive-redesign-discuss/"
           visualComponent={
             <div className="flex items-center justify-center h-full p-4">
-              <div className="w-[600px] h-[400px]">
+              <div className="w-[450px] h-[280px] pb-8">
                 <img
                   src="https://scholarlykitchen.sspnet.org/wp-content/uploads/2012/09/boston_globe_responsive_website.jpg"
                   alt="The Boston Globe responsive website design"
@@ -800,7 +841,7 @@ function App() {
           designPrinciple="Precision & Standardization – Creating consistent, reproducible text layouts through systematic arrangement."
           visualComponent={
             <div className="flex items-center justify-center h-full p-4">
-              <div className="w-[600px] h-[400px]">
+              <div className="w-[450px] h-[280px] pb-8">
                 <img
                   src="https://static.euronews.com/articles/stories/07/42/08/38/1440x810_cmsv2_1b02e2a8-750a-54d8-9aee-59445f762fbc-7420838.jpg"
                   alt="Gutenberg Bible - Early example of typesetting"
@@ -817,7 +858,7 @@ function App() {
           exampleLink="https://www.moma.org/collection/works/139296"
           visualComponent={
             <div className="flex items-center justify-center h-full p-4">
-              <div className="w-[600px] h-[400px]">
+              <div className="w-[450px] h-[280px] pb-8">
                 <img
                   src="https://www.graphicpear.com/wp-content/uploads/2017/10/Helvetica-Brand-Logos.jpg"
                   alt="Helvetica typeface specimen"
@@ -834,7 +875,7 @@ function App() {
           exampleLink="https://logo.com/blog/fedex-logo"
           visualComponent={
             <div className="flex items-center justify-center h-full p-4">
-              <div className="w-[600px] h-[400px]">
+              <div className="w-[450px] h-[280px] pb-8">
                 <img
                   src="https://logo.com/image-cdn/images/kts928pd/production/545de9c62376e6a69379aae1703674d4b66e6962-1600x894.png?w=1080&q=72&fm=webp"
                   alt="FedEx logo with hidden arrow"
@@ -851,7 +892,7 @@ function App() {
           exampleLink="https://www.sensible.com/dmmt.html"
           visualComponent={
             <div className="flex items-center justify-center h-full p-4">
-              <div className="w-[600px] h-[400px]">
+              <div className="w-[450px] h-[280px] pb-8">
                 <img
                   src="https://media.licdn.com/dms/image/v2/C4D34AQFcBa3aJAHZCw/ugc-proxy-shrink_800/ugc-proxy-shrink_800/0/1594646636338?e=2147483647&v=beta&t=IFoQ7PyP6METIpbPTWMVbNQTcGxFx7ax5jmr2StTdhc"
                   alt="Don't Make Me Think book cover"
@@ -862,12 +903,14 @@ function App() {
           }
         />
         <DesignSection
-          title="Negativland"
-          description="Negativland is a sound collage band that uses found audio and media to create new works. Their approach to copyright and fair use has influenced how we think about creative reuse and media ownership."
-          designPrinciple="Media Critique & Copyright"
+          title="Negativland vs U2"
+          description="Negativland's 1991 album 'U2' sparked a landmark copyright case when they used U2's 'I Still Haven't Found What I'm Looking For' in a parody. The resulting legal battle became a crucial case study in fair use, sampling rights, and artistic freedom in the digital age."
+          designPrinciple="Fair Use & Copyright – Challenging intellectual property laws through creative appropriation."
+          exampleLink="https://www.negativland.com/albums/u2/"
+          exampleLabel="Negativland's U2 Album - Official Site"
           visualComponent={
             <div className="w-full h-full flex items-center justify-center">
-              <div className="w-[800px] h-[400px] bg-white overflow-hidden group relative">
+              <div className="w-[450px] h-[280px] bg-white overflow-hidden group relative pb-8">
                 <img
                   src="https://images.squarespace-cdn.com/content/v1/5d33a1f97b99b80001812595/1564508368509-Q353DG1VKMVVKZIKYP7N/negativland_1991+by+Negativland_5.jpg"
                   alt="Negativland U2 Album Cover"
@@ -897,7 +940,7 @@ function App() {
         className={`${
           isListLayout
             ? "grid grid-cols-1 gap-6 max-w-4xl mx-auto px-4 py-8"
-            : "col-span-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-8 gap-12"
+            : "col-span-full grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 p-8 gap-6"
         }`}
       >
         <DesignSection
@@ -906,7 +949,7 @@ function App() {
           designPrinciple="Systematic Design – Creating coherent visual systems that serve their purpose."
           visualComponent={
             <div className="w-full h-full flex items-center justify-center p-4">
-              <div className="w-[500px] h-[300px] bg-white overflow-hidden group relative">
+              <div className="w-[350px] h-[230px] bg-white overflow-hidden group relative">
                 <img
                   src="https://blog.weditt.com/wp-content/uploads/2024/08/Massimo-Vignelli-Master-of-Modernist-Design-1024x576.jpg"
                   alt="Massimo Vignelli"
@@ -923,7 +966,7 @@ function App() {
           designPrinciple="Simplicity & Memorability – Creating iconic design through minimal elements."
           visualComponent={
             <div className="w-full h-full flex items-center justify-center p-4">
-              <div className="w-[500px] h-[300px] bg-white overflow-hidden group relative">
+              <div className="w-[350px] h-[230px] bg-white overflow-hidden group relative">
                 <img
                   src="https://www.nicekicks.com/files/2017/03/Carolyn-Davidson-.jpg"
                   alt="Carolyn Davidson"
@@ -940,7 +983,7 @@ function App() {
           designPrinciple="Symbolic Storytelling – Communicating complex ideas through simple visuals."
           visualComponent={
             <div className="w-full h-full flex items-center justify-center p-4">
-              <div className="w-[500px] h-[300px] bg-white overflow-hidden group relative">
+              <div className="w-[350px] h-[230px] bg-white overflow-hidden group relative">
                 <img
                   src="https://cdn.thecollector.com/wp-content/uploads/2023/03/saul-blass-iconic-graphic-designer-and-filmmaker.jpg"
                   alt="Saul Bass"
@@ -957,7 +1000,7 @@ function App() {
           designPrinciple="Raw Expression – Using art to challenge and provoke."
           visualComponent={
             <div className="w-full h-full flex items-center justify-center p-4">
-              <div className="w-[500px] h-[300px] bg-white overflow-hidden group relative">
+              <div className="w-[350px] h-[230px] bg-white overflow-hidden group relative">
                 <img
                   src="https://www.vice.com/wp-content/uploads/sites/2/2017/02/1486652390153-IMG_4484.jpeg?resize=1024,683"
                   alt="Raymond Pettibon"
@@ -974,7 +1017,7 @@ function App() {
           designPrinciple="Clarity and neutrality through precise typographic design"
           visualComponent={
             <div className="w-full h-full flex items-center justify-center p-4">
-              <div className="w-[500px] h-[300px] bg-white overflow-hidden group relative">
+              <div className="w-[350px] h-[230px] bg-white overflow-hidden group relative">
                 <img
                   src="https://kingscliffgraphicdesign2017.wordpress.com/wp-content/uploads/2017/03/f94.png"
                   alt="Max Miedinger"
@@ -991,7 +1034,7 @@ function App() {
           designPrinciple="Expressive Typography – Using type as a primary design element."
           visualComponent={
             <div className="w-full h-full flex items-center justify-center p-4">
-              <div className="w-[500px] h-[300px] bg-white overflow-hidden group relative">
+              <div className="w-[350px] h-[230px] bg-white overflow-hidden group relative">
                 <img
                   src="https://www.ucreative.com/wp-content/uploads/2014/11/51.jpg"
                   alt="Paula Scher"
