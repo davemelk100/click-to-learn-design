@@ -987,11 +987,11 @@ function App() {
           exampleLink="https://logo.com/blog/fedex-logo"
           visualComponent={
             <div className="flex items-center justify-center h-full p-4">
-              <div className="w-[450px] h-[280px] pb-8">
+              <div className="w-[450px] h-[280px] pb-8 flex items-center justify-center">
                 <img
-                  src="https://logo.com/image-cdn/images/kts928pd/production/545de9c62376e6a69379aae1703674d4b66e6962-1600x894.png?w=1080&q=72&fm=webp"
+                  src="https://images.squarespace-cdn.com/content/v1/53fd397ce4b03ae33c1629c4/1493993295875-4DH0S4UJ31IHDYBOEOUK/fedex_arrow.gif"
                   alt="FedEx logo with hidden arrow"
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                  className="w-[80%] h-auto object-contain hover:scale-105 transition-transform duration-300"
                 />
               </div>
             </div>
