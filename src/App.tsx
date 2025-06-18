@@ -938,11 +938,200 @@ function App() {
           visualComponent={
             <div className="flex items-center justify-center h-full p-4">
               <div className="w-[450px] h-[280px] pb-8">
-                <img
-                  src="https://scholarlykitchen.sspnet.org/wp-content/uploads/2012/09/boston_globe_responsive_website.jpg"
-                  alt="The Boston Globe responsive website design"
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                />
+                <style>
+                  {`
+                    @keyframes resize {
+                      0% { width: 100%; }
+                      25% { width: 75%; }
+                      50% { width: 50%; }
+                      75% { width: 25%; }
+                      100% { width: 100%; }
+                    }
+                    @keyframes reflow {
+                      0% { transform: translateX(0); }
+                      25% { transform: translateX(-25%); }
+                      50% { transform: translateX(-50%); }
+                      75% { transform: translateX(-75%); }
+                      100% { transform: translateX(0); }
+                    }
+                    @keyframes stack {
+                      0% { transform: translateY(0); }
+                      25% { transform: translateY(0); }
+                      50% { transform: translateY(20px); }
+                      75% { transform: translateY(40px); }
+                      100% { transform: translateY(0); }
+                    }
+                    @keyframes scale {
+                      0%, 100% { transform: scale(1); }
+                      50% { transform: scale(0.8); }
+                    }
+                    .responsive-container {
+                      animation: resize 8s ease-in-out infinite;
+                    }
+                    .content-block {
+                      animation: reflow 8s ease-in-out infinite;
+                    }
+                    .stacking-block {
+                      animation: stack 8s ease-in-out infinite;
+                    }
+                    .scaling-element {
+                      animation: scale 4s ease-in-out infinite;
+                    }
+                  `}
+                </style>
+                <div className="w-full h-full flex items-center justify-center bg-white">
+                  <svg className="w-full h-full" viewBox="0 0 100 100">
+                    {/* Responsive container */}
+                    <rect
+                      x="5"
+                      y="5"
+                      width="90"
+                      height="90"
+                      fill="#F3F4F6"
+                      className="responsive-container"
+                    />
+
+                    {/* Header */}
+                    <rect
+                      x="10"
+                      y="10"
+                      width="80"
+                      height="15"
+                      fill="#E5E7EB"
+                      className="content-block"
+                    />
+                    <text
+                      x="50"
+                      y="20"
+                      textAnchor="middle"
+                      fill="#374151"
+                      style={{ fontSize: "8px" }}
+                    >
+                      The Boston Globe
+                    </text>
+
+                    {/* Main content blocks */}
+                    <g className="content-block">
+                      {/* Left column */}
+                      <rect
+                        x="10"
+                        y="30"
+                        width="35"
+                        height="30"
+                        fill="#D1D5DB"
+                        className="scaling-element"
+                      />
+                      <text
+                        x="27.5"
+                        y="45"
+                        textAnchor="middle"
+                        fill="#374151"
+                        style={{ fontSize: "6px" }}
+                      >
+                        Main Story
+                      </text>
+
+                      {/* Right column */}
+                      <rect
+                        x="55"
+                        y="30"
+                        width="35"
+                        height="30"
+                        fill="#D1D5DB"
+                        className="scaling-element"
+                      />
+                      <text
+                        x="72.5"
+                        y="45"
+                        textAnchor="middle"
+                        fill="#374151"
+                        style={{ fontSize: "6px" }}
+                      >
+                        Side Story
+                      </text>
+                    </g>
+
+                    {/* Stacking elements */}
+                    <g className="stacking-block">
+                      <rect
+                        x="10"
+                        y="70"
+                        width="80"
+                        height="10"
+                        fill="#9CA3AF"
+                      />
+                      <rect
+                        x="10"
+                        y="85"
+                        width="80"
+                        height="10"
+                        fill="#9CA3AF"
+                      />
+                    </g>
+
+                    {/* Responsive breakpoints */}
+                    <g>
+                      <line
+                        x1="25%"
+                        y1="0"
+                        x2="25%"
+                        y2="100%"
+                        stroke="#E5E7EB"
+                        strokeWidth="0.5"
+                        strokeDasharray="2"
+                      />
+                      <line
+                        x1="50%"
+                        y1="0"
+                        x2="50%"
+                        y2="100%"
+                        stroke="#E5E7EB"
+                        strokeWidth="0.5"
+                        strokeDasharray="2"
+                      />
+                      <line
+                        x1="75%"
+                        y1="0"
+                        x2="75%"
+                        y2="100%"
+                        stroke="#E5E7EB"
+                        strokeWidth="0.5"
+                        strokeDasharray="2"
+                      />
+                    </g>
+
+                    {/* Screen size indicators */}
+                    <g className="content-block">
+                      <text
+                        x="25%"
+                        y="95"
+                        textAnchor="middle"
+                        fill="#6B7280"
+                        style={{ fontSize: "4px" }}
+                      >
+                        Mobile
+                      </text>
+                      <text
+                        x="50%"
+                        y="95"
+                        textAnchor="middle"
+                        fill="#6B7280"
+                        style={{ fontSize: "4px" }}
+                      >
+                        Tablet
+                      </text>
+                      <text
+                        x="75%"
+                        y="95"
+                        textAnchor="middle"
+                        fill="#6B7280"
+                        style={{ fontSize: "4px" }}
+                      >
+                        Desktop
+                      </text>
+                    </g>
+                  </svg>
+                </div>
               </div>
             </div>
           }
@@ -1343,42 +1532,6 @@ function App() {
                   alt="FedEx logo with hidden arrow"
                   className="w-[80%] h-auto object-contain hover:scale-105 transition-transform duration-300"
                 />
-              </div>
-            </div>
-          }
-        />
-        <DesignSection
-          title="Don't Make Me Think"
-          description="Steve Krug's 'Don't Make Me Think' transformed web design by advocating for intuitive, self-explanatory interfaces. Its core principles of usability testing and clear navigation remain essential to modern web design."
-          designPrinciple="Intuitive Design – Creating interfaces that users can understand without conscious thought."
-          exampleLink="https://www.sensible.com/dmmt.html"
-          visualComponent={
-            <div className="flex items-center justify-center h-full p-4">
-              <div className="w-[450px] h-[280px] pb-8">
-                <img
-                  src="https://media.licdn.com/dms/image/v2/C4D34AQFcBa3aJAHZCw/ugc-proxy-shrink_800/ugc-proxy-shrink_800/0/1594646636338?e=2147483647&v=beta&t=IFoQ7PyP6METIpbPTWMVbNQTcGxFx7ax5jmr2StTdhc"
-                  alt="Don't Make Me Think book cover"
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-            </div>
-          }
-        />
-        <DesignSection
-          title="Negativland vs U2"
-          description="Negativland's 1991 album 'U2' sparked a landmark copyright case when they used U2's 'I Still Haven't Found What I'm Looking For' in a parody. The resulting legal battle became a crucial case study in fair use, sampling rights, and artistic freedom in the digital age."
-          designPrinciple="Fair Use & Copyright – Challenging intellectual property laws through creative appropriation."
-          exampleLink="https://www.negativland.com/albums/u2/"
-          exampleLabel="Negativland's U2 Album - Official Site"
-          visualComponent={
-            <div className="w-full h-full flex items-center justify-center">
-              <div className="w-[450px] h-[280px] bg-white overflow-hidden group relative pb-8">
-                <img
-                  src="https://images.squarespace-cdn.com/content/v1/5d33a1f97b99b80001812595/1564508368509-Q353DG1VKMVVKZIKYP7N/negativland_1991+by+Negativland_5.jpg"
-                  alt="Negativland U2 Album Cover"
-                  className="w-full h-full object-contain transform transition-all duration-500 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
             </div>
           }
