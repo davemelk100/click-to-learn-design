@@ -951,14 +951,232 @@ function App() {
           title="Typesetting"
           description="Johannes Gutenberg's 1440s invention of movable type revolutionized information sharing. Its mechanical precision and systematic arrangement laid the groundwork for modern typography."
           designPrinciple="Precision & Standardization – Creating consistent, reproducible text layouts through systematic arrangement."
+          exampleLink="https://www.interaction-design.org/literature/topics/color-theory"
+          exampleLabel="Color Theory - Interaction Design Foundation"
           visualComponent={
             <div className="flex items-center justify-center h-full p-4">
               <div className="w-[450px] h-[280px] pb-8">
-                <img
-                  src="https://static.euronews.com/articles/stories/07/42/08/38/1440x810_cmsv2_1b02e2a8-750a-54d8-9aee-59445f762fbc-7420838.jpg"
-                  alt="Gutenberg Bible - Early example of typesetting"
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                />
+                <style>
+                  {`
+                    @keyframes slideIn {
+                      0% { transform: translateX(-100%); opacity: 0; }
+                      100% { transform: translateX(0); opacity: 1; }
+                    }
+                    @keyframes dropIn {
+                      0% { transform: translateY(-20px); opacity: 0; }
+                      100% { transform: translateY(0); opacity: 1; }
+                    }
+                    @keyframes highlight {
+                      0%, 100% { fill: #6B7280; }
+                      50% { fill: #374151; }
+                    }
+                    .slide-in {
+                      animation: slideIn 4s ease-out forwards infinite;
+                      animation-direction: alternate;
+                    }
+                    .drop-in {
+                      animation: dropIn 4s ease-out forwards infinite;
+                      animation-direction: alternate;
+                    }
+                    .highlight {
+                      animation: highlight 12s ease-in-out infinite;
+                    }
+                  `}
+                </style>
+                <div className="w-full h-full flex items-center justify-center bg-white">
+                  <svg className="w-full h-full" viewBox="0 0 100 100">
+                    {/* Type case (storage for letters) */}
+                    <rect
+                      x="5"
+                      y="10"
+                      width="20"
+                      height="80"
+                      fill="#E5E7EB"
+                      className="slide-in"
+                    />
+
+                    {/* Individual type blocks */}
+                    <g className="drop-in" style={{ animationDelay: "1.6s" }}>
+                      <rect
+                        x="8"
+                        y="15"
+                        width="14"
+                        height="14"
+                        fill="#6B7280"
+                      />
+                      <text
+                        x="15"
+                        y="25"
+                        textAnchor="middle"
+                        fill="white"
+                        style={{ fontSize: "8px" }}
+                      >
+                        A
+                      </text>
+                    </g>
+                    <g className="drop-in" style={{ animationDelay: "3.2s" }}>
+                      <rect
+                        x="8"
+                        y="32"
+                        width="14"
+                        height="14"
+                        fill="#6B7280"
+                      />
+                      <text
+                        x="15"
+                        y="42"
+                        textAnchor="middle"
+                        fill="white"
+                        style={{ fontSize: "8px" }}
+                      >
+                        B
+                      </text>
+                    </g>
+                    <g className="drop-in" style={{ animationDelay: "4.8s" }}>
+                      <rect
+                        x="8"
+                        y="49"
+                        width="14"
+                        height="14"
+                        fill="#6B7280"
+                      />
+                      <text
+                        x="15"
+                        y="59"
+                        textAnchor="middle"
+                        fill="white"
+                        style={{ fontSize: "8px" }}
+                      >
+                        C
+                      </text>
+                    </g>
+
+                    {/* Composing stick (where text is arranged) */}
+                    <rect
+                      x="35"
+                      y="40"
+                      width="60"
+                      height="20"
+                      fill="#F3F4F6"
+                      className="slide-in"
+                      style={{ animationDelay: "6.4s" }}
+                    />
+
+                    {/* Arranged type blocks */}
+                    <g className="slide-in" style={{ animationDelay: "8s" }}>
+                      <rect
+                        x="40"
+                        y="45"
+                        width="8"
+                        height="10"
+                        fill="#6B7280"
+                        className="highlight"
+                      />
+                      <text
+                        x="44"
+                        y="52"
+                        textAnchor="middle"
+                        fill="white"
+                        style={{ fontSize: "6px" }}
+                      >
+                        A
+                      </text>
+                    </g>
+                    <g className="slide-in" style={{ animationDelay: "9.6s" }}>
+                      <rect
+                        x="50"
+                        y="45"
+                        width="8"
+                        height="10"
+                        fill="#6B7280"
+                        className="highlight"
+                      />
+                      <text
+                        x="54"
+                        y="52"
+                        textAnchor="middle"
+                        fill="white"
+                        style={{ fontSize: "6px" }}
+                      >
+                        B
+                      </text>
+                    </g>
+                    <g className="slide-in" style={{ animationDelay: "11.2s" }}>
+                      <rect
+                        x="60"
+                        y="45"
+                        width="8"
+                        height="10"
+                        fill="#6B7280"
+                        className="highlight"
+                      />
+                      <text
+                        x="64"
+                        y="52"
+                        textAnchor="middle"
+                        fill="white"
+                        style={{ fontSize: "6px" }}
+                      >
+                        C
+                      </text>
+                    </g>
+
+                    {/* Guide lines */}
+                    <g className="slide-in" style={{ animationDelay: "12.8s" }}>
+                      <line
+                        x1="35"
+                        y1="45"
+                        x2="95"
+                        y2="45"
+                        stroke="#9CA3AF"
+                        strokeWidth="0.2"
+                        strokeDasharray="2"
+                      />
+                      <line
+                        x1="35"
+                        y1="55"
+                        x2="95"
+                        y2="55"
+                        stroke="#9CA3AF"
+                        strokeWidth="0.2"
+                        strokeDasharray="2"
+                      />
+                    </g>
+
+                    {/* Spacing elements */}
+                    <g className="slide-in" style={{ animationDelay: "14.4s" }}>
+                      <rect
+                        x="48"
+                        y="45"
+                        width="2"
+                        height="10"
+                        fill="#9CA3AF"
+                        opacity="0.5"
+                      />
+                      <rect
+                        x="58"
+                        y="45"
+                        width="2"
+                        height="10"
+                        fill="#9CA3AF"
+                        opacity="0.5"
+                      />
+                    </g>
+
+                    {/* Final text output */}
+                    <g className="slide-in" style={{ animationDelay: "16s" }}>
+                      <text
+                        x="50"
+                        y="80"
+                        textAnchor="middle"
+                        fill="#374151"
+                        style={{ fontSize: "10px" }}
+                      >
+                        ABC
+                      </text>
+                    </g>
+                  </svg>
+                </div>
               </div>
             </div>
           }
@@ -969,13 +1187,145 @@ function App() {
           designPrinciple="Clarity & Universality – Creating a typeface that works everywhere while maintaining perfect legibility."
           exampleLink="https://www.moma.org/collection/works/139296"
           visualComponent={
-            <div className="flex items-center justify-center h-full p-4">
-              <div className="w-[450px] h-[280px] pb-8">
-                <img
-                  src="https://www.graphicpear.com/wp-content/uploads/2017/10/Helvetica-Brand-Logos.jpg"
-                  alt="Helvetica typeface specimen"
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                />
+            <div className="flex items-center justify-center w-full -mt-4">
+              <div className="w-full max-w-[600px] h-[250px] bg-white px-4 pt-4 relative">
+                <style>
+                  {`
+                    @keyframes draw {
+                      0% { stroke-dashoffset: 1000; }
+                      100% { stroke-dashoffset: 0; }
+                    }
+                    @keyframes rotate {
+                      0% { transform: rotate(0deg); }
+                      100% { transform: rotate(360deg); }
+                    }
+                    @keyframes morph {
+                      0% { d: path("M 20,20 L 80,20 L 80,80 L 20,80 Z"); }
+                      50% { d: path("M 20,20 L 80,20 L 80,80 L 20,80 Z"); }
+                      100% { d: path("M 20,20 L 80,20 L 80,80 L 20,80 Z"); }
+                    }
+                    @keyframes float {
+                      0%, 100% { transform: translateY(0); }
+                      50% { transform: translateY(-10px); }
+                    }
+                    .draw {
+                      stroke-dasharray: 1000;
+                      stroke-dashoffset: 1000;
+                      animation: draw 3s ease-in-out forwards;
+                    }
+                    .rotate {
+                      animation: rotate 20s linear infinite;
+                      transform-origin: center;
+                    }
+                    .float {
+                      animation: float 3s ease-in-out infinite;
+                    }
+                  `}
+                </style>
+                <div className="w-full h-full flex items-center justify-center bg-white">
+                  <svg className="w-full h-full" viewBox="0 0 100 100">
+                    {/* Rotating geometric forms */}
+                    <g className="rotate">
+                      {/* Letter H construction */}
+                      <path
+                        d="M 30,20 L 30,80 M 30,50 L 70,50 M 70,20 L 70,80"
+                        fill="none"
+                        stroke="#374151"
+                        strokeWidth="1"
+                        className="draw"
+                      />
+                      {/* Circular guides */}
+                      <circle
+                        cx="50"
+                        cy="50"
+                        r="30"
+                        fill="none"
+                        stroke="#E5E7EB"
+                        strokeWidth="0.5"
+                        className="draw"
+                        style={{ animationDelay: "0.5s" }}
+                      />
+                      <circle
+                        cx="50"
+                        cy="50"
+                        r="40"
+                        fill="none"
+                        stroke="#E5E7EB"
+                        strokeWidth="0.5"
+                        className="draw"
+                        style={{ animationDelay: "1s" }}
+                      />
+                    </g>
+
+                    {/* Grid lines */}
+                    <g>
+                      <line
+                        x1="0"
+                        y1="50"
+                        x2="100"
+                        y2="50"
+                        stroke="#E5E7EB"
+                        strokeWidth="0.5"
+                        className="draw"
+                        style={{ animationDelay: "2s" }}
+                      />
+                      <line
+                        x1="50"
+                        y1="0"
+                        x2="50"
+                        y2="100"
+                        stroke="#E5E7EB"
+                        strokeWidth="0.5"
+                        className="draw"
+                        style={{ animationDelay: "2s" }}
+                      />
+                    </g>
+
+                    {/* Key points */}
+                    <g>
+                      <circle
+                        cx="30"
+                        cy="50"
+                        r="1"
+                        fill="#374151"
+                        className="draw"
+                        style={{ animationDelay: "2.5s" }}
+                      />
+                      <circle
+                        cx="70"
+                        cy="50"
+                        r="1"
+                        fill="#374151"
+                        className="draw"
+                        style={{ animationDelay: "2.5s" }}
+                      />
+                      <circle
+                        cx="50"
+                        cy="50"
+                        r="1"
+                        fill="#374151"
+                        className="draw"
+                        style={{ animationDelay: "2.5s" }}
+                      />
+                    </g>
+
+                    {/* Center text */}
+                    <text
+                      x="50"
+                      y="50"
+                      textAnchor="middle"
+                      dominantBaseline="middle"
+                      fill="#374151"
+                      opacity="0.25"
+                      style={{
+                        fontFamily: "Helvetica, Arial, sans-serif",
+                        fontSize: "24px",
+                      }}
+                    >
+                      Helvetica
+                    </text>
+                  </svg>
+                </div>
               </div>
             </div>
           }
