@@ -63,8 +63,8 @@ function App() {
       <div
         className={`${
           isListLayout
-            ? "grid grid-cols-1 gap-6 max-w-4xl mx-auto px-4 py-8"
-            : "col-span-full grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 p-8 gap-6"
+            ? "grid grid-cols-1 gap-4 sm:gap-6 max-w-4xl mx-auto px-4 sm:px-6 py-4 sm:py-8"
+            : "col-span-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 p-4 sm:p-6 lg:p-8 gap-4 sm:gap-6"
         }`}
       >
         <DesignSection
@@ -75,7 +75,7 @@ function App() {
           exampleLabel="Architectural Drawings: 8 Masterful Parallel Projections"
           visualComponent={
             <div className="flex items-center justify-center w-full">
-              <div className="w-full max-w-[600px] h-[250px] bg-white px-4 pt-4 relative">
+              <div className="w-full max-w-xs sm:max-w-md md:max-w-lg h-[180px] sm:h-[250px] bg-white px-2 sm:px-4 pt-2 sm:pt-4 relative">
                 <style>
                   {`
                     @keyframes rotate3D {
@@ -120,10 +120,10 @@ function App() {
                   `}
                 </style>
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="relative w-64 h-64">
+                  <div className="relative w-32 h-32 sm:w-64 sm:h-64">
                     {/* Main cube */}
                     <div className="cube-container absolute inset-0">
-                      <div className="cube w-32 h-32">
+                      <div className="cube w-16 h-16 sm:w-32 sm:h-32">
                         {/* Front face */}
                         <div
                           className="cube-face bg-blue-500/40"
@@ -169,25 +169,25 @@ function App() {
 
                     {/* Floating elements */}
                     <div className="absolute top-1/4 left-1/4 floating-element">
-                      <div className="w-8 h-8 bg-blue-400/60 rounded-lg pulse-element" />
+                      <div className="w-4 h-4 sm:w-8 sm:h-8 bg-blue-400/60 rounded-lg pulse-element" />
                     </div>
                     <div
                       className="absolute top-1/4 right-1/4 floating-element"
                       style={{ animationDelay: "1s" }}
                     >
-                      <div className="w-8 h-8 bg-blue-400/60 rounded-lg pulse-element" />
+                      <div className="w-4 h-4 sm:w-8 sm:h-8 bg-blue-400/60 rounded-lg pulse-element" />
                     </div>
                     <div
                       className="absolute bottom-1/4 left-1/4 floating-element"
                       style={{ animationDelay: "2s" }}
                     >
-                      <div className="w-8 h-8 bg-blue-400/60 rounded-lg pulse-element" />
+                      <div className="w-4 h-4 sm:w-8 sm:h-8 bg-blue-400/60 rounded-lg pulse-element" />
                     </div>
                     <div
                       className="absolute bottom-1/4 right-1/4 floating-element"
                       style={{ animationDelay: "3s" }}
                     >
-                      <div className="w-8 h-8 bg-blue-400/60 rounded-lg pulse-element" />
+                      <div className="w-4 h-4 sm:w-8 sm:h-8 bg-blue-400/60 rounded-lg pulse-element" />
                     </div>
 
                     {/* Grid lines */}
@@ -927,7 +927,7 @@ function App() {
         className={`${
           isListLayout
             ? "grid grid-cols-1 gap-6 max-w-4xl mx-auto px-4 py-8"
-            : "col-span-full grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 p-8 gap-6"
+            : "col-span-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 p-8 gap-6"
         }`}
       >
         <DesignSection
@@ -936,8 +936,8 @@ function App() {
           designPrinciple="Responsive Design - Creating fluid layouts that adapt to any screen size while maintaining content integrity"
           exampleLink="https://zeldman.com/2011/09/15/boston-globes-responsive-redesign-discuss/"
           visualComponent={
-            <div className="flex items-center justify-center h-full p-4">
-              <div className="w-[450px] h-[280px] pb-8">
+            <div className="flex items-center justify-center h-full p-2 sm:p-4 w-full">
+              <div className="w-full max-w-xs sm:max-w-md md:max-w-lg h-[120px] sm:h-[280px] pb-4 sm:pb-8">
                 <style>
                   {`
                     @keyframes resize {
@@ -1525,12 +1525,12 @@ function App() {
           designPrinciple="Negative Space - Using the space between elements to create hidden meaning and visual interest"
           exampleLink="https://logo.com/blog/fedex-logo"
           visualComponent={
-            <div className="flex items-center justify-center h-full p-4">
-              <div className="w-[450px] h-[280px] pb-8 flex items-center justify-center">
+            <div className="flex items-center justify-center h-full p-2 sm:p-4 w-full">
+              <div className="w-full max-w-xs sm:max-w-md md:max-w-lg h-[120px] sm:h-[280px] pb-4 sm:pb-8 flex items-center justify-center">
                 <img
                   src="https://images.squarespace-cdn.com/content/v1/53fd397ce4b03ae33c1629c4/1493993295875-4DH0S4UJ31IHDYBOEOUK/fedex_arrow.gif"
                   alt="FedEx logo with hidden arrow"
-                  className="w-[80%] h-auto object-contain hover:scale-105 transition-transform duration-300"
+                  className="w-full h-auto object-contain hover:scale-105 transition-transform duration-300"
                 />
               </div>
             </div>
@@ -1555,7 +1555,7 @@ function App() {
         className={`${
           isListLayout
             ? "grid grid-cols-1 gap-6 max-w-4xl mx-auto px-4 py-8"
-            : "col-span-full grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 p-8 gap-6"
+            : "col-span-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 p-8 gap-6"
         }`}
       >
         <DesignSection
@@ -1563,12 +1563,12 @@ function App() {
           description="Massimo Vignelli was an Italian designer who brought modernist principles to graphic design. His work for clients like American Airlines and the New York Subway system demonstrated the power of systematic design."
           designPrinciple="Systematic Design – Creating coherent visual systems that serve their purpose."
           visualComponent={
-            <div className="w-full h-full flex items-center justify-center p-4">
-              <div className="w-[350px] h-[230px] bg-white overflow-hidden group relative">
+            <div className="w-full h-full flex items-center justify-center p-2 sm:p-4">
+              <div className="w-full max-w-xs sm:max-w-md md:max-w-lg h-[120px] sm:h-[230px] bg-white overflow-hidden group relative flex items-center justify-center">
                 <img
                   src="https://blog.weditt.com/wp-content/uploads/2024/08/Massimo-Vignelli-Master-of-Modernist-Design-1024x576.jpg"
                   alt="Massimo Vignelli"
-                  className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110"
+                  className="w-full h-auto object-cover transform transition-all duration-500 group-hover:scale-110 rounded"
                 />
                 <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
@@ -1585,7 +1585,7 @@ function App() {
                 <img
                   src="https://www.nicekicks.com/files/2017/03/Carolyn-Davidson-.jpg"
                   alt="Carolyn Davidson"
-                  className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110"
+                  className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110 rounded"
                 />
                 <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
@@ -1602,7 +1602,7 @@ function App() {
                 <img
                   src="https://cdn.thecollector.com/wp-content/uploads/2023/03/saul-blass-iconic-graphic-designer-and-filmmaker.jpg"
                   alt="Saul Bass"
-                  className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110"
+                  className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110 rounded"
                 />
                 <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
@@ -1619,7 +1619,7 @@ function App() {
                 <img
                   src="https://www.vice.com/wp-content/uploads/sites/2/2017/02/1486652390153-IMG_4484.jpeg?resize=1024,683"
                   alt="Raymond Pettibon"
-                  className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110"
+                  className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110 rounded"
                 />
                 <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
@@ -1636,7 +1636,7 @@ function App() {
                 <img
                   src="https://kingscliffgraphicdesign2017.wordpress.com/wp-content/uploads/2017/03/f94.png"
                   alt="Max Miedinger"
-                  className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110"
+                  className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110 rounded"
                 />
                 <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
@@ -1653,7 +1653,7 @@ function App() {
                 <img
                   src="https://www.ucreative.com/wp-content/uploads/2014/11/51.jpg"
                   alt="Paula Scher"
-                  className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110"
+                  className="w-full h-full object-cover transform transition-all duration-500 group-hover:scale-110 rounded"
                 />
                 <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>

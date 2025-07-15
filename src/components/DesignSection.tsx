@@ -83,8 +83,8 @@ const DesignSection: React.FC<DesignSectionProps> = ({
   };
 
   return (
-    <div className="border border-gray-200 overflow-hidden shadow hover:shadow-lg transition-shadow duration-300">
-      <div className="relative h-[500px]">
+    <div className="border border-gray-200 overflow-hidden shadow hover:shadow-lg transition-shadow duration-300 rounded-lg min-w-0">
+      <div className="relative h-[350px] sm:h-[500px]">
         <div
           className="absolute inset-0 flex flex-col"
           style={{
@@ -92,11 +92,15 @@ const DesignSection: React.FC<DesignSectionProps> = ({
               "linear-gradient(to bottom, rgba(255,255,255,0.9), rgba(255,255,255,0.7))",
           }}
         >
-          <div className="p-6 flex-none">
-            <h3 className="text-xl font-semibold mb-2">{title}</h3>
-            <p className="text-gray-600 mb-8">{description}</p>
+          <div className="p-4 sm:p-6 flex-none">
+            <h3 className="text-lg sm:text-xl font-semibold mb-2 break-words">
+              {title}
+            </h3>
+            <p className="text-gray-600 mb-4 sm:mb-8 text-sm sm:text-base break-words">
+              {description}
+            </p>
           </div>
-          <div className="flex-1 bg-white relative">
+          <div className="flex-1 bg-white relative overflow-x-auto min-w-0">
             {visualComponent}
             {exampleLink && <div className="absolute bottom-4 right-4"></div>}
           </div>

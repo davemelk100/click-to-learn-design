@@ -29,14 +29,14 @@ const Header: React.FC = () => {
 
   return (
     <header className="sticky top-0 z-50 bg-black/90 backdrop-blur-sm border-b border-white/10">
-      <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-        <h2 className="text-2xl font-bold text-white font-dm-sans leading-none tracking-tight">
+      <div className="container mx-auto px-4 py-4 flex flex-col sm:flex-row justify-between items-center gap-2 sm:gap-0">
+        <h2 className="text-2xl font-bold text-white font-dm-sans leading-none tracking-tight mb-2 sm:mb-0">
           DESIGN PANES
         </h2>
-        <nav className="flex items-center space-x-8">
+        <nav className="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-8 w-full sm:w-auto">
           <a
             href="#design"
-            className={`text-white hover:text-white/80 font-avenir transition-colors ${
+            className={`text-white hover:text-white/80 font-avenir transition-colors px-2 py-1 rounded sm:px-0 sm:py-0 ${
               activeSection === "design"
                 ? "text-white font-medium"
                 : "text-white/70"
@@ -47,7 +47,7 @@ const Header: React.FC = () => {
           </a>
           <a
             href="#designs"
-            className={`text-white hover:text-white/80 font-avenir transition-colors ${
+            className={`text-white hover:text-white/80 font-avenir transition-colors px-2 py-1 rounded sm:px-0 sm:py-0 ${
               activeSection === "designs"
                 ? "text-white font-medium"
                 : "text-white/70"
@@ -58,7 +58,7 @@ const Header: React.FC = () => {
           </a>
           <a
             href="#designers"
-            className={`text-white hover:text-white/80 font-avenir transition-colors ${
+            className={`text-white hover:text-white/80 font-avenir transition-colors px-2 py-1 rounded sm:px-0 sm:py-0 ${
               activeSection === "designers"
                 ? "text-white font-medium"
                 : "text-white/70"
@@ -71,7 +71,7 @@ const Header: React.FC = () => {
             href="https://davemelk.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-white/70 hover:text-white font-avenir transition-colors"
+            className="text-white/70 hover:text-white font-avenir transition-colors px-2 py-1 rounded sm:px-0 sm:py-0"
             style={{ cursor: "pointer" }}
           >
             DM
