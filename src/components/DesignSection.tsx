@@ -83,7 +83,7 @@ const DesignSection: React.FC<DesignSectionProps> = ({
   };
 
   return (
-    <div className="border border-gray-200 overflow-hidden shadow hover:shadow-lg transition-shadow duration-300 rounded-lg min-w-0">
+    <div className="border border-gray-200 overflow-visible shadow hover:shadow-lg transition-shadow duration-300 rounded-lg min-w-0">
       <div className="relative h-[350px] sm:h-[500px]">
         <div
           className="absolute inset-0 flex flex-col"
@@ -100,7 +100,7 @@ const DesignSection: React.FC<DesignSectionProps> = ({
               {description}
             </p>
           </div>
-          <div className="flex-1 bg-white relative overflow-x-auto min-w-0">
+          <div className="flex-1 bg-white relative overflow-visible min-w-0">
             {visualComponent}
             {exampleLink && <div className="absolute bottom-4 right-4"></div>}
           </div>
