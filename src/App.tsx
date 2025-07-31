@@ -63,8 +63,8 @@ function App() {
       <div
         className={`${
           isListLayout
-            ? "grid grid-cols-1 gap-4 sm:gap-6 max-w-4xl mx-auto px-4 sm:px-6 py-4 sm:py-8"
-            : "col-span-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 p-4 sm:p-6 lg:p-8 gap-4 sm:gap-6"
+            ? "grid grid-cols-1 gap-4 sm:gap-6 max-w-4xl mx-auto px-4 sm:px-6 py-4 sm:py-8 overflow-visible"
+            : "col-span-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 p-4 sm:p-6 lg:p-8 gap-4 sm:gap-6 overflow-visible"
         }`}
       >
         <DesignSection
@@ -926,8 +926,8 @@ function App() {
       <div
         className={`${
           isListLayout
-            ? "grid grid-cols-1 gap-6 max-w-4xl mx-auto px-4 py-8"
-            : "col-span-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 p-8 gap-6"
+            ? "grid grid-cols-1 gap-6 max-w-4xl mx-auto px-4 py-8 overflow-visible"
+            : "col-span-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 p-8 gap-6 overflow-visible"
         }`}
       >
         <DesignSection
@@ -1554,8 +1554,8 @@ function App() {
       <div
         className={`${
           isListLayout
-            ? "grid grid-cols-1 gap-6 max-w-4xl mx-auto px-4 py-8"
-            : "col-span-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 p-8 gap-6"
+            ? "grid grid-cols-1 gap-6 max-w-4xl mx-auto px-4 py-8 overflow-visible"
+            : "col-span-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 p-8 gap-6 overflow-visible"
         }`}
       >
         <DesignSection
